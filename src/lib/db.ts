@@ -13,9 +13,19 @@ function filePath(collection: string) {
 }
 
 function atomicWrite(fp: string, content: string): void {
-  const tmpPath = path.join(os.tmpdir(), `${path.basename(fp)}.${Date.now()}.tmp`)
-  fs.writeFileSync(tmpPath, content, 'utf-8')
-  fs.renameSync(tmpPath, fp)
+  try {
+    // Intenta usar rename atómico (funciona en sistemas de archivos normales)
+    const tmpPath = path.join(os.tmpdir(), `${path.basename(fp)}.${Date.now()}.tmp`)
+    fs.writeFileSync(tmpPath, content, 'utf-8')
+    fs.renameSync(tmpPath, fp)
+  } catch (err) {
+    // Si falla (ej: EXDEV en serverless), escribe directamente
+    if ((err as any)?.code === 'EXDEV') {
+      fs.writeFileSync(fp, content, 'utf-8')
+    } else {
+      throw err
+    }
+  }
 }
 
 // ─── Vercel Blob helpers ──────────────────────────────────────────────────────
