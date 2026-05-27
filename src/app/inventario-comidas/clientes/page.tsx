@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { useClientesComidasStore } from '@/features/inventario-comidas/store/clientes-comidas-store'
 import type { ClienteComida } from '@/features/inventario-comidas/types'
 
+const STORAGE_KEY = 'clientes-comidas-local'
+
 export default function ClientesComidasPage() {
   const clientes = useClientesComidasStore((s) => s.clientes)
   const setClientes = useClientesComidasStore((s) => s.setClientes)
@@ -15,12 +17,45 @@ export default function ClientesComidasPage() {
     tipo_identificacion: 'CC',
   })
 
+  const saveToStorage = (data: ClienteComida[]) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+    } catch (e) {
+      console.warn('No se pudo guardar en localStorage:', e)
+    }
+  }
+
+  const loadFromStorage = (): ClienteComida[] => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored) : []
+    } catch {
+      return []
+    }
+  }
+
   useEffect(() => {
     if (clientes.length === 0) {
       fetch('/api/data/clientes-comidas')
         .then((res) => res.json())
-        .then((data) => setClientes(data))
-        .catch((err) => console.error('Error cargando clientes:', err))
+        .then((data) => {
+          if (Array.isArray(data) && data.length > 0) {
+            setClientes(data)
+            saveToStorage(data)
+          } else {
+            const stored = loadFromStorage()
+            if (stored.length > 0) {
+              setClientes(stored)
+            }
+          }
+        })
+        .catch((err) => {
+          console.error('Error cargando clientes:', err)
+          const stored = loadFromStorage()
+          if (stored.length > 0) {
+            setClientes(stored)
+          }
+        })
     }
   }, [])
 
@@ -53,21 +88,25 @@ export default function ClientesComidasPage() {
       }
 
       setClientes(allClientes)
+      saveToStorage(allClientes)
 
-      const response = await fetch('/api/data/clientes-comidas', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(allClientes),
-      })
-
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`)
+      try {
+        const response = await fetch('/api/data/clientes-comidas', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(allClientes),
+        })
+        if (!response.ok) {
+          console.warn('Servidor no respondió correctamente, pero datos guardados localmente')
+        }
+      } catch (err) {
+        console.warn('No se pudo sincronizar con servidor, datos guardados localmente:', err)
       }
 
       setShowForm(false)
       setEditing(null)
       setFormData({ situacion: 'Activo', tipo_cliente: 'Persona Natural', tipo_identificacion: 'CC' })
-      alert('Cliente guardado correctamente')
+      alert('✅ Cliente guardado correctamente')
     } catch (err) {
       alert('Error guardando cliente: ' + (err instanceof Error ? err.message : 'Unknown'))
     }
