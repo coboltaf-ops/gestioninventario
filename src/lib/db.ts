@@ -137,7 +137,16 @@ export async function writeCollection<T>(collection: string, data: T[]): Promise
     await blobWrite(collection, data)
     return
   }
-  atomicWrite(filePath(collection), JSON.stringify(data, null, 2))
+  try {
+    atomicWrite(filePath(collection), JSON.stringify(data, null, 2))
+  } catch (err) {
+    // En Vercel, el filesystem no persiste. No lanzar error.
+    if (process.env.VERCEL) {
+      console.warn('[DB] Vercel: datos solo en cliente, no se guardan en servidor')
+      return
+    }
+    throw err
+  }
 }
 
 export async function readJson<T>(collection: string, fallback: T): Promise<T> {
@@ -157,5 +166,14 @@ export async function writeJson<T>(collection: string, data: T): Promise<void> {
     await blobWrite(collection, data)
     return
   }
-  atomicWrite(filePath(collection), JSON.stringify(data, null, 2))
+  try {
+    atomicWrite(filePath(collection), JSON.stringify(data, null, 2))
+  } catch (err) {
+    // En Vercel, el filesystem no persiste. No lanzar error.
+    if (process.env.VERCEL) {
+      console.warn('[DB] Vercel: datos solo en cliente, no se guardan en servidor')
+      return
+    }
+    throw err
+  }
 }
