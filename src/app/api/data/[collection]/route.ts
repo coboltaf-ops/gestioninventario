@@ -67,6 +67,15 @@ export async function PUT(req: NextRequest, ctx: RouteContext) {
   } catch {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
   }
+
+  // En Vercel, los datos se guardan solo en localStorage del cliente
+  // No intentar guardar en filesystem porque no persiste
+  const isVercel = !!process.env.VERCEL
+  if (isVercel) {
+    console.log(`[PUT] ${collection} - Vercel serverless (datos en localStorage del cliente)`)
+    return NextResponse.json({ ok: true, serverless: true })
+  }
+
   try {
     if (collection === 'referencias' || collection === 'pagos-proveedores' || collection === 'control-bancario') {
       await writeJson(collection, body)
