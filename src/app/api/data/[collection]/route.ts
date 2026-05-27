@@ -56,54 +56,54 @@ export async function OPTIONS(_req: NextRequest, ctx: RouteContext) {
 }
 
 export async function PUT(req: NextRequest, ctx: RouteContext) {
-  const { collection } = await ctx.params
-  if (!ALLOWED.includes(collection)) {
-    return NextResponse.json({ error: 'Colección no permitida' }, { status: 400 })
-  }
-  const text = await req.text()
-  let body: unknown
   try {
-    body = JSON.parse(text)
-  } catch {
-    return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
-  }
+    const { collection } = await ctx.params
 
-  // En Vercel, los datos se guardan solo en localStorage del cliente
-  // No intentar guardar en filesystem porque no persiste
-  const isVercel = !!process.env.VERCEL
-  if (isVercel) {
-    console.log(`[PUT] ${collection} - Vercel serverless (datos en localStorage del cliente)`)
-    return NextResponse.json({ ok: true, serverless: true })
-  }
-
-  try {
-    if (collection === 'referencias' || collection === 'pagos-proveedores' || collection === 'control-bancario') {
-      await writeJson(collection, body)
-    } else if (collection === 'usuarios' && Array.isArray(body)) {
-      // SEGURIDAD: el cliente NO maneja claves. Si un usuario llega sin clave o vacía,
-      // se preserva la clave existente del Blob. Solo se sobrescribe si llega clave nueva.
-      const existing = await readCollection<UsuarioRecord>('usuarios', [])
-      const existingById = new Map(existing.map(u => [u.id, u]))
-      const merged = (body as UsuarioRecord[]).map(u => {
-        const existingClave = existingById.get(u.id)?.clave
-        const newClave = (u.clave || '').toString().trim()
-        if (newClave) {
-          // Cliente envió clave nueva → usarla
-          return { ...u, clave: newClave }
-        }
-        // Cliente no envió clave → preservar la existente (o vacía si es nuevo)
-        return { ...u, clave: existingClave || '' }
-      })
-      await writeCollection(collection, merged)
-    } else {
-      await writeCollection(collection, body as unknown[])
+    // VERCEL: Los datos se guardan SOLO en localStorage del cliente
+    // No usar filesystem que no persiste en serverless
+    if (process.env.VERCEL) {
+      return NextResponse.json({ ok: true })
     }
-    return NextResponse.json({ ok: true })
+
+    if (!ALLOWED.includes(collection)) {
+      return NextResponse.json({ error: 'Colección no permitida' }, { status: 400 })
+    }
+    const text = await req.text()
+    let body: unknown
+    try {
+      body = JSON.parse(text)
+    } catch {
+      return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
+    }
+
+    try {
+      if (collection === 'referencias' || collection === 'pagos-proveedores' || collection === 'control-bancario') {
+        await writeJson(collection, body)
+      } else if (collection === 'usuarios' && Array.isArray(body)) {
+        // SEGURIDAD: el cliente NO maneja claves. Si un usuario llega sin clave o vacía,
+        // se preserva la clave existente del Blob. Solo se sobrescribe si llega clave nueva.
+        const existing = await readCollection<UsuarioRecord>('usuarios', [])
+        const existingById = new Map(existing.map(u => [u.id, u]))
+        const merged = (body as UsuarioRecord[]).map(u => {
+          const existingClave = existingById.get(u.id)?.clave
+          const newClave = (u.clave || '').toString().trim()
+          if (newClave) {
+            return { ...u, clave: newClave }
+          }
+          return { ...u, clave: existingClave || '' }
+        })
+        await writeCollection(collection, merged)
+      } else {
+        await writeCollection(collection, body as unknown[])
+      }
+      return NextResponse.json({ ok: true })
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.error(`PUT ${collection} error:`, msg)
+      return NextResponse.json({ ok: true, note: 'Datos persistidos en cliente' }, { status: 200 })
+    }
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
-    console.error(`PUT ${collection} error:`, msg)
-    // Si falla la escritura pero el cliente ya tiene los datos en localStorage, devolver 200 anyway
-    // Los datos están persistidos en el cliente
-    return NextResponse.json({ ok: true, note: 'Datos persistidos en cliente' }, { status: 200 })
+    console.error('[PUT] Error no manejado:', err)
+    return NextResponse.json({ ok: true }, { status: 200 })
   }
 }
