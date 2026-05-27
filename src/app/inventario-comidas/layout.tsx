@@ -1,6 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { InventarioSidebar } from '@/shared/components/inventario-sidebar'
+import { SidebarProvider } from '@/shared/context/sidebar-context'
 import { usePollingProductosComidas } from '@/features/inventario-comidas/hooks/use-polling-productos-comidas'
 import { usePollingFormulasComidas } from '@/features/inventario-comidas/hooks/use-polling-formulas-comidas'
 import { usePollingProveedoresComidas } from '@/features/inventario-comidas/hooks/use-polling-proveedores-comidas'
@@ -30,14 +32,44 @@ function InventarioComidasDataLoader() {
   return null
 }
 
-export default function InventarioComidasLayout({ children }: { children: React.ReactNode }) {
+function InventarioComidasLayoutContent({ children }: { children: React.ReactNode }) {
+  const [sidebarVisible, setSidebarVisible] = useState(true)
+
   return (
     <div style={{ minHeight: '100vh', background: '#000', color: '#fff', fontFamily: 'system-ui, sans-serif', display: 'flex' }}>
       <InventarioComidasDataLoader />
-      <InventarioSidebar />
-      <main style={{ flex: 1, marginLeft: '256px', overflowY: 'auto' }}>
+      {sidebarVisible && <InventarioSidebar onClose={() => setSidebarVisible(false)} />}
+      <main style={{ flex: 1, marginLeft: sidebarVisible ? '256px' : '0', overflowY: 'auto', transition: 'margin-left 0.3s' }}>
+        {!sidebarVisible && (
+          <button
+            onClick={() => setSidebarVisible(true)}
+            style={{
+              position: 'fixed',
+              top: '20px',
+              left: '20px',
+              padding: '12px 20px',
+              background: '#ea580c',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              zIndex: 50,
+            }}
+          >
+            ☰ Regresar al Menú
+          </button>
+        )}
         {children}
       </main>
     </div>
+  )
+}
+
+export default function InventarioComidasLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <SidebarProvider>
+      <InventarioComidasLayoutContent>{children}</InventarioComidasLayoutContent>
+    </SidebarProvider>
   )
 }

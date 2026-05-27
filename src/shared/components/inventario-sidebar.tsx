@@ -46,7 +46,7 @@ const CollapseSection = ({
   </div>
 )
 
-const MenuItemLink = ({ name, href, icon, external }: { name: string; href: string; icon: string; external?: boolean }) => {
+const MenuItemLink = ({ name, href, icon, external, onNavigate }: { name: string; href: string; icon: string; external?: boolean; onNavigate?: () => void }) => {
   const pathname = usePathname()
   const isActive = pathname === href || pathname.startsWith(href + '/')
   return (
@@ -54,6 +54,7 @@ const MenuItemLink = ({ name, href, icon, external }: { name: string; href: stri
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
+      onClick={onNavigate}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -83,10 +84,17 @@ const MenuItemLink = ({ name, href, icon, external }: { name: string; href: stri
   )
 }
 
-export function InventarioSidebar() {
+export function InventarioSidebar({ onClose }: { onClose?: () => void } = {}) {
   const pathname = usePathname()
   const [comidasOpen, setComidasOpen] = useState(pathname.startsWith('/inventario-comidas'))
   const [portalOpen, setPortalOpen] = useState(pathname.startsWith('/inventario-comidas/comidas'))
+
+  const handleNavigate = () => {
+    // Ocultar sidebar después de navegar a un módulo
+    if (onClose) {
+      setTimeout(onClose, 100)
+    }
+  }
 
   return (
     <div
@@ -111,20 +119,20 @@ export function InventarioSidebar() {
 
       <CollapseSection label="📦 INVENTARIO" color="#ea580c" open={comidasOpen} onToggle={() => setComidasOpen(!comidasOpen)}>
         <div style={{ borderLeft: '3px solid #ea580c', paddingLeft: '12px', marginLeft: '-4px' }}>
-          <MenuItemLink name="Clientes" href="/inventario-comidas/clientes" icon="👥" />
-          <MenuItemLink name="Proveedores" href="/inventario-comidas/proveedores" icon="🏢" />
-          <MenuItemLink name="Productos" href="/inventario-comidas/productos" icon="📦" />
-          <MenuItemLink name="Fórmulas" href="/inventario-comidas/formulas" icon="📖" />
+          <MenuItemLink name="Clientes" href="/inventario-comidas/clientes" icon="👥" onNavigate={handleNavigate} />
+          <MenuItemLink name="Proveedores" href="/inventario-comidas/proveedores" icon="🏢" onNavigate={handleNavigate} />
+          <MenuItemLink name="Productos" href="/inventario-comidas/productos" icon="📦" onNavigate={handleNavigate} />
+          <MenuItemLink name="Fórmulas" href="/inventario-comidas/formulas" icon="📖" onNavigate={handleNavigate} />
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '12px 0' }} />
-          <MenuItemLink name="O. Compra" href="/inventario-comidas/ordenes-compra" icon="🛒" />
-          <MenuItemLink name="Recepción Facturas" href="/inventario-comidas/recepcion" icon="📋" />
-          <MenuItemLink name="Bodegas" href="/inventario-comidas/bodegas" icon="🏪" />
-          <MenuItemLink name="Salidas Bodega" href="/inventario-comidas/salidas" icon="📤" />
-          <MenuItemLink name="Ajustes Inv." href="/inventario-comidas/ajustes" icon="🔧" />
-          <MenuItemLink name="Inv. Físico" href="/inventario-comidas/inventario-fisico" icon="📊" />
+          <MenuItemLink name="O. Compra" href="/inventario-comidas/ordenes-compra" icon="🛒" onNavigate={handleNavigate} />
+          <MenuItemLink name="Recepción Facturas" href="/inventario-comidas/recepcion" icon="📋" onNavigate={handleNavigate} />
+          <MenuItemLink name="Bodegas" href="/inventario-comidas/bodegas" icon="🏪" onNavigate={handleNavigate} />
+          <MenuItemLink name="Salidas Bodega" href="/inventario-comidas/salidas" icon="📤" onNavigate={handleNavigate} />
+          <MenuItemLink name="Ajustes Inv." href="/inventario-comidas/ajustes" icon="🔧" onNavigate={handleNavigate} />
+          <MenuItemLink name="Inv. Físico" href="/inventario-comidas/inventario-fisico" icon="📊" onNavigate={handleNavigate} />
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '12px 0' }} />
-          <MenuItemLink name="Datos Empresa" href="/inventario-comidas/datos-empresa" icon="🏛️" />
-          <MenuItemLink name="Usuarios" href="/inventario-comidas/usuarios" icon="👤" />
+          <MenuItemLink name="Datos Empresa" href="/inventario-comidas/datos-empresa" icon="🏛️" onNavigate={handleNavigate} />
+          <MenuItemLink name="Usuarios" href="/inventario-comidas/usuarios" icon="👤" onNavigate={handleNavigate} />
         </div>
       </CollapseSection>
 
