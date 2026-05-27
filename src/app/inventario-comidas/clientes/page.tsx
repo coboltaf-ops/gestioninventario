@@ -37,9 +37,11 @@ export default function ClientesComidasPage() {
       }
 
       let cliente: ClienteComida
+      let allClientes: ClienteComida[]
+
       if (editing) {
         cliente = { ...editing, ...formData } as ClienteComida
-        setClientes(clientes.map((c) => (c.id === editing.id ? cliente : c)))
+        allClientes = clientes.map((c) => (c.id === editing.id ? cliente : c))
       } else {
         cliente = {
           id: crypto.randomUUID(),
@@ -47,22 +49,25 @@ export default function ClientesComidasPage() {
           fecha_creacion: new Date().toISOString(),
           ...formData,
         } as ClienteComida
-        setClientes([...clientes, cliente])
+        allClientes = [...clientes, cliente]
       }
 
-      const allClientes = editing
-        ? clientes.map((c) => (c.id === editing.id ? cliente : c))
-        : [...clientes, cliente]
+      setClientes(allClientes)
 
-      await fetch('/api/data/clientes-comidas', {
+      const response = await fetch('/api/data/clientes-comidas', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(allClientes),
       })
 
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`)
+      }
+
       setShowForm(false)
       setEditing(null)
       setFormData({ situacion: 'Activo', tipo_cliente: 'Persona Natural', tipo_identificacion: 'CC' })
+      alert('Cliente guardado correctamente')
     } catch (err) {
       alert('Error guardando cliente: ' + (err instanceof Error ? err.message : 'Unknown'))
     }
