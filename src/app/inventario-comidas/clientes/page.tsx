@@ -86,63 +86,46 @@ export default function ClientesComidasPage() {
   }
 
   const handleSave = async () => {
-    console.log('handleSave iniciado')
-    console.log('Validando campos:', { nombre: formData.nombre, correo: formData.correo, nro_movil: formData.nro_movil, nro_documento: formData.nro_documento })
-
     if (!formData.nombre || !formData.correo || !formData.nro_movil || !formData.nro_documento) {
-      console.warn('Campos obligatorios incompletos')
-      alert('Por favor completa todos los campos obligatorios: Nombre, Correo, Teléfono y Documento')
+      alert('Por favor completa: Nombre, Correo, Teléfono y Documento')
       return
     }
 
     try {
-      console.log('Procesando cliente...')
-      let cliente: ClienteComida
-      let allClientes: ClienteComida[]
+      let newClientes: ClienteComida[]
 
       if (editing) {
-        console.log('Editando cliente existente:', editing.id)
-        cliente = { ...editing, ...formData } as ClienteComida
-        allClientes = clientes.map((c) => (c.id === editing.id ? cliente : c))
+        const cliente = { ...editing, ...formData } as ClienteComida
+        newClientes = clientes.map((c) => (c.id === editing.id ? cliente : c))
       } else {
-        console.log('Creando cliente nuevo')
-        cliente = {
+        const cliente = {
           id: crypto.randomUUID(),
           nro_correlativo: getNextCorrelativo(),
           fecha_creacion: new Date().toISOString(),
           ...formData,
         } as ClienteComida
-        allClientes = [...clientes, cliente]
-        console.log('Cliente nuevo creado:', cliente)
+        newClientes = [...clientes, cliente]
       }
 
-      console.log('Guardando en estado y localStorage...')
-      setClientes(allClientes)
-      saveToStorage(allClientes)
+      // Guardar en localStorage Y estado (ambas cosas)
+      console.log('Guardando', newClientes.length, 'clientes')
+      saveToStorage(newClientes)
+      setClientes(newClientes)
 
-      console.log('Intentando sincronizar con servidor...')
-      try {
-        const response = await fetch('/api/data/clientes-comidas', {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(allClientes),
-        })
-        console.log('Respuesta del servidor:', response.status)
-        if (!response.ok) {
-          console.warn('Servidor respondió con error, pero datos guardados localmente')
-        }
-      } catch (err) {
-        console.warn('No se pudo sincronizar con servidor:', err)
-      }
+      // Intentar sincronizar con servidor (pero no esperar)
+      fetch('/api/data/clientes-comidas', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newClientes),
+      }).catch((err) => console.warn('Servidor no disponible:', err))
 
-      console.log('Cerrando formulario...')
+      // Limpiar formulario y cerrarlo
       setShowForm(false)
       setEditing(null)
       setFormData({ situacion: 'Activo', tipo_cliente: 'Persona Natural', tipo_identificacion: 'CC' })
-      alert('✅ Cliente guardado correctamente')
+      alert('✅ Guardado')
     } catch (err) {
-      console.error('Error en handleSave:', err)
-      alert('Error guardando cliente: ' + (err instanceof Error ? err.message : 'Unknown'))
+      alert('Error: ' + (err instanceof Error ? err.message : 'desconocido'))
     }
   }
 
