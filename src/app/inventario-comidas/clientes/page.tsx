@@ -65,19 +65,26 @@ export default function ClientesComidasPage() {
   }
 
   const handleSave = async () => {
-    try {
-      if (!formData.nombre || !formData.correo || !formData.nro_movil || !formData.nro_documento) {
-        alert('Por favor completa todos los campos obligatorios: Nombre, Correo, Teléfono y Documento')
-        return
-      }
+    console.log('handleSave iniciado')
+    console.log('Validando campos:', { nombre: formData.nombre, correo: formData.correo, nro_movil: formData.nro_movil, nro_documento: formData.nro_documento })
 
+    if (!formData.nombre || !formData.correo || !formData.nro_movil || !formData.nro_documento) {
+      console.warn('Campos obligatorios incompletos')
+      alert('Por favor completa todos los campos obligatorios: Nombre, Correo, Teléfono y Documento')
+      return
+    }
+
+    try {
+      console.log('Procesando cliente...')
       let cliente: ClienteComida
       let allClientes: ClienteComida[]
 
       if (editing) {
+        console.log('Editando cliente existente:', editing.id)
         cliente = { ...editing, ...formData } as ClienteComida
         allClientes = clientes.map((c) => (c.id === editing.id ? cliente : c))
       } else {
+        console.log('Creando cliente nuevo')
         cliente = {
           id: crypto.randomUUID(),
           nro_correlativo: getNextCorrelativo(),
@@ -85,29 +92,35 @@ export default function ClientesComidasPage() {
           ...formData,
         } as ClienteComida
         allClientes = [...clientes, cliente]
+        console.log('Cliente nuevo creado:', cliente)
       }
 
+      console.log('Guardando en estado y localStorage...')
       setClientes(allClientes)
       saveToStorage(allClientes)
 
+      console.log('Intentando sincronizar con servidor...')
       try {
         const response = await fetch('/api/data/clientes-comidas', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(allClientes),
         })
+        console.log('Respuesta del servidor:', response.status)
         if (!response.ok) {
-          console.warn('Servidor no respondió correctamente, pero datos guardados localmente')
+          console.warn('Servidor respondió con error, pero datos guardados localmente')
         }
       } catch (err) {
-        console.warn('No se pudo sincronizar con servidor, datos guardados localmente:', err)
+        console.warn('No se pudo sincronizar con servidor:', err)
       }
 
+      console.log('Cerrando formulario...')
       setShowForm(false)
       setEditing(null)
       setFormData({ situacion: 'Activo', tipo_cliente: 'Persona Natural', tipo_identificacion: 'CC' })
       alert('✅ Cliente guardado correctamente')
     } catch (err) {
+      console.error('Error en handleSave:', err)
       alert('Error guardando cliente: ' + (err instanceof Error ? err.message : 'Unknown'))
     }
   }
