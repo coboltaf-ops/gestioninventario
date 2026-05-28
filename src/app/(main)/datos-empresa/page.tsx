@@ -32,6 +32,14 @@ export default function DatosEmpresaPage() {
   const { empresas, addEmpresa, updateEmpresa, deleteEmpresa, isHydrated, hydrate } = useEmpresaStore()
   const refData = useReferenceStore(s => s.data)
 
+    // Hydrate store on mount
+  useEffect(() => {
+    const doHydrate = async () => {
+      await useEmpresaStore.getState().hydrate()
+    }
+    doHydrate()
+  }, [])
+
   const [form, setForm] = useState<DatosEmpresa>(initForm())
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [viewRecord, setViewRecord] = useState<DatosEmpresa | null>(null)
