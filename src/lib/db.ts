@@ -20,24 +20,14 @@ function atomicWrite(fp: string, content: string): void {
       fs.mkdirSync(dir, { recursive: true })
     }
 
-    // Intenta usar rename atómico (funciona en sistemas de archivos normales)
-    const tmpPath = path.join(os.tmpdir(), `${path.basename(fp)}.${Date.now()}.tmp`)
-    fs.writeFileSync(tmpPath, content, 'utf-8')
-    fs.renameSync(tmpPath, fp)
+    // En Vercel, evitar rename() que causa EXDEV entre /tmp y /var/task
+    // Escribir directamente al archivo objetivo
+    fs.writeFileSync(fp, content, 'utf-8')
   } catch (err) {
-    // Si falla (ej: EXDEV en serverless), escribe directamente sin rename
-    try {
-      const dir = path.dirname(fp)
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true })
-      }
-      fs.writeFileSync(fp, content, 'utf-8')
-    } catch (writeErr) {
-      // En Vercel sin Blob Storage, la escritura a /data/ no persiste
-      // pero el cliente tiene los datos en localStorage
-      console.warn('[DB] No se pudo escribir archivo (posible Vercel sin Blob):', writeErr)
-      throw writeErr
-    }
+    // En Vercel, el filesystem es read-only para /var/task
+    // El cliente mantiene datos en localStorage, así que no es error fatal
+    console.warn('[DB] No se pudo escribir archivo:', err instanceof Error ? err.message : String(err))
+    throw err
   }
 }
 
@@ -140,11 +130,14 @@ export async function writeCollection<T>(collection: string, data: T[]): Promise
   try {
     atomicWrite(filePath(collection), JSON.stringify(data, null, 2))
   } catch (err) {
-    // En Vercel, el filesystem no persiste. No lanzar error.
-    if (process.env.VERCEL) {
-      console.warn('[DB] Vercel: datos solo en cliente, no se guardan en servidor')
+    // En Vercel sin Blob Storage, la persistencia no está disponible
+    // El cliente mantiene los datos en localStorage
+    const isVercel = process.env.VERCEL === '1' || process.env.VERCEL_ENV !== undefined
+    if (isVercel) {
+      console.warn(`[DB] Vercel (no Blob): ${collection} no se persistió, usando localStorage del cliente`)
       return
     }
+    // En desarrollo/local, propagar el error
     throw err
   }
 }
@@ -169,11 +162,14 @@ export async function writeJson<T>(collection: string, data: T): Promise<void> {
   try {
     atomicWrite(filePath(collection), JSON.stringify(data, null, 2))
   } catch (err) {
-    // En Vercel, el filesystem no persiste. No lanzar error.
-    if (process.env.VERCEL) {
-      console.warn('[DB] Vercel: datos solo en cliente, no se guardan en servidor')
+    // En Vercel sin Blob Storage, la persistencia no está disponible
+    // El cliente mantiene los datos en localStorage
+    const isVercel = process.env.VERCEL === '1' || process.env.VERCEL_ENV !== undefined
+    if (isVercel) {
+      console.warn(`[DB] Vercel (no Blob): ${collection} no se persistió, usando localStorage del cliente`)
       return
     }
+    // En desarrollo/local, propagar el error
     throw err
   }
 }

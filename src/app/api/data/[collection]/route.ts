@@ -69,7 +69,9 @@ export async function PUT(req: NextRequest, ctx: RouteContext) {
       return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
     }
 
-    // Intentar guardar, pero si falla por cualquier razón (EXDEV, permisos, etc), no es error
+    // Intentar guardar datos
+    let saveSuccess = true
+    let saveError: unknown = null
     try {
       if (collection === 'referencias' || collection === 'pagos-proveedores' || collection === 'control-bancario') {
         await writeJson(collection, body)
@@ -89,12 +91,20 @@ export async function PUT(req: NextRequest, ctx: RouteContext) {
         await writeCollection(collection, body as unknown[])
       }
     } catch (writeErr) {
-      // Guardar falló (Vercel, permisos, etc) pero el cliente ya tiene los datos en localStorage
-      console.warn(`[PUT ${collection}] Guardar fallido (datos en localStorage cliente):`, writeErr)
+      // Guardar falló (ej: Vercel sin Blob, permisos, etc)
+      // El cliente tiene los datos en localStorage, así que no es error fatal
+      saveSuccess = false
+      saveError = writeErr
+      console.warn(`[PUT ${collection}] No se guardó en servidor (disponible en localStorage):`, writeErr)
     }
 
-    // SIEMPRE devolver 200 OK porque los datos están en localStorage del cliente
-    return NextResponse.json({ ok: true })
+    // Devolver 200 OK (los datos están en localStorage del cliente)
+    // Incluir info sobre si se guardó en servidor
+    return NextResponse.json({
+      ok: true,
+      saved: saveSuccess,
+      info: saveSuccess ? undefined : 'Datos guardados en cliente (localStorage), no en servidor'
+    })
   } catch (err) {
     console.error('[PUT] Error inesperado:', err)
     return NextResponse.json({ ok: true }, { status: 200 })
