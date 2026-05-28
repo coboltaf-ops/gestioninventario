@@ -1,0 +1,12 @@
+[
+  {
+    "id": "740cae95-9871-4474-8bda-fbff5d43ea0a",
+    "usuario": "demo",
+    "clave": "demo123",
+    "nombre": "Usuario",
+    "apellido": "Demo",
+    "rol": "Admin",
+    "correo": "demo@gestioninventario.com",
+    "situacion": "Activo"
+  }
+]
