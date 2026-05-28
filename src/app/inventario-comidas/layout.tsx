@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { useEmpresaStore } from '@/features/datos-empresa/store/empresa-store'
+import { SPIN_LOGO } from '@/shared/lib/spin-logo'
 import { InventarioSidebar } from '@/shared/components/inventario-sidebar'
 import { SidebarProvider } from '@/shared/context/sidebar-context'
 import { usePollingProductosComidas } from '@/features/inventario-comidas/hooks/use-polling-productos-comidas'
@@ -59,7 +60,7 @@ function InventarioComidasLayoutContent({ children }: { children: React.ReactNod
       <main style={{ flex: 1, marginLeft: sidebarVisible ? '256px' : '0', overflowY: 'auto', transition: 'margin-left 0.3s' }}>
         {!sidebarVisible && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'fixed', top: '20px', left: '20px', zIndex: 50 }}>
-            <img src={logoEmpresa || ''} alt="SPIN" style={{ width: '48px', height: '48px' }} />
+            <img src={logoEmpresa || SPIN_LOGO} alt="SPIN" style={{ width: '48px', height: '48px' }} />
             <button
               onClick={() => setSidebarVisible(true)}
               style={{
