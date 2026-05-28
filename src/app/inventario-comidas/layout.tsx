@@ -6,6 +6,7 @@ import { useEmpresaStore } from '@/features/datos-empresa/store/empresa-store'
 import { SPIN_LOGO } from '@/shared/lib/spin-logo'
 import { InventarioSidebar } from '@/shared/components/inventario-sidebar'
 import { SidebarProvider } from '@/shared/context/sidebar-context'
+import { InventarioComidasDataInitializer } from '@/shared/components/inventario-comidas-data-initializer'
 import { usePollingProductosComidas } from '@/features/inventario-comidas/hooks/use-polling-productos-comidas'
 import { usePollingFormulasComidas } from '@/features/inventario-comidas/hooks/use-polling-formulas-comidas'
 import { usePollingProveedoresComidas } from '@/features/inventario-comidas/hooks/use-polling-proveedores-comidas'
@@ -32,13 +33,13 @@ function InventarioComidasDataLoader() {
   usePollingUsuariosComidas(5000)
   usePollingDatosEmpresaComidas(5000)
   usePollingClientesComidas(5000)
-  return null
+  return <InventarioComidasDataInitializer />
 }
 
 function InventarioComidasLayoutContent({ children }: { children: React.ReactNode }) {
   const empresaActiva = useEmpresaStore(s => s.empresas[0])
   const logoEmpresa = empresaActiva?.logo
-  
+
   // Ensure store is hydrated on mount
   useEffect(() => {
     useEmpresaStore.getState().hydrate()

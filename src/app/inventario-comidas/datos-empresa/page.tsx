@@ -5,9 +5,16 @@ import { useDatosEmpresaComidasStore } from '@/features/inventario-comidas/store
 import type { DatosEmpresaComida } from '@/features/inventario-comidas/types'
 
 export default function DatosEmpresaComidasPage() {
-  const { datosEmpresa, setDatosEmpresa } = useDatosEmpresaComidasStore()
+  const { datosEmpresa, setDatosEmpresa, hydrate } = useDatosEmpresaComidasStore()
   const [editing, setEditing] = useState(false)
   const [formData, setFormData] = useState<Partial<DatosEmpresaComida>>({})
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Hydrate from localStorage on mount
+  useEffect(() => {
+    hydrate()
+    setIsLoading(false)
+  }, [hydrate])
 
   useEffect(() => {
     if (datosEmpresa) {
@@ -89,6 +96,16 @@ export default function DatosEmpresaComidasPage() {
     } catch (err) {
       alert('Error guardando datos: ' + (err instanceof Error ? err.message : 'Unknown'))
     }
+  }
+
+  if (isLoading) {
+    return (
+      <div style={{ padding: '40px 20px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <p style={{ color: '#aaa' }}>Cargando datos...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
