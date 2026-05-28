@@ -43,22 +43,32 @@ export const useEmpresaStore = create<EmpresaState>()(
   persist(
     (set, get) => ({
       empresas: [defaultEmpresa],
-      addEmpresa: (empresa) =>
-        set((state) => ({
-          empresas: [...state.empresas, empresa],
-        })),
-      updateEmpresa: (id, empresa) => {
-        // Update in state
-        set((state) => ({
-          empresas: state.empresas.map((e) =>
-            e.id === id ? { ...e, ...empresa } : e
-          ),
-        }))
-        
-        // Also save to localStorage explicitly to ensure persistence
+      addEmpresa: (empresa) => {
+        const newState = [empresa]
+        set({ empresas: newState })
         if (typeof window !== 'undefined') {
-          const updated = get().empresas
-          localStorage.setItem('empresa-storage', JSON.stringify({ state: { empresas: updated } }))
+          localStorage.setItem('empresa-storage', JSON.stringify({ state: { empresas: newState }, version: 1 }))
+        }
+      },
+      updateEmpresa: (id, empresaUpdate) => {
+        // Update state FIRST, get the updated value, THEN save to localStorage
+        const currentEmpresas = get().empresas
+        const updated = currentEmpresas.map((e) =>
+          e.id === id ? { ...e, ...empresaUpdate } : e
+        )
+        
+        // Update state
+        set({ empresas: updated })
+        
+        // Immediately save to localStorage (synchronously)
+        if (typeof window !== 'undefined') {
+          try {
+            const toSave = JSON.stringify({ state: { empresas: updated }, version: 1 })
+            localStorage.setItem('empresa-storage', toSave)
+            console.log('✅ Logo guardado en localStorage:', { id, nombre: updated[0]?.nombre, logoSize: updated[0]?.logo?.length })
+          } catch (e) {
+            console.error('❌ Error guardando en localStorage:', e)
+          }
         }
       },
       deleteEmpresa: (id) =>
@@ -66,7 +76,6 @@ export const useEmpresaStore = create<EmpresaState>()(
           empresas: state.empresas.filter((e) => e.id !== id),
         })),
       hydrate: () => {
-        // Manual hydration to ensure data is loaded
         if (typeof window !== 'undefined') {
           const stored = localStorage.getItem('empresa-storage')
           if (stored) {
@@ -74,10 +83,13 @@ export const useEmpresaStore = create<EmpresaState>()(
               const parsed = JSON.parse(stored)
               if (parsed.state?.empresas && Array.isArray(parsed.state.empresas)) {
                 set({ empresas: parsed.state.empresas })
+                console.log('✅ Store hidratado desde localStorage:', parsed.state.empresas)
               }
             } catch (e) {
-              console.error('Error hydrating empresa store:', e)
+              console.error('❌ Error hidratando empresa store:', e)
             }
+          } else {
+            console.warn('⚠️ No hay datos en localStorage')
           }
         }
       },
@@ -86,10 +98,9 @@ export const useEmpresaStore = create<EmpresaState>()(
       name: 'empresa-storage',
       version: 1,
       storage: createJSONStorage(() => localStorage),
-      // Hydrate immediately
       onRehydrateStorage: () => (state) => {
-        if (state) {
-          console.log('Empresa store hydrated with:', state.empresas)
+        if (state?.empresas) {
+          console.log('🔧 Store Zustand rehydrated:', state.empresas[0]?.nombre)
         }
       },
     }

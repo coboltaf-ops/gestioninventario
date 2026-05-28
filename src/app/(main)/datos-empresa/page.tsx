@@ -68,10 +68,25 @@ export default function DatosEmpresaPage() {
     if (!form.nombre.trim()) { setFormError('El nombre es obligatorio.'); return }
     const duplicate = empresas.some(r => r.id !== form.id && r.nombre.trim().toLowerCase() === form.nombre.trim().toLowerCase())
     if (duplicate) { setFormError(`Ya existe una empresa con el nombre "${form.nombre}".`); return }
-    if (form.id) { updateEmpresa(form.id, { ...form }) }
+    if (form.id) { 
+      updateEmpresa(form.id, { ...form })
+      console.log('✅ Guardando empresa:', form.nombre, 'Logo size:', form.logo?.length)
+    }
     else { addEmpresa({ ...form, id: crypto.randomUUID() }) }
     setFormError('')
     setIsFormOpen(false)
+    // Verify save
+    setTimeout(() => {
+      const stored = localStorage.getItem('empresa-storage')
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored)
+          console.log('✅ Verificación: Data en localStorage:', parsed.state?.empresas?.[0]?.nombre)
+        } catch (e) {
+          console.error('❌ Error verificando localStorage:', e)
+        }
+      }
+    }, 100)
   }
 
   const handleEdit = (e: DatosEmpresa) => { setForm({ ...e }); setIsFormOpen(true) }
