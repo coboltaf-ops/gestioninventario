@@ -38,6 +38,11 @@ function InventarioComidasDataLoader() {
 function InventarioComidasLayoutContent({ children }: { children: React.ReactNode }) {
   const empresaActiva = useEmpresaStore(s => s.empresas[0])
   const logoEmpresa = empresaActiva?.logo
+  
+  // Ensure store is hydrated on mount
+  useEffect(() => {
+    useEmpresaStore.getState().hydrate()
+  }, [])
   const [sidebarVisible, setSidebarVisible] = useState(false)
   const pathname = usePathname()
 
