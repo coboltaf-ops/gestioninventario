@@ -6,7 +6,7 @@ interface State {
   [key: string]: any
 }
 
-export const store_creator = (storeName: string) =>
+export const useClientesStore = (storeName: string) =>
   create<State>()(
     persist(
       (set) => ({

@@ -15,4 +15,4 @@ export const store_creator = (storeName: string) =>
       { name: `${storeName}-storage` }
     )
   )
-export const usecargainicialStore = store_creator('carga-inicial-store')
+export const useCargaInicialStore = store_creator('carga-inicial-store')

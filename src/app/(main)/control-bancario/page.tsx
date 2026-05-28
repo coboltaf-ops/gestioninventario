@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useControlBancarioStore, nextDepositoConsecutivo, type Banco, type Deposito } from '@/features/control-bancario/store/control-bancario-store'
+import { useControlBancarioStore, type Banco, type Deposito } from '@/features/control-bancario/store/control-bancario-store'
+import { nextDepositoConsecutivo } from '@/features/control-bancario/lib/helpers'
 import { useTipoInventarioSesion } from '@/features/contexto-sesion/store/tipo-inventario-store'
 import { usePermisos } from '@/shared/hooks/use-permisos'
 import { todayColombia, fDate } from '@/shared/lib/format-date'

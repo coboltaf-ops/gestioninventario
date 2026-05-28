@@ -15,4 +15,4 @@ export const store_creator = (storeName: string) =>
       { name: `${storeName}-storage` }
     )
   )
-export const usecontextosesionStore = store_creator('tipo-inventario-store')
+export const useTipoInventarioSesion = store_creator('tipo-inventario-store')

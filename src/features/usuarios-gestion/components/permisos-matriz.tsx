@@ -1,3 +1,3 @@
-export function PermisoMatriz() {
+export function PermisosMatriz() {
   return <div>Permisos Matriz</div>
 }

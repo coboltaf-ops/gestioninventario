@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { useClientesStore, generarCodigoAcceso, type Cliente } from '@/features/clientes/store/clientes-store'
+import { useClientesStore, type Cliente } from '@/features/clientes/store/clientes-store'
+import { generarCodigoAcceso } from '@/features/lote-celda/lib/helpers'
 import { useReferenceStore } from '@/features/referencias/store/reference-store'
 import { usePermisos } from '@/shared/hooks/use-permisos'
 import { todayColombia, fDate } from '@/shared/lib/format-date'

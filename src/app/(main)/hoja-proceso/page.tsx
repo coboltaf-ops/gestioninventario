@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { useHojaProcesoStore, hojaDelDia, saldoCelda, saldosPorCelda, type HojaProceso } from '@/features/hoja-proceso/store/hoja-proceso-store'
+import { useHojaProcesoStore, type HojaProceso } from '@/features/hoja-proceso/store/hoja-proceso-store'
+import { hojaDelDia, saldoCelda, saldosPorCelda } from '@/features/lote-celda/lib/helpers'
 import { useProductosStore } from '@/features/productos/store/productos-store'
 import { useProveedoresStore } from '@/features/proveedores/store/proveedores-store'
 import { useReferenceStore } from '@/features/referencias/store/reference-store'

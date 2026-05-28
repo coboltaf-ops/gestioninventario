@@ -1,3 +1,3 @@
-export function UsuariosTbla() {
-  return <div>Usuarios Table</div>
+export function UsuariosTabla() {
+  return <div>Usuarios Tabla</div>
 }

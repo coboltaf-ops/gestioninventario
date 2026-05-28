@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { useDespachosStore, nextDespachoConsecutivo, type Despacho, type RenglonDespacho } from '@/features/despachos/store/despachos-store'
+import { useDespachosStore, type Despacho, type RenglonDespacho } from '@/features/despachos/store/despachos-store'
+import { nextDespachoConsecutivo } from '@/features/despachos/lib/helpers'
 import { useProductosStore } from '@/features/productos/store/productos-store'
 import { useClientesStore } from '@/features/clientes/store/clientes-store'
 import { useEmpresaStore } from '@/features/datos-empresa/store/empresa-store'

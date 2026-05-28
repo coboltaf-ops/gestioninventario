@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { usePesajeStore, nextPesajeConsecutivo, calcularPesoNeto, type Pesaje } from '@/features/pesaje/store/pesaje-store'
+import { usePesajeStore, type Pesaje } from '@/features/pesaje/store/pesaje-store'
+import { nextPesajeConsecutivo, calcularPesoNeto } from '@/features/pesaje/lib/helpers'
 import { useProveedoresStore } from '@/features/proveedores/store/proveedores-store'
 import { useOrdenesStore } from '@/features/ordenes-compra/store/ordenes-store'
 import { useProductosStore } from '@/features/productos/store/productos-store'

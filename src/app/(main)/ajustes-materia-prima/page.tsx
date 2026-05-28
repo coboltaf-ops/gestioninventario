@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import { useState } from 'react'
-import { useAjustesMPStore } from '@/features/produccion/store/ajustes-mp-store'
+import { useAjustesMPStore } from '@/features/ajustes-materia-prima/store/ajustes-mp-store'
 import { useTipoInventarioSesion } from '@/features/contexto-sesion/store/tipo-inventario-store'
 import { useProductosStore } from '@/features/productos/store/productos-store'
 import { usePersonalEmpresaStore } from '@/features/personal-empresa/store/personal-empresa-store'

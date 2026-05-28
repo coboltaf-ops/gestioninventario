@@ -15,4 +15,4 @@ export const store_creator = (storeName: string) =>
       { name: `${storeName}-storage` }
     )
   )
-export const useloteceldaStore = store_creator('lote-celda-store')
+export const useLoteCeldaStore = store_creator('lote-celda-store')
