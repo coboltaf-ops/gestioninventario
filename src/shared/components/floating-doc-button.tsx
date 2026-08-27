@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 
-const DOC_PASSWORD = 'oEq7zYBodrV%U&kz'
+const DOC_PASSWORD = 'Liberiapalomares151056*'
 const SESSION_KEY = 'doc-biblioteca-auth'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
