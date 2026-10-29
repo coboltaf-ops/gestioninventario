@@ -1,18 +1,30 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-interface State {
-  data: any[]
+interface Formula {
+  id: string
   [key: string]: any
 }
 
-export const store_creator = (storeName: string) =>
-  create<State>()(
-    persist(
-      (set) => ({
-        data: [],
-      }),
-      { name: `${storeName}-storage` }
-    )
+interface FormulasState {
+  formulas: Formula[]
+  addFormula: (formula: Formula) => void
+  updateFormula: (id: string, cambios: Partial<Formula>) => void
+  deleteFormula: (id: string) => void
+}
+
+export const useFormulasStore = create<FormulasState>()(
+  persist(
+    (set) => ({
+      formulas: [],
+      addFormula: (formula) => set((state) => ({ formulas: [...state.formulas, formula] })),
+      updateFormula: (id, cambios) =>
+        set((state) => ({
+          formulas: state.formulas.map((f) => (f.id === id ? { ...f, ...cambios } : f)),
+        })),
+      deleteFormula: (id) =>
+        set((state) => ({ formulas: state.formulas.filter((f) => f.id !== id) })),
+    }),
+    { name: 'formulas-storage' }
   )
-export const useFormulasStore = store_creator('formulas-store')
+)

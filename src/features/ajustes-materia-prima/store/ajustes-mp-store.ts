@@ -1,18 +1,25 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-interface State {
-  data: any[]
+interface AjusteMP {
+  id: string
   [key: string]: any
 }
 
-const store_creator = (storeName: string) =>
-  create<State>()(
-    persist(
-      (set) => ({
-        data: [],
-      }),
-      { name: `${storeName}-storage` }
-    )
+interface AjustesMPState {
+  ajustes: AjusteMP[]
+  addAjuste: (ajuste: AjusteMP) => void
+  deleteAjuste: (id: string) => void
+}
+
+export const useAjustesMPStore = create<AjustesMPState>()(
+  persist(
+    (set) => ({
+      ajustes: [],
+      addAjuste: (ajuste) => set((state) => ({ ajustes: [...state.ajustes, ajuste] })),
+      deleteAjuste: (id) =>
+        set((state) => ({ ajustes: state.ajustes.filter((a) => a.id !== id) })),
+    }),
+    { name: 'ajustes-mp-storage' }
   )
-export const useAjustesMPStore = store_creator('ajustes-mp-store')
+)
