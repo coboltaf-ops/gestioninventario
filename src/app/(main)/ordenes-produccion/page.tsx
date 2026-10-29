@@ -14,16 +14,16 @@ import { usePermisos } from '@/shared/hooks/use-permisos'
 import { fDate, todayColombia } from '@/shared/lib/format-date'
 import ViewRecordModal from '@/shared/components/view-record-modal'
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-const selSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+const selSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
 const nextConsecutivo = (nro: number) => `OPR-${String(nro).padStart(5, '0')}`
 
 const sitStyle = (s: string): React.CSSProperties => {
-  if (s === 'Completada') return { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' }
-  if (s === 'En Proceso') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'Pendiente') return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
-  if (s === 'Cancelada') return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
+  if (s === 'Completada') return { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' }
+  if (s === 'En Proceso') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Pendiente') return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
+  if (s === 'Cancelada') return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
   return { background: 'rgba(107,114,128,0.2)', color: '#d1d5db', border: '1px solid rgba(107,114,128,0.3)' }
 }
 
@@ -315,47 +315,47 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">{t('ordenesProduccion')}</h1>
-          <p className="text-white/50 text-sm mt-1">{tSub('produccion')}</p>
+          <h1 className="text-2xl font-bold text-slate-800">{t('ordenesProduccion')}</h1>
+          <p className="text-slate-500 text-sm mt-1">{tSub('produccion')}</p>
         </div>
         <div className="flex flex-col items-end gap-2">
           {permisos.registrar && (
             <button onClick={() => { setForm(initForm()); setFormError(''); setIsFormOpen(!isFormOpen) }}
-              className="px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:scale-105 shadow-lg"
+              className="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-800 transition-all hover:scale-105 shadow-lg"
               style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)', boxShadow: '0 4px 12px rgba(59,130,246,0.35)' }}>
               {isFormOpen ? 'Cerrar' : '+ Nueva Orden'}
             </button>
           )}
           <div className="flex gap-2 text-sm">
-            <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(245,158,11,0.15)', color: '#fff' }}>{ordenes.filter(o => o.situacion === 'Pendiente').length} pendientes</span>
-            <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(96,165,250,0.15)', color: '#fff' }}>{ordenes.length} total</span>
+            <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(245,158,11,0.15)', color: '#1e293b' }}>{ordenes.filter(o => o.situacion === 'Pendiente').length} pendientes</span>
+            <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b' }}>{ordenes.length} total</span>
           </div>
         </div>
       </div>
 
       <div className="flex items-center gap-4">
         <input type="text" placeholder={tPh('buscar')} value={search} onChange={e => setSearch(e.target.value)}
-          className="flex-1 px-4 py-2.5 rounded-xl text-sm text-white placeholder-white/30 outline-none" style={inputSt} />
+          className="flex-1 px-4 py-2.5 rounded-xl text-sm text-slate-800 placeholder-white/30 outline-none" style={inputSt} />
       </div>
 
       {isFormOpen && (
-        <form onSubmit={handleSave} className="bg-black/20 p-6 rounded-2xl border border-white/10 space-y-4">
-          {formError && <div className="text-sm font-semibold px-4 py-2 rounded-lg whitespace-pre-line" style={{ background: 'rgba(239,68,68,0.15)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{formError}</div>}
+        <form onSubmit={handleSave} className="bg-black/20 p-6 rounded-2xl border border-black/10 space-y-4">
+          {formError && <div className="text-sm font-semibold px-4 py-2 rounded-lg whitespace-pre-line" style={{ background: 'rgba(239,68,68,0.15)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{formError}</div>}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Nro. Orden</label>
-              <input readOnly value={form.consecutivo} className="w-full px-4 py-3 rounded-lg text-lg text-white/50 outline-none cursor-not-allowed font-mono font-bold" style={{ ...inputSt, opacity: 0.6 }} />
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro. Orden</label>
+              <input readOnly value={form.consecutivo} className="w-full px-4 py-3 rounded-lg text-lg text-slate-500 outline-none cursor-not-allowed font-mono font-bold" style={{ ...inputSt, opacity: 0.6 }} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Fecha Emisión</label>
-              <input type="date" value={form.fecha_emision} onChange={e => setForm({ ...form, fecha_emision: e.target.value })} className="w-full px-4 py-3 rounded-lg text-lg text-white outline-none" style={inputSt} />
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Emisión</label>
+              <input type="date" value={form.fecha_emision} onChange={e => setForm({ ...form, fecha_emision: e.target.value })} className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 outline-none" style={inputSt} />
               {form.fecha_emision && (
-                <p className="text-xs text-white/50 mt-1 font-mono">{fDate(form.fecha_emision)}</p>
+                <p className="text-xs text-slate-500 mt-1 font-mono">{fDate(form.fecha_emision)}</p>
               )}
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Cliente *</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Cliente *</label>
               <select required value={form.cliente_id || ''} onChange={e => handleClienteChange(e.target.value)} className="w-full px-4 py-3 rounded-lg text-lg outline-none" style={selSt}>
                 <option value="">{tOp('seleccionarGuion')}</option>
                 {clientes
@@ -365,7 +365,7 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
               </select>
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Producto Terminado *</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Producto Terminado *</label>
               <select required value={form.producto_terminado_id}
                 onChange={e => handleProductoChange(e.target.value)}
                 disabled={!form.cliente_id && !form.cliente}
@@ -385,19 +385,19 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
               </select>
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Cód. SPIN</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Cód. SPIN</label>
               <input readOnly value={form.producto_terminado_codigo_spin || '—'}
-                className="w-full px-4 py-3 rounded-lg text-lg text-white font-mono font-bold outline-none"
+                className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 font-mono font-bold outline-none"
                 style={{ ...inputSt, background: 'rgba(180,83,9,0.18)', borderColor: 'rgba(245,158,11,0.4)' }} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Descripción</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Descripción</label>
               <input readOnly value={form.producto_terminado_nombre || '—'}
-                className="w-full px-4 py-3 rounded-lg text-lg text-white/80 outline-none"
+                className="w-full px-4 py-3 rounded-lg text-lg text-slate-600 outline-none"
                 style={{ ...inputSt, opacity: 0.85 }} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Cantidad Kg *</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Cantidad Kg *</label>
               <input type="text" inputMode="numeric"
                 value={form.cantidad_a_producir ? form.cantidad_a_producir.toLocaleString('es-CO') : ''}
                 onChange={e => {
@@ -405,10 +405,10 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
                   const num = soloDigitos ? parseInt(soloDigitos, 10) : 0
                   setForm({ ...form, cantidad_a_producir: num, unidad_medida: 'kg' })
                 }}
-                className="w-full px-4 py-3 rounded-lg text-lg text-white font-bold outline-none font-mono text-right" style={inputSt} placeholder="0 kg" />
+                className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 font-bold outline-none font-mono text-right" style={inputSt} placeholder="0 kg" />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Cantidad Producida</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Cantidad Producida</label>
               <input type="text" inputMode="numeric"
                 value={form.cantidad_producida ? form.cantidad_producida.toLocaleString('es-CO') : ''}
                 onChange={e => {
@@ -416,10 +416,10 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
                   const num = soloDigitos ? parseInt(soloDigitos, 10) : 0
                   setForm({ ...form, cantidad_producida: num })
                 }}
-                className="w-full px-4 py-3 rounded-lg text-lg text-white font-bold outline-none font-mono text-right" style={inputSt} placeholder="0 kg" />
+                className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 font-bold outline-none font-mono text-right" style={inputSt} placeholder="0 kg" />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Diferencia</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Diferencia</label>
               {(() => {
                 const dif = (form.cantidad_a_producir || 0) - (form.cantidad_producida || 0)
                 const colorBg = dif === 0
@@ -442,41 +442,41 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
               })()}
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Fecha Programada Inicio</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Programada Inicio</label>
               <input type="date" value={form.fecha_programada_inicio || ''}
                 onChange={e => setForm({ ...form, fecha_programada_inicio: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg text-lg text-white outline-none" style={inputSt} />
+                className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 outline-none" style={inputSt} />
               {form.fecha_programada_inicio && (
-                <p className="text-xs text-white/50 mt-1 font-mono">{fDate(form.fecha_programada_inicio)}</p>
+                <p className="text-xs text-slate-500 mt-1 font-mono">{fDate(form.fecha_programada_inicio)}</p>
               )}
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Fecha Real Inicio</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Real Inicio</label>
               <input type="date" value={form.fecha_real_inicio || ''}
                 onChange={e => setForm({ ...form, fecha_real_inicio: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg text-lg text-white outline-none" style={inputSt} />
+                className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 outline-none" style={inputSt} />
               {form.fecha_real_inicio && (
-                <p className="text-xs text-white/50 mt-1 font-mono">{fDate(form.fecha_real_inicio)}</p>
+                <p className="text-xs text-slate-500 mt-1 font-mono">{fDate(form.fecha_real_inicio)}</p>
               )}
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Fecha Real Finalizada</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Real Finalizada</label>
               <input type="date" value={form.fecha_real_finalizada || ''}
                 onChange={e => setForm({ ...form, fecha_real_finalizada: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg text-lg text-white outline-none" style={inputSt} />
+                className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 outline-none" style={inputSt} />
               {form.fecha_real_finalizada && (
-                <p className="text-xs text-white/50 mt-1 font-mono">{fDate(form.fecha_real_finalizada)}</p>
+                <p className="text-xs text-slate-500 mt-1 font-mono">{fDate(form.fecha_real_finalizada)}</p>
               )}
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Responsable</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Responsable</label>
               <select value={form.responsable} onChange={e => setForm({ ...form, responsable: e.target.value })} className="w-full px-4 py-3 rounded-lg text-lg outline-none" style={selSt}>
                 <option value="">{tOp('seleccionarGuion')}</option>
                 {personalList.map(p => <option key={p.id} value={`${p.nombre} ${p.apellido}`}>{p.nombre} {p.apellido}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
               <select value={form.situacion} onChange={e => setForm({ ...form, situacion: e.target.value })} className="w-full px-4 py-3 rounded-lg text-lg outline-none" style={selSt}>
                 <option value="Pendiente">Pendiente</option>
                 <option value="En Proceso">En Proceso</option>
@@ -489,10 +489,10 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
           {/* Líneas de materia prima */}
           {form.lineas.length > 0 && (
             <div>
-              <label className="block text-xl font-extrabold text-white mb-2 uppercase">Materia Prima Requerida</label>
-              <div className="rounded-xl border border-white/10 overflow-hidden">
-                <table className="w-full text-base text-white">
-                  <thead className="bg-white/5 text-xs uppercase">
+              <label className="block text-xl font-extrabold text-slate-800 mb-2 uppercase">Materia Prima Requerida</label>
+              <div className="rounded-xl border border-black/10 overflow-hidden">
+                <table className="w-full text-base text-slate-800">
+                  <thead className="bg-black/5 text-xs uppercase">
                     <tr>
                       <th className="px-4 py-2 text-left">Código</th>
                       <th className="px-4 py-2 text-left">Descripción</th>
@@ -508,14 +508,14 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
                       const stock = prod?.existencia || 0
                       const ok = stock >= l.cantidad_requerida
                       return (
-                        <tr key={l.id} className="border-t border-white/5">
+                        <tr key={l.id} className="border-t border-black/5">
                           <td className="px-4 py-2 font-mono text-xs">{l.codigo}</td>
                           <td className="px-4 py-2">{l.descripcion}</td>
                           <td className="px-4 py-2 text-right font-bold">{l.cantidad_requerida}</td>
                           <td className="px-4 py-2">{l.unidad_medida}</td>
                           <td className="px-4 py-2 text-right">{stock}</td>
                           <td className="px-4 py-2 text-center">
-                            <span className="px-2 py-0.5 rounded-full text-xs font-bold" style={ok ? { background: 'rgba(34,197,94,0.95)', color: '#fff' } : { background: 'rgba(239,68,68,0.95)', color: '#fff' }}>
+                            <span className="px-2 py-0.5 rounded-full text-xs font-bold" style={ok ? { background: 'rgba(34,197,94,0.95)', color: '#1e293b' } : { background: 'rgba(239,68,68,0.95)', color: '#1e293b' }}>
                               {ok ? '✓ OK' : '✗ Falta'}
                             </span>
                           </td>
@@ -529,22 +529,22 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
           )}
 
           <div>
-            <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
-            <textarea rows={2} value={form.observaciones} onChange={e => setForm({ ...form, observaciones: e.target.value })} className="w-full px-4 py-3 rounded-lg text-lg text-white outline-none resize-none" style={inputSt} />
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
+            <textarea rows={2} value={form.observaciones} onChange={e => setForm({ ...form, observaciones: e.target.value })} className="w-full px-4 py-3 rounded-lg text-lg text-slate-800 outline-none resize-none" style={inputSt} />
           </div>
 
           <div className="flex gap-3 pt-2">
-            <button type="submit" className="px-6 py-2.5 rounded-xl text-sm font-bold text-white" style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)' }}>{form.id ? 'Actualizar' : 'Guardar'}</button>
-            <button type="button" onClick={() => { setIsFormOpen(false); setForm(initForm()) }} className="px-6 py-2.5 rounded-xl text-sm font-bold text-white/60 hover:text-white bg-white/5 hover:bg-white/10 transition-all">{tBtn('cancel')}</button>
+            <button type="submit" className="px-6 py-2.5 rounded-xl text-sm font-bold text-slate-800" style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)' }}>{form.id ? 'Actualizar' : 'Guardar'}</button>
+            <button type="button" onClick={() => { setIsFormOpen(false); setForm(initForm()) }} className="px-6 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-800 bg-black/5 hover:bg-black/10 transition-all">{tBtn('cancel')}</button>
           </div>
         </form>
       )}
 
       {/* Tabla */}
-      <div className="rounded-2xl border border-white/10 overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)' }}>
+      <div className="rounded-2xl border border-black/10 overflow-hidden" style={{ background: 'rgba(15,23,42,0.03)' }}>
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-white/80">
-            <thead className="text-xs uppercase bg-white/5 border-b border-white/10">
+          <table className="w-full text-left text-sm text-slate-600">
+            <thead className="text-xs uppercase bg-black/5 border-b border-black/10">
               <tr>
                 <th className="px-4 py-4">Nro.</th>
                 <th className="px-4 py-4">Fecha</th>
@@ -558,40 +558,40 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
               </tr>
             </thead>
             <tbody>
-              {filtered.length === 0 && <tr><td colSpan={9} className="px-6 py-12 text-center text-white/30">{tE('noOrdenesProduccion')}</td></tr>}
+              {filtered.length === 0 && <tr><td colSpan={9} className="px-6 py-12 text-center text-slate-400">{tE('noOrdenesProduccion')}</td></tr>}
               {filtered.map(r => (
-                <tr key={r.id} className="border-b border-white/5 hover:bg-white/[0.02]">
-                  <td className="px-4 py-3 font-mono font-bold text-white">{r.consecutivo}</td>
+                <tr key={r.id} className="border-b border-black/5 hover:bg-white/[0.02]">
+                  <td className="px-4 py-3 font-mono font-bold text-slate-800">{r.consecutivo}</td>
                   <td className="px-4 py-3">{fDate(r.fecha_emision)}</td>
-                  <td className="px-4 py-3 text-white/80">{r.cliente || '—'}</td>
+                  <td className="px-4 py-3 text-slate-600">{r.cliente || '—'}</td>
                   <td className="px-4 py-3 font-mono text-amber-300 font-bold">{r.producto_terminado_codigo_spin || '—'}</td>
                   <td className="px-4 py-3">{r.producto_terminado_nombre}</td>
-                  <td className="px-4 py-3 text-right font-mono font-bold text-white">{Math.floor(r.cantidad_a_producir || 0).toLocaleString('es-CO')} kg</td>
+                  <td className="px-4 py-3 text-right font-mono font-bold text-slate-800">{Math.floor(r.cantidad_a_producir || 0).toLocaleString('es-CO')} kg</td>
                   <td className="px-4 py-3">{r.responsable || '—'}</td>
                   <td className="px-4 py-3"><span className="px-2.5 py-1 rounded-full text-xs font-bold" style={sitStyle(r.situacion)}>{r.situacion}</span></td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex justify-end gap-2">
                       <button onClick={() => setViewRecord(r)}
-                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105"
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105"
                         style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)', boxShadow: '0 2px 6px rgba(59,130,246,0.35)' }}>
                         Ver
                       </button>
                       <button onClick={() => imprimirOrden(r)}
-                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105"
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105"
                         style={{ background: 'rgba(220,38,38,1)', border: '1px solid rgba(185,28,28,1)', boxShadow: '0 2px 6px rgba(220,38,38,0.35)' }}
                         title="Generar PDF e imprimir">
                         📄 PDF
                       </button>
                       {permisos.editar && (
                         <button onClick={() => openEdit(r)}
-                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105"
+                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105"
                           style={{ background: 'rgba(245,158,11,1)', border: '1px solid rgba(217,119,6,1)', boxShadow: '0 2px 6px rgba(245,158,11,0.35)' }}>
                           {tBtn('edit')}
                         </button>
                       )}
                       {permisos.eliminar && (
                         <button onClick={() => handleDelete(r.id)}
-                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105"
+                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105"
                           style={{ background: 'rgba(220,38,38,1)', border: '1px solid rgba(185,28,28,1)', boxShadow: '0 2px 6px rgba(220,38,38,0.35)' }}>
                           {tBtn('delete')}
                         </button>
@@ -615,18 +615,18 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
             ? { bg: 'rgba(245,158,11,0.18)', tx: '#fbbf24', bd: 'rgba(245,158,11,0.5)' }
             : { bg: 'rgba(239,68,68,0.18)', tx: '#fca5a5', bd: 'rgba(239,68,68,0.5)' }
         const fld = (lbl: string, val: React.ReactNode) => (
-          <div className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-xl p-3" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
             <p className="text-xs uppercase tracking-wider mb-1 font-bold" style={{ color: '#f97316' }}>{lbl}</p>
-            <div className="text-white font-bold text-sm">{val ?? '—'}</div>
+            <div className="text-slate-800 font-bold text-sm">{val ?? '—'}</div>
           </div>
         )
         return (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
             <div className="w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl p-6"
-              style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+              style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
               <div className="flex justify-between items-center mb-5">
-                <h2 className="text-xl font-extrabold text-white">📋 Orden de Producción · <span className="font-mono text-blue-300">{viewRecord.consecutivo}</span></h2>
-                <button onClick={() => setViewRecord(null)} className="text-white/40 hover:text-white text-3xl transition-colors leading-none">&times;</button>
+                <h2 className="text-xl font-extrabold text-slate-800">📋 Orden de Producción · <span className="font-mono text-blue-300">{viewRecord.consecutivo}</span></h2>
+                <button onClick={() => setViewRecord(null)} className="text-slate-400 hover:text-slate-800 text-3xl transition-colors leading-none">&times;</button>
               </div>
 
               {/* Información general */}
@@ -674,11 +674,11 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
               <h3 className="text-sm font-extrabold uppercase mb-2" style={{ color: '#86efac' }}>🧪 Materia Prima Requerida</h3>
               <div className="rounded-xl overflow-hidden mb-4" style={{ background: 'rgba(34,197,94,0.05)', border: '2px solid rgba(34,197,94,0.25)' }}>
                 {viewRecord.lineas.length === 0 ? (
-                  <div className="px-4 py-8 text-center text-white/40">— Sin materias primas asignadas —</div>
+                  <div className="px-4 py-8 text-center text-slate-400">— Sin materias primas asignadas —</div>
                 ) : (
                   <table className="w-full text-sm">
                     <thead style={{ background: 'rgba(34,197,94,0.18)' }}>
-                      <tr className="text-left text-white">
+                      <tr className="text-left text-slate-800">
                         <th className="px-3 py-2 font-extrabold uppercase text-xs">#</th>
                         <th className="px-3 py-2 font-extrabold uppercase text-xs">Código</th>
                         <th className="px-3 py-2 font-extrabold uppercase text-xs">Descripción</th>
@@ -699,13 +699,13 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
                             ? { bg: 'rgba(245,158,11,0.18)', tx: '#fbbf24' }
                             : { bg: 'rgba(239,68,68,0.18)', tx: '#fca5a5' }
                         return (
-                          <tr key={l.id} style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                            <td className="px-3 py-2 text-white/60 font-mono">{i + 1}</td>
-                            <td className="px-3 py-2 font-mono text-white font-bold">{l.codigo}</td>
-                            <td className="px-3 py-2 text-white/85">{l.descripcion}</td>
-                            <td className="px-3 py-2 text-center text-white/70 font-bold">{l.unidad_medida || '—'}</td>
-                            <td className="px-3 py-2 text-right font-mono text-white font-bold">{reqL.toLocaleString('es-CO', { maximumFractionDigits: 4 })}</td>
-                            <td className="px-3 py-2 text-right font-mono text-white font-bold">{usaL.toLocaleString('es-CO', { maximumFractionDigits: 4 })}</td>
+                          <tr key={l.id} style={{ borderTop: '1px solid rgba(15,23,42,0.06)' }}>
+                            <td className="px-3 py-2 text-slate-500 font-mono">{i + 1}</td>
+                            <td className="px-3 py-2 font-mono text-slate-800 font-bold">{l.codigo}</td>
+                            <td className="px-3 py-2 text-slate-600">{l.descripcion}</td>
+                            <td className="px-3 py-2 text-center text-slate-600 font-bold">{l.unidad_medida || '—'}</td>
+                            <td className="px-3 py-2 text-right font-mono text-slate-800 font-bold">{reqL.toLocaleString('es-CO', { maximumFractionDigits: 4 })}</td>
+                            <td className="px-3 py-2 text-right font-mono text-slate-800 font-bold">{usaL.toLocaleString('es-CO', { maximumFractionDigits: 4 })}</td>
                             <td className="px-3 py-2 text-right font-mono font-extrabold" style={{ background: colDif.bg, color: colDif.tx }}>
                               {difL.toLocaleString('es-CO', { maximumFractionDigits: 4 })}
                             </td>
@@ -721,18 +721,18 @@ ${r.observaciones ? `<div class="obs"><div class="lbl">Observaciones:</div>${r.o
               {viewRecord.observaciones && (
                 <div className="rounded-xl p-4 mb-4" style={{ background: 'rgba(245,158,11,0.08)', border: '1px dashed rgba(245,158,11,0.4)' }}>
                   <p className="text-xs uppercase tracking-wider mb-1 font-bold" style={{ color: '#fbbf24' }}>Observaciones</p>
-                  <p className="text-white text-sm whitespace-pre-wrap">{viewRecord.observaciones}</p>
+                  <p className="text-slate-800 text-sm whitespace-pre-wrap">{viewRecord.observaciones}</p>
                 </div>
               )}
 
               <div className="flex justify-end gap-3">
                 <button onClick={() => imprimirOrden(viewRecord)}
-                  className="px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:scale-105"
+                  className="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-800 transition-all hover:scale-105"
                   style={{ background: 'rgba(220,38,38,1)', border: '1px solid rgba(185,28,28,1)', boxShadow: '0 2px 6px rgba(220,38,38,0.35)' }}>
                   📄 Generar PDF
                 </button>
                 <button onClick={() => setViewRecord(null)}
-                  className="px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:scale-105"
+                  className="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-800 transition-all hover:scale-105"
                   style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)', boxShadow: '0 2px 6px rgba(59,130,246,0.35)' }}>
                   Cerrar
                 </button>

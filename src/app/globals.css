@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    @apply text-white;
-    background: #0A5A5A;
+    @apply text-slate-800;
+    background: #f1f5f9;
   }
 
   /* Override autofill del navegador (Chrome / Safari / Edge) → fondo teal SPIN + texto blanco */
@@ -25,10 +25,10 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl;
+    @apply bg-black/10 backdrop-blur-lg border border-black/20 rounded-2xl shadow-xl;
   }
   .glass-card {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-xl;
+    @apply bg-black/10 backdrop-blur-xl border border-black/20 rounded-3xl shadow-xl;
   }
 }
 

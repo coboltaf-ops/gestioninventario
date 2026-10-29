@@ -14,11 +14,11 @@ import ViewRecordModal from '@/shared/components/view-record-modal'
 import ReportPanel from '@/shared/components/report-panel'
 import { useCorreosStore } from '@/features/correos-enviados/store/correos-store'
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-const selSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+const selSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
-const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-const tabInactive: React.CSSProperties = { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }
+const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+const tabInactive: React.CSSProperties = { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }
 
 /* Kanban column config — keys in DB remain in Spanish */
 const KANBAN_KEYS = ['Pendiente', 'En Proceso', 'Completada', 'Vencida', 'Cancelada'] as const
@@ -54,10 +54,10 @@ const initForm = (records: Tarea[]): Tarea => {
 }
 
 const sitStyle = (s: string): React.CSSProperties => {
-  if (s === 'Completada') return { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' }
-  if (s === 'En Proceso') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'Pendiente') return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
-  if (s === 'Vencida') return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
+  if (s === 'Completada') return { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' }
+  if (s === 'En Proceso') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Pendiente') return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
+  if (s === 'Vencida') return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
   return { background: 'rgba(107,114,128,0.2)', color: '#d1d5db', border: '1px solid rgba(107,114,128,0.3)' }
 }
 
@@ -186,14 +186,14 @@ export default function TareasPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">{t('tareas')}</h1>
-          <p className="text-white/50 text-sm mt-1">{tSub('tareas')}</p>
+          <h1 className="text-2xl font-bold text-slate-800">{t('tareas')}</h1>
+          <p className="text-slate-500 text-sm mt-1">{tSub('tareas')}</p>
         </div>
         <div className="flex items-center gap-2 text-sm font-medium">
-          <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(96,165,250,0.15)', color: '#fff' }}>
+          <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b' }}>
             {records.filter(r => r.situacion === 'En Proceso').length} en proceso
           </span>
-          <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(96,165,250,0.15)', color: '#fff' }}>
+          <span className="px-3 py-1 rounded-full" style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b' }}>
             {records.length} total
           </span>
         </div>
@@ -213,7 +213,7 @@ export default function TareasPage() {
             {permisos.registrar && (
               <button
                 onClick={() => { setForm(initForm(records)); setFormError(''); setIsFormOpen(!isFormOpen) }}
-                className="px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:scale-105"
+                className="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-800 transition-all hover:scale-105"
                 style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)', boxShadow: '0 4px 15px rgba(59,130,246,0.3)' }}
               >
                 {isFormOpen ? 'Cerrar Formulario' : '+ Nueva Tarea'}
@@ -223,7 +223,7 @@ export default function TareasPage() {
               <input
                 type="text" placeholder="Buscar por número, descripción, persona..."
                 value={search} onChange={e => setSearch(e.target.value)}
-                className="flex-1 px-4 py-2.5 rounded-xl text-sm text-white placeholder-white/30 outline-none"
+                className="flex-1 px-4 py-2.5 rounded-xl text-sm text-slate-800 placeholder-white/30 outline-none"
                 style={inputSt}
               />
               <VoiceSearchButton onResult={setSearch} />
@@ -232,31 +232,31 @@ export default function TareasPage() {
 
           {/* Form */}
           {isFormOpen && (
-            <form onSubmit={handleSave} className="bg-black/20 p-6 rounded-2xl border border-white/10 space-y-4 shadow-inner">
-              {formError && <div className="text-sm font-semibold px-4 py-2 rounded-lg" style={{ background: 'rgba(239,68,68,0.15)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{formError}</div>}
+            <form onSubmit={handleSave} className="bg-black/20 p-6 rounded-2xl border border-black/10 space-y-4 shadow-inner">
+              {formError && <div className="text-sm font-semibold px-4 py-2 rounded-lg" style={{ background: 'rgba(239,68,68,0.15)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{formError}</div>}
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {/* Nro Tarea (auto) */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Nro. Tarea</label>
-                  <input readOnly value={form.consecutivo} className="w-full px-3 py-2 rounded-lg text-sm text-white/50 outline-none cursor-not-allowed" style={{ ...inputSt, opacity: 0.6 }} />
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro. Tarea</label>
+                  <input readOnly value={form.consecutivo} className="w-full px-3 py-2 rounded-lg text-sm text-slate-500 outline-none cursor-not-allowed" style={{ ...inputSt, opacity: 0.6 }} />
                 </div>
 
                 {/* Fecha Asignación */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Fecha Asignación *</label>
-                  <input required type="date" value={form.fecha_asignacion} onChange={e => setForm({ ...form, fecha_asignacion: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-white outline-none" style={inputSt} />
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Asignación *</label>
+                  <input required type="date" value={form.fecha_asignacion} onChange={e => setForm({ ...form, fecha_asignacion: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-slate-800 outline-none" style={inputSt} />
                 </div>
 
                 {/* Hora Asignación */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Hora Asignación *</label>
-                  <input required type="time" value={form.hora_asignacion} onChange={e => setForm({ ...form, hora_asignacion: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-white outline-none" style={inputSt} />
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Hora Asignación *</label>
+                  <input required type="time" value={form.hora_asignacion} onChange={e => setForm({ ...form, hora_asignacion: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-slate-800 outline-none" style={inputSt} />
                 </div>
 
                 {/* Persona que Asigna */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Persona que Asigna *</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Persona que Asigna *</label>
                   <select required value={form.persona_asigna_id} onChange={e => handlePersonaAsignaChange(e.target.value)} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={selSt}>
                     <option value="">{tOp('seleccionarGuion')}</option>
                     {personalList.map(p => (
@@ -267,7 +267,7 @@ export default function TareasPage() {
 
                 {/* Persona que Ejecuta */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Persona que Ejecuta *</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Persona que Ejecuta *</label>
                   <select required value={form.persona_ejecuta_id} onChange={e => handlePersonaEjecutaChange(e.target.value)} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={selSt}>
                     <option value="">{tOp('seleccionarGuion')}</option>
                     {personalList.map(p => (
@@ -278,31 +278,31 @@ export default function TareasPage() {
 
                 {/* Fecha Estimada Finalización */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Fecha Estimada Finalización *</label>
-                  <input required type="date" value={form.fecha_requerida_finalizar} onChange={e => setForm({ ...form, fecha_requerida_finalizar: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-white outline-none" style={inputSt} />
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Estimada Finalización *</label>
+                  <input required type="date" value={form.fecha_requerida_finalizar} onChange={e => setForm({ ...form, fecha_requerida_finalizar: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-slate-800 outline-none" style={inputSt} />
                 </div>
 
                 {/* Fecha Real Finalización */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Fecha Real Finalización</label>
-                  <input type="date" value={form.fecha_real_finalizacion} onChange={e => setForm({ ...form, fecha_real_finalizacion: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-white outline-none" style={inputSt} />
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Real Finalización</label>
+                  <input type="date" value={form.fecha_real_finalizacion} onChange={e => setForm({ ...form, fecha_real_finalizacion: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm text-slate-800 outline-none" style={inputSt} />
                 </div>
               </div>
 
               {/* Descripción */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Descripción de la Tarea *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Descripción de la Tarea *</label>
                 <textarea
                   required rows={3} value={form.descripcion}
                   onChange={e => setForm({ ...form, descripcion: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg text-sm text-white outline-none resize-none"
+                  className="w-full px-3 py-2 rounded-lg text-sm text-slate-800 outline-none resize-none"
                   style={inputSt}
                 />
               </div>
 
               {/* Situación — después de Descripción */}
               <div className="max-w-xs">
-                <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
                 <select value={form.situacion} onChange={e => setForm({ ...form, situacion: e.target.value })} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={selSt}>
                   {situacionesTarea.map(s => (
                     <option key={s.id} value={s.descripcion}>{s.descripcion}</option>
@@ -311,10 +311,10 @@ export default function TareasPage() {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button type="submit" className="px-6 py-2.5 rounded-xl text-sm font-bold text-white" style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)' }}>
+                <button type="submit" className="px-6 py-2.5 rounded-xl text-sm font-bold text-slate-800" style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)' }}>
                   {form.id ? 'Actualizar' : 'Guardar'}
                 </button>
-                <button type="button" onClick={() => { setIsFormOpen(false); setForm(initForm(records)) }} className="px-6 py-2.5 rounded-xl text-sm font-bold text-white/60 hover:text-white bg-white/5 hover:bg-white/10 transition-all">
+                <button type="button" onClick={() => { setIsFormOpen(false); setForm(initForm(records)) }} className="px-6 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-800 bg-black/5 hover:bg-black/10 transition-all">
                   {tBtn('cancel')}
                 </button>
               </div>
@@ -322,30 +322,30 @@ export default function TareasPage() {
           )}
 
           {/* Table */}
-          <div className="rounded-2xl border border-white/10 overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)' }}>
+          <div className="rounded-2xl border border-black/10 overflow-hidden" style={{ background: 'rgba(15,23,42,0.03)' }}>
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm text-white/80">
-                <thead className="text-xs uppercase bg-white/5 border-b border-white/10">
+              <table className="w-full text-left text-sm text-slate-600">
+                <thead className="text-xs uppercase bg-black/5 border-b border-black/10">
                   <tr>
-                    <th className="px-4 py-4 font-semibold text-white/90">Nro.</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">Fecha Asig.</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">Hora</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">Asigna</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">Ejecuta</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">{tKan('fechaReq')}</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">Fecha Real</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">Descripción</th>
-                    <th className="px-4 py-4 font-semibold text-white/90">Situación</th>
-                    <th className="px-4 py-4 font-semibold text-white/90 text-right whitespace-nowrap min-w-[200px]">{tTbl('actions')}</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Nro.</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Fecha Asig.</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Hora</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Asigna</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Ejecuta</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">{tKan('fechaReq')}</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Fecha Real</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Descripción</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700">Situación</th>
+                    <th className="px-4 py-4 font-semibold text-slate-700 text-right whitespace-nowrap min-w-[200px]">{tTbl('actions')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filtered.length === 0 && (
-                    <tr><td colSpan={10} className="px-6 py-12 text-center text-white/30">{tE('noTareas')}</td></tr>
+                    <tr><td colSpan={10} className="px-6 py-12 text-center text-slate-400">{tE('noTareas')}</td></tr>
                   )}
                   {filtered.map((r) => (
-                    <tr key={r.id} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-                      <td className="px-4 py-3 font-mono font-bold text-white">{r.consecutivo}</td>
+                    <tr key={r.id} className="border-b border-black/5 hover:bg-white/[0.02] transition-colors">
+                      <td className="px-4 py-3 font-mono font-bold text-slate-800">{r.consecutivo}</td>
                       <td className="px-4 py-3">{fDate(r.fecha_asignacion)}</td>
                       <td className="px-4 py-3">{r.hora_asignacion}</td>
                       <td className="px-4 py-3">{r.persona_asigna_nombre}</td>
@@ -358,7 +358,7 @@ export default function TareasPage() {
                       </td>
                       <td className="px-4 py-3 text-right">
                         <div className="flex justify-end gap-2">
-                          <button onClick={() => setViewRecord(r)} className="text-white/50 hover:text-white font-medium px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg transition-all text-xs">Ver</button>
+                          <button onClick={() => setViewRecord(r)} className="text-slate-500 hover:text-slate-800 font-medium px-3 py-1 bg-black/5 hover:bg-black/10 rounded-lg transition-all text-xs">Ver</button>
                           {permisos.editar && !['Completada', 'Anulada'].includes(r.situacion) && (
                             <button onClick={() => openEdit(r)} className="text-blue-300 hover:text-blue-100 font-medium px-3 py-1 bg-blue-400/10 hover:bg-blue-400/20 rounded-lg transition-all text-xs">{tBtn('edit')}</button>
                           )}
@@ -405,7 +405,7 @@ export default function TareasPage() {
                 <div className="px-4 py-3 border-b flex items-center justify-between" style={{ borderColor: col.border }}>
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full" style={{ background: col.color }} />
-                    <span className="text-sm font-bold text-white">{col.label}</span>
+                    <span className="text-sm font-bold text-slate-800">{col.label}</span>
                   </div>
                   <span
                     className="text-xs font-bold px-2 py-0.5 rounded-full"
@@ -418,7 +418,7 @@ export default function TareasPage() {
                 {/* Cards */}
                 <div className="flex-1 p-3 space-y-3 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 330px)' }}>
                   {colTareas.length === 0 && (
-                    <div className="text-center text-white/20 text-xs py-8">{tKan('sinTareas')}</div>
+                    <div className="text-center text-slate-300 text-xs py-8">{tKan('sinTareas')}</div>
                   )}
                   {colTareas.map(tarea => (
                     <div
@@ -429,18 +429,18 @@ export default function TareasPage() {
                       className="rounded-xl border p-3 space-y-2 transition-all hover:scale-[1.02]"
                       style={{
                         background: 'rgba(0,0,0,0.3)',
-                        borderColor: 'rgba(255,255,255,0.08)',
+                        borderColor: 'rgba(15,23,42,0.08)',
                         cursor: permisos.editar ? 'grab' : 'default',
                         opacity: draggedTarea === tarea.id ? 0.5 : 1,
                       }}
                     >
                       {/* Card Header */}
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold text-white/80">{tarea.consecutivo}</span>
+                        <span className="text-xs font-mono font-bold text-slate-600">{tarea.consecutivo}</span>
                         <div className="flex gap-1">
                           <button
                             onClick={() => setViewRecord(tarea)}
-                            className="text-white/40 hover:text-white p-1 rounded transition-all text-xs"
+                            className="text-slate-400 hover:text-slate-800 p-1 rounded transition-all text-xs"
                             title={tKan('verDetalle')}
                           >
                             👁
@@ -458,30 +458,30 @@ export default function TareasPage() {
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-white/70 line-clamp-3 leading-relaxed">
+                      <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed">
                         {tarea.descripcion}
                       </p>
 
                       {/* Footer */}
-                      <div className="space-y-1.5 pt-1 border-t border-white/5">
+                      <div className="space-y-1.5 pt-1 border-t border-black/5">
                         <div className="flex items-center justify-between">
                           <div className="flex flex-col gap-0.5">
-                            <span className="text-[10px] text-white/30">{tKan('asigna')}</span>
-                            <span className="text-xs text-white/60 truncate max-w-[120px]">{tarea.persona_asigna_nombre}</span>
+                            <span className="text-[10px] text-slate-400">{tKan('asigna')}</span>
+                            <span className="text-xs text-slate-500 truncate max-w-[120px]">{tarea.persona_asigna_nombre}</span>
                           </div>
                           <div className="flex flex-col items-end gap-0.5">
-                            <span className="text-[10px] text-white/30">{tKan('fechaAsignacion')}</span>
-                            <span className="text-xs text-white/60">{fDate(tarea.fecha_asignacion)}</span>
+                            <span className="text-[10px] text-slate-400">{tKan('fechaAsignacion')}</span>
+                            <span className="text-xs text-slate-500">{fDate(tarea.fecha_asignacion)}</span>
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
                           <div className="flex flex-col gap-0.5">
-                            <span className="text-[10px] text-white/30">Ejecuta</span>
-                            <span className="text-xs text-white/60 truncate max-w-[120px]">{tarea.persona_ejecuta_nombre}</span>
+                            <span className="text-[10px] text-slate-400">Ejecuta</span>
+                            <span className="text-xs text-slate-500 truncate max-w-[120px]">{tarea.persona_ejecuta_nombre}</span>
                           </div>
                           <div className="flex flex-col items-end gap-0.5">
-                            <span className="text-[10px] text-white/30">{tKan('fechaReq')}</span>
-                            <span className="text-xs text-white/60">{fDate(tarea.fecha_requerida_finalizar)}</span>
+                            <span className="text-[10px] text-slate-400">{tKan('fechaReq')}</span>
+                            <span className="text-xs text-slate-500">{fDate(tarea.fecha_requerida_finalizar)}</span>
                           </div>
                         </div>
                       </div>

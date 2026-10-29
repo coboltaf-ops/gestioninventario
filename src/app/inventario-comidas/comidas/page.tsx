@@ -6,7 +6,7 @@ export default function ComidasHome() {
   const router = useRouter()
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px', background: '#000', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px', background: '#f1f5f9', color: '#1e293b' }}>
       <h1 style={{ fontSize: '48px', marginBottom: '40px', fontWeight: 'bold' }}>HAPPY EXPRESS</h1>
       <p style={{ fontSize: '18px', marginBottom: '60px', color: '#aaa' }}>Gestión de Pedidos y Comidas</p>
 
@@ -18,7 +18,7 @@ export default function ComidasHome() {
           background: 'linear-gradient(135deg, #ea580c, #ff6b35)',
           border: 'none',
           borderRadius: '12px',
-          color: '#fff',
+          color: '#1e293b',
           cursor: 'pointer',
           transition: 'all 0.3s'
         }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
@@ -32,7 +32,7 @@ export default function ComidasHome() {
           background: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
           border: 'none',
           borderRadius: '12px',
-          color: '#fff',
+          color: '#1e293b',
           cursor: 'pointer',
           transition: 'all 0.3s'
         }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
@@ -46,7 +46,7 @@ export default function ComidasHome() {
           background: 'linear-gradient(135deg, #10b981, #34d399)',
           border: 'none',
           borderRadius: '12px',
-          color: '#fff',
+          color: '#1e293b',
           cursor: 'pointer',
           transition: 'all 0.3s'
         }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
@@ -60,7 +60,7 @@ export default function ComidasHome() {
           background: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
           border: 'none',
           borderRadius: '12px',
-          color: '#000',
+          color: '#f1f5f9',
           cursor: 'pointer',
           transition: 'all 0.3s'
         }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>

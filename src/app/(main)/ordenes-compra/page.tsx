@@ -76,40 +76,40 @@ function EmailModal({ orden, proveedorEmail, onClose, onEmailSent, onSuccess }: 
     }
   }, [to, asunto, mensaje, orden, onEmailSent, onClose])
 
-  const inputStyle: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }
+  const inputStyle: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
-      <div className="w-full max-w-lg rounded-2xl p-6" style={{ background: 'rgba(12,26,61,0.98)', border: '1px solid rgba(255,255,255,0.15)' }}>
+      <div className="w-full max-w-lg rounded-2xl p-6" style={{ background: 'rgba(12,26,61,0.98)', border: '1px solid rgba(15,23,42,0.15)' }}>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">📧 Enviar Orden por Email</h2>
-          <button onClick={onClose} className="text-white/40 hover:text-white text-xl leading-none">&times;</button>
+          <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">📧 Enviar Orden por Email</h2>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-800 text-xl leading-none">&times;</button>
         </div>
 
         <div className="space-y-4">
           <div className="rounded-xl p-3" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>
-            <p className="text-xs text-white/50">Orden</p>
-            <p className="text-white font-mono font-bold">{orden.consecutivo}</p>
-            <p className="text-white/60 text-sm mt-1">{orden.proveedor}</p>
+            <p className="text-xs text-slate-500">Orden</p>
+            <p className="text-slate-800 font-mono font-bold">{orden.consecutivo}</p>
+            <p className="text-slate-500 text-sm mt-1">{orden.proveedor}</p>
           </div>
 
           <div>
-            <label className="block text-xl text-white font-extrabold mb-1">Email del Proveedor *</label>
+            <label className="block text-xl text-slate-800 font-extrabold mb-1">Email del Proveedor *</label>
             <input type="email" value={to} onChange={e => setTo(e.target.value)} required
-              className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={inputStyle}
+              className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={inputStyle}
               placeholder="email@proveedor.com" />
           </div>
 
           <div>
-            <label className="block text-xl text-white font-extrabold mb-1">Asunto</label>
+            <label className="block text-xl text-slate-800 font-extrabold mb-1">Asunto</label>
             <input value={asunto} onChange={e => setAsunto(e.target.value)}
-              className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={inputStyle} />
+              className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={inputStyle} />
           </div>
 
           <div>
-            <label className="block text-xl text-white font-extrabold mb-1">Mensaje (opcional)</label>
+            <label className="block text-xl text-slate-800 font-extrabold mb-1">Mensaje (opcional)</label>
             <textarea rows={4} value={mensaje} onChange={e => setMensaje(e.target.value)}
-              className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold resize-none" style={inputStyle} />
+              className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold resize-none" style={inputStyle} />
           </div>
 
           {result && (
@@ -124,12 +124,12 @@ function EmailModal({ orden, proveedorEmail, onClose, onEmailSent, onSuccess }: 
 
           <div className="flex gap-3 pt-2">
             <button onClick={handleSend} disabled={sending || !to}
-              className="flex-1 px-5 py-2.5 rounded-xl font-medium text-white transition-colors disabled:opacity-40"
+              className="flex-1 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors disabled:opacity-40"
               style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
               {sending ? '⏳ Enviando...' : '📧 Enviar Email'}
             </button>
             <button onClick={onClose}
-              className="px-5 py-2.5 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+              className="px-5 py-2.5 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
               {tBtn('close')}
             </button>
           </div>
@@ -358,7 +358,7 @@ export default function OrdenesCompraPage() {
   // ── Tabs ──────────────────────────────────────────────────────────────────
   const [tab, setTab] = useState<'registros' | 'reportes' | 'especificos'>('registros')
 
-  const selectStyle: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+  const selectStyle: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
   // ── Datos para ReportPanel ──────────────────────────────────────────────
   const reportColumns = [
@@ -475,14 +475,14 @@ export default function OrdenesCompraPage() {
 
   const statusStyle = (s: string) => {
     const map: Record<string, React.CSSProperties> = {
-      'Pendiente': { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' },
-      'Pendiente Aprobacion': { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' },
-      'Aprobada': { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' },
-      'Pendiente por Recibir': { background: 'rgba(59,130,246,0.2)', color: '#fff', border: '1px solid rgba(59,130,246,0.3)' },
-      'Recibida Parcial': { background: 'rgba(255,255,255,0.95)', color: '#0c1a3d', border: '1px solid rgba(255,255,255,1)' },
-      'Anulada': { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' },
-      'Recibida': { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' },
-      'Recibida Completa': { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' },
+      'Pendiente': { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' },
+      'Pendiente Aprobacion': { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' },
+      'Aprobada': { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' },
+      'Pendiente por Recibir': { background: 'rgba(59,130,246,0.2)', color: '#1e293b', border: '1px solid rgba(59,130,246,0.3)' },
+      'Recibida Parcial': { background: 'rgba(15,23,42,0.95)', color: '#0c1a3d', border: '1px solid rgba(15,23,42,1)' },
+      'Anulada': { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' },
+      'Recibida': { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' },
+      'Recibida Completa': { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' },
     }
     return map[s] || {}
   }
@@ -492,12 +492,12 @@ export default function OrdenesCompraPage() {
     return (
       <div>
         <div className="flex items-center justify-between mb-6">
-          <button onClick={() => setViewDetail(null)} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
+          <button onClick={() => setViewDetail(null)} className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors">
             ← Volver a Órdenes
           </button>
           <div className="flex gap-3">
             <button onClick={() => setEmailOrden(viewDetail)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
               style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
               📧 Enviar por Email
             </button>
@@ -510,17 +510,17 @@ export default function OrdenesCompraPage() {
               const empData = emp ? { nombre: emp.nombre, tipo_identificacion: emp.tipo_identificacion, nro_documento: emp.nro_documento, direccion: emp.direccion, ciudad: emp.ciudad } : undefined
               generateOrdenPDF({ ...viewDetail, centro_costo: ccFixed }, provData, empData, emp?.logo || LOGO_BASE64)
             }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
               style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
               🖨 Generar PDF
             </button>
           </div>
         </div>
-        <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-white">Orden de Compra</h1>
-              <p className="text-2xl font-mono mt-1" style={{ color: '#fff' }}>{viewDetail.consecutivo}</p>
+              <h1 className="text-3xl font-bold text-slate-800">Orden de Compra</h1>
+              <p className="text-2xl font-mono mt-1" style={{ color: '#1e293b' }}>{viewDetail.consecutivo}</p>
             </div>
             <span className="px-4 py-2 rounded-full font-medium text-sm" style={statusStyle(viewDetail.situacion)}>{viewDetail.situacion}</span>
           </div>
@@ -541,17 +541,17 @@ export default function OrdenesCompraPage() {
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-xs uppercase tracking-wider" style={{ color: '#f97316' }}>{label}</p>
-                <p className="text-white font-medium mt-1">{value || '-'}</p>
+                <p className="text-slate-800 font-medium mt-1">{value || '-'}</p>
               </div>
             ))}
           </div>
 
-          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.08)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.08)' }}>
                 <tr>
                   {[tF('codigo'), tF('descripcion'), tH('cantShort'), tH('unidShort'), tH('costoUnit'), tF('subtotal'), tH('recibido')].map(h => (
-                    <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -561,20 +561,20 @@ export default function OrdenesCompraPage() {
                   const completo = recibida >= d.cantidad
                   const parcial = recibida > 0 && !completo
                   return (
-                    <tr key={d.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td className="px-4 py-3 font-mono text-xs text-white">{d.codigo_producto}</td>
-                      <td className="px-4 py-3 text-white/80">{d.descripcion}</td>
-                      <td className="px-4 py-3 text-white/70 text-right">{d.cantidad}</td>
-                      <td className="px-4 py-3 text-white/50 text-xs">{d.unidad_medida}</td>
-                      <td className="px-4 py-3 text-white/70 text-right">{fmtMoney(d.costo_unitario)}</td>
-                      <td className="px-4 py-3 text-white font-medium text-right">{fmtMoney(d.subtotal)}</td>
+                    <tr key={d.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                      <td className="px-4 py-3 font-mono text-xs text-slate-800">{d.codigo_producto}</td>
+                      <td className="px-4 py-3 text-slate-600">{d.descripcion}</td>
+                      <td className="px-4 py-3 text-slate-600 text-right">{d.cantidad}</td>
+                      <td className="px-4 py-3 text-slate-500 text-xs">{d.unidad_medida}</td>
+                      <td className="px-4 py-3 text-slate-600 text-right">{fmtMoney(d.costo_unitario)}</td>
+                      <td className="px-4 py-3 text-slate-800 font-medium text-right">{fmtMoney(d.subtotal)}</td>
                       <td className="px-4 py-3 text-center">
                         {recibida === 0 ? (
-                          <span style={{ color: 'rgba(255,255,255,0.3)' }}>0 / {d.cantidad}</span>
+                          <span style={{ color: 'rgba(15,23,42,0.3)' }}>0 / {d.cantidad}</span>
                         ) : (
                           <span className="px-2 py-1 rounded-md text-xs font-bold" style={completo
-                            ? { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.4)' }
-                            : { background: 'rgba(251,191,36,0.95)', color: '#fff', border: '1px solid rgba(251,191,36,0.4)' }
+                            ? { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.4)' }
+                            : { background: 'rgba(251,191,36,0.95)', color: '#1e293b', border: '1px solid rgba(251,191,36,0.4)' }
                           }>
                             {recibida} / {d.cantidad}{completo ? ' ✓' : parcial ? ' parcial' : ''}
                           </span>
@@ -593,20 +593,20 @@ export default function OrdenesCompraPage() {
               { label: `Impuesto (${viewDetail.pct_impuesto}%)`, value: monto_impuesto },
             ].map(({ label, value }) => (
               <div key={label} className="flex gap-8 justify-between w-64">
-                <span style={{ color: 'rgba(255,255,255,0.5)' }}>{label}</span>
-                <span className="text-white">{fmtMoney(value)}</span>
+                <span style={{ color: 'rgba(15,23,42,0.5)' }}>{label}</span>
+                <span className="text-slate-800">{fmtMoney(value)}</span>
               </div>
             ))}
-            <div className="flex gap-8 justify-between w-64 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
-              <span className="font-bold text-white">TOTAL ORDEN</span>
-              <span className="font-bold text-lg" style={{ color: '#fff' }}>{fmtMoney(total)}</span>
+            <div className="flex gap-8 justify-between w-64 pt-2" style={{ borderTop: '1px solid rgba(15,23,42,0.15)' }}>
+              <span className="font-bold text-slate-800">TOTAL ORDEN</span>
+              <span className="font-bold text-lg" style={{ color: '#1e293b' }}>{fmtMoney(total)}</span>
             </div>
           </div>
 
           {viewDetail.observaciones && (
-            <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="rounded-xl p-4" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
               <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#f97316' }}>Observaciones</p>
-              <p className="text-white/70">{viewDetail.observaciones}</p>
+              <p className="text-slate-600">{viewDetail.observaciones}</p>
             </div>
           )}
         </div>
@@ -629,26 +629,26 @@ export default function OrdenesCompraPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('ordenesCompra')}</h1>
-          <p className="text-white/50 mt-1">{tSub('ordenesCompra')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('ordenesCompra')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('ordenesCompra')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
-          <button onClick={createNew} className="px-5 py-2.5 rounded-xl font-medium text-white mr-24" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
+          <button onClick={createNew} className="px-5 py-2.5 rounded-xl font-medium text-slate-800 mr-24" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newOrder')}
           </button>
         )}
       </div>
 
       {/* ── Selector de Tabs ───────────────────────────────────────────────── */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {(['registros', 'reportes', 'especificos'] as const).map(t => (
           <button
             key={t}
             onClick={() => setTab(t)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}
           >
             {t === 'registros' ? tTab('registrosEmoji') : t === 'reportes' ? tTab('reportesEmoji') : tTab('especificosEmoji')}
           </button>
@@ -661,31 +661,31 @@ export default function OrdenesCompraPage() {
           {isFormOpen && selectedOrden && (() => {
             const { subtotal, monto_impuesto, total } = calcTotals(selectedOrden.detalles, selectedOrden.pct_impuesto)
             return (
-              <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                <h2 className="text-lg font-semibold text-white mb-4">Nueva Orden de Compra — {selectedOrden.consecutivo}</h2>
+              <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+                <h2 className="text-lg font-semibold text-slate-800 mb-4">Nueva Orden de Compra — {selectedOrden.consecutivo}</h2>
                 <form onSubmit={handleSave}>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
                     {/* Correlativo - solo lectura */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Correlativo</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Correlativo</label>
                       <input readOnly value={selectedOrden.consecutivo}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold font-mono"
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold font-mono"
                         style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', cursor: 'not-allowed' }} />
                     </div>
                     {/* Fecha Emisión */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Fecha Emisión *</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Emisión *</label>
                       <input type="date" required value={selectedOrden.fecha_emision}
                         onChange={e => setSelectedOrden({ ...selectedOrden, fecha_emision: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }} />
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }} />
                     </div>
                     {/* Tipo de Inventario (heredado de la sesión, no editable aquí) */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Tipo de Inventario</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Tipo de Inventario</label>
                       <input readOnly value={selectedOrden.tipo_inventario || '—'}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold font-semibold"
-                        style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }}
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold font-semibold"
+                        style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }}
                         title="Definido por el Tipo de Inventario activo de la sesión. Cámbialo desde la barra superior." />
                     </div>
                     {/* Campos de fecha y texto libre */}
@@ -696,22 +696,22 @@ export default function OrdenesCompraPage() {
                       { label: 'Fecha Aprobación', key: 'fecha_aprobacion', type: 'date' },
                     ].map(({ label, key, type = 'text', placeholder }) => (
                       <div key={key}>
-                        <label className="block text-xl text-white font-extrabold mb-1">{label}</label>
+                        <label className="block text-xl text-slate-800 font-extrabold mb-1">{label}</label>
                         <input
                           type={type} required={label.includes('*')}
                           value={String((selectedOrden as Record<string, unknown>)[key])}
                           onChange={e => setSelectedOrden({ ...selectedOrden, [key]: type === 'number' ? parseFloat(e.target.value) : e.target.value })}
-                          className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold"
-                          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                          className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                          style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                           placeholder={placeholder}
                         />
                       </div>
                     ))}
                     {/* % Impuesto — tabla referencia */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">% Impuesto</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">% Impuesto</label>
                       <select value={selectedOrden.pct_impuesto} onChange={e => setSelectedOrden({ ...selectedOrden, pct_impuesto: parseFloat(e.target.value) || 0 })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         {(refData.impuesto ?? []).filter(i => i.situacion).sort((a, b) => parseFloat(a.descripcion) - parseFloat(b.descripcion)).map(i => (
                           <option key={i.id} value={parseFloat(i.descripcion)}>{i.descripcion}</option>
                         ))}
@@ -719,36 +719,36 @@ export default function OrdenesCompraPage() {
                     </div>
                     {/* Proveedor — tabla referencia */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Proveedor *</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Proveedor *</label>
                       <select required value={selectedOrden.proveedor} onChange={e => setSelectedOrden({ ...selectedOrden, proveedor: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {proveedores.map(p => <option key={p.id} value={p.nombre}>{p.nombre}</option>)}
                       </select>
                     </div>
                     {/* Tipo de Moneda — tabla referencia */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Tipo de Moneda *</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Tipo de Moneda *</label>
                       <select required value={selectedOrden.tipo_moneda} onChange={e => setSelectedOrden({ ...selectedOrden, tipo_moneda: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {refData.tipo_moneda.map(m => <option key={m.id} value={m.descripcion}>{m.descripcion}</option>)}
                       </select>
                     </div>
                     {/* Condición de Pago — tabla referencia */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Condición de Pago *</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Condición de Pago *</label>
                       <select required value={selectedOrden.condicion_pago} onChange={e => setSelectedOrden({ ...selectedOrden, condicion_pago: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {refData.condiciones_pago.map(c => <option key={c.id} value={c.descripcion}>{c.descripcion}</option>)}
                       </select>
                     </div>
                     {/* Bodega Llegada (filtrada por tipo de inventario) */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Bodega Llegada *</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Bodega Llegada *</label>
                       <select required value={selectedOrden.bodega_llegada} onChange={e => setSelectedOrden({ ...selectedOrden, bodega_llegada: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{selectedOrden.tipo_inventario ? tOp('seleccione') : 'Seleccione primero el Tipo de Inventario'}</option>
                         {bodegas
                           .filter(b => !selectedOrden.tipo_inventario || b.tipo_inventario === selectedOrden.tipo_inventario)
@@ -757,18 +757,18 @@ export default function OrdenesCompraPage() {
                     </div>
                     {/* Centro de Costo */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Centro de Costo</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Centro de Costo</label>
                       <select value={selectedOrden.centro_costo} onChange={e => setSelectedOrden({ ...selectedOrden, centro_costo: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {centrosCosto.map(c => <option key={c.id} value={`${c.codigo} - ${c.descripcion}`}>{c.codigo} - {c.descripcion}</option>)}
                       </select>
                     </div>
                     {/* Situación — tabla referencia */}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Situación</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Situación</label>
                       <select value={selectedOrden.situacion} onChange={e => setSelectedOrden({ ...selectedOrden, situacion: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         {refData.situacion_orden_compra.map(s => <option key={s.id} value={s.descripcion}>{s.descripcion}</option>)}
                       </select>
                     </div>
@@ -777,17 +777,17 @@ export default function OrdenesCompraPage() {
                   {/* Detalles */}
                   <div className="mb-4">
                     <div className="flex justify-between items-center mb-3">
-                      <h3 className="text-white font-medium">Renglones / Detalle</h3>
-                      <button type="button" onClick={addDetalle} className="px-3 py-1.5 rounded-lg text-xs text-white font-medium" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
+                      <h3 className="text-slate-800 font-medium">Renglones / Detalle</h3>
+                      <button type="button" onClick={addDetalle} className="px-3 py-1.5 rounded-lg text-xs text-slate-800 font-medium" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                         {tBtn('addLine')}
                       </button>
                     </div>
                     {/* Buscador de producto para agregar */}
                     <div className="mb-4 p-4 rounded-xl" style={{ background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)' }}>
-                      <label className="block text-xl text-white font-extrabold mb-2">
+                      <label className="block text-xl text-slate-800 font-extrabold mb-2">
                         Buscar producto por código o descripción
                         {selectedOrden.tipo_inventario && (
-                          <span className="ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold" style={{ background: 'rgba(251,191,36,0.95)', color: '#fff', border: '1px solid rgba(251,191,36,0.4)' }}>
+                          <span className="ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold" style={{ background: 'rgba(251,191,36,0.95)', color: '#1e293b', border: '1px solid rgba(251,191,36,0.4)' }}>
                             Solo productos {selectedOrden.tipo_inventario} · Código debe iniciar con {prefixForTipo(selectedOrden.tipo_inventario)}-
                           </span>
                         )}
@@ -796,8 +796,8 @@ export default function OrdenesCompraPage() {
                         <input
                           value={searchText}
                           onChange={e => setSearchText(e.target.value)}
-                          className="w-full rounded-lg px-3 py-2 text-white outline-none text-base text-white font-bold"
-                          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                          className="w-full rounded-lg px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                          style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                           placeholder={selectedOrden.tipo_inventario
                             ? `Escriba código (ej: ${prefixForTipo(selectedOrden.tipo_inventario)}-00001) o nombre del producto...`
                             : 'Escriba código o nombre del producto...'}
@@ -848,15 +848,15 @@ export default function OrdenesCompraPage() {
                                   setSelectedOrden({ ...selectedOrden, detalles })
                                   setSearchText('')
                                 }}
-                                style={{ padding: '10px 14px', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                                style={{ padding: '10px 14px', cursor: 'pointer', borderBottom: '1px solid rgba(15,23,42,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                                 className="hover:bg-blue-400/20"
                               >
-                                <span style={{ color: '#fff', fontSize: 13 }}>{p.descripcion}</span>
-                                <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'monospace', marginLeft: 12 }}>{p.codigo} · {p.unidad_medida} · ${fmtMoney(p.ult_costo)}</span>
+                                <span style={{ color: '#1e293b', fontSize: 13 }}>{p.descripcion}</span>
+                                <span style={{ color: 'rgba(15,23,42,0.4)', fontSize: 11, fontFamily: 'monospace', marginLeft: 12 }}>{p.codigo} · {p.unidad_medida} · ${fmtMoney(p.ult_costo)}</span>
                               </div>
                             ))}
                             {matches.length === 0 && (
-                              <div style={{ padding: '10px 14px', color: 'rgba(255,255,255,0.3)', fontSize: 12, textAlign: 'center' }}>No se encontraron productos</div>
+                              <div style={{ padding: '10px 14px', color: 'rgba(15,23,42,0.3)', fontSize: 12, textAlign: 'center' }}>No se encontraron productos</div>
                             )}
                           </div>
                           )
@@ -864,12 +864,12 @@ export default function OrdenesCompraPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                       <table className="w-full text-base text-left">
-                        <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+                        <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
                           <tr>
                             {[tF('codigo'), tF('descripcion'), tH('cantidadRequired'), tF('unidad'), tH('costoUnitRequired'), tF('subtotal'), tF('estado'), ''].map(h => (
-                              <th key={h} className="px-3 py-2 font-semibold" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                              <th key={h} className="px-3 py-2 font-semibold" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                             ))}
                           </tr>
                         </thead>
@@ -881,11 +881,11 @@ export default function OrdenesCompraPage() {
                               ? 'Pendiente Aprobacion'
                               : estadoVisual
                             const estadoConfig: { bg: string; dark: string; color: string } =
-                              labelEstado === 'Pendiente Aprobacion' ? { bg: '#fbbf24', dark: '#d97706', color: '#000' } :
-                              labelEstado === 'Pendiente'             ? { bg: '#fbbf24', dark: '#d97706', color: '#000' } :
-                              labelEstado === 'Recibido Parcial'      ? { bg: '#3b82f6', dark: '#1e40af', color: '#fff' } :
-                              labelEstado === 'Recepcion Completa'    ? { bg: '#22c55e', dark: '#15803d', color: '#fff' } :
-                              /* Anulado */                             { bg: '#dc2626', dark: '#7f1d1d', color: '#fff' }
+                              labelEstado === 'Pendiente Aprobacion' ? { bg: '#fbbf24', dark: '#d97706', color: '#f1f5f9' } :
+                              labelEstado === 'Pendiente'             ? { bg: '#fbbf24', dark: '#d97706', color: '#f1f5f9' } :
+                              labelEstado === 'Recibido Parcial'      ? { bg: '#3b82f6', dark: '#1e40af', color: '#1e293b' } :
+                              labelEstado === 'Recepcion Completa'    ? { bg: '#22c55e', dark: '#15803d', color: '#1e293b' } :
+                              /* Anulado */                             { bg: '#dc2626', dark: '#7f1d1d', color: '#1e293b' }
                             const toggleAnulado = () => {
                               if (!selectedOrden) return
                               const detalles = [...selectedOrden.detalles]
@@ -896,12 +896,12 @@ export default function OrdenesCompraPage() {
                             const cantInvalida = !d.cantidad || d.cantidad <= 0
                             const costoInvalido = !d.costo_unitario || d.costo_unitario <= 0
                             return (
-                              <tr key={d.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                              <tr key={d.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
                                 <td className="px-2 py-2">
-                                  <input value={d.codigo_producto} readOnly className="w-28 rounded-lg px-2 py-1.5 text-white outline-none cursor-not-allowed font-mono text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }} />
+                                  <input value={d.codigo_producto} readOnly className="w-28 rounded-lg px-2 py-1.5 text-slate-800 outline-none cursor-not-allowed font-mono text-xs" style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(15,23,42,0.08)' }} />
                                 </td>
                                 <td className="px-2 py-2">
-                                  <input value={d.descripcion} readOnly className="w-full rounded-lg px-2 py-1.5 text-white outline-none cursor-not-allowed text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }} />
+                                  <input value={d.descripcion} readOnly className="w-full rounded-lg px-2 py-1.5 text-slate-800 outline-none cursor-not-allowed text-xs" style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(15,23,42,0.08)' }} />
                                 </td>
                                 <td className="px-2 py-2">
                                   <input
@@ -911,14 +911,14 @@ export default function OrdenesCompraPage() {
                                     required
                                     value={d.cantidad || ''}
                                     onChange={e => updateDetalle(idx, 'cantidad', parseFloat(e.target.value) || 0)}
-                                    className="w-20 rounded-lg px-2 py-1.5 text-white outline-none"
+                                    className="w-20 rounded-lg px-2 py-1.5 text-slate-800 outline-none"
                                     style={{
-                                      background: cantInvalida ? 'rgba(239,68,68,0.1)' : 'rgba(255,255,255,0.05)',
-                                      border: cantInvalida ? '1px solid rgba(239,68,68,0.5)' : '1px solid rgba(255,255,255,0.1)',
+                                      background: cantInvalida ? 'rgba(239,68,68,0.1)' : 'rgba(15,23,42,0.05)',
+                                      border: cantInvalida ? '1px solid rgba(239,68,68,0.5)' : '1px solid rgba(15,23,42,0.1)',
                                     }}
                                   />
                                 </td>
-                                <td className="px-2 py-2"><input value={d.unidad_medida} readOnly className="w-28 rounded-lg px-2 py-1.5 text-white outline-none text-xs cursor-not-allowed" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }} /></td>
+                                <td className="px-2 py-2"><input value={d.unidad_medida} readOnly className="w-28 rounded-lg px-2 py-1.5 text-slate-800 outline-none text-xs cursor-not-allowed" style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(15,23,42,0.08)' }} /></td>
                                 <td className="px-2 py-2">
                                   <input
                                     type="number"
@@ -927,14 +927,14 @@ export default function OrdenesCompraPage() {
                                     required
                                     value={d.costo_unitario || ''}
                                     onChange={e => updateDetalle(idx, 'costo_unitario', parseFloat(e.target.value) || 0)}
-                                    className="w-24 rounded-lg px-2 py-1.5 text-white outline-none"
+                                    className="w-24 rounded-lg px-2 py-1.5 text-slate-800 outline-none"
                                     style={{
-                                      background: costoInvalido ? 'rgba(239,68,68,0.1)' : 'rgba(255,255,255,0.05)',
-                                      border: costoInvalido ? '1px solid rgba(239,68,68,0.5)' : '1px solid rgba(255,255,255,0.1)',
+                                      background: costoInvalido ? 'rgba(239,68,68,0.1)' : 'rgba(15,23,42,0.05)',
+                                      border: costoInvalido ? '1px solid rgba(239,68,68,0.5)' : '1px solid rgba(15,23,42,0.1)',
                                     }}
                                   />
                                 </td>
-                                <td className="px-2 py-2 text-white font-bold">{fmtMoney(d.subtotal)}</td>
+                                <td className="px-2 py-2 text-slate-800 font-bold">{fmtMoney(d.subtotal)}</td>
                                 <td className="px-2 py-2">
                                   <button
                                     type="button"
@@ -951,7 +951,7 @@ export default function OrdenesCompraPage() {
                                     {labelEstado}
                                   </button>
                                   {(d.cantidad_recibida || 0) > 0 && (
-                                    <p className="text-[10px] text-white/50 mt-1 text-center">
+                                    <p className="text-[10px] text-slate-500 mt-1 text-center">
                                       Recib: {d.cantidad_recibida}/{d.cantidad}
                                     </p>
                                   )}
@@ -967,43 +967,43 @@ export default function OrdenesCompraPage() {
 
                   {/* Totales */}
                   <div className="flex flex-col items-end gap-2 mb-6 text-sm">
-                    <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                      <span className="text-white/70 font-medium">Subtotal antes de Impuesto</span>
-                      <span className="text-white font-semibold">{fmtMoney(subtotal)}</span>
+                    <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(15,23,42,0.04)' }}>
+                      <span className="text-slate-600 font-medium">Subtotal antes de Impuesto</span>
+                      <span className="text-slate-800 font-semibold">{fmtMoney(subtotal)}</span>
                     </div>
-                    <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                      <span className="text-white/70 font-medium">% IVA ({selectedOrden.pct_impuesto}%)</span>
-                      <span className="text-white font-semibold">{fmtMoney(monto_impuesto)}</span>
+                    <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(15,23,42,0.04)' }}>
+                      <span className="text-slate-600 font-medium">% IVA ({selectedOrden.pct_impuesto}%)</span>
+                      <span className="text-slate-800 font-semibold">{fmtMoney(monto_impuesto)}</span>
                     </div>
                     <div className="flex gap-8 w-80 justify-between px-4 py-3 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(96,165,250,0.25), rgba(96,165,250,0.1))', border: '1px solid rgba(96,165,250,0.4)' }}>
-                      <span className="text-white font-bold text-base">TOTAL GENERAL ORDEN</span>
-                      <span className="font-black text-lg" style={{ color: '#fff' }}>{fmtMoney(total)}</span>
+                      <span className="text-slate-800 font-bold text-base">TOTAL GENERAL ORDEN</span>
+                      <span className="font-black text-lg" style={{ color: '#1e293b' }}>{fmtMoney(total)}</span>
                     </div>
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                     <textarea rows={2} value={selectedOrden.observaciones} onChange={e => setSelectedOrden({ ...selectedOrden, observaciones: e.target.value })}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none resize-none"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none resize-none"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                       placeholder="Notas u observaciones..." />
                   </div>
 
                   <div className="flex gap-3">
-                    <button type="submit" className="px-6 py-2 rounded-xl text-white font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('saveOrder')}</button>
-                    <button type="button" onClick={() => { setIsFormOpen(false); setSelectedOrden(null) }} className="px-6 py-2 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>{tBtn('cancel')}</button>
+                    <button type="submit" className="px-6 py-2 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('saveOrder')}</button>
+                    <button type="button" onClick={() => { setIsFormOpen(false); setSelectedOrden(null) }} className="px-6 py-2 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>{tBtn('cancel')}</button>
                   </div>
                 </form>
               </div>
             )
           })()}
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left" style={{ minWidth: '900px' }}>
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {[tH('nro'), tF('proveedor'), tH('emision'), tH('vence'), tF('comprador'), tH('total'), tF('estado'), tTbl('actions')].map(h => (
-                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -1011,17 +1011,17 @@ export default function OrdenesCompraPage() {
                 {ordenes.map(o => {
                   const totals = calcTotals(o.detalles, o.pct_impuesto)
                   return (
-                    <tr key={o.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td className="px-3 py-3 font-mono font-bold whitespace-nowrap" style={{ color: '#fff' }}>{o.consecutivo}</td>
-                      <td className="px-3 py-3 text-white font-bold max-w-[180px] truncate">{o.proveedor}</td>
-                      <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(o.fecha_emision)}</td>
-                      <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(o.fecha_vencimiento)}</td>
-                      <td className="px-3 py-3 text-white font-bold max-w-[120px] truncate">{o.comprador}</td>
-                      <td className="px-3 py-3 text-white font-medium whitespace-nowrap">{fmtMoney(totals.total)}</td>
+                    <tr key={o.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                      <td className="px-3 py-3 font-mono font-bold whitespace-nowrap" style={{ color: '#1e293b' }}>{o.consecutivo}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold max-w-[180px] truncate">{o.proveedor}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(o.fecha_emision)}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(o.fecha_vencimiento)}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold max-w-[120px] truncate">{o.comprador}</td>
+                      <td className="px-3 py-3 text-slate-800 font-medium whitespace-nowrap">{fmtMoney(totals.total)}</td>
                       <td className="px-3 py-3"><span className="px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap" style={statusStyle(o.situacion)}>{o.situacion}</span></td>
                       <td className="px-3 py-3">
                         <div className="flex gap-1.5 whitespace-nowrap">
-                          <button onClick={() => setViewDetail(o)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
+                          <button onClick={() => setViewDetail(o)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
                           {permisos.editar && !['Recibida', 'Recibida Completa', 'Anulada', 'Pendiente por Recibir', 'Recibida Parcial'].includes(o.situacion) && <button onClick={() => {
                             const cc = o.centro_costo || ''
                             const ccFixed = cc.includes(' - ') ? cc : (() => {
@@ -1029,8 +1029,8 @@ export default function OrdenesCompraPage() {
                               return found ? `${found.codigo} - ${found.descripcion}` : cc
                             })()
                             setSelectedOrden({ ...o, centro_costo: ccFixed }); setIsFormOpen(true); setViewDetail(null)
-                          }} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)' }}>{tBtn('edit')}</button>}
-                          {permisos.esAdmin && !['Recibida', 'Recibida Completa', 'Anulada', 'Pendiente por Recibir', 'Recibida Parcial'].includes(o.situacion) && <button onClick={() => handleDeleteOrden(o)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
+                          }} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(15,23,42,0.08)', color: 'rgba(15,23,42,0.6)', border: '1px solid rgba(15,23,42,0.15)' }}>{tBtn('edit')}</button>}
+                          {permisos.esAdmin && !['Recibida', 'Recibida Completa', 'Anulada', 'Pendiente por Recibir', 'Recibida Parcial'].includes(o.situacion) && <button onClick={() => handleDeleteOrden(o)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
                         </div>
                       </td>
                     </tr>
@@ -1057,11 +1057,11 @@ export default function OrdenesCompraPage() {
       {/* ── Tab: Reportes Específicos ────────────────────────────────────── */}
       {tab === 'especificos' && (
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-4">{tTab('especificos')}</h2>
-          <p className="text-white/50 text-sm mb-6">{tSub('seleccioneReporte')}</p>
+          <h2 className="text-xl font-bold text-slate-800 mb-4">{tTab('especificos')}</h2>
+          <p className="text-slate-500 text-sm mb-6">{tSub('seleccioneReporte')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="text-white/40 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
+            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="text-slate-400 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
             </div>
           </div>
         </div>

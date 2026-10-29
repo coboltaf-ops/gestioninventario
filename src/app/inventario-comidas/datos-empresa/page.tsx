@@ -119,7 +119,7 @@ export default function DatosEmpresaComidasPage() {
               style={{
                 padding: '12px 24px',
                 background: '#ea580c',
-                color: '#fff',
+                color: '#1e293b',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer',
@@ -132,7 +132,7 @@ export default function DatosEmpresaComidasPage() {
         </div>
 
         {!editing && datosEmpresa ? (
-          <div style={{ background: '#000', padding: '30px', borderRadius: '12px', border: '1px solid #333' }}>
+          <div style={{ background: '#f1f5f9', padding: '30px', borderRadius: '12px', border: '1px solid #333' }}>
             {datosEmpresa.logo && (
               <div style={{ marginBottom: '30px', textAlign: 'center', paddingBottom: '20px', borderBottom: '1px solid #333' }}>
                 <p style={{ fontSize: '12px', color: '#666', marginBottom: '10px' }}>LOGO</p>
@@ -190,7 +190,7 @@ export default function DatosEmpresaComidasPage() {
           </div>
         ) : (
           <form
-            style={{ background: '#000', padding: '30px', borderRadius: '12px', border: '1px solid #333' }}
+            style={{ background: '#f1f5f9', padding: '30px', borderRadius: '12px', border: '1px solid #333' }}
             onSubmit={(e) => {
               e.preventDefault()
               handleSave()
@@ -211,7 +211,7 @@ export default function DatosEmpresaComidasPage() {
                     background: '#222',
                     border: '1px dashed #ea580c',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     cursor: 'pointer',
                   }}
@@ -238,7 +238,7 @@ export default function DatosEmpresaComidasPage() {
                   background: '#222',
                   border: '1px solid #333',
                   borderRadius: '6px',
-                  color: '#fff',
+                  color: '#1e293b',
                   fontSize: '14px',
                   boxSizing: 'border-box',
                 }}
@@ -258,7 +258,7 @@ export default function DatosEmpresaComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -278,7 +278,7 @@ export default function DatosEmpresaComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -300,7 +300,7 @@ export default function DatosEmpresaComidasPage() {
                   background: '#222',
                   border: '1px solid #333',
                   borderRadius: '6px',
-                  color: '#fff',
+                  color: '#1e293b',
                   fontSize: '14px',
                   boxSizing: 'border-box',
                 }}
@@ -320,7 +320,7 @@ export default function DatosEmpresaComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -338,7 +338,7 @@ export default function DatosEmpresaComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -358,7 +358,7 @@ export default function DatosEmpresaComidasPage() {
                   background: '#222',
                   border: '1px solid #333',
                   borderRadius: '6px',
-                  color: '#fff',
+                  color: '#1e293b',
                   fontSize: '14px',
                   boxSizing: 'border-box',
                 }}
@@ -380,7 +380,7 @@ export default function DatosEmpresaComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -400,7 +400,7 @@ export default function DatosEmpresaComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -415,7 +415,7 @@ export default function DatosEmpresaComidasPage() {
                   flex: 1,
                   padding: '12px',
                   background: '#10b981',
-                  color: '#fff',
+                  color: '#1e293b',
                   border: 'none',
                   borderRadius: '6px',
                   cursor: 'pointer',
@@ -434,7 +434,7 @@ export default function DatosEmpresaComidasPage() {
                   flex: 1,
                   padding: '12px',
                   background: '#666',
-                  color: '#fff',
+                  color: '#1e293b',
                   border: 'none',
                   borderRadius: '6px',
                   cursor: 'pointer',

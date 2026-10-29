@@ -155,13 +155,13 @@ const emptyForm = (nro: number, tipoInv = ''): Transferencia => ({
   observaciones: '', renglones: [emptyRenglon()], estado: 'Pendiente',
 })
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
 const estadoStyle = (s: string): React.CSSProperties => {
-  if (s === 'Aprobada') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'Anulada')  return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
-  return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
+  if (s === 'Aprobada') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Anulada')  return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
+  return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
 }
 
 // ─── Componente ───────────────────────────────────────────────────────────────
@@ -482,7 +482,7 @@ export default function TransferenciasPage() {
     return (
       <div>
         <div className="flex items-center justify-between mb-6">
-          <button onClick={() => setViewItem(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          <button onClick={() => setViewItem(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(15,23,42,0.5)' }}>
             ← Volver a Transferencias
           </button>
           <button onClick={() => {
@@ -490,17 +490,17 @@ export default function TransferenciasPage() {
             const empData = emp ? { nombre: emp.nombre, tipo_identificacion: emp.tipo_identificacion, nro_documento: emp.nro_documento, direccion: emp.direccion, ciudad: emp.ciudad } : undefined
             generateTransferenciaPDF(viewItem, empData, emp?.logo || LOGO_BASE64)
           }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
             style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
             🖨 Generar PDF
           </button>
         </div>
 
-        <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-white">Transferencia de Productos</h1>
-              <p className="text-2xl font-mono mt-1" style={{ color: '#fff' }}>{viewItem.consecutivo}</p>
+              <h1 className="text-3xl font-bold text-slate-800">Transferencia de Productos</h1>
+              <p className="text-2xl font-mono mt-1" style={{ color: '#1e293b' }}>{viewItem.consecutivo}</p>
             </div>
             <span className="px-4 py-2 rounded-full text-sm font-medium" style={estadoStyle(viewItem.estado)}>{viewItem.estado}</span>
           </div>
@@ -518,28 +518,28 @@ export default function TransferenciasPage() {
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-xs uppercase tracking-wider mb-1" style={{ color: '#f97316' }}>{label}</p>
-                <p className="text-white font-medium">{value}</p>
+                <p className="text-slate-800 font-medium">{value}</p>
               </div>
             ))}
           </div>
 
           {/* Renglones */}
-          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.07)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.07)' }}>
                 <tr>
                   {[tF('codigo'), tF('descripcion'), tF('unidadMedida'), tF('cantidad')].map(h => (
-                    <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {viewItem.renglones.map(r => (
-                  <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-5 py-3 font-mono text-xs text-white">{r.codigo_producto}</td>
-                    <td className="px-5 py-3 text-white/80">{r.descripcion}</td>
-                    <td className="px-5 py-3 text-white/50 text-xs">{r.unidad_medida || '—'}</td>
-                    <td className="px-5 py-3 text-white font-bold text-center">{r.cantidad}</td>
+                  <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-5 py-3 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                    <td className="px-5 py-3 text-slate-600">{r.descripcion}</td>
+                    <td className="px-5 py-3 text-slate-500 text-xs">{r.unidad_medida || '—'}</td>
+                    <td className="px-5 py-3 text-slate-800 font-bold text-center">{r.cantidad}</td>
                   </tr>
                 ))}
               </tbody>
@@ -547,9 +547,9 @@ export default function TransferenciasPage() {
           </div>
 
           {viewItem.observaciones && (
-            <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="rounded-xl p-4" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
               <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#f97316' }}>Observaciones</p>
-              <p style={{ color: 'rgba(255,255,255,0.7)' }}>{viewItem.observaciones}</p>
+              <p style={{ color: 'rgba(15,23,42,0.7)' }}>{viewItem.observaciones}</p>
             </div>
           )}
         </div>
@@ -562,13 +562,13 @@ export default function TransferenciasPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('transferencias')}</h1>
-          <p className="text-white/50 mt-1">{tSub('transferencias')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('transferencias')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('transferencias')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
           <button
             onClick={() => { setForm(emptyForm(todasTransferencias.length + 1, tipoActivo || '')); setIsFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white whitespace-nowrap mr-28"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800 whitespace-nowrap mr-28"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newTransfer')}
           </button>
@@ -576,7 +576,7 @@ export default function TransferenciasPage() {
       </div>
 
       {/* Pestañas */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {([
           { key: 'registros', label: tTab('registros') },
           { key: 'reportes',  label: tTab('reportesEmoji') },
@@ -585,8 +585,8 @@ export default function TransferenciasPage() {
           <button key={t.key} onClick={() => setTab(t.key)}
             className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t.key
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}>
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}>
             {t.label}
           </button>
         ))}
@@ -597,10 +597,10 @@ export default function TransferenciasPage() {
         <>
           {/* ── Formulario ────────────────────────────────────────────────────── */}
           {isFormOpen && (
-            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
+            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
               <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-lg font-semibold text-white">{tSec('nuevaTransferencia')}</h2>
-                <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                <h2 className="text-lg font-semibold text-slate-800">{tSec('nuevaTransferencia')}</h2>
+                <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                   {form.consecutivo}
                 </span>
               </div>
@@ -611,15 +611,15 @@ export default function TransferenciasPage() {
 
                   {/* Nro Transferencia — solo lectura */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Nro. Transferencia</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro. Transferencia</label>
                     <input readOnly value={form.consecutivo}
                       className="w-full rounded-xl px-4 py-2.5 outline-none font-mono"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }} />
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }} />
                   </div>
 
                   {/* Fecha Emisión */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Emisión *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Emisión *</label>
                     <input type="date" required value={form.fecha_emision}
                       onChange={e => setForm({ ...form, fecha_emision: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
@@ -627,16 +627,16 @@ export default function TransferenciasPage() {
 
                   {/* Tipo de Inventario (heredado de la sesión) */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Tipo de Inventario</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Inventario</label>
                     <input readOnly value={form.tipo_inventario || '—'}
                       className="w-full rounded-xl px-4 py-2.5 outline-none font-semibold"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }}
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }}
                       title="Definido por el Tipo de Inventario activo de la sesión." />
                   </div>
 
                   {/* Bodega Salida */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Bodega Salida *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega Salida *</label>
                     <select required value={form.bodega_salida_id} onChange={e => handleBodegaSalida(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       <option value="">{tOp('seleccione')}</option>
@@ -646,7 +646,7 @@ export default function TransferenciasPage() {
 
                   {/* Bodega Entrada */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Bodega Entrada *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega Entrada *</label>
                     <select required value={form.bodega_entrada_id} onChange={e => handleBodegaEntrada(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       <option value="">{tOp('seleccione')}</option>
@@ -656,7 +656,7 @@ export default function TransferenciasPage() {
 
                   {/* Persona que Emite */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Persona que Emite *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Persona que Emite *</label>
                     <input required value={form.persona_emite}
                       onChange={e => setForm({ ...form, persona_emite: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
@@ -665,7 +665,7 @@ export default function TransferenciasPage() {
 
                   {/* Persona que Recibe */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Persona que Recibe</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Persona que Recibe</label>
                     <input value={form.persona_recibe}
                       onChange={e => setForm({ ...form, persona_recibe: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
@@ -674,7 +674,7 @@ export default function TransferenciasPage() {
 
                   {/* Fecha Aprobación */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Aprobación</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Aprobación</label>
                     <input type="date" value={form.fecha_aprobacion}
                       onChange={e => setForm({ ...form, fecha_aprobacion: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
@@ -682,7 +682,7 @@ export default function TransferenciasPage() {
 
                   {/* Fecha Aprobación Recepción */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Aprobación Recepción</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Aprobación Recepción</label>
                     <input type="date" value={form.fecha_aprobacion_recepcion}
                       onChange={e => setForm({ ...form, fecha_aprobacion_recepcion: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
@@ -690,7 +690,7 @@ export default function TransferenciasPage() {
 
                   {/* Estado */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Estado</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Estado</label>
                     <select value={form.estado} onChange={e => setForm({ ...form, estado: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       {[tF('pendiente'), 'Aprobada', 'Anulada'].map(s => <option key={s} value={s}>{s}</option>)}
@@ -700,14 +700,14 @@ export default function TransferenciasPage() {
 
                 {/* ── Buscar Producto ──────────────────────────────────────────── */}
                 <div className="mb-4">
-                  <label className="block text-xl text-white font-extrabold mb-2">Buscar producto para agregar al detalle</label>
+                  <label className="block text-xl text-slate-800 font-extrabold mb-2">Buscar producto para agregar al detalle</label>
                   <div className="flex items-center gap-2 max-w-md">
                     <input ref={searchProdRef} value={searchProd}
                       onFocus={() => { setSinExistMsg(''); setCantExistMsg('') }}
                       onChange={e => { setSearchProd(e.target.value); setSinExistMsg('') }}
                       onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); setSinExistMsg(''); setSearchProd('') } }}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none text-base text-white font-bold"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                       placeholder="Escriba nombre o código del producto..." />
                     <VoiceSearchButton onResult={setSearchProd} />
                   </div>
@@ -716,9 +716,9 @@ export default function TransferenciasPage() {
                       p.codigo.toLowerCase().includes(searchProd.toLowerCase()) ||
                       p.descripcion.toLowerCase().includes(searchProd.toLowerCase())
                     ).slice(0, 8)
-                    if (matches.length === 0) return <p className="text-white/30 text-xs mt-2">No se encontraron productos</p>
+                    if (matches.length === 0) return <p className="text-slate-400 text-xs mt-2">No se encontraron productos</p>
                     return (
-                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                         {matches.map(p => (
                           <button key={p.id} type="button"
                             onClick={() => {
@@ -742,19 +742,19 @@ export default function TransferenciasPage() {
                               setForm({ ...form, renglones })
                               setSearchProd('')
                             }}
-                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-white/5 transition-colors"
-                            style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                            <span className="font-mono text-xs" style={{ color: '#fff' }}>{p.codigo}</span>
-                            <span className="text-white/80 flex-1">{p.descripcion}</span>
-                            <span className="text-white/40 text-xs">{p.unidad_medida}</span>
-                            <span className="text-white/40 text-xs">Exist: {p.existencia}</span>
+                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-black/5 transition-colors"
+                            style={{ borderBottom: '1px solid rgba(15,23,42,0.05)' }}>
+                            <span className="font-mono text-xs" style={{ color: '#1e293b' }}>{p.codigo}</span>
+                            <span className="text-slate-600 flex-1">{p.descripcion}</span>
+                            <span className="text-slate-400 text-xs">{p.unidad_medida}</span>
+                            <span className="text-slate-400 text-xs">Exist: {p.existencia}</span>
                           </button>
                         ))}
                       </div>
                     )
                   })()}
                   {sinExistMsg && (
-                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                       ⚠ {sinExistMsg}
                     </div>
                   )}
@@ -763,22 +763,22 @@ export default function TransferenciasPage() {
                 {/* ── Renglones ──────────────────────────────────────────────────── */}
                 {form.renglones.length > 0 && form.renglones[0].codigo_producto !== '' && (
                 <div className="mb-6">
-                  <h3 className="text-white font-medium mb-3">Renglones</h3>
-                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <h3 className="text-slate-800 font-medium mb-3">Renglones</h3>
+                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                     <table className="w-full text-base text-left">
-                      <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+                      <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
                         <tr>
                           {[tF('codigo'), tF('descripcion'), tH('unidMedida'), tF('cantidad'), ''].map(h => (
-                            <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                            <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {form.renglones.map((r, idx) => (
-                          <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                            <td className="px-3 py-2 font-mono text-xs text-white">{r.codigo_producto}</td>
-                            <td className="px-3 py-2 text-white font-bold">{r.descripcion}</td>
-                            <td className="px-3 py-2 text-white font-bold">{r.unidad_medida || '—'}</td>
+                          <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                            <td className="px-3 py-2 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                            <td className="px-3 py-2 text-slate-800 font-bold">{r.descripcion}</td>
+                            <td className="px-3 py-2 text-slate-800 font-bold">{r.unidad_medida || '—'}</td>
                             <td className="px-2 py-2">
                               <input type="number" min="0.01" step="0.01" value={r.cantidad || ''}
                                 onChange={e => {
@@ -801,7 +801,7 @@ export default function TransferenciasPage() {
                                     searchProdRef.current?.focus()
                                   }
                                 }}
-                                className="w-24 rounded-lg px-2 py-1.5 text-white outline-none text-center font-bold"
+                                className="w-24 rounded-lg px-2 py-1.5 text-slate-800 outline-none text-center font-bold"
                                 style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)' }} />
                             </td>
                             <td className="px-2 py-2">
@@ -814,7 +814,7 @@ export default function TransferenciasPage() {
                     </table>
                   </div>
                 {cantExistMsg && (
-                  <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                  <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                     ⚠ {cantExistMsg} — Presione Enter para buscar otro producto
                   </div>
                 )}
@@ -823,27 +823,27 @@ export default function TransferenciasPage() {
 
                 {/* Observaciones */}
                 <div className="mb-6">
-                  <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                   <textarea rows={3} value={form.observaciones}
                     onChange={e => setForm({ ...form, observaciones: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none resize-none"
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none resize-none"
                     style={inputSt} placeholder="Notas u observaciones sobre la transferencia..." />
                 </div>
 
                 {errorMsg && (
-                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                     ⚠ {errorMsg}
                   </div>
                 )}
 
                 <div className="flex gap-3">
-                  <button type="submit" className="px-6 py-2.5 rounded-xl text-white font-medium"
+                  <button type="submit" className="px-6 py-2.5 rounded-xl text-slate-800 font-medium"
                     style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                     {tBtn('saveTransfer')}
                   </button>
                   <button type="button" onClick={() => { setIsFormOpen(false); setErrorMsg('') }}
-                    className="px-6 py-2.5 rounded-xl text-white/70"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    className="px-6 py-2.5 rounded-xl text-slate-600"
+                    style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
                     {tBtn('cancel')}
                   </button>
                 </div>
@@ -852,27 +852,27 @@ export default function TransferenciasPage() {
           )}
 
           {/* ── Tabla ──────────────────────────────────────────────────────────── */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {[tH('nroTransferencia'), tF('fechaEmision'), tF('bodegaSalida'), tF('bodegaEntrada'), tF('personaEmiteShort'), tF('renglones'), tF('estado'), tTbl('actions')].map(h => (
                     <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap"
-                      style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                      style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {transferencias.map(t => (
-                  <tr key={t.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-5 py-4 font-mono font-bold" style={{ color: '#fff' }}>{t.consecutivo}</td>
-                    <td className="px-5 py-4 text-white/60">{fDate(t.fecha_emision)}</td>
-                    <td className="px-5 py-4 text-white font-bold">{t.bodega_salida_nombre}</td>
-                    <td className="px-5 py-4 text-white font-bold">{t.bodega_entrada_nombre}</td>
-                    <td className="px-5 py-4 text-white/60">{t.persona_emite}</td>
+                  <tr key={t.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-5 py-4 font-mono font-bold" style={{ color: '#1e293b' }}>{t.consecutivo}</td>
+                    <td className="px-5 py-4 text-slate-500">{fDate(t.fecha_emision)}</td>
+                    <td className="px-5 py-4 text-slate-800 font-bold">{t.bodega_salida_nombre}</td>
+                    <td className="px-5 py-4 text-slate-800 font-bold">{t.bodega_entrada_nombre}</td>
+                    <td className="px-5 py-4 text-slate-500">{t.persona_emite}</td>
                     <td className="px-5 py-4 text-center">
                       <span className="px-2 py-1 rounded-lg text-xs font-medium"
-                        style={{ background: 'rgba(96,165,250,0.15)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                        style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                         {t.renglones.length} ítem{t.renglones.length !== 1 ? 's' : ''}
                       </span>
                     </td>
@@ -882,11 +882,11 @@ export default function TransferenciasPage() {
                     <td className="px-5 py-4">
                       <div className="flex gap-2">
                         <button onClick={() => setViewItem(t)} className="px-3 py-1 rounded-lg text-xs font-medium"
-                          style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                          style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                           {tBtn('view')}
                         </button>
                         {permisos.eliminar && <button onClick={() => handleDelete(t.id)} className="px-3 py-1 rounded-lg text-xs font-medium"
-                          style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>
+                          style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>
                           {tBtn('delete')}
                         </button>}
                       </div>
@@ -894,7 +894,7 @@ export default function TransferenciasPage() {
                   </tr>
                 ))}
                 {transferencias.length === 0 && (
-                  <tr><td colSpan={8} className="px-6 py-16 text-center" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                  <tr><td colSpan={8} className="px-6 py-16 text-center" style={{ color: 'rgba(15,23,42,0.25)' }}>
                     <div className="text-4xl mb-3">🔄</div>
                     <p>No hay transferencias registradas. Crea la primera con <strong>{tBtn('newTransfer')}</strong>.</p>
                   </td></tr>
@@ -907,29 +907,29 @@ export default function TransferenciasPage() {
 
       {/* ── Tab Reportes ───────────────────────────────────────────────────────── */}
       {tab === 'reportes' && (
-        <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-base font-semibold text-white mb-5">{tRpt('transferencias')}</h2>
+        <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-base font-semibold text-slate-800 mb-5">{tRpt('transferencias')}</h2>
 
           {/* Filtros */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             <div className="lg:col-span-3">
-              <label className="block text-xl font-extrabold text-white mb-1">Título del Reporte</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Título del Reporte</label>
               <input value={rptTitle} onChange={e => setRptTitle(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
                 placeholder="Reporte de Transferencias entre Bodegas" />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Fecha Desde</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Desde</label>
               <input type="date" value={rptDesde} onChange={e => setRptDesde(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Fecha Hasta</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Hasta</label>
               <input type="date" value={rptHasta} onChange={e => setRptHasta(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Bodega Salida</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega Salida</label>
               <select value={rptBodegaSalida} onChange={e => setRptBodegaSalida(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                 <option value="">Todas</option>
@@ -937,7 +937,7 @@ export default function TransferenciasPage() {
               </select>
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Estado</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Estado</label>
               <select value={rptEstado} onChange={e => setRptEstado(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                 <option value="">Todos</option>
@@ -949,26 +949,26 @@ export default function TransferenciasPage() {
           </div>
 
           {/* Preview */}
-          <div className="rounded-xl overflow-x-auto mb-5" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-xl overflow-x-auto mb-5" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
                 <tr>
                   {[tH('nro'), tF('fecha'), tF('bodegaSalida'), tF('bodegaEntrada'), tF('personaEmiteShort'), tH('itemsAccent'), tF('estado')].map(h => (
-                    <th key={h} className="px-4 py-2.5 font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-4 py-2.5 font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {filteredReport.slice(0, 5).map(t => (
-                  <tr key={t.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-4 py-2.5 font-mono font-bold" style={{ color: '#fff' }}>{t.consecutivo}</td>
-                    <td className="px-4 py-2.5 text-white/60">{fDate(t.fecha_emision)}</td>
-                    <td className="px-4 py-2.5 text-white/80">{t.bodega_salida_nombre}</td>
-                    <td className="px-4 py-2.5 text-white/80">{t.bodega_entrada_nombre}</td>
-                    <td className="px-4 py-2.5 text-white/60">{t.persona_emite}</td>
+                  <tr key={t.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-4 py-2.5 font-mono font-bold" style={{ color: '#1e293b' }}>{t.consecutivo}</td>
+                    <td className="px-4 py-2.5 text-slate-500">{fDate(t.fecha_emision)}</td>
+                    <td className="px-4 py-2.5 text-slate-600">{t.bodega_salida_nombre}</td>
+                    <td className="px-4 py-2.5 text-slate-600">{t.bodega_entrada_nombre}</td>
+                    <td className="px-4 py-2.5 text-slate-500">{t.persona_emite}</td>
                     <td className="px-4 py-2.5 text-center">
                       <span className="px-2 py-0.5 rounded-lg text-xs font-medium"
-                        style={{ background: 'rgba(96,165,250,0.15)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                        style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                         {t.renglones.length}
                       </span>
                     </td>
@@ -978,14 +978,14 @@ export default function TransferenciasPage() {
                   </tr>
                 ))}
                 {filteredReport.length === 0 && (
-                  <tr><td colSpan={7} className="px-4 py-6 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                  <tr><td colSpan={7} className="px-4 py-6 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>
                     {transferencias.length === 0 ? 'No hay transferencias registradas' : 'Sin registros para los filtros seleccionados'}
                   </td></tr>
                 )}
               </tbody>
             </table>
             {filteredReport.length > 5 && (
-              <div className="px-4 py-2 text-xs" style={{ color: 'rgba(255,255,255,0.35)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+              <div className="px-4 py-2 text-xs" style={{ color: 'rgba(15,23,42,0.35)', borderTop: '1px solid rgba(15,23,42,0.06)' }}>
                 Mostrando 5 de {filteredReport.length} registros
               </div>
             )}
@@ -996,25 +996,25 @@ export default function TransferenciasPage() {
             <button
               disabled={isExporting || filteredReport.length === 0}
               onClick={() => doExport('pdf')}
-              className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+              className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
               style={{ background: 'rgba(239,68,68,0.35)', border: '1px solid rgba(239,68,68,0.4)' }}>
               {isExporting ? 'Exportando...' : '⬇ PDF'}
             </button>
             <button
               disabled={isExporting || filteredReport.length === 0}
               onClick={() => doExport('excel')}
-              className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+              className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
               style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}>
               {isExporting ? 'Exportando...' : '⬇ Excel'}
             </button>
             <button
               disabled={isExporting || filteredReport.length === 0}
               onClick={() => doExport('print')}
-              className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+              className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
               style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}>
               🖨 Imprimir
             </button>
-            <span className="self-center text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            <span className="self-center text-xs" style={{ color: 'rgba(15,23,42,0.35)' }}>
               {filteredReport.length} registro{filteredReport.length !== 1 ? 's' : ''}
             </span>
           </div>
@@ -1023,11 +1023,11 @@ export default function TransferenciasPage() {
 
       {tab === 'especificos' && (
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-4">{tTab('especificos')}</h2>
-          <p className="text-white/50 text-sm mb-6">{tSub('seleccioneReporte')}</p>
+          <h2 className="text-xl font-bold text-slate-800 mb-4">{tTab('especificos')}</h2>
+          <p className="text-slate-500 text-sm mb-6">{tSub('seleccioneReporte')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="text-white/40 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
+            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="text-slate-400 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
             </div>
           </div>
         </div>

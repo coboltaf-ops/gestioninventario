@@ -97,10 +97,10 @@ export default function DashboardMaterialesSuministrosPage() {
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div className="flex items-center gap-3">
           <span className="text-3xl">🔷</span>
-          <h1 className="text-2xl font-extrabold text-white">Dashboard Materiales y Suministros</h1>
+          <h1 className="text-2xl font-extrabold text-slate-800">Dashboard Materiales y Suministros</h1>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold"
-          style={{ background: COLOR_BG, color: '#fff', border: `1px solid ${COLOR_BORDER}` }}>
+          style={{ background: COLOR_BG, color: '#1e293b', border: `1px solid ${COLOR_BORDER}` }}>
           <span>📦 Vista filtrada:</span><span>{TIPO}</span>
         </div>
       </div>
@@ -109,13 +109,13 @@ export default function DashboardMaterialesSuministrosPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {bigCards.map(c => (
           <div key={c.label} className="rounded-2xl p-6"
-            style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${COLOR_BORDER}` }}>
+            style={{ background: 'rgba(15,23,42,0.05)', border: `1px solid ${COLOR_BORDER}` }}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-2xl">{c.icon}</span>
               <div className="w-2 h-2 rounded-full" style={{ background: COLOR }} />
             </div>
-            <p className="text-2xl font-bold text-white">{c.value}</p>
-            <p className="text-sm mt-1 text-white/50">{c.label}</p>
+            <p className="text-2xl font-bold text-slate-800">{c.value}</p>
+            <p className="text-sm mt-1 text-slate-500">{c.label}</p>
           </div>
         ))}
       </div>
@@ -124,10 +124,10 @@ export default function DashboardMaterialesSuministrosPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-3">
         {smallCards.map(c => (
           <div key={c.label} className="rounded-xl p-4 text-center"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
             <span className="text-xl">{c.icon}</span>
-            <p className="text-xl font-bold text-white mt-2">{c.value}</p>
-            <p className="text-xs mt-1 text-white/40">{c.label}</p>
+            <p className="text-xl font-bold text-slate-800 mt-2">{c.value}</p>
+            <p className="text-xs mt-1 text-slate-400">{c.label}</p>
           </div>
         ))}
       </div>
@@ -135,20 +135,20 @@ export default function DashboardMaterialesSuministrosPage() {
       {/* Bajo Mínimo */}
       {bajoMinimo.length > 0 && (
         <Link href="/productos" className="block rounded-2xl p-6 transition-all hover:scale-[1.005] hover:bg-white/[0.07]"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(239,68,68,0.3)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">⚠️ Productos Bajo Mínimo</h2>
+          style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(239,68,68,0.3)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">⚠️ Productos Bajo Mínimo</h2>
           <div className="space-y-2 max-h-[300px] overflow-y-auto">
             {bajoMinimo.map(p => (
               <div key={p.id} className="flex items-center justify-between rounded-xl px-4 py-3"
                 style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.15)' }}>
                 <div>
-                  <span className="font-mono text-xs text-white/50">{p.codigo}</span>
-                  <span className="text-white/80 text-sm ml-2">{p.descripcion}</span>
+                  <span className="font-mono text-xs text-slate-500">{p.codigo}</span>
+                  <span className="text-slate-600 text-sm ml-2">{p.descripcion}</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm">
                   <span className="text-red-400 font-bold">{p.existencia || 0}</span>
-                  <span className="text-white/30">/</span>
-                  <span className="text-white/50">{p.minimo} mín</span>
+                  <span className="text-slate-400">/</span>
+                  <span className="text-slate-500">{p.minimo} mín</span>
                 </div>
               </div>
             ))}
@@ -159,8 +159,8 @@ export default function DashboardMaterialesSuministrosPage() {
       {/* Órdenes por Estado */}
       {Object.keys(estadosOrden).length > 0 && (
         <Link href="/ordenes-compra" className="block rounded-2xl p-6 transition-all hover:scale-[1.005] hover:bg-white/[0.07]"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">📊 Órdenes de Compra por Estado</h2>
+          style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">📊 Órdenes de Compra por Estado</h2>
           {(() => {
             const COLORS: Record<string, string> = {
               'Pendiente': '#fbbf24', 'Pendiente Aprobacion': '#fbbf24',
@@ -180,7 +180,7 @@ export default function DashboardMaterialesSuministrosPage() {
                       <div className="flex items-end justify-center h-48 w-full">
                         <div className="flex flex-col items-center justify-end h-full" style={{ width: '40%' }}>
                           <span className="text-sm font-black mb-2 whitespace-nowrap" style={{ color: c }}>
-                            ${fmtMoney(monto)} <span className="text-white/70">({count})</span>
+                            ${fmtMoney(monto)} <span className="text-slate-600">({count})</span>
                           </span>
                           <div className="w-full rounded-t-lg" style={{
                             height: `${h}%`, background: `linear-gradient(180deg, ${c}, ${c}99)`,
@@ -203,9 +203,9 @@ export default function DashboardMaterialesSuministrosPage() {
       {/* Valor por Bodega */}
       {dataBodegas.length > 0 && (
         <Link href="/bodegas" className="block rounded-2xl p-6 transition-all hover:scale-[1.005] hover:bg-white/[0.07]"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-lg font-semibold text-white mb-2">🏭 Valor de Inventario por Bodega</h2>
-          <p className="text-xl font-black mb-6 text-white">Total: ${fmtMoney(dataBodegas.reduce((s, d) => s + d.valor, 0))}</p>
+          style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-2">🏭 Valor de Inventario por Bodega</h2>
+          <p className="text-xl font-black mb-6 text-slate-800">Total: ${fmtMoney(dataBodegas.reduce((s, d) => s + d.valor, 0))}</p>
           {(() => {
             const COLORES = ['#3b82f6', '#06b6d4', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#dc2626']
             const max = Math.max(...dataBodegas.map(d => d.valor), 1)
@@ -218,7 +218,7 @@ export default function DashboardMaterialesSuministrosPage() {
                     <div key={d.id} className="flex flex-col items-center">
                       <div className="flex items-end justify-center h-56 w-full">
                         <div className="flex flex-col items-center justify-end h-full" style={{ width: '32%' }}>
-                          <span className="text-base font-black mb-2 whitespace-nowrap text-white">${fmtMoney(d.valor)}</span>
+                          <span className="text-base font-black mb-2 whitespace-nowrap text-slate-800">${fmtMoney(d.valor)}</span>
                           <div className="w-full rounded-t-lg" style={{
                             height: `${h}%`, background: `linear-gradient(180deg, ${c}, ${c}99)`,
                             minHeight: d.valor > 0 ? '4px' : '0', boxShadow: `0 0 12px ${c}66`,
@@ -226,8 +226,8 @@ export default function DashboardMaterialesSuministrosPage() {
                         </div>
                       </div>
                       <div className="w-full mt-3 pt-2" style={{ borderTop: `2px solid ${c}66` }}>
-                        <p className="text-sm font-black text-center text-white">{d.nombre}</p>
-                        <p className="text-xs text-white/60 text-center mt-1">{d.cantSaldos} ítems · {d.items.toLocaleString('es-CO')} u</p>
+                        <p className="text-sm font-black text-center text-slate-800">{d.nombre}</p>
+                        <p className="text-xs text-slate-500 text-center mt-1">{d.cantSaldos} ítems · {d.items.toLocaleString('es-CO')} u</p>
                       </div>
                     </div>
                   )

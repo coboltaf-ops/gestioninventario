@@ -8,8 +8,8 @@ import { useReferenceStore } from '@/features/referencias/store/reference-store'
 import { usePermisos } from '@/shared/hooks/use-permisos'
 import VoiceSearchButton from '@/shared/components/voice-search-button'
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }
-const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }
+const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)' }
 
 const initForm = (): DatosEmpresa => ({
   id: '', nombre: '', tipo_identificacion: '', nro_documento: '', correo: '',
@@ -67,7 +67,7 @@ export default function DatosEmpresaPage() {
   if (!permisos.leer) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-white/60 text-lg">No tienes permisos para acceder a esta sección.</p>
+        <p className="text-slate-500 text-lg">No tienes permisos para acceder a esta sección.</p>
       </div>
     )
   }
@@ -113,13 +113,13 @@ export default function DatosEmpresaPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('datosEmpresa')}</h1>
-          <p className="text-white/50 mt-1">{tSub('datosEmpresa')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('datosEmpresa')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('datosEmpresa')}</p>
         </div>
         {permisos.editar && (
           <button
             onClick={() => { setForm(initForm()); setFormError(''); setIsFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}
           >
             {tBtn('newRecord')}
@@ -130,31 +130,31 @@ export default function DatosEmpresaPage() {
       {/* View Modal */}
       {viewRecord && (
         <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-2xl mx-4 rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="w-full max-w-2xl mx-4 rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-white">{tSec('detalleEmpresa')}</h2>
-              <button onClick={() => setViewRecord(null)} className="text-white/50 hover:text-white text-xl">&times;</button>
+              <h2 className="text-lg font-semibold text-slate-800">{tSec('detalleEmpresa')}</h2>
+              <button onClick={() => setViewRecord(null)} className="text-slate-500 hover:text-slate-800 text-xl">&times;</button>
             </div>
             {viewRecord.logo && (
               <div className="flex items-center gap-4 mb-5">
-                <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}>
                   <img src={viewRecord.logo} alt="Logo" className="w-full h-full object-contain" />
                 </div>
-                <span className="text-white/50 text-sm">Logo de la Empresa</span>
+                <span className="text-slate-500 text-sm">Logo de la Empresa</span>
               </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {viewFields.map(f => (
                 <div key={f.key}>
-                  <label className="block text-xl font-extrabold text-white mb-1" style={{ color: '#f97316' }}>{f.label}</label>
-                  <p className="px-4 py-2.5 rounded-xl text-white text-sm" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1" style={{ color: '#f97316' }}>{f.label}</label>
+                  <p className="px-4 py-2.5 rounded-xl text-slate-800 text-sm" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
                     {viewRecord[f.key] || '—'}
                   </p>
                 </div>
               ))}
             </div>
             <div className="flex justify-end mt-6">
-              <button onClick={() => setViewRecord(null)} className="px-5 py-2 rounded-xl text-white text-sm font-medium" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
+              <button onClick={() => setViewRecord(null)} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-medium" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                 {tBtn('close')}
               </button>
             </div>
@@ -165,14 +165,14 @@ export default function DatosEmpresaPage() {
       {/* Form Modal */}
       {isFormOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <form onSubmit={handleSave} className="w-full max-w-3xl mx-4 rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <form onSubmit={handleSave} className="w-full max-w-3xl mx-4 rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-white">{form.id ? 'Editar Empresa' : 'Nueva Empresa'}</h2>
-              <button type="button" onClick={() => setIsFormOpen(false)} className="text-white/50 hover:text-white text-xl">&times;</button>
+              <h2 className="text-lg font-semibold text-slate-800">{form.id ? 'Editar Empresa' : 'Nueva Empresa'}</h2>
+              <button type="button" onClick={() => setIsFormOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">&times;</button>
             </div>
 
             {formError && (
-              <div className="mb-4 px-4 py-2 rounded-xl text-sm" style={{ background: 'rgba(239,68,68,0.15)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>
+              <div className="mb-4 px-4 py-2 rounded-xl text-sm" style={{ background: 'rgba(239,68,68,0.15)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>
                 {formError}
               </div>
             )}
@@ -180,47 +180,47 @@ export default function DatosEmpresaPage() {
             {/* Logo Upload */}
             <div className="flex items-center gap-5 mb-6">
               <div className="w-20 h-20 rounded-xl flex items-center justify-center overflow-hidden shrink-0"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}>
                 {form.logo ? (
                   <img src={form.logo} alt="Logo" className="w-full h-full object-contain" />
                 ) : (
-                  <span className="text-white/30 text-3xl">🏢</span>
+                  <span className="text-slate-400 text-3xl">🏢</span>
                 )}
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-2">Logo de la Empresa</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-2">Logo de la Empresa</label>
                 <input ref={fileInputRef} type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
                 <div className="flex gap-2">
                   <button type="button" onClick={() => fileInputRef.current?.click()}
-                    className="px-4 py-2 rounded-xl text-white text-xs font-medium"
+                    className="px-4 py-2 rounded-xl text-slate-800 text-xs font-medium"
                     style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                     {tBtn('uploadLogo')}
                   </button>
                   {form.logo && (
                     <button type="button" onClick={() => setForm(f => ({ ...f, logo: '' }))}
-                      className="px-4 py-2 rounded-xl text-white/60 text-xs font-medium"
+                      className="px-4 py-2 rounded-xl text-slate-500 text-xs font-medium"
                       style={{ background: 'rgba(239,68,68,0.95)', border: '1px solid rgba(239,68,68,0.3)' }}>
                       Quitar
                     </button>
                   )}
                 </div>
-                <p className="text-white/30 text-[10px] mt-1">PNG, JPG o SVG. Max 2 MB.</p>
+                <p className="text-slate-400 text-[10px] mt-1">PNG, JPG o SVG. Max 2 MB.</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* Nombre */}
               <div className="lg:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Nombre de la Empresa *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Nombre de la Empresa *</label>
                 <input value={form.nombre} onChange={e => setForm({ ...form, nombre: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="Razón social" />
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="Razón social" />
               </div>
 
               {/* Tipo Identificación */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Tipo Identificación</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Tipo Identificación</label>
                 <select value={form.tipo_identificacion} onChange={e => setForm({ ...form, tipo_identificacion: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={selectSt}>
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={selectSt}>
                   <option value="">{tOp('seleccionar')}</option>
                   {refData.tipo_identificacion.filter(o => o.situacion).map(o => (
                     <option key={o.id ?? o.descripcion} value={o.descripcion}>{o.descripcion}</option>
@@ -230,44 +230,44 @@ export default function DatosEmpresaPage() {
 
               {/* Nro Documento */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Nro. Documento</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Nro. Documento</label>
                 <input value={form.nro_documento} onChange={e => setForm({ ...form, nro_documento: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="J-12345678-9" />
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="J-12345678-9" />
               </div>
 
               {/* Correo */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Correo Empresa</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Correo Empresa</label>
                 <input type="email" value={form.correo} onChange={e => setForm({ ...form, correo: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="info@empresa.com" />
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="info@empresa.com" />
               </div>
 
               {/* Teléfono */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Teléfono Oficina</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Teléfono Oficina</label>
                 <input type="tel" value={form.telefono_oficina} onChange={e => setForm({ ...form, telefono_oficina: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="0212-0000000" />
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="0212-0000000" />
               </div>
 
               {/* Servidor de Correo */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Servidor de Correo</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Servidor de Correo</label>
                 <input value={form.servidor_correo || ''} onChange={e => setForm({ ...form, servidor_correo: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="smtp.empresa.com" />
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="smtp.empresa.com" />
               </div>
 
               {/* Dirección */}
               <div className="lg:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Dirección</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Dirección</label>
                 <input value={form.direccion} onChange={e => setForm({ ...form, direccion: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="Av. Principal #123" />
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="Av. Principal #123" />
               </div>
 
               {/* Ciudad */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Ciudad</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Ciudad</label>
                 <select value={form.ciudad} onChange={e => setForm({ ...form, ciudad: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={selectSt}>
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={selectSt}>
                   <option value="">{tOp('seleccionar')}</option>
                   {refData.ciudad.filter(o => o.situacion).map(o => (
                     <option key={o.id ?? o.descripcion} value={o.descripcion}>{o.descripcion}</option>
@@ -277,9 +277,9 @@ export default function DatosEmpresaPage() {
 
               {/* País */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">País</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">País</label>
                 <select value={form.pais} onChange={e => setForm({ ...form, pais: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={selectSt}>
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={selectSt}>
                   <option value="">{tOp('seleccionar')}</option>
                   {refData.pais.filter(o => o.situacion).map(o => (
                     <option key={o.id ?? o.descripcion} value={o.descripcion}>{o.descripcion}</option>
@@ -289,21 +289,21 @@ export default function DatosEmpresaPage() {
 
               {/* Representante Legal */}
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Representante Legal</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Representante Legal</label>
                 <input value={form.representante_legal} onChange={e => setForm({ ...form, representante_legal: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="Nombre completo" />
+                  className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40" style={inputSt} placeholder="Nombre completo" />
               </div>
             </div>
 
             {/* Botones */}
             <div className="flex justify-end gap-3 mt-8">
               <button type="button" onClick={() => setIsFormOpen(false)}
-                className="px-5 py-2.5 rounded-xl text-white/70 font-medium text-sm hover:text-white"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                className="px-5 py-2.5 rounded-xl text-slate-600 font-medium text-sm hover:text-slate-800"
+                style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}>
                 {tBtn('cancel')}
               </button>
               <button type="submit"
-                className="px-5 py-2.5 rounded-xl text-white font-medium text-sm hover:opacity-90"
+                className="px-5 py-2.5 rounded-xl text-slate-800 font-medium text-sm hover:opacity-90"
                 style={{ background: 'rgba(34,197,94,0.3)', border: '1px solid rgba(34,197,94,0.4)' }}>
                 {form.id ? 'Actualizar' : 'Guardar'}
               </button>
@@ -318,7 +318,7 @@ export default function DatosEmpresaPage() {
           <input
             value={search} onChange={e => setSearch(e.target.value)}
             placeholder={tPh('buscarNombreDoc')}
-            className="w-full px-4 py-2.5 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-blue-400/40"
+            className="w-full px-4 py-2.5 rounded-xl text-slate-800 text-sm outline-none focus:ring-2 focus:ring-blue-400/40"
             style={inputSt}
           />
           <VoiceSearchButton onResult={setSearch} />
@@ -326,52 +326,52 @@ export default function DatosEmpresaPage() {
       </div>
 
       {/* Table */}
-      <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr style={{ background: 'rgba(96,165,250,0.15)' }}>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">Nombre</th>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">Tipo Id</th>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">Nro. Documento</th>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">Correo</th>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">Teléfono</th>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">Ciudad</th>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">País</th>
-                <th className="px-5 py-3 text-center text-xs font-semibold text-white/70 uppercase tracking-wider">{tTbl('actions')}</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Nombre</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Tipo Id</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Nro. Documento</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Correo</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Teléfono</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Ciudad</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">País</th>
+                <th className="px-5 py-3 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">{tTbl('actions')}</th>
               </tr>
             </thead>
             <tbody>
               {filtered.length === 0 && (
-                <tr><td colSpan={8} className="px-5 py-12 text-center text-white/40">{tE('noEmpresas')}</td></tr>
+                <tr><td colSpan={8} className="px-5 py-12 text-center text-slate-400">{tE('noEmpresas')}</td></tr>
               )}
               {filtered.map(e => (
-                <tr key={e.id} className="border-t border-white/5 hover:bg-white/5 transition-colors">
-                  <td className="px-5 py-4 text-sm text-white font-medium">{e.nombre}</td>
-                  <td className="px-5 py-4 text-sm text-white/70">{e.tipo_identificacion || '—'}</td>
-                  <td className="px-5 py-4 text-sm text-white/70">{e.nro_documento || '—'}</td>
-                  <td className="px-5 py-4 text-sm text-white/70">{e.correo || '—'}</td>
-                  <td className="px-5 py-4 text-sm text-white/70">{e.telefono_oficina || '—'}</td>
-                  <td className="px-5 py-4 text-sm text-white/70">{e.ciudad || '—'}</td>
-                  <td className="px-5 py-4 text-sm text-white/70">{e.pais || '—'}</td>
+                <tr key={e.id} className="border-t border-black/5 hover:bg-black/5 transition-colors">
+                  <td className="px-5 py-4 text-sm text-slate-800 font-medium">{e.nombre}</td>
+                  <td className="px-5 py-4 text-sm text-slate-600">{e.tipo_identificacion || '—'}</td>
+                  <td className="px-5 py-4 text-sm text-slate-600">{e.nro_documento || '—'}</td>
+                  <td className="px-5 py-4 text-sm text-slate-600">{e.correo || '—'}</td>
+                  <td className="px-5 py-4 text-sm text-slate-600">{e.telefono_oficina || '—'}</td>
+                  <td className="px-5 py-4 text-sm text-slate-600">{e.ciudad || '—'}</td>
+                  <td className="px-5 py-4 text-sm text-slate-600">{e.pais || '—'}</td>
                   <td className="px-5 py-4">
                     <div className="flex items-center justify-center gap-2">
                       <button onClick={() => setViewRecord(e)}
                         className="px-3 py-1 rounded-lg text-xs font-medium"
-                        style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                        style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                         {tBtn('view')}
                       </button>
                       {permisos.editar && (
                         <button onClick={() => handleEdit(e)}
                           className="px-3 py-1 rounded-lg text-xs font-medium"
-                          style={{ background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }}>
+                          style={{ background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }}>
                           {tBtn('edit')}
                         </button>
                       )}
                       {permisos.eliminar && (
                         <button onClick={() => handleDelete(e.id)}
                           className="px-3 py-1 rounded-lg text-xs font-medium"
-                          style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>
+                          style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>
                           {tBtn('delete')}
                         </button>
                       )}

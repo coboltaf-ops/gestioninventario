@@ -90,7 +90,7 @@ export default function CocinaPage() {
     .sort((a, b) => a.hora.localeCompare(b.hora))
 
   return (
-    <div style={{ minHeight: '100vh', background: '#000', color: '#fff', padding: '20px' }}>
+    <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', padding: '20px' }}>
       <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
         {/* Header */}
         <h1 style={{ textAlign: 'center', fontSize: '40px', marginBottom: '10px', fontWeight: 'bold' }}>
@@ -129,7 +129,7 @@ export default function CocinaPage() {
             <div style={{
               padding: '40px',
               textAlign: 'center',
-              background: 'rgba(255,255,255,0.05)',
+              background: 'rgba(15,23,42,0.05)',
               borderRadius: '12px',
             }}>
               <p style={{ fontSize: '18px', color: '#aaa' }}>😎 Sin pedidos pendientes</p>
@@ -165,7 +165,7 @@ export default function CocinaPage() {
                           textAlign: 'center',
                           padding: '10px 15px',
                           background: colorTimer,
-                          color: '#000',
+                          color: '#f1f5f9',
                           borderRadius: '6px',
                           fontWeight: 'bold',
                         }}>
@@ -179,7 +179,7 @@ export default function CocinaPage() {
                       {/* Cliente o Mesa */}
                       <div style={{
                         padding: '12px',
-                        background: 'rgba(255,255,255,0.05)',
+                        background: 'rgba(15,23,42,0.05)',
                         borderRadius: '6px',
                         marginBottom: '15px',
                         fontSize: '18px',
@@ -201,7 +201,7 @@ export default function CocinaPage() {
                         {pedido.detalles.map((plato, idx) => (
                           <div key={idx} style={{
                             padding: '10px',
-                            background: 'rgba(255,255,255,0.05)',
+                            background: 'rgba(15,23,42,0.05)',
                             borderRadius: '6px',
                             marginBottom: '8px',
                             fontSize: '16px',
@@ -238,7 +238,7 @@ export default function CocinaPage() {
                         width: '100%',
                         padding: '15px',
                         background: marcandoListo === pedido.id ? '#999' : 'linear-gradient(135deg, #10b981, #34d399)',
-                        color: '#000',
+                        color: '#f1f5f9',
                         border: 'none',
                         borderRadius: '8px',
                         cursor: marcandoListo === pedido.id ? 'not-allowed' : 'pointer',
@@ -271,7 +271,7 @@ export default function CocinaPage() {
             <div style={{
               padding: '40px',
               textAlign: 'center',
-              background: 'rgba(255,255,255,0.05)',
+              background: 'rgba(15,23,42,0.05)',
               borderRadius: '12px',
             }}>
               <p style={{ fontSize: '18px', color: '#aaa' }}>Sin pedidos listos</p>
@@ -297,7 +297,7 @@ export default function CocinaPage() {
                     <span style={{
                       padding: '8px 16px',
                       background: '#10b981',
-                      color: '#000',
+                      color: '#f1f5f9',
                       borderRadius: '6px',
                       fontWeight: 'bold',
                       fontSize: '12px',
@@ -308,7 +308,7 @@ export default function CocinaPage() {
 
                   <div style={{
                     padding: '12px',
-                    background: 'rgba(255,255,255,0.05)',
+                    background: 'rgba(15,23,42,0.05)',
                     borderRadius: '6px',
                     marginBottom: '15px',
                     fontSize: '16px',
@@ -330,7 +330,7 @@ export default function CocinaPage() {
                       <p key={idx} style={{
                         margin: '8px 0',
                         padding: '8px',
-                        background: 'rgba(255,255,255,0.05)',
+                        background: 'rgba(15,23,42,0.05)',
                         borderRadius: '4px',
                         fontSize: '14px',
                       }}>

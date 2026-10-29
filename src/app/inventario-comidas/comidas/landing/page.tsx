@@ -159,7 +159,7 @@ export default function LandingPage() {
 
   if (step === 'confirmation' && pedidoConfirmado) {
     return (
-      <div style={{ minHeight: '100vh', background: '#000', color: '#fff', padding: '40px 20px' }}>
+      <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', padding: '40px 20px' }}>
         <style>{`
           @media print {
             body { background: white; color: black; }
@@ -193,7 +193,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div style={{ background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '8px', marginBottom: '20px', textAlign: 'left' }}>
+            <div style={{ background: 'rgba(15,23,42,0.05)', padding: '20px', borderRadius: '8px', marginBottom: '20px', textAlign: 'left' }}>
               <p style={{ margin: '0 0 15px 0', fontSize: '16px', fontWeight: 'bold', borderBottom: '1px solid #333', paddingBottom: '10px' }}>
                 CLIENTE: {pedidoConfirmado.cliente}
               </p>
@@ -247,7 +247,7 @@ export default function LandingPage() {
                 flex: 1,
                 padding: '15px',
                 background: '#3b82f6',
-                color: '#fff',
+                color: '#1e293b',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer',
@@ -262,7 +262,7 @@ export default function LandingPage() {
                 flex: 1,
                 padding: '15px',
                 background: '#ea580c',
-                color: '#fff',
+                color: '#1e293b',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer',
@@ -278,11 +278,11 @@ export default function LandingPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#000', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b' }}>
       {/* Welcome Banner */}
       <div style={{
         background: '#ea580c',
-        color: '#000',
+        color: '#f1f5f9',
         padding: '16px 20px',
         textAlign: 'center',
         fontSize: '20px',
@@ -306,7 +306,7 @@ export default function LandingPage() {
           <button onClick={() => setShowCarrito(!showCarrito)} style={{
             padding: '12px 24px',
             background: 'linear-gradient(135deg, #ea580c, #ff6b35)',
-            color: '#fff',
+            color: '#1e293b',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer',
@@ -327,7 +327,7 @@ export default function LandingPage() {
                 <div style={{
                   padding: '40px',
                   textAlign: 'center',
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(15,23,42,0.05)',
                   borderRadius: '12px',
                 }}>
                   <p style={{ fontSize: '18px', color: '#aaa' }}>
@@ -357,7 +357,7 @@ export default function LandingPage() {
                         width: '100%',
                         padding: '12px',
                         background: 'linear-gradient(135deg, #ea580c, #ff6b35)',
-                        color: '#fff',
+                        color: '#1e293b',
                         border: 'none',
                         borderRadius: '8px',
                         cursor: 'pointer',
@@ -408,7 +408,7 @@ export default function LandingPage() {
                             <button onClick={() => removerCarrito(item.id)} style={{
                               padding: '4px 8px',
                               background: '#ef4444',
-                              color: '#fff',
+                              color: '#1e293b',
                               border: 'none',
                               borderRadius: '4px',
                               cursor: 'pointer',
@@ -421,7 +421,7 @@ export default function LandingPage() {
                             <button onClick={() => actualizarCantidad(item.id, item.cantidad - 1)} style={{
                               padding: '4px 8px',
                               background: '#666',
-                              color: '#fff',
+                              color: '#1e293b',
                               border: 'none',
                               borderRadius: '4px',
                               cursor: 'pointer',
@@ -432,7 +432,7 @@ export default function LandingPage() {
                               width: '40px',
                               padding: '4px',
                               background: '#111',
-                              color: '#fff',
+                              color: '#1e293b',
                               border: '1px solid #333',
                               borderRadius: '4px',
                               textAlign: 'center',
@@ -440,7 +440,7 @@ export default function LandingPage() {
                             <button onClick={() => actualizarCantidad(item.id, item.cantidad + 1)} style={{
                               padding: '4px 8px',
                               background: '#666',
-                              color: '#fff',
+                              color: '#1e293b',
                               border: 'none',
                               borderRadius: '4px',
                               cursor: 'pointer',
@@ -460,7 +460,7 @@ export default function LandingPage() {
                               width: '100%',
                               padding: '6px',
                               background: '#111',
-                              color: '#fff',
+                              color: '#1e293b',
                               border: '1px solid #333',
                               borderRadius: '4px',
                               fontSize: '12px',
@@ -487,7 +487,7 @@ export default function LandingPage() {
                       width: '100%',
                       padding: '15px',
                       background: 'linear-gradient(135deg, #10b981, #34d399)',
-                      color: '#000',
+                      color: '#f1f5f9',
                       border: 'none',
                       borderRadius: '8px',
                       cursor: 'pointer',
@@ -526,7 +526,7 @@ export default function LandingPage() {
                     width: '100%',
                     padding: '12px',
                     background: '#111',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: '1px solid #f59e0b',
                     borderRadius: '6px',
                     fontSize: '16px',
@@ -543,7 +543,7 @@ export default function LandingPage() {
                   width: '100%',
                   padding: '12px',
                   background: '#111',
-                  color: '#fff',
+                  color: '#1e293b',
                   border: '1px solid #f59e0b',
                   borderRadius: '6px',
                   fontSize: '16px',
@@ -556,7 +556,7 @@ export default function LandingPage() {
               </div>
 
               <div style={{
-                background: 'rgba(255,255,255,0.05)',
+                background: 'rgba(15,23,42,0.05)',
                 padding: '15px',
                 borderRadius: '8px',
                 marginBottom: '20px',
@@ -588,7 +588,7 @@ export default function LandingPage() {
                     flex: 1,
                     padding: '15px',
                     background: '#666',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '8px',
                     cursor: 'pointer',
@@ -604,7 +604,7 @@ export default function LandingPage() {
                     flex: 1,
                     padding: '15px',
                     background: loading ? '#999' : 'linear-gradient(135deg, #f59e0b, #fbbf24)',
-                    color: '#000',
+                    color: '#f1f5f9',
                     border: 'none',
                     borderRadius: '8px',
                     cursor: loading ? 'not-allowed' : 'pointer',

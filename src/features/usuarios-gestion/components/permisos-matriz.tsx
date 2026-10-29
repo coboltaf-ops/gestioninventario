@@ -16,8 +16,8 @@ const ACCIONES: { key: keyof Permiso; label: string }[] = [
 ]
 
 const cardStyle: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.04)',
-  border: '1px solid rgba(255,255,255,0.1)',
+  background: 'rgba(15,23,42,0.04)',
+  border: '1px solid rgba(15,23,42,0.1)',
 }
 
 export function PermisosMatriz({ usuarios, onUpdateUsuario }: Props) {
@@ -67,7 +67,7 @@ export function PermisosMatriz({ usuarios, onUpdateUsuario }: Props) {
 
   if (usuarios.length === 0) {
     return (
-      <div className="rounded-2xl p-10 text-center text-white/40 text-sm" style={cardStyle}>
+      <div className="rounded-2xl p-10 text-center text-slate-400 text-sm" style={cardStyle}>
         No hay usuarios para gestionar permisos.
       </div>
     )
@@ -78,11 +78,11 @@ export function PermisosMatriz({ usuarios, onUpdateUsuario }: Props) {
       {/* User selector + bulk actions */}
       <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
         <div>
-          <label className="block text-xs font-medium text-white/50 mb-1.5">Usuario</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5">Usuario</label>
           <select
             value={selectedId}
             onChange={(e) => setSelectedId(e.target.value)}
-            className="px-3 py-2 rounded-lg text-sm outline-none focus:border-white/30 transition-colors min-w-[220px]"
+            className="px-3 py-2 rounded-lg text-sm outline-none focus:border-black/30 transition-colors min-w-[220px]"
             style={cardStyle}
           >
             {usuarios.map((u) => (
@@ -95,15 +95,15 @@ export function PermisosMatriz({ usuarios, onUpdateUsuario }: Props) {
         <div className="flex gap-2">
           <button
             onClick={() => toggleTodo(true)}
-            className="px-3 py-2 rounded-lg text-xs font-medium text-white transition-all hover:opacity-90"
+            className="px-3 py-2 rounded-lg text-xs font-medium text-slate-800 transition-all hover:opacity-90"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}
           >
             Marcar todo
           </button>
           <button
             onClick={() => toggleTodo(false)}
-            className="px-3 py-2 rounded-lg text-xs font-medium text-white/70 transition-colors hover:bg-white/5"
-            style={{ border: '1px solid rgba(255,255,255,0.1)' }}
+            className="px-3 py-2 rounded-lg text-xs font-medium text-slate-600 transition-colors hover:bg-black/5"
+            style={{ border: '1px solid rgba(15,23,42,0.1)' }}
           >
             Desmarcar todo
           </button>
@@ -116,19 +116,19 @@ export function PermisosMatriz({ usuarios, onUpdateUsuario }: Props) {
           <table className="w-full">
             <thead className="sticky top-0 z-10">
               <tr style={{ background: 'rgba(30,30,30,1)' }}>
-                <th className="px-5 py-3 text-left text-xs font-semibold text-white/70 uppercase tracking-wider">Módulo</th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Módulo</th>
                 {ACCIONES.map((a) => (
-                  <th key={a.key} className="px-4 py-3 text-center text-xs font-semibold text-white/70 uppercase tracking-wider">
+                  <th key={a.key} className="px-4 py-3 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">
                     {a.label}
                   </th>
                 ))}
-                <th className="px-4 py-3 text-center text-xs font-semibold text-white/70 uppercase tracking-wider">Todo</th>
+                <th className="px-4 py-3 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Todo</th>
               </tr>
             </thead>
             <tbody>
               {MODULOS.map((m) => (
-                <tr key={m.id} className="border-t border-white/5 hover:bg-white/5 transition-colors">
-                  <td className="px-5 py-3 text-sm font-medium text-white">{m.label}</td>
+                <tr key={m.id} className="border-t border-black/5 hover:bg-black/5 transition-colors">
+                  <td className="px-5 py-3 text-sm font-medium text-slate-800">{m.label}</td>
                   {ACCIONES.map((a) => (
                     <td key={a.key} className="px-4 py-3 text-center">
                       <input
@@ -154,7 +154,7 @@ export function PermisosMatriz({ usuarios, onUpdateUsuario }: Props) {
         </div>
       </div>
 
-      <p className="mt-4 text-xs text-white/30">
+      <p className="mt-4 text-xs text-slate-400">
         Los cambios se guardan automáticamente para el usuario seleccionado.
       </p>
     </div>

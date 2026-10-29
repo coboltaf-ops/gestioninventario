@@ -42,8 +42,8 @@ export default function ControlBancarioPage() {
   const [bcoEstado, setBcoEstado] = useState<'Activo' | 'Inactivo'>('Activo')
   const [bcoError, setBcoError] = useState('')
 
-  const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-  const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+  const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+  const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
   const abrirNuevoBanco = () => {
     setBcoEditId(null)
@@ -190,7 +190,7 @@ export default function ControlBancarioPage() {
   if (!permisos.leer) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-white/60 text-lg">No tienes permisos para acceder a esta sección.</p>
+        <p className="text-slate-500 text-lg">No tienes permisos para acceder a esta sección.</p>
       </div>
     )
   }
@@ -199,13 +199,13 @@ export default function ControlBancarioPage() {
     <div>
       <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Control Bancario</h1>
-          <p className="text-white/50 mt-1">Bancos, Depósitos y Movimientos Bancarios</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">Control Bancario</h1>
+          <p className="text-slate-500 mt-1">Bancos, Depósitos y Movimientos Bancarios</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit flex-wrap" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit flex-wrap" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {[
           { id: 'bancos' as const, label: '🏦 Bancos', count: bancos.length },
           { id: 'depositos' as const, label: '💰 Depósitos', count: depositos.length },
@@ -216,11 +216,11 @@ export default function ControlBancarioPage() {
             onClick={() => setTab(t.id)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2"
             style={tab === t.id
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}
           >
             <span>{t.label}</span>
-            <span className="px-2 py-0.5 rounded-full text-xs" style={{ background: 'rgba(255,255,255,0.1)' }}>{t.count}</span>
+            <span className="px-2 py-0.5 rounded-full text-xs" style={{ background: 'rgba(15,23,42,0.1)' }}>{t.count}</span>
           </button>
         ))}
       </div>
@@ -229,45 +229,45 @@ export default function ControlBancarioPage() {
       {tab === 'bancos' && (
         <>
           <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-            <p className="text-white/60 text-sm">{bancos.length} cuenta(s) bancaria(s) registrada(s) <span className="text-white/30">· compartidas en toda la empresa</span></p>
+            <p className="text-slate-500 text-sm">{bancos.length} cuenta(s) bancaria(s) registrada(s) <span className="text-slate-400">· compartidas en toda la empresa</span></p>
             {permisos.editar && (
-              <button onClick={abrirNuevoBanco} className="px-5 py-2.5 rounded-xl font-medium text-white"
+              <button onClick={abrirNuevoBanco} className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
                 style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                 + Nuevo Banco
               </button>
             )}
           </div>
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {['Nombre Banco', 'Tipo Cuenta', 'N° Cuenta', 'Fecha Saldo', 'Saldo', 'Estado', 'Acciones'].map(h => (
-                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {bancos.length === 0 ? (
-                  <tr><td colSpan={7} className="px-6 py-12 text-center text-white/30">No hay bancos registrados. Crea el primero con <strong>+ Nuevo Banco</strong>.</td></tr>
+                  <tr><td colSpan={7} className="px-6 py-12 text-center text-slate-400">No hay bancos registrados. Crea el primero con <strong>+ Nuevo Banco</strong>.</td></tr>
                 ) : bancos.map(b => (
-                  <tr key={b.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="hover:bg-white/[0.02]">
-                    <td className="px-3 py-3 text-white font-semibold">{b.nombre_banco}</td>
-                    <td className="px-3 py-3 text-white font-bold">{b.tipo_cuenta}</td>
-                    <td className="px-3 py-3 font-mono text-white">{b.nro_cuenta}</td>
-                    <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(b.fecha_saldo)}</td>
+                  <tr key={b.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="hover:bg-white/[0.02]">
+                    <td className="px-3 py-3 text-slate-800 font-semibold">{b.nombre_banco}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{b.tipo_cuenta}</td>
+                    <td className="px-3 py-3 font-mono text-slate-800">{b.nro_cuenta}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(b.fecha_saldo)}</td>
                     <td className="px-3 py-3 font-mono text-right text-emerald-300 whitespace-nowrap">{b.saldo != null ? b.saldo.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '—'}</td>
                     <td className="px-3 py-3">
                       <span className="px-2 py-1 rounded-md text-xs font-bold" style={
                         b.estado === 'Activo'
-                          ? { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.4)' }
-                          : { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.4)' }
+                          ? { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.4)' }
+                          : { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.4)' }
                       }>{b.estado}</span>
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex gap-1">
-                        {permisos.editar && <button onClick={() => editarBanco(b)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
-                        {permisos.eliminar && <button onClick={() => eliminarBanco(b)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
+                        {permisos.editar && <button onClick={() => editarBanco(b)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
+                        {permisos.eliminar && <button onClick={() => eliminarBanco(b)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
                       </div>
                     </td>
                   </tr>
@@ -281,49 +281,49 @@ export default function ControlBancarioPage() {
       {tab === 'depositos' && (
         <>
           <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-            <p className="text-white/60 text-sm">{depositos.length} depósito(s) registrado(s)</p>
+            <p className="text-slate-500 text-sm">{depositos.length} depósito(s) registrado(s)</p>
             {permisos.editar && (
-              <button onClick={abrirNuevoDeposito} className="px-5 py-2.5 rounded-xl font-medium text-white"
+              <button onClick={abrirNuevoDeposito} className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
                 style={{ background: 'rgba(22,163,74,1)', border: '1px solid rgba(21,128,61,1)' }}>
                 + Nuevo Depósito
               </button>
             )}
           </div>
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {['Consecutivo', 'Fecha', 'Banco', 'Origen', 'Monto', 'Referencia', 'Depositado Por', 'Concepto', 'Estado', 'Acciones'].map(h => (
-                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {depositos.length === 0 ? (
-                  <tr><td colSpan={10} className="px-6 py-12 text-center text-white/30">No hay depósitos registrados. Crea el primero con <strong>+ Nuevo Depósito</strong>.</td></tr>
+                  <tr><td colSpan={10} className="px-6 py-12 text-center text-slate-400">No hay depósitos registrados. Crea el primero con <strong>+ Nuevo Depósito</strong>.</td></tr>
                 ) : depositos.map(d => (
-                  <tr key={d.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="hover:bg-white/[0.02]">
+                  <tr key={d.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="hover:bg-white/[0.02]">
                     <td className="px-3 py-3 font-mono font-bold text-emerald-300 whitespace-nowrap">{d.consecutivo}</td>
-                    <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(d.fecha_registro)}</td>
-                    <td className="px-3 py-3 text-white">{d.banco_descripcion}</td>
-                    <td className="px-3 py-3 text-white font-bold">{d.origen}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(d.fecha_registro)}</td>
+                    <td className="px-3 py-3 text-slate-800">{d.banco_descripcion}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{d.origen}</td>
                     <td className="px-3 py-3 font-mono text-right text-emerald-300 whitespace-nowrap">{d.monto.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                    <td className="px-3 py-3 font-mono text-white font-bold">{d.nro_referencia || '—'}</td>
-                    <td className="px-3 py-3 text-white font-bold">{d.depositado_por}</td>
-                    <td className="px-3 py-3 text-white font-bold max-w-xs truncate" title={d.concepto}>{d.concepto || '—'}</td>
+                    <td className="px-3 py-3 font-mono text-slate-800 font-bold">{d.nro_referencia || '—'}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{d.depositado_por}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold max-w-xs truncate" title={d.concepto}>{d.concepto || '—'}</td>
                     <td className="px-3 py-3">
                       <span className="px-2 py-1 rounded-md text-xs font-bold" style={
                         d.estado === 'Registrado'
-                          ? { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.4)' }
-                          : { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.4)' }
+                          ? { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.4)' }
+                          : { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.4)' }
                       }>{d.estado}</span>
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex gap-1 flex-wrap">
-                        {permisos.editar && d.estado === 'Registrado' && <button onClick={() => editarDeposito(d)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
-                        {permisos.editar && d.estado === 'Registrado' && <button onClick={() => anularDeposito(d)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(251,191,36,0.95)', color: '#fff', border: '1px solid rgba(251,191,36,0.3)' }}>Anular</button>}
-                        {permisos.eliminar && <button onClick={() => eliminarDeposito(d)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
+                        {permisos.editar && d.estado === 'Registrado' && <button onClick={() => editarDeposito(d)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
+                        {permisos.editar && d.estado === 'Registrado' && <button onClick={() => anularDeposito(d)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(251,191,36,0.95)', color: '#1e293b', border: '1px solid rgba(251,191,36,0.3)' }}>Anular</button>}
+                        {permisos.eliminar && <button onClick={() => eliminarDeposito(d)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
                       </div>
                     </td>
                   </tr>
@@ -335,32 +335,32 @@ export default function ControlBancarioPage() {
       )}
 
       {tab === 'movimientos' && (
-        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
           <p className="text-5xl mb-3">🔄</p>
-          <p className="text-white text-lg font-bold mb-2">Movimientos Bancarios</p>
-          <p className="text-white/40 text-sm">Diseño de campos pendiente — listo para implementar</p>
+          <p className="text-slate-800 text-lg font-bold mb-2">Movimientos Bancarios</p>
+          <p className="text-slate-400 text-sm">Diseño de campos pendiente — listo para implementar</p>
         </div>
       )}
 
       {/* MODAL NUEVO/EDITAR BANCO */}
       {bcoOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-xl rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="w-full max-w-xl rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">🏦 {bcoEditId ? 'Editar Banco' : 'Nuevo Banco'}</h2>
-              <button onClick={() => setBcoOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">🏦 {bcoEditId ? 'Editar Banco' : 'Nuevo Banco'}</h2>
+              <button onClick={() => setBcoOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Nombre Banco *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Nombre Banco *</label>
                 <input value={bcoNombre} onChange={e => setBcoNombre(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Bancolombia, Davivienda, BBVA..." autoFocus />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Bancolombia, Davivienda, BBVA..." autoFocus />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Tipo Cuenta *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Tipo Cuenta *</label>
                 <select value={bcoTipoCuenta} onChange={e => setBcoTipoCuenta(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   <option value="Ahorros">Ahorros</option>
                   <option value="Corriente">Corriente</option>
@@ -369,24 +369,24 @@ export default function ControlBancarioPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">N° Cuenta *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">N° Cuenta *</label>
                 <input value={bcoNroCuenta} onChange={e => setBcoNroCuenta(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono" style={inputSt} placeholder="1234567890" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono" style={inputSt} placeholder="1234567890" />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Saldo *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Saldo *</label>
                 <input type="date" value={bcoFechaSaldo} onChange={e => setBcoFechaSaldo(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Saldo *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Saldo *</label>
                 <input type="number" step="0.01" value={bcoSaldo} onChange={e => setBcoSaldo(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Estado</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Estado</label>
                 <select value={bcoEstado} onChange={e => setBcoEstado(e.target.value as 'Activo' | 'Inactivo')}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="Activo">Activo</option>
                   <option value="Inactivo">Inactivo</option>
                 </select>
@@ -397,9 +397,9 @@ export default function ControlBancarioPage() {
               <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-3 py-2 mt-3">{bcoError}</p>
             )}
 
-            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => setBcoOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
-              <button onClick={guardarBanco} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{bcoEditId ? 'Guardar Cambios' : 'Registrar Banco'}</button>
+            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => setBcoOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
+              <button onClick={guardarBanco} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{bcoEditId ? 'Guardar Cambios' : 'Registrar Banco'}</button>
             </div>
           </div>
         </div>
@@ -408,22 +408,22 @@ export default function ControlBancarioPage() {
       {/* MODAL NUEVO/EDITAR DEPÓSITO */}
       {depOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-2xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="w-full max-w-2xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">💰 {depEditId ? 'Editar Depósito' : 'Nuevo Depósito'} {!depEditId && <span className="font-mono text-emerald-300 text-sm">— {nextDepositoConsecutivo(depositos)}</span>}</h2>
-              <button onClick={() => setDepOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">💰 {depEditId ? 'Editar Depósito' : 'Nuevo Depósito'} {!depEditId && <span className="font-mono text-emerald-300 text-sm">— {nextDepositoConsecutivo(depositos)}</span>}</h2>
+              <button onClick={() => setDepOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha del Depósito *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha del Depósito *</label>
                 <input type="date" value={depFecha} onChange={e => setDepFecha(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Origen *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Origen *</label>
                 <select value={depOrigen} onChange={e => setDepOrigen(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   <option value="Efectivo">Efectivo</option>
                   <option value="Transferencia">Transferencia</option>
@@ -435,9 +435,9 @@ export default function ControlBancarioPage() {
                 </select>
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Banco Destino *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Banco Destino *</label>
                 <select value={depBancoId} onChange={e => setDepBancoId(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione el banco…</option>
                   {bancosActivos.map(b => (
                     <option key={b.id} value={b.id}>{b.nombre_banco} · {b.tipo_cuenta} · {b.nro_cuenta}</option>
@@ -448,29 +448,29 @@ export default function ControlBancarioPage() {
                 )}
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Monto *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Monto *</label>
                 <input type="number" step="0.01" value={depMonto} onChange={e => setDepMonto(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">N° Referencia / Comprobante</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">N° Referencia / Comprobante</label>
                 <input value={depReferencia} onChange={e => setDepReferencia(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono" style={inputSt} placeholder="Consignación, cheque, transacción..." />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono" style={inputSt} placeholder="Consignación, cheque, transacción..." />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Depositado Por *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Depositado Por *</label>
                 <input value={depDepositadoPor} onChange={e => setDepDepositadoPor(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Persona que realiza el depósito" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Persona que realiza el depósito" />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Concepto</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Concepto</label>
                 <input value={depConcepto} onChange={e => setDepConcepto(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Origen del ingreso (venta, cobro, ajuste...)" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Origen del ingreso (venta, cobro, ajuste...)" />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Observaciones</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Observaciones</label>
                 <textarea value={depObservaciones} onChange={e => setDepObservaciones(e.target.value)} rows={2}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Notas adicionales..." />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Notas adicionales..." />
               </div>
             </div>
 
@@ -478,9 +478,9 @@ export default function ControlBancarioPage() {
               <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-3 py-2 mt-3">{depError}</p>
             )}
 
-            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => setDepOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
-              <button onClick={guardarDeposito} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(22,163,74,1)', border: '1px solid rgba(21,128,61,1)' }}>{depEditId ? 'Guardar Cambios' : 'Registrar Depósito'}</button>
+            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => setDepOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
+              <button onClick={guardarDeposito} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(22,163,74,1)', border: '1px solid rgba(21,128,61,1)' }}>{depEditId ? 'Guardar Cambios' : 'Registrar Depósito'}</button>
             </div>
           </div>
         </div>

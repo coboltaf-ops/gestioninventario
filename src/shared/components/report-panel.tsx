@@ -204,18 +204,18 @@ export default function ReportPanel({
     <div
       className="rounded-xl p-5 md:p-6"
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        background: 'rgba(15,23,42,0.04)',
+        border: '1px solid rgba(15,23,42,0.1)',
       }}
     >
       {/* Header row: title + export buttons */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
-        <h3 className="text-lg font-bold text-white">{title}</h3>
+        <h3 className="text-lg font-bold text-slate-800">{title}</h3>
         <div className="flex gap-2">
           <button
             type="button"
             onClick={exportPdf}
-            className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
+            className="rounded-lg px-4 py-2 text-sm font-semibold text-slate-800 transition-colors"
             style={{
               background: 'rgba(234,88,12,0.18)',
               border: '1px solid rgba(234,88,12,0.5)',
@@ -226,7 +226,7 @@ export default function ReportPanel({
           <button
             type="button"
             onClick={exportExcel}
-            className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
+            className="rounded-lg px-4 py-2 text-sm font-semibold text-slate-800 transition-colors"
             style={{
               background: 'rgba(59,130,246,0.18)',
               border: '1px solid rgba(59,130,246,0.5)',
@@ -242,14 +242,14 @@ export default function ReportPanel({
         <div className="flex flex-wrap gap-3 mb-5">
           {filters.map(f => (
             <div key={f.key} className="flex flex-col gap-1">
-              <label className="text-xs text-white/50">{f.label}</label>
+              <label className="text-xs text-slate-500">{f.label}</label>
               <select
                 value={selected[f.key] ?? ''}
                 onChange={e => setFilter(f.key, e.target.value)}
-                className="rounded-lg px-3 py-2 text-sm text-white outline-none min-w-[140px]"
+                className="rounded-lg px-3 py-2 text-sm text-slate-800 outline-none min-w-[140px]"
                 style={{
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(15,23,42,0.06)',
+                  border: '1px solid rgba(15,23,42,0.1)',
                 }}
               >
                 <option value="" style={{ background: '#1a1a1a' }}>
@@ -271,20 +271,20 @@ export default function ReportPanel({
       )}
 
       {/* Preview count */}
-      <p className="text-xs text-white/50 mb-2">
+      <p className="text-xs text-slate-500 mb-2">
         {filteredRows.length} registro{filteredRows.length === 1 ? '' : 's'}
       </p>
 
       {/* Preview table */}
-      <div className="overflow-x-auto rounded-lg" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="overflow-x-auto rounded-lg" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
         <table className="w-full text-sm text-left border-collapse">
           <thead>
-            <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
+            <tr style={{ background: 'rgba(15,23,42,0.04)' }}>
               {columns.map(col => (
                 <th
                   key={col.key}
-                  className="px-4 py-3 font-semibold text-white whitespace-nowrap"
-                  style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                  className="px-4 py-3 font-semibold text-slate-800 whitespace-nowrap"
+                  style={{ borderBottom: '1px solid rgba(15,23,42,0.1)' }}
                 >
                   {col.header}
                 </th>
@@ -296,7 +296,7 @@ export default function ReportPanel({
               <tr>
                 <td
                   colSpan={columns.length || 1}
-                  className="px-4 py-8 text-center text-white/50"
+                  className="px-4 py-8 text-center text-slate-500"
                 >
                   Sin registros
                 </td>
@@ -307,8 +307,8 @@ export default function ReportPanel({
                   {columns.map(col => (
                     <td
                       key={col.key}
-                      className="px-4 py-2.5 text-white/80 whitespace-nowrap"
-                      style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+                      className="px-4 py-2.5 text-slate-600 whitespace-nowrap"
+                      style={{ borderBottom: '1px solid rgba(15,23,42,0.06)' }}
                     >
                       {formatCell(row[col.key])}
                     </td>
@@ -323,8 +323,8 @@ export default function ReportPanel({
                 {columns.map((col, i) => (
                   <td
                     key={col.key}
-                    className="px-4 py-3 font-bold text-white whitespace-nowrap"
-                    style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}
+                    className="px-4 py-3 font-bold text-slate-800 whitespace-nowrap"
+                    style={{ borderTop: '1px solid rgba(15,23,42,0.15)' }}
                   >
                     {i === 0
                       ? 'Totales'

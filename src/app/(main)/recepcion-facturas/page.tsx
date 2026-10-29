@@ -210,22 +210,22 @@ const emptyForm = (nro: number, tipoInv = ''): Recepcion => ({
 // ─── Estilos helpers ──────────────────────────────────────────────────────────
 
 const inputStyle: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.06)',
-  border: '1px solid rgba(255,255,255,0.15)',
-  color: '#fff',
+  background: 'rgba(15,23,42,0.06)',
+  border: '1px solid rgba(15,23,42,0.15)',
+  color: '#1e293b',
 }
 
 const selectStyle: React.CSSProperties = {
   background: 'rgba(12,26,61,0.95)',
-  border: '1px solid rgba(255,255,255,0.15)',
-  color: '#fff',
+  border: '1px solid rgba(15,23,42,0.15)',
+  color: '#1e293b',
 }
 
 const estadoStyle = (s: string): React.CSSProperties => {
-  if (s === 'Aprobada y Recibida') return { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' }
-  if (s === 'Aprobada') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'Anulada') return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
-  return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
+  if (s === 'Aprobada y Recibida') return { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' }
+  if (s === 'Aprobada') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Anulada') return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
+  return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
 }
 
 // ─── Componente Principal ─────────────────────────────────────────────────────
@@ -708,7 +708,7 @@ export default function RecepcionFacturasPage() {
     return (
       <div>
         <div className="flex items-center justify-between mb-6">
-          <button onClick={() => setViewRec(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          <button onClick={() => setViewRec(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(15,23,42,0.5)' }}>
             ← Volver a Recepciones
           </button>
           <button onClick={() => {
@@ -718,17 +718,17 @@ export default function RecepcionFacturasPage() {
             const provData = prov ? { tipo_id: prov.tipo_id, nro_documento: prov.nro_documento, direccion: prov.direccion, ciudad: prov.ciudad } : undefined
             generateRecepcionPDF(viewRec, empData, provData, emp?.logo || LOGO_BASE64)
           }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
             style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
             🖨 Generar PDF
           </button>
         </div>
 
-        <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-white">{t('recepcionFacturaDetail')}</h1>
-              <p className="text-2xl font-mono mt-1" style={{ color: '#fff' }}>{viewRec.consecutivo}</p>
+              <h1 className="text-3xl font-bold text-slate-800">{t('recepcionFacturaDetail')}</h1>
+              <p className="text-2xl font-mono mt-1" style={{ color: '#1e293b' }}>{viewRec.consecutivo}</p>
             </div>
             <span className="px-4 py-2 rounded-full text-sm font-medium" style={estadoStyle(viewRec.estado)}>{viewRec.estado}</span>
           </div>
@@ -747,17 +747,17 @@ export default function RecepcionFacturasPage() {
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-xs uppercase tracking-wider mb-1" style={{ color: '#f97316' }}>{label}</p>
-                <p className="text-white font-medium">{value}</p>
+                <p className="text-slate-800 font-medium">{value}</p>
               </div>
             ))}
           </div>
 
-          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.07)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.07)' }}>
                 <tr>
                   {[tF('codigo'), tF('descripcion'), tF('unidad'), tH('cantPedida'), tF('yaRecibido'), tH('recibidoEnEsta'), tF('estado')].map(h => (
-                    <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -766,15 +766,15 @@ export default function RecepcionFacturasPage() {
                   const totalRec = r.ya_recibido + r.cantidad_a_recibir
                   const isComplete = totalRec >= r.cantidad_pedida
                   return (
-                    <tr key={r.detalle_id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td className="px-4 py-3 font-mono text-xs text-white">{r.codigo_producto}</td>
-                      <td className="px-4 py-3 text-white/80">{r.descripcion}</td>
-                      <td className="px-4 py-3 text-white/50 text-xs">{r.unidad_medida}</td>
-                      <td className="px-4 py-3 text-white text-center">{r.cantidad_pedida}</td>
-                      <td className="px-4 py-3 text-white/60 text-center">{r.ya_recibido}</td>
-                      <td className="px-4 py-3 text-center font-bold" style={{ color: '#fff' }}>{r.cantidad_a_recibir}</td>
+                    <tr key={r.detalle_id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                      <td className="px-4 py-3 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                      <td className="px-4 py-3 text-slate-600">{r.descripcion}</td>
+                      <td className="px-4 py-3 text-slate-500 text-xs">{r.unidad_medida}</td>
+                      <td className="px-4 py-3 text-slate-800 text-center">{r.cantidad_pedida}</td>
+                      <td className="px-4 py-3 text-slate-500 text-center">{r.ya_recibido}</td>
+                      <td className="px-4 py-3 text-center font-bold" style={{ color: '#1e293b' }}>{r.cantidad_a_recibir}</td>
                       <td className="px-4 py-3">
-                        <span className="px-2 py-1 rounded-full text-xs font-medium" style={isComplete ? { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' } : { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }}>
+                        <span className="px-2 py-1 rounded-full text-xs font-medium" style={isComplete ? { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' } : { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }}>
                           {isComplete ? 'Completo' : 'Pendiente'}
                         </span>
                       </td>
@@ -786,9 +786,9 @@ export default function RecepcionFacturasPage() {
           </div>
 
           {viewRec.observaciones && (
-            <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="rounded-xl p-4" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
               <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#f97316' }}>Observaciones</p>
-              <p style={{ color: 'rgba(255,255,255,0.7)' }}>{viewRec.observaciones}</p>
+              <p style={{ color: 'rgba(15,23,42,0.7)' }}>{viewRec.observaciones}</p>
             </div>
           )}
         </div>
@@ -801,13 +801,13 @@ export default function RecepcionFacturasPage() {
     <div>
       <div className="flex items-start mb-8 gap-4 flex-wrap">
         <div className="min-w-0 flex-1">
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('recepcionFacturas')}</h1>
-          <p className="text-white/50 mt-1">{tSub('recepcionFacturas')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('recepcionFacturas')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('recepcionFacturas')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
           <button
             onClick={() => { setForm(emptyForm(todasRecepciones.length + 1, tipoActivo || '')); setIsFormOpen(true); setErrorMsg(''); setOcPendienteMsg('') }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white whitespace-nowrap shrink-0 ml-auto mr-56"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800 whitespace-nowrap shrink-0 ml-auto mr-56"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}
           >
             {tBtn('newReception')}
@@ -816,15 +816,15 @@ export default function RecepcionFacturasPage() {
       </div>
 
       {/* ── Selector de Tabs ───────────────────────────────────────────────── */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {(['registros', 'reportes', 'especificos'] as const).map(t => (
           <button
             key={t}
             onClick={() => setTab(t)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}
           >
             {t === 'registros' ? tTab('registrosEmoji') : t === 'reportes' ? tTab('reportesEmoji') : tTab('especificosEmoji')}
           </button>
@@ -833,7 +833,7 @@ export default function RecepcionFacturasPage() {
 
       {/* Mensaje Orden Pendiente */}
       {ocPendienteMsg && (
-        <div className="mb-6 px-5 py-4 rounded-xl text-sm font-semibold flex items-center gap-3" style={{ background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.4)', color: '#fff' }}>
+        <div className="mb-6 px-5 py-4 rounded-xl text-sm font-semibold flex items-center gap-3" style={{ background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.4)', color: '#1e293b' }}>
           ⚠ {ocPendienteMsg}
           <button onClick={() => setOcPendienteMsg('')} className="ml-auto text-xs px-3 py-1 rounded-lg" style={{ background: 'rgba(245,158,11,0.3)', border: '1px solid rgba(245,158,11,0.4)' }}>
             {tBtn('close')}
@@ -846,9 +846,9 @@ export default function RecepcionFacturasPage() {
         <>
           {/* ── Formulario ─────────────────────────────────────────────────────── */}
           {isFormOpen && (
-            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-              <h2 className="text-lg font-semibold text-white mb-6">
-                Nueva Recepción — <span style={{ color: '#fff' }}>{form.consecutivo}</span>
+            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+              <h2 className="text-lg font-semibold text-slate-800 mb-6">
+                Nueva Recepción — <span style={{ color: '#1e293b' }}>{form.consecutivo}</span>
               </h2>
 
               <form onSubmit={handleSave}>
@@ -856,24 +856,24 @@ export default function RecepcionFacturasPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                   {/* Nro de Recepción — correlativo solo lectura */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Nro de Recepción</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro de Recepción</label>
                     <input readOnly value={form.consecutivo}
                       className="w-full rounded-xl px-4 py-2.5 outline-none font-mono"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }} />
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }} />
                   </div>
 
                   {/* Nro de Factura */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Nro de Factura *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro de Factura *</label>
                     <input required value={form.nro_factura}
                       onChange={e => setForm({ ...form, nro_factura: e.target.value })}
-                      className="w-full rounded-xl px-4 py-2.5 outline-none text-white" style={inputStyle}
+                      className="w-full rounded-xl px-4 py-2.5 outline-none text-slate-800" style={inputStyle}
                       placeholder="Ej: FAC-2026-001" />
                   </div>
 
                   {/* Fecha Emisión */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Emisión *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Emisión *</label>
                     <input type="date" required value={form.fecha_emision}
                       onChange={e => setForm({ ...form, fecha_emision: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputStyle} />
@@ -881,7 +881,7 @@ export default function RecepcionFacturasPage() {
 
                   {/* Fecha Recibida */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Recibida *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Recibida *</label>
                     <input type="date" required value={form.fecha_recibida}
                       onChange={e => setForm({ ...form, fecha_recibida: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputStyle} />
@@ -889,16 +889,16 @@ export default function RecepcionFacturasPage() {
 
                   {/* Tipo de Inventario (heredado de la sesión) */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Tipo de Inventario</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Inventario</label>
                     <input readOnly value={form.tipo_inventario || '—'}
                       className="w-full rounded-xl px-4 py-2.5 outline-none font-semibold"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }}
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }}
                       title="Definido por el Tipo de Inventario activo de la sesión." />
                   </div>
 
                   {/* Orden de Compra */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Orden de Compra *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Orden de Compra *</label>
                     <select required value={form.orden_compra_id} onChange={e => handleSelectOC(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectStyle}>
                       <option value="">{tOp('seleccionarOC')}</option>
@@ -912,14 +912,14 @@ export default function RecepcionFacturasPage() {
 
                   {/* Proveedor (solo lectura) */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Proveedor</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Proveedor</label>
                     <input readOnly value={form.proveedor} className="w-full rounded-xl px-4 py-2.5 outline-none cursor-not-allowed"
                       style={{ ...inputStyle, opacity: 0.7 }} placeholder="Se carga al seleccionar OC" />
                   </div>
 
                   {/* Bodega de Recepción (solo lectura desde OC) */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Bodega de Recepción</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega de Recepción</label>
                     <input readOnly value={form.orden_compra_id ? (ordenesReales.find(o => o.id === form.orden_compra_id)?.bodega_llegada || '—') : ''}
                       className="w-full rounded-xl px-4 py-2.5 outline-none cursor-not-allowed"
                       style={{ ...inputStyle, opacity: 0.7 }} placeholder="Se carga al seleccionar OC" />
@@ -927,7 +927,7 @@ export default function RecepcionFacturasPage() {
 
                   {/* Aprobado por (solo lectura desde OC) */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Aprobado por</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Aprobado por</label>
                     <input readOnly value={form.orden_compra_id ? (ordenesReales.find(o => o.id === form.orden_compra_id)?.comprador || '—') : ''}
                       className="w-full rounded-xl px-4 py-2.5 outline-none cursor-not-allowed"
                       style={{ ...inputStyle, opacity: 0.7 }} placeholder="Se carga al seleccionar OC" />
@@ -935,7 +935,7 @@ export default function RecepcionFacturasPage() {
 
                   {/* Fecha Aprobación OC (solo lectura desde OC) */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Aprobación OC</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Aprobación OC</label>
                     <input readOnly value={form.orden_compra_id ? (fDate(ordenesReales.find(o => o.id === form.orden_compra_id)?.fecha_aprobacion || '') || '—') : ''}
                       className="w-full rounded-xl px-4 py-2.5 outline-none cursor-not-allowed"
                       style={{ ...inputStyle, opacity: 0.7 }} placeholder="Se carga al seleccionar OC" />
@@ -943,16 +943,16 @@ export default function RecepcionFacturasPage() {
 
                   {/* Persona que recibe */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Persona que Recibe *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Persona que Recibe *</label>
                     <input required value={form.persona_recibe}
                       onChange={e => setForm({ ...form, persona_recibe: e.target.value })}
-                      className="w-full rounded-xl px-4 py-2.5 outline-none text-white" style={inputStyle}
+                      className="w-full rounded-xl px-4 py-2.5 outline-none text-slate-800" style={inputStyle}
                       placeholder="Nombre completo" />
                   </div>
 
                   {/* Fecha Aprobación */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Aprobación de Ingreso</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Aprobación de Ingreso</label>
                     <input type="date" value={form.fecha_aprobacion}
                       onChange={e => setForm({ ...form, fecha_aprobacion: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputStyle} />
@@ -960,7 +960,7 @@ export default function RecepcionFacturasPage() {
 
                   {/* Estado */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Estado</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Estado</label>
                     <select value={form.estado} onChange={e => setForm({ ...form, estado: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectStyle}>
                       {[tF('pendiente'), 'Aprobada', 'Anulada'].map(s => <option key={s} value={s}>{s}</option>)}
@@ -971,13 +971,13 @@ export default function RecepcionFacturasPage() {
                 {/* ── Renglones ───────────────────────────────────────────────────── */}
                 {form.renglones.length > 0 && (
                   <div className="mb-6">
-                    <p className="text-white font-medium mb-3">Renglones de la Orden de Compra</p>
-                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <p className="text-slate-800 font-medium mb-3">Renglones de la Orden de Compra</p>
+                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                       <table className="w-full text-base text-left">
-                        <thead style={{ background: 'rgba(255,255,255,0.07)' }}>
+                        <thead style={{ background: 'rgba(15,23,42,0.07)' }}>
                           <tr>
                             {[tF('codigo'), tF('descripcion'), tF('unidad'), tH('cantPedida'), tH('costoUnit'), tF('yaRecibido'), tF('pendiente'), tH('cantARecibir'), tF('subtotal')].map(h => (
-                              <th key={h} className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                              <th key={h} className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                             ))}
                           </tr>
                         </thead>
@@ -985,18 +985,18 @@ export default function RecepcionFacturasPage() {
                           {form.renglones.map((r, idx) => {
                             const pendiente = r.cantidad_pedida - r.ya_recibido
                             return (
-                              <tr key={r.detalle_id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: r.completo ? 'rgba(96,165,250,0.05)' : undefined }}>
-                                <td className="px-4 py-3 font-mono text-xs text-white">{r.codigo_producto}</td>
-                                <td className="px-4 py-3 text-white/80 max-w-xs">{r.descripcion}</td>
-                                <td className="px-4 py-3 text-white/50 text-xs">{r.unidad_medida}</td>
-                                <td className="px-4 py-3 text-white text-center font-medium">{r.cantidad_pedida}</td>
-                                <td className="px-4 py-3 text-white/70 text-right">${fmtMoney(r.costo_unitario)}</td>
-                                <td className="px-4 py-3 text-center" style={{ color: '#fff' }}>{r.ya_recibido}</td>
+                              <tr key={r.detalle_id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)', background: r.completo ? 'rgba(96,165,250,0.05)' : undefined }}>
+                                <td className="px-4 py-3 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                                <td className="px-4 py-3 text-slate-600 max-w-xs">{r.descripcion}</td>
+                                <td className="px-4 py-3 text-slate-500 text-xs">{r.unidad_medida}</td>
+                                <td className="px-4 py-3 text-slate-800 text-center font-medium">{r.cantidad_pedida}</td>
+                                <td className="px-4 py-3 text-slate-600 text-right">${fmtMoney(r.costo_unitario)}</td>
+                                <td className="px-4 py-3 text-center" style={{ color: '#1e293b' }}>{r.ya_recibido}</td>
                                 <td className="px-4 py-3 text-center font-bold" style={{ color: pendiente > 0 ? '#f87171' : '#93c5fd' }}>{pendiente}</td>
                                 <td className="px-4 py-3">
                                   {r.completo ? (
                                     <div className="flex items-center gap-2">
-                                      <span className="px-3 py-1.5 rounded-lg text-xs font-semibold" style={{ background: 'rgba(96,165,250,0.15)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                                      <span className="px-3 py-1.5 rounded-lg text-xs font-semibold" style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                                         ✓ Ítem ya completo
                                       </span>
                                     </div>
@@ -1005,13 +1005,13 @@ export default function RecepcionFacturasPage() {
                                       type="number" min="0" max={pendiente} step="1"
                                       value={r.cantidad_a_recibir || ''}
                                       onChange={e => handleCantidad(idx, e.target.value)}
-                                      className="w-24 rounded-lg px-3 py-1.5 text-white outline-none text-center font-bold"
+                                      className="w-24 rounded-lg px-3 py-1.5 text-slate-800 outline-none text-center font-bold"
                                       style={{ background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.4)' }}
                                       placeholder="0"
                                     />
                                   )}
                                 </td>
-                                <td className="px-4 py-3 text-right text-white font-bold whitespace-nowrap">
+                                <td className="px-4 py-3 text-right text-slate-800 font-bold whitespace-nowrap">
                                   ${fmtMoney(r.cantidad_a_recibir * r.costo_unitario)}
                                 </td>
                               </tr>
@@ -1030,17 +1030,17 @@ export default function RecepcionFacturasPage() {
                       const total = subtotal + iva
                       return (
                         <div className="flex flex-col items-end gap-2 mt-4 text-sm">
-                          <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                            <span className="text-white/70 font-medium">Subtotal</span>
-                            <span className="text-white font-semibold">${fmtMoney(subtotal)}</span>
+                          <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(15,23,42,0.04)' }}>
+                            <span className="text-slate-600 font-medium">Subtotal</span>
+                            <span className="text-slate-800 font-semibold">${fmtMoney(subtotal)}</span>
                           </div>
-                          <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                            <span className="text-white/70 font-medium">% IVA ({pctIva}%)</span>
-                            <span className="text-white font-semibold">${fmtMoney(iva)}</span>
+                          <div className="flex gap-8 w-80 justify-between px-4 py-2 rounded-lg" style={{ background: 'rgba(15,23,42,0.04)' }}>
+                            <span className="text-slate-600 font-medium">% IVA ({pctIva}%)</span>
+                            <span className="text-slate-800 font-semibold">${fmtMoney(iva)}</span>
                           </div>
                           <div className="flex gap-8 w-80 justify-between px-4 py-3 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(96,165,250,0.25), rgba(96,165,250,0.1))', border: '1px solid rgba(96,165,250,0.4)' }}>
-                            <span className="text-white font-bold text-base">TOTAL GENERAL FACTURA</span>
-                            <span className="font-black text-lg" style={{ color: '#fff' }}>${fmtMoney(total)}</span>
+                            <span className="text-slate-800 font-bold text-base">TOTAL GENERAL FACTURA</span>
+                            <span className="font-black text-lg" style={{ color: '#1e293b' }}>${fmtMoney(total)}</span>
                           </div>
                         </div>
                       )
@@ -1049,28 +1049,28 @@ export default function RecepcionFacturasPage() {
                 )}
 
                 {form.orden_compra_id === '' && (
-                  <div className="mb-6 rounded-xl p-4 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px dashed rgba(255,255,255,0.12)' }}>
-                    <p style={{ color: 'rgba(255,255,255,0.35)' }}>{tHelp('seleccioneOCRenglones')}</p>
+                  <div className="mb-6 rounded-xl p-4 text-center" style={{ background: 'rgba(15,23,42,0.03)', border: '1px dashed rgba(15,23,42,0.12)' }}>
+                    <p style={{ color: 'rgba(15,23,42,0.35)' }}>{tHelp('seleccioneOCRenglones')}</p>
                   </div>
                 )}
 
                 {/* Observaciones */}
                 <div className="mb-6">
-                  <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                   <textarea rows={2} value={form.observaciones}
                     onChange={e => setForm({ ...form, observaciones: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none resize-none"
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none resize-none"
                     style={inputStyle} placeholder="Notas adicionales sobre la recepción..." />
                 </div>
 
                 {errorMsg && (
-                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                     ⚠ {errorMsg}
                   </div>
                 )}
 
                 <div className="flex gap-3">
-                  <button type="submit" className="px-6 py-2.5 rounded-xl text-white font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
+                  <button type="submit" className="px-6 py-2.5 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                     {tBtn('saveReception')}
                   </button>
                   <button type="button" onClick={() => {
@@ -1085,7 +1085,7 @@ export default function RecepcionFacturasPage() {
                     setIsFormOpen(false)
                     setErrorMsg('')
                     setForm(emptyForm(todasRecepciones.length + 1, tipoActivo || ''))
-                  }} className="px-6 py-2.5 rounded-xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}>
+                  }} className="px-6 py-2.5 rounded-xl" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)', color: 'rgba(15,23,42,0.6)' }}>
                     {tBtn('cancel')}
                   </button>
                 </div>
@@ -1094,30 +1094,30 @@ export default function RecepcionFacturasPage() {
           )}
 
           {/* ── Tabla de Recepciones ─────────────────────────────────────────────── */}
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>Nro Rec.</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>Nro Factura</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>F. Emisión</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>F. Recibida</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>OC</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>Proveedor</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>Estado</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>Pasada a Pagos</th>
-                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap text-center" style={{ color: 'rgba(255,255,255,0.85)', background: 'rgba(34,197,94,0.15)', position: 'sticky', right: 0, zIndex: 2 }}>⚙ Acciones</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>Nro Rec.</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>Nro Factura</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>F. Emisión</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>F. Recibida</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>OC</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>Proveedor</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>Estado</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>Pasada a Pagos</th>
+                  <th className="px-3 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap text-center" style={{ color: 'rgba(15,23,42,0.85)', background: 'rgba(34,197,94,0.15)', position: 'sticky', right: 0, zIndex: 2 }}>⚙ Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 {recepciones.map(r => (
-                  <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-3 py-3 font-mono font-bold whitespace-nowrap" style={{ color: '#fff' }}>{r.consecutivo}</td>
-                    <td className="px-3 py-3 text-white font-bold font-mono whitespace-nowrap">{r.nro_factura}</td>
-                    <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(r.fecha_emision)}</td>
-                    <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(r.fecha_recibida)}</td>
-                    <td className="px-3 py-3 text-white font-bold font-mono whitespace-nowrap">{r.orden_compra_consecutivo}</td>
-                    <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{r.proveedor}</td>
+                  <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-3 py-3 font-mono font-bold whitespace-nowrap" style={{ color: '#1e293b' }}>{r.consecutivo}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold font-mono whitespace-nowrap">{r.nro_factura}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(r.fecha_emision)}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(r.fecha_recibida)}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold font-mono whitespace-nowrap">{r.orden_compra_consecutivo}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{r.proveedor}</td>
                     <td className="px-3 py-3 whitespace-nowrap">
                       <span className="px-2 py-1 rounded-full text-xs font-medium" style={estadoStyle(r.estado)}>{r.estado}</span>
                     </td>
@@ -1128,9 +1128,9 @@ export default function RecepcionFacturasPage() {
                         <span className="px-2 py-1 rounded-md text-xs font-extrabold whitespace-nowrap" style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #fde68a' }}>⏳ PENDIENTE</span>
                       )}
                     </td>
-                    <td className="px-3 py-3 whitespace-nowrap" style={{ background: 'rgba(15,23,42,0.95)', position: 'sticky', right: 0, zIndex: 1, borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
+                    <td className="px-3 py-3 whitespace-nowrap" style={{ background: 'rgba(15,23,42,0.95)', position: 'sticky', right: 0, zIndex: 1, borderLeft: '1px solid rgba(15,23,42,0.08)' }}>
                       <div className="flex gap-2 justify-end">
-                        <button onClick={() => setViewRec(r)} className="px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap" style={{ background: 'rgba(96,165,250,0.3)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }}>
+                        <button onClick={() => setViewRec(r)} className="px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap" style={{ background: 'rgba(96,165,250,0.3)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }}>
                           👁 Ver
                         </button>
                         <button
@@ -1142,11 +1142,11 @@ export default function RecepcionFacturasPage() {
                             generateRecepcionPDF(r, empData, provData, emp?.logo || LOGO_BASE64)
                           }}
                           className="px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap"
-                          style={{ background: 'rgba(34,197,94,0.4)', color: '#fff', border: '1px solid rgba(21,128,61,1)' }}
+                          style={{ background: 'rgba(34,197,94,0.4)', color: '#1e293b', border: '1px solid rgba(21,128,61,1)' }}
                           title="Regenerar PDF (incluso si ya pasó a Pagos)">
                           🖨 PDF
                         </button>
-                        {esAdmin && <button onClick={() => handleDelete(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap" style={{ background: 'rgba(239,68,68,0.3)', color: '#fff', border: '1px solid rgba(185,28,28,1)' }} title="Solo Admin puede eliminar (afecta inventario si está aprobada)">
+                        {esAdmin && <button onClick={() => handleDelete(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap" style={{ background: 'rgba(239,68,68,0.3)', color: '#1e293b', border: '1px solid rgba(185,28,28,1)' }} title="Solo Admin puede eliminar (afecta inventario si está aprobada)">
                           🗑 Borrar
                         </button>}
                       </div>
@@ -1155,7 +1155,7 @@ export default function RecepcionFacturasPage() {
                 ))}
                 {recepciones.length === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-6 py-16 text-center" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                    <td colSpan={8} className="px-6 py-16 text-center" style={{ color: 'rgba(15,23,42,0.25)' }}>
                       <div className="text-4xl mb-3">📋</div>
                       <p>No hay recepciones registradas. Crea la primera haciendo clic en <strong>{tBtn('newReception')}</strong>.</p>
                     </td>
@@ -1182,37 +1182,37 @@ export default function RecepcionFacturasPage() {
       {/* ── Tab: Reportes Específicos ────────────────────────────────────── */}
       {tab === 'especificos' && (
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-4">{tTab('especificos')}</h2>
-          <p className="text-white/50 text-sm mb-6">{tSub('seleccioneReporte')}</p>
+          <h2 className="text-xl font-bold text-slate-800 mb-4">{tTab('especificos')}</h2>
+          <p className="text-slate-500 text-sm mb-6">{tSub('seleccioneReporte')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="rounded-xl p-5" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <h3 className="text-white font-bold mb-1">📄 Detalle de Facturas Recibidas</h3>
-              <p className="text-white/50 text-xs mb-4">Listado de facturas recibidas en el rango de fechas con monto sin IVA, IVA con % y total de factura.</p>
+            <div className="rounded-xl p-5" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+              <h3 className="text-slate-800 font-bold mb-1">📄 Detalle de Facturas Recibidas</h3>
+              <p className="text-slate-500 text-xs mb-4">Listado de facturas recibidas en el rango de fechas con monto sin IVA, IVA con % y total de factura.</p>
               <div className="grid grid-cols-2 gap-2 mb-4">
                 <div>
-                  <label className="block text-xl text-white font-extrabold mb-1">Fecha Inicio</label>
+                  <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Inicio</label>
                   <input
                     type="date"
                     value={rfFechaIni}
                     onChange={e => setRfFechaIni(e.target.value)}
-                    className="w-full rounded-lg px-3 py-2 text-white outline-none text-base text-white font-bold"
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full rounded-lg px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                    style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                   />
                 </div>
                 <div>
-                  <label className="block text-xl text-white font-extrabold mb-1">Fecha Fin</label>
+                  <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Fin</label>
                   <input
                     type="date"
                     value={rfFechaFin}
                     onChange={e => setRfFechaFin(e.target.value)}
-                    className="w-full rounded-lg px-3 py-2 text-white outline-none text-base text-white font-bold"
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full rounded-lg px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                    style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                   />
                 </div>
               </div>
               <button
                 onClick={generateReporteFacturasRecibidas}
-                className="w-full px-4 py-2.5 rounded-xl font-semibold text-white text-sm"
+                className="w-full px-4 py-2.5 rounded-xl font-semibold text-slate-800 text-sm"
                 style={{ background: '#1e3a8a', border: '1px solid #3b5fd4' }}
               >
                 🖨 Generar Reporte PDF

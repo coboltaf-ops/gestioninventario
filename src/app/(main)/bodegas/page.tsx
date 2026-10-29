@@ -55,13 +55,13 @@ const emptyMov = (nro: number, bodegas: Bodega[]): Movimiento => ({
 
 // ─── Estilos helpers ──────────────────────────────────────────────────────────
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
 const sitStyle = (s: string): React.CSSProperties => {
-  if (s === 'Activa') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'En Mantenimiento') return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
-  return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
+  if (s === 'Activa') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'En Mantenimiento') return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
+  return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
 }
 
 /**
@@ -80,12 +80,12 @@ function categoriaMov(tipoInterno: string): string {
 const categoriaStyle = (cat: string): React.CSSProperties => {
   const map: Record<string, React.CSSProperties> = {
     'Carga Inicial de Saldos':    { background: 'rgba(168,85,247,0.2)', color: '#c4b5fd', border: '1px solid rgba(168,85,247,0.4)' },
-    'Recepción Factura':          { background: 'rgba(34,197,94,0.95)',  color: '#fff', border: '1px solid rgba(34,197,94,0.4)' },
-    'Transferencia entre Bodegas':{ background: 'rgba(59,130,246,0.2)', color: '#fff', border: '1px solid rgba(59,130,246,0.4)' },
+    'Recepción Factura':          { background: 'rgba(34,197,94,0.95)',  color: '#1e293b', border: '1px solid rgba(34,197,94,0.4)' },
+    'Transferencia entre Bodegas':{ background: 'rgba(59,130,246,0.2)', color: '#1e293b', border: '1px solid rgba(59,130,246,0.4)' },
     'Salida de Almacén':          { background: 'rgba(236,72,153,0.2)', color: '#f9a8d4', border: '1px solid rgba(236,72,153,0.4)' },
     'Ajuste de Inventario':       { background: 'rgba(251,146,60,0.2)', color: '#fdba74', border: '1px solid rgba(251,146,60,0.4)' },
   }
-  return map[cat] || { background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)' }
+  return map[cat] || { background: 'rgba(15,23,42,0.08)', color: '#1e293b', border: '1px solid rgba(15,23,42,0.15)' }
 }
 
 // ─── Componente Principal ─────────────────────────────────────────────────────
@@ -541,15 +541,15 @@ export default function BodegasPage() {
   const renderBodegas = () => (
     <>
       {isBodegaFormOpen && (
-        <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">{formBodega.id ? 'Editar' : 'Nueva'} {labelBodega}</h2>
+        <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">{formBodega.id ? 'Editar' : 'Nueva'} {labelBodega}</h2>
           <form onSubmit={handleSaveBodega} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {([
               { label: tF('nombreRequired'), key: 'nombre', placeholder: `${labelBodega} Central` },
               { label: tF('direccion'), key: 'direccion', placeholder: 'Av. Principal #123' },
             ] as { label: string; key: keyof Bodega; placeholder: string }[]).map(({ label, key, placeholder }) => (
               <div key={key}>
-                <label className="block text-xl font-extrabold text-white mb-1">{label}</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">{label}</label>
                 <input required={label.includes('*')} value={String(formBodega[key])}
                   onChange={e => {
                     const nuevo = { ...formBodega, [key]: e.target.value }
@@ -566,7 +566,7 @@ export default function BodegasPage() {
               </div>
             ))}
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Ciudad</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Ciudad</label>
               {(() => {
                 const opts = (refData.ciudad ?? []).filter(c => c.situacion).sort((a, b) => a.descripcion.localeCompare(b.descripcion, 'es'))
                 const valActual = formBodega.ciudad
@@ -582,7 +582,7 @@ export default function BodegasPage() {
               })()}
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">País</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">País</label>
               {(() => {
                 const opts = (refData.pais ?? []).filter(p => p.situacion).sort((a, b) => a.descripcion.localeCompare(b.descripcion, 'es'))
                 const valActual = formBodega.pais
@@ -598,7 +598,7 @@ export default function BodegasPage() {
               })()}
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Tipo de Inventario que Maneja <span className="text-red-400">*</span></label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Inventario que Maneja <span className="text-red-400">*</span></label>
               <select required value={formBodega.tipo_inventario} onChange={e => setFormBodega({ ...formBodega, tipo_inventario: e.target.value })}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                 <option value="">{tOp('seleccione')}</option>
@@ -608,57 +608,57 @@ export default function BodegasPage() {
               </select>
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
               <select value={formBodega.situacion} onChange={e => setFormBodega({ ...formBodega, situacion: e.target.value })}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                 {refData.situacion_bodega.map(s => <option key={s.id} value={s.descripcion}>{s.descripcion}</option>)}
               </select>
             </div>
             <div className="lg:col-span-3 flex gap-3 pt-2">
-              <button type="submit" className="px-6 py-2 rounded-xl text-white font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('save')}</button>
-              <button type="button" onClick={() => setIsBodegaFormOpen(false)} className="px-6 py-2 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>{tBtn('cancel')}</button>
+              <button type="submit" className="px-6 py-2 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('save')}</button>
+              <button type="button" onClick={() => setIsBodegaFormOpen(false)} className="px-6 py-2 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>{tBtn('cancel')}</button>
             </div>
           </form>
         </div>
       )}
 
-      <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {!esMP && (
-          <div className="p-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+          <div className="p-4 border-b" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
             <div className="flex items-center gap-2 max-w-xs">
               <input value={searchBodega} onChange={e => setSearchBodega(e.target.value)}
-                className="w-full rounded-xl px-4 py-2 text-white outline-none text-base text-white font-bold" style={inputSt}
+                className="w-full rounded-xl px-4 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={inputSt}
                 placeholder={tPh('buscarBodega')} />
               <VoiceSearchButton onResult={setSearchBodega} />
             </div>
           </div>
         )}
         <table className="w-full text-base text-left">
-          <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+          <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
             <tr>
               {[tF('nombre'), tH('ciudadPais'), 'Tipo Inv.', tF('situacion'), tTbl('actions')].map(h => (
-                <th key={h} className="px-6 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                <th key={h} className="px-6 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {filteredBodegas.map(r => (
-              <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                <td className="px-6 py-4 font-medium text-white">{r.nombre}</td>
-                <td className="px-6 py-4 text-white/70">{r.ciudad}, {r.pais}</td>
-                <td className="px-6 py-4 text-white/70 text-xs">{r.tipo_inventario || '—'}</td>
+              <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                <td className="px-6 py-4 font-medium text-slate-800">{r.nombre}</td>
+                <td className="px-6 py-4 text-slate-600">{r.ciudad}, {r.pais}</td>
+                <td className="px-6 py-4 text-slate-600 text-xs">{r.tipo_inventario || '—'}</td>
                 <td className="px-6 py-4"><span className="px-3 py-1 rounded-full text-xs font-medium" style={sitStyle(r.situacion)}>{r.situacion}</span></td>
                 <td className="px-6 py-4">
                   <div className="flex gap-2">
-                    <button onClick={() => setViewRecord(r)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(255,255,255,0.08)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.15)' }}>Ver</button>
-                    {permisos.editar && <button onClick={() => { setFormBodega({ ...r }); setIsBodegaFormOpen(true) }} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>{tBtn('edit')}</button>}
-                    {permisos.eliminar && <button onClick={() => { if (confirm(tCf('delBodega'))) setBodegas(prev => prev.filter(b => b.id !== r.id)) }} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
+                    <button onClick={() => setViewRecord(r)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(15,23,42,0.08)', color: '#e2e8f0', border: '1px solid rgba(15,23,42,0.15)' }}>Ver</button>
+                    {permisos.editar && <button onClick={() => { setFormBodega({ ...r }); setIsBodegaFormOpen(true) }} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>{tBtn('edit')}</button>}
+                    {permisos.eliminar && <button onClick={() => { if (confirm(tCf('delBodega'))) setBodegas(prev => prev.filter(b => b.id !== r.id)) }} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
                   </div>
                 </td>
               </tr>
             ))}
             {filteredBodegas.length === 0 && (
-              <tr><td colSpan={5} className="px-6 py-12 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tE('noBodegas')}</td></tr>
+              <tr><td colSpan={5} className="px-6 py-12 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tE('noBodegas')}</td></tr>
             )}
           </tbody>
         </table>
@@ -670,16 +670,16 @@ export default function BodegasPage() {
   const renderMovimientos = () => (
     <>
       {isMovFormOpen && (
-        <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
+        <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
           <div className="flex items-center gap-3 mb-6">
-            <h2 className="text-lg font-semibold text-white">{tSec('nuevoMovimiento')}</h2>
-            <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>{formMov.consecutivo}</span>
+            <h2 className="text-lg font-semibold text-slate-800">{tSec('nuevoMovimiento')}</h2>
+            <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>{formMov.consecutivo}</span>
           </div>
           <form onSubmit={handleSaveMov}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               {/* Tipo */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Tipo *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo *</label>
                 <select required value={formMov.tipo} onChange={e => setFormMov({ ...formMov, tipo: e.target.value as Movimiento['tipo'] })}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                   <option value="Entrada">Entrada</option>
@@ -689,13 +689,13 @@ export default function BodegasPage() {
               </div>
               {/* Fecha */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Fecha *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha *</label>
                 <input type="date" required value={formMov.fecha} onChange={e => setFormMov({ ...formMov, fecha: e.target.value })}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
               </div>
               {/* Bodega */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Bodega *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega *</label>
                 <select required value={formMov.bodega_id} onChange={e => handleBodegaChange(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                   <option value="">{tOp('seleccione')}</option>
@@ -704,7 +704,7 @@ export default function BodegasPage() {
               </div>
               {/* Referencia */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Referencia</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Referencia</label>
                 <input value={formMov.referencia} onChange={e => setFormMov({ ...formMov, referencia: e.target.value })}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
                   placeholder="OC-00001 / RF-00001" />
@@ -713,14 +713,14 @@ export default function BodegasPage() {
               <input type="text" required value={formMov.codigo_producto} onChange={() => {}} className="sr-only" tabIndex={-1} aria-hidden="true" />
               {/* Buscador de Producto */}
               <div className="lg:col-span-4">
-                <label className="block text-xl font-extrabold text-white mb-1">Buscar Producto *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Buscar Producto *</label>
                 {formMov.codigo_producto ? (
                   <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl" style={{ background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.3)' }}>
-                    <span className="font-mono text-xs font-bold" style={{ color: '#fff' }}>{formMov.codigo_producto}</span>
-                    <span className="text-white flex-1">{formMov.descripcion_producto}</span>
-                    <span className="text-white/50 text-xs">{formMov.unidad_medida}</span>
+                    <span className="font-mono text-xs font-bold" style={{ color: '#1e293b' }}>{formMov.codigo_producto}</span>
+                    <span className="text-slate-800 flex-1">{formMov.descripcion_producto}</span>
+                    <span className="text-slate-500 text-xs">{formMov.unidad_medida}</span>
                     <button type="button" onClick={() => { setFormMov({ ...formMov, codigo_producto: '', descripcion_producto: '', unidad_medida: 'Unidad', costo_unitario: 0, cantidad: 0 }); setSearchProd(''); setTimeout(() => searchProdRef.current?.focus(), 50) }}
-                      className="text-white/40 hover:text-white/70 text-xs px-2 py-1 rounded-lg transition-colors" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                      className="text-slate-400 hover:text-slate-600 text-xs px-2 py-1 rounded-lg transition-colors" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
                       Cambiar
                     </button>
                   </div>
@@ -730,8 +730,8 @@ export default function BodegasPage() {
                       <input ref={searchProdRef} value={searchProd}
                         onChange={e => setSearchProd(e.target.value)}
                         onKeyDown={e => { if (e.key === 'Escape') setSearchProd('') }}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                         placeholder="Escriba nombre o código del producto..." />
                       <VoiceSearchButton onResult={setSearchProd} />
                     </div>
@@ -740,20 +740,20 @@ export default function BodegasPage() {
                         p.codigo.toLowerCase().includes(searchProd.toLowerCase()) ||
                         p.descripcion.toLowerCase().includes(searchProd.toLowerCase())
                       ).slice(0, 8)
-                      if (matches.length === 0) return <p className="text-white/30 text-xs mt-2">No se encontraron productos</p>
+                      if (matches.length === 0) return <p className="text-slate-400 text-xs mt-2">No se encontraron productos</p>
                       return (
-                        <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                        <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                           {matches.map(p => (
                             <button key={p.id} type="button"
                               onClick={() => {
                                 setFormMov({ ...formMov, codigo_producto: p.codigo, descripcion_producto: p.descripcion, unidad_medida: p.unidad_medida, costo_unitario: p.ult_costo })
                                 setSearchProd('')
                               }}
-                              className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-white/5 transition-colors"
-                              style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                              <span className="font-mono text-xs" style={{ color: '#fff' }}>{p.codigo}</span>
-                              <span className="text-white/80 flex-1">{p.descripcion}</span>
-                              <span className="text-white/40 text-xs">{p.unidad_medida}</span>
+                              className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-black/5 transition-colors"
+                              style={{ borderBottom: '1px solid rgba(15,23,42,0.05)' }}>
+                              <span className="font-mono text-xs" style={{ color: '#1e293b' }}>{p.codigo}</span>
+                              <span className="text-slate-600 flex-1">{p.descripcion}</span>
+                              <span className="text-slate-400 text-xs">{p.unidad_medida}</span>
                             </button>
                           ))}
                         </div>
@@ -764,21 +764,21 @@ export default function BodegasPage() {
               </div>
               {/* Cantidad */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Cantidad *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Cantidad *</label>
                 <input type="number" required min="0.01" step="0.01" value={formMov.cantidad || ''}
                   onChange={e => setFormMov({ ...formMov, cantidad: parseFloat(e.target.value) || 0 })}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
               </div>
               {/* Observaciones */}
               <div className="lg:col-span-2">
-                <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                 <input value={formMov.observaciones} onChange={e => setFormMov({ ...formMov, observaciones: e.target.value })}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} placeholder="Notas opcionales" />
               </div>
             </div>
             <div className="flex gap-3">
-              <button type="submit" className="px-6 py-2 rounded-xl text-white font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('registerMovement')}</button>
-              <button type="button" onClick={() => { setIsMovFormOpen(false); setSearchProd('') }} className="px-6 py-2 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>{tBtn('cancel')}</button>
+              <button type="submit" className="px-6 py-2 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('registerMovement')}</button>
+              <button type="button" onClick={() => { setIsMovFormOpen(false); setSearchProd('') }} className="px-6 py-2 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>{tBtn('cancel')}</button>
             </div>
           </form>
         </div>
@@ -817,12 +817,12 @@ export default function BodegasPage() {
           title="Fecha Hasta" />
       </div>
 
-      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <table className="w-full text-base text-left">
-          <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+          <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
             <tr>
               {[tF('consecutivo'), tF('fecha'), tF('tipo'), esMP ? 'Celda' : tF('bodega'), tF('codigo'), tF('descripcion'), tF('unidad'), tF('cantidad'), tH('costoUnit'), tH('total'), tF('referencia')].map(h => (
-                <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
               ))}
             </tr>
           </thead>
@@ -830,25 +830,25 @@ export default function BodegasPage() {
             {filteredMovimientos.map(m => {
               const cat = m.referencia ? categoriaMov(m.referencia) : (m.tipo === 'Entrada' ? 'Entrada' : 'Salida')
               return (
-              <tr key={m.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                <td className="px-4 py-3 font-mono text-xs font-bold" style={{ color: '#fff' }}>{m.consecutivo}</td>
-                <td className="px-4 py-3 text-white/60">{fDate(m.fecha)}</td>
+              <tr key={m.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                <td className="px-4 py-3 font-mono text-xs font-bold" style={{ color: '#1e293b' }}>{m.consecutivo}</td>
+                <td className="px-4 py-3 text-slate-500">{fDate(m.fecha)}</td>
                 <td className="px-4 py-3"><span className="px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap" style={categoriaStyle(cat)}>{cat}</span></td>
-                <td className="px-4 py-3 text-white/80">{m.bodega_nombre}</td>
-                <td className="px-4 py-3 font-mono text-xs text-white">{m.codigo_producto}</td>
-                <td className="px-4 py-3 text-white/80 max-w-xs truncate">{m.descripcion_producto}</td>
-                <td className="px-4 py-3 text-white/50 text-xs">{m.unidad_medida}</td>
+                <td className="px-4 py-3 text-slate-600">{m.bodega_nombre}</td>
+                <td className="px-4 py-3 font-mono text-xs text-slate-800">{m.codigo_producto}</td>
+                <td className="px-4 py-3 text-slate-600 max-w-xs truncate">{m.descripcion_producto}</td>
+                <td className="px-4 py-3 text-slate-500 text-xs">{m.unidad_medida}</td>
                 <td className="px-4 py-3 text-center font-bold" style={{ color: m.tipo === 'Entrada' ? '#93c5fd' : m.tipo === 'Salida' ? '#fca5a5' : '#fcd34d' }}>
                   {m.tipo === 'Salida' ? '-' : '+'}{m.cantidad}
                 </td>
-                <td className="px-4 py-3 text-white/60 text-right">${fmtMoney(m.costo_unitario)}</td>
-                <td className="px-4 py-3 text-white text-right font-medium">${fmtMoney(m.cantidad * m.costo_unitario)}</td>
-                <td className="px-4 py-3 text-white font-mono text-xs font-bold">{m.referencia || '—'}</td>
+                <td className="px-4 py-3 text-slate-500 text-right">${fmtMoney(m.costo_unitario)}</td>
+                <td className="px-4 py-3 text-slate-800 text-right font-medium">${fmtMoney(m.cantidad * m.costo_unitario)}</td>
+                <td className="px-4 py-3 text-slate-800 font-mono text-xs font-bold">{m.referencia || '—'}</td>
               </tr>
               )
             })}
             {filteredMovimientos.length === 0 && (
-              <tr><td colSpan={11} className="px-6 py-12 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tE('noMovimientos')}</td></tr>
+              <tr><td colSpan={11} className="px-6 py-12 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tE('noMovimientos')}</td></tr>
             )}
           </tbody>
         </table>
@@ -885,40 +885,40 @@ export default function BodegasPage() {
         </select>
       </div>
 
-      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <table className="w-full text-base text-left">
-          <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+          <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
             <tr>
               {[esMP ? 'Celda' : tF('bodega'), tF('codigo'), tF('descripcion'), tF('unidad'), tH('saldoActual'), tH('costoUnit'), tH('valorTotal')].map(h => (
-                <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {filteredSaldos.map((s, i) => (
-              <tr key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                <td className="px-5 py-4 text-white font-bold">{s.bodega_nombre}</td>
-                <td className="px-5 py-4 font-mono text-xs text-white">{s.codigo_producto}</td>
-                <td className="px-5 py-4 text-white font-bold">{s.descripcion_producto}</td>
-                <td className="px-5 py-4 text-white/50 text-xs">{s.unidad_medida}</td>
+              <tr key={i} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                <td className="px-5 py-4 text-slate-800 font-bold">{s.bodega_nombre}</td>
+                <td className="px-5 py-4 font-mono text-xs text-slate-800">{s.codigo_producto}</td>
+                <td className="px-5 py-4 text-slate-800 font-bold">{s.descripcion_producto}</td>
+                <td className="px-5 py-4 text-slate-500 text-xs">{s.unidad_medida}</td>
                 <td className="px-5 py-4 text-center">
                   <span className="font-bold text-lg" style={{ color: s.saldo > 0 ? '#93c5fd' : s.saldo < 0 ? '#fca5a5' : '#fcd34d' }}>{s.saldo}</span>
                 </td>
-                <td className="px-5 py-4 text-white/60 text-right">${fmtMoney(s.costo_unitario)}</td>
-                <td className="px-5 py-4 text-right font-bold" style={{ color: '#fff' }}>${fmtMoney(s.saldo * s.costo_unitario)}</td>
+                <td className="px-5 py-4 text-slate-500 text-right">${fmtMoney(s.costo_unitario)}</td>
+                <td className="px-5 py-4 text-right font-bold" style={{ color: '#1e293b' }}>${fmtMoney(s.saldo * s.costo_unitario)}</td>
               </tr>
             ))}
             {filteredSaldos.length === 0 && (
-              <tr><td colSpan={7} className="px-6 py-12 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>
+              <tr><td colSpan={7} className="px-6 py-12 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>
                 {movimientos.length === 0 ? 'Registra movimientos para ver los saldos' : 'Sin saldos para los filtros seleccionados'}
               </td></tr>
             )}
           </tbody>
         </table>
         {filteredSaldos.length > 0 && (
-          <div className="px-5 py-3 flex justify-end gap-2 text-sm" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <span style={{ color: 'rgba(255,255,255,0.4)' }}>Valor Total Inventario:</span>
-            <span className="font-bold" style={{ color: '#fff' }}>${fmtMoney(filteredSaldos.reduce((s, r) => s + r.saldo * r.costo_unitario, 0))}</span>
+          <div className="px-5 py-3 flex justify-end gap-2 text-sm" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
+            <span style={{ color: 'rgba(15,23,42,0.4)' }}>Valor Total Inventario:</span>
+            <span className="font-bold" style={{ color: '#1e293b' }}>${fmtMoney(filteredSaldos.reduce((s, r) => s + r.saldo * r.costo_unitario, 0))}</span>
           </div>
         )}
       </div>
@@ -930,19 +930,19 @@ export default function BodegasPage() {
     <div className="space-y-8">
 
       {/* ── Panel 1: Reporte de Bodegas / Celdas ───────────────────────────────── */}
-      <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-        <h2 className="text-base font-semibold text-white mb-5">{esMP ? 'Reporte de Celdas' : tRpt('bodegas')}</h2>
+      <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+        <h2 className="text-base font-semibold text-slate-800 mb-5">{esMP ? 'Reporte de Celdas' : tRpt('bodegas')}</h2>
 
         {/* Filtros */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
           <div>
-            <label className="block text-xl font-extrabold text-white mb-1">Título del Reporte</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Título del Reporte</label>
             <input value={rptBodegaTitle} onChange={e => setRptBodegaTitle(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
               placeholder="Reporte de Bodegas" />
           </div>
           <div>
-            <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
             <select value={rptBodegaSituacion} onChange={e => setRptBodegaSituacion(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
               <option value="">Todas</option>
@@ -952,32 +952,32 @@ export default function BodegasPage() {
         </div>
 
         {/* Preview */}
-        <div className="rounded-xl overflow-x-auto mb-5" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="rounded-xl overflow-x-auto mb-5" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
           <table className="w-full text-base text-left">
-            <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+            <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
               <tr>
                 {[tF('nombre'), tF('direccion'), tF('ciudad'), tF('pais'), tF('situacion')].map(h => (
-                  <th key={h} className="px-4 py-2.5 font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                  <th key={h} className="px-4 py-2.5 font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {filteredRptBodegas.slice(0, 5).map(b => (
-                <tr key={b.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  <td className="px-4 py-2.5 text-white font-medium">{b.nombre}</td>
-                  <td className="px-4 py-2.5 text-white/70">{b.direccion}</td>
-                  <td className="px-4 py-2.5 text-white/70">{b.ciudad}</td>
-                  <td className="px-4 py-2.5 text-white/70">{b.pais}</td>
+                <tr key={b.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                  <td className="px-4 py-2.5 text-slate-800 font-medium">{b.nombre}</td>
+                  <td className="px-4 py-2.5 text-slate-600">{b.direccion}</td>
+                  <td className="px-4 py-2.5 text-slate-600">{b.ciudad}</td>
+                  <td className="px-4 py-2.5 text-slate-600">{b.pais}</td>
                   <td className="px-4 py-2.5"><span className="px-2 py-0.5 rounded-full text-xs" style={sitStyle(b.situacion)}>{b.situacion}</span></td>
                 </tr>
               ))}
               {filteredRptBodegas.length === 0 && (
-                <tr><td colSpan={5} className="px-4 py-6 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tEs('sinRegistrosFiltros')}</td></tr>
+                <tr><td colSpan={5} className="px-4 py-6 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tEs('sinRegistrosFiltros')}</td></tr>
               )}
             </tbody>
           </table>
           {filteredRptBodegas.length > 5 && (
-            <div className="px-4 py-2 text-xs" style={{ color: 'rgba(255,255,255,0.35)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="px-4 py-2 text-xs" style={{ color: 'rgba(15,23,42,0.35)', borderTop: '1px solid rgba(15,23,42,0.06)' }}>
               Mostrando 5 de {filteredRptBodegas.length} registros
             </div>
           )}
@@ -988,54 +988,54 @@ export default function BodegasPage() {
           <button
             disabled={isExportingBodega || filteredRptBodegas.length === 0}
             onClick={() => doExportBodega('pdf')}
-            className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+            className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
             style={{ background: 'rgba(239,68,68,0.35)', border: '1px solid rgba(239,68,68,0.4)' }}>
             {isExportingBodega ? 'Exportando...' : '⬇ PDF'}
           </button>
           <button
             disabled={isExportingBodega || filteredRptBodegas.length === 0}
             onClick={() => doExportBodega('excel')}
-            className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+            className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
             style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}>
             {isExportingBodega ? 'Exportando...' : '⬇ Excel'}
           </button>
           <button
             disabled={isExportingBodega || filteredRptBodegas.length === 0}
             onClick={() => doExportBodega('print')}
-            className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+            className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
             style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}>
             🖨 Imprimir
           </button>
-          <span className="self-center text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          <span className="self-center text-xs" style={{ color: 'rgba(15,23,42,0.35)' }}>
             {filteredRptBodegas.length} registro{filteredRptBodegas.length !== 1 ? 's' : ''}
           </span>
         </div>
       </div>
 
       {/* ── Panel 2: Reporte de Movimientos ───────────────────────────────────── */}
-      <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-        <h2 className="text-base font-semibold text-white mb-5">{esMP ? 'Reporte de Movimientos de Celda' : tRpt('movimientosBodega')}</h2>
+      <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+        <h2 className="text-base font-semibold text-slate-800 mb-5">{esMP ? 'Reporte de Movimientos de Celda' : tRpt('movimientosBodega')}</h2>
 
         {/* Filtros */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
           <div className="lg:col-span-3">
-            <label className="block text-xl font-extrabold text-white mb-1">Título del Reporte</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Título del Reporte</label>
             <input value={rptMovTitle} onChange={e => setRptMovTitle(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
               placeholder="Reporte de Movimientos de Bodega" />
           </div>
           <div>
-            <label className="block text-xl font-extrabold text-white mb-1">Fecha Desde</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Desde</label>
             <input type="date" value={rptMovDesde} onChange={e => setRptMovDesde(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
           </div>
           <div>
-            <label className="block text-xl font-extrabold text-white mb-1">Fecha Hasta</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Hasta</label>
             <input type="date" value={rptMovHasta} onChange={e => setRptMovHasta(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
           </div>
           <div>
-            <label className="block text-xl font-extrabold text-white mb-1">{esMP ? 'Celda' : 'Bodega'}</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">{esMP ? 'Celda' : 'Bodega'}</label>
             <select value={rptMovBodega} onChange={e => setRptMovBodega(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
               <option value="">{esMP ? 'Todas las celdas' : 'Todas las bodegas'}</option>
@@ -1049,7 +1049,7 @@ export default function BodegasPage() {
             </select>
           </div>
           <div>
-            <label className="block text-xl font-extrabold text-white mb-1">Tipo de Movimiento</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Movimiento</label>
             <select value={rptMovTipo} onChange={e => setRptMovTipo(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
               <option value="">Todos</option>
@@ -1061,7 +1061,7 @@ export default function BodegasPage() {
             </select>
           </div>
           <div className="lg:col-span-2">
-            <label className="block text-xl font-extrabold text-white mb-1">Producto (código o nombre)</label>
+            <label className="block text-xl font-extrabold text-slate-800 mb-1">Producto (código o nombre)</label>
             <input value={rptMovProducto} onChange={e => setRptMovProducto(e.target.value)}
               className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
               placeholder="Buscar por código (PROD-00001) o nombre..." />
@@ -1069,12 +1069,12 @@ export default function BodegasPage() {
         </div>
 
         {/* Preview */}
-        <div className="rounded-xl overflow-x-auto mb-5" style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="rounded-xl overflow-x-auto mb-5" style={{ border: '1px solid rgba(15,23,42,0.08)' }}>
           <table className="w-full text-base text-left">
-            <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+            <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
               <tr>
                 {[tF('consecutivo'), tF('fecha'), tF('tipo'), esMP ? 'Celda' : tF('bodega'), tF('codigo'), tF('descripcion'), tF('cantidad'), tH('costoUnit'), tH('total'), tF('referencia')].map(h => (
-                  <th key={h} className="px-4 py-2.5 font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                  <th key={h} className="px-4 py-2.5 font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -1082,29 +1082,29 @@ export default function BodegasPage() {
               {filteredRptMovimientos.slice(0, 5).map(m => {
                 const cat = m.referencia ? categoriaMov(m.referencia) : (m.tipo === 'Entrada' ? 'Entrada' : 'Salida')
                 return (
-                <tr key={m.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  <td className="px-4 py-2.5 font-mono font-bold" style={{ color: '#fff' }}>{m.consecutivo}</td>
-                  <td className="px-4 py-2.5 text-white/60">{fDate(m.fecha)}</td>
+                <tr key={m.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                  <td className="px-4 py-2.5 font-mono font-bold" style={{ color: '#1e293b' }}>{m.consecutivo}</td>
+                  <td className="px-4 py-2.5 text-slate-500">{fDate(m.fecha)}</td>
                   <td className="px-4 py-2.5"><span className="px-2 py-0.5 rounded-full text-xs whitespace-nowrap" style={categoriaStyle(cat)}>{cat}</span></td>
-                  <td className="px-4 py-2.5 text-white/80">{m.bodega_nombre}</td>
-                  <td className="px-4 py-2.5 font-mono text-white">{m.codigo_producto}</td>
-                  <td className="px-4 py-2.5 text-white/70 max-w-xs truncate">{m.descripcion_producto}</td>
-                  <td className="px-4 py-2.5 text-center text-white font-bold">{m.cantidad}</td>
-                  <td className="px-4 py-2.5 text-white/60 text-right">${fmtMoney(m.costo_unitario)}</td>
-                  <td className="px-4 py-2.5 text-white text-right font-medium">${fmtMoney(m.cantidad * m.costo_unitario)}</td>
-                  <td className="px-4 py-2.5 text-white font-mono font-bold">{m.referencia || '—'}</td>
+                  <td className="px-4 py-2.5 text-slate-600">{m.bodega_nombre}</td>
+                  <td className="px-4 py-2.5 font-mono text-slate-800">{m.codigo_producto}</td>
+                  <td className="px-4 py-2.5 text-slate-600 max-w-xs truncate">{m.descripcion_producto}</td>
+                  <td className="px-4 py-2.5 text-center text-slate-800 font-bold">{m.cantidad}</td>
+                  <td className="px-4 py-2.5 text-slate-500 text-right">${fmtMoney(m.costo_unitario)}</td>
+                  <td className="px-4 py-2.5 text-slate-800 text-right font-medium">${fmtMoney(m.cantidad * m.costo_unitario)}</td>
+                  <td className="px-4 py-2.5 text-slate-800 font-mono font-bold">{m.referencia || '—'}</td>
                 </tr>
                 )
               })}
               {filteredRptMovimientos.length === 0 && (
-                <tr><td colSpan={10} className="px-4 py-6 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                <tr><td colSpan={10} className="px-4 py-6 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>
                   {movimientos.length === 0 ? 'No hay movimientos registrados' : 'Sin registros para los filtros seleccionados'}
                 </td></tr>
               )}
             </tbody>
           </table>
           {filteredRptMovimientos.length > 5 && (
-            <div className="px-4 py-2 text-xs" style={{ color: 'rgba(255,255,255,0.35)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="px-4 py-2 text-xs" style={{ color: 'rgba(15,23,42,0.35)', borderTop: '1px solid rgba(15,23,42,0.06)' }}>
               Mostrando 5 de {filteredRptMovimientos.length} registros
             </div>
           )}
@@ -1115,25 +1115,25 @@ export default function BodegasPage() {
           <button
             disabled={isExportingMov || filteredRptMovimientos.length === 0}
             onClick={() => doExportMov('pdf')}
-            className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+            className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
             style={{ background: 'rgba(239,68,68,0.35)', border: '1px solid rgba(239,68,68,0.4)' }}>
             {isExportingMov ? 'Exportando...' : '⬇ PDF'}
           </button>
           <button
             disabled={isExportingMov || filteredRptMovimientos.length === 0}
             onClick={() => doExportMov('excel')}
-            className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+            className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
             style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}>
             {isExportingMov ? 'Exportando...' : '⬇ Excel'}
           </button>
           <button
             disabled={isExportingMov || filteredRptMovimientos.length === 0}
             onClick={() => doExportMov('print')}
-            className="px-5 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+            className="px-5 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
             style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}>
             🖨 Imprimir
           </button>
-          <span className="self-center text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          <span className="self-center text-xs" style={{ color: 'rgba(15,23,42,0.35)' }}>
             {filteredRptMovimientos.length} registro{filteredRptMovimientos.length !== 1 ? 's' : ''}
           </span>
         </div>
@@ -1146,26 +1146,26 @@ export default function BodegasPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{esMP ? labelBodegas : t('bodegas')}</h1>
-          <p className="text-white/50 mt-1">{tSub('bodegas')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{esMP ? labelBodegas : t('bodegas')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('bodegas')}</p>
         </div>
         {tab === 'bodegas' && permisos.editar && (
           <button onClick={() => { setFormBodega(emptyBodega()); setIsBodegaFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {esMP ? '+ Nueva Celda' : tBtn('newWarehouse')}
           </button>
         )}
         {tab === 'lotes' && permisos.editar && esMP && (
           <button onClick={() => { resetLoteForm(); setIsLoteFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-extrabold text-white"
+            className="px-5 py-2.5 rounded-xl font-extrabold text-slate-800"
             style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)', border: '1px solid rgba(37,99,235,1)', boxShadow: '0 4px 12px rgba(59,130,246,0.35)' }}>
             + Identificar Lote
           </button>
         )}
         {tab === 'movimientos' && permisos.editar && !esMP && (
           <button onClick={() => { setFormMov(emptyMov(movimientos.length + 1, bodegas)); setIsMovFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
             style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newMovement')}
           </button>
@@ -1173,7 +1173,7 @@ export default function BodegasPage() {
       </div>
 
       {/* Pestañas */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {([
           { key: 'bodegas', label: esMP ? labelBodegas : tTab('bodegas') },
           { key: 'movimientos', label: tTab('movimientos') },
@@ -1185,8 +1185,8 @@ export default function BodegasPage() {
           <button key={t.key} onClick={() => setTab(t.key)}
             className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t.key
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}>
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}>
             {t.label}
           </button>
         ))}
@@ -1196,38 +1196,38 @@ export default function BodegasPage() {
       {tab === 'movimientos' && renderMovimientos()}
       {tab === 'saldos' && renderSaldos()}
       {tab === 'lotes' && esMP && (
-        <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <table className="w-full text-base text-left">
-            <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+            <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
               <tr>
                 {['Celda', 'Código', 'Producto', 'Nro. Lote', 'Fecha', 'Proveedor', 'Nro. Remisión', 'Acciones'].map(h => (
-                  <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                  <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {lotesCelda.length === 0 && (
-                <tr><td colSpan={8} className="px-6 py-12 text-center text-white/30">No hay lotes identificados. Crea el primero con <strong>+ Identificar Lote</strong>.</td></tr>
+                <tr><td colSpan={8} className="px-6 py-12 text-center text-slate-400">No hay lotes identificados. Crea el primero con <strong>+ Identificar Lote</strong>.</td></tr>
               )}
               {[...lotesCelda].sort((a, b) => a.nro_celda.localeCompare(b.nro_celda, 'es')).map(l => (
-                <tr key={l.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  <td className="px-4 py-3 font-mono font-extrabold text-white">{l.nro_celda}</td>
-                  <td className="px-4 py-3 font-mono text-white">{l.codigo_producto}</td>
-                  <td className="px-4 py-3 text-white font-bold">{l.nombre_producto}</td>
-                  <td className="px-4 py-3 font-mono text-white">{l.lote || '—'}</td>
-                  <td className="px-4 py-3 text-white">{l.fecha ? fDate(l.fecha) : '—'}</td>
-                  <td className="px-4 py-3 text-white/80">{l.proveedor_nombre || '—'}</td>
-                  <td className="px-4 py-3 font-mono text-white">{l.nro_remision || '—'}</td>
+                <tr key={l.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                  <td className="px-4 py-3 font-mono font-extrabold text-slate-800">{l.nro_celda}</td>
+                  <td className="px-4 py-3 font-mono text-slate-800">{l.codigo_producto}</td>
+                  <td className="px-4 py-3 text-slate-800 font-bold">{l.nombre_producto}</td>
+                  <td className="px-4 py-3 font-mono text-slate-800">{l.lote || '—'}</td>
+                  <td className="px-4 py-3 text-slate-800">{l.fecha ? fDate(l.fecha) : '—'}</td>
+                  <td className="px-4 py-3 text-slate-600">{l.proveedor_nombre || '—'}</td>
+                  <td className="px-4 py-3 font-mono text-slate-800">{l.nro_remision || '—'}</td>
                   <td className="px-4 py-3">
                     <div className="flex gap-1.5 flex-wrap">
                       {permisos.editar && (
                         <button onClick={() => editarLote(l)}
-                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-white"
+                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800"
                           style={{ background: 'rgba(245,158,11,1)', border: '1px solid rgba(217,119,6,1)' }}>Editar</button>
                       )}
                       {permisos.eliminar && (
                         <button onClick={() => { if (confirm('¿Eliminar este lote?')) deleteLoteCelda(l.id) }}
-                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-white"
+                          className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800"
                           style={{ background: 'rgba(220,38,38,1)', border: '1px solid rgba(185,28,28,1)' }}>Eliminar</button>
                       )}
                     </div>
@@ -1242,11 +1242,11 @@ export default function BodegasPage() {
 
       {tab === 'especificos' && (
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-4">{tTab('especificos')}</h2>
-          <p className="text-white/50 text-sm mb-6">{tSub('seleccioneReporte')}</p>
+          <h2 className="text-xl font-bold text-slate-800 mb-4">{tTab('especificos')}</h2>
+          <p className="text-slate-500 text-sm mb-6">{tSub('seleccioneReporte')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="text-white/40 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
+            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="text-slate-400 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
             </div>
           </div>
         </div>
@@ -1272,8 +1272,8 @@ export default function BodegasPage() {
           <div className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl p-6"
             style={{ background: 'rgba(34,197,94,0.95)', border: '2px solid #16a34a' }}>
             <div className="flex justify-between items-center mb-5">
-              <h2 className="text-xl font-extrabold text-white">📋 {editLoteId ? 'Editar' : 'Identificar'} Lote en Celda</h2>
-              <button onClick={() => { setIsLoteFormOpen(false); resetLoteForm() }} className="text-white/40 hover:text-white text-3xl leading-none">&times;</button>
+              <h2 className="text-xl font-extrabold text-slate-800">📋 {editLoteId ? 'Editar' : 'Identificar'} Lote en Celda</h2>
+              <button onClick={() => { setIsLoteFormOpen(false); resetLoteForm() }} className="text-slate-400 hover:text-slate-800 text-3xl leading-none">&times;</button>
             </div>
 
             {loteFormError && (
@@ -1287,7 +1287,7 @@ export default function BodegasPage() {
               <div>
                 <label className="block text-base font-extrabold mb-1" style={{ color: '#86efac' }}>Celda *</label>
                 <select value={loteForm.nro_celda} onChange={e => setLoteForm({ ...loteForm, nro_celda: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold outline-none" style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#fff' }}>
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none" style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#1e293b' }}>
                   <option value="">Seleccione una celda…</option>
                   {celdasActivas.map(c => <option key={c.id} value={c.descripcion}>{c.descripcion}</option>)}
                 </select>
@@ -1295,7 +1295,7 @@ export default function BodegasPage() {
               <div>
                 <label className="block text-base font-extrabold mb-1" style={{ color: '#86efac' }}>Producto (Código y Nombre) *</label>
                 <select value={loteForm.producto_id} onChange={e => setLoteForm({ ...loteForm, producto_id: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold outline-none" style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#fff' }}>
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none" style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#1e293b' }}>
                   <option value="">Seleccione una Materia Prima…</option>
                   {productosMP.map(p => <option key={p.id} value={p.id}>{p.codigo} — {p.descripcion}</option>)}
                 </select>
@@ -1305,20 +1305,20 @@ export default function BodegasPage() {
                 <label className="block text-base font-extrabold mb-1" style={{ color: '#86efac' }}>Nro. Lote *</label>
                 <input value={loteForm.lote} onChange={e => setLoteForm({ ...loteForm, lote: e.target.value })}
                   placeholder="LOTE-2026-0001"
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold font-mono outline-none"
-                  style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#fff' }} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono outline-none"
+                  style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#1e293b' }} />
               </div>
               <div>
                 <label className="block text-base font-extrabold mb-1" style={{ color: '#86efac' }}>Fecha</label>
                 <input type="date" value={loteForm.fecha} onChange={e => setLoteForm({ ...loteForm, fecha: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white outline-none"
-                  style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#fff' }} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 outline-none"
+                  style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#1e293b' }} />
               </div>
 
               <div>
                 <label className="block text-base font-extrabold mb-1" style={{ color: '#86efac' }}>Proveedor</label>
                 <select value={loteForm.proveedor_id} onChange={e => setLoteForm({ ...loteForm, proveedor_id: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold outline-none" style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#fff' }}>
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none" style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#1e293b' }}>
                   <option value="">Seleccione un proveedor…</option>
                   {proveedoresActivos.map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}
                 </select>
@@ -1327,8 +1327,8 @@ export default function BodegasPage() {
                 <label className="block text-base font-extrabold mb-1" style={{ color: '#86efac' }}>Nro. Remisión</label>
                 <input value={loteForm.nro_remision} onChange={e => setLoteForm({ ...loteForm, nro_remision: e.target.value })}
                   placeholder="REM-0001"
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold font-mono outline-none"
-                  style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#fff' }} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono outline-none"
+                  style={{ background: 'rgba(34,197,94,0.2)', border: '1px solid rgba(34,197,94,0.5)', color: '#1e293b' }} />
               </div>
             </div>
 
@@ -1339,7 +1339,7 @@ export default function BodegasPage() {
                 Cancelar
               </button>
               <button onClick={guardarLote}
-                className="px-8 py-2.5 rounded-xl text-base font-extrabold text-white transition-all"
+                className="px-8 py-2.5 rounded-xl text-base font-extrabold text-slate-800 transition-all"
                 style={{ background: 'rgba(34,197,94,0.3)', border: '2px solid #16a34a', boxShadow: '0 4px 12px rgba(34,197,94,0.35)' }}>
                 💾 {editLoteId ? 'Actualizar' : 'Guardar'} Lote
               </button>

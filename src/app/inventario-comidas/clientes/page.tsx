@@ -189,7 +189,7 @@ export default function ClientesComidasPage() {
             style={{
               padding: '12px 24px',
               background: '#ea580c',
-              color: '#fff',
+              color: '#1e293b',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',
@@ -204,7 +204,7 @@ export default function ClientesComidasPage() {
             style={{
               padding: '12px 24px',
               background: '#3b82f6',
-              color: '#fff',
+              color: '#1e293b',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',
@@ -268,7 +268,7 @@ export default function ClientesComidasPage() {
                         style={{
                           padding: '6px 12px',
                           background: '#10b981',
-                          color: '#fff',
+                          color: '#1e293b',
                           border: 'none',
                           borderRadius: '4px',
                           cursor: 'pointer',
@@ -284,7 +284,7 @@ export default function ClientesComidasPage() {
                         style={{
                           padding: '6px 12px',
                           background: '#3b82f6',
-                          color: '#fff',
+                          color: '#1e293b',
                           border: 'none',
                           borderRadius: '4px',
                           cursor: 'pointer',
@@ -300,7 +300,7 @@ export default function ClientesComidasPage() {
                         style={{
                           padding: '6px 12px',
                           background: '#ef4444',
-                          color: '#fff',
+                          color: '#1e293b',
                           border: 'none',
                           borderRadius: '4px',
                           cursor: 'pointer',
@@ -363,7 +363,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -387,7 +387,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -409,7 +409,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -435,7 +435,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -458,7 +458,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -478,7 +478,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -500,7 +500,7 @@ export default function ClientesComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -522,7 +522,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -542,7 +542,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -562,7 +562,7 @@ export default function ClientesComidasPage() {
                       background: '#222',
                       border: '1px solid #333',
                       borderRadius: '6px',
-                      color: '#fff',
+                      color: '#1e293b',
                       fontSize: '14px',
                       boxSizing: 'border-box',
                     }}
@@ -583,7 +583,7 @@ export default function ClientesComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -600,7 +600,7 @@ export default function ClientesComidasPage() {
                     flex: 1,
                     padding: '12px',
                     background: '#10b981',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',
@@ -619,7 +619,7 @@ export default function ClientesComidasPage() {
                     flex: 1,
                     padding: '12px',
                     background: '#666',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',
@@ -669,7 +669,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Tipo Cliente
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.tipo_cliente}
                   </div>
                 </div>
@@ -677,7 +677,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Nombre
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff', fontWeight: 'bold' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b', fontWeight: 'bold' }}>
                     {viewingCliente.nombre}
                   </div>
                 </div>
@@ -688,7 +688,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Tipo Identificación
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.tipo_identificacion}
                   </div>
                 </div>
@@ -696,7 +696,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Nro Documento
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.nro_documento}
                   </div>
                 </div>
@@ -707,7 +707,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Correo
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.correo}
                   </div>
                 </div>
@@ -715,7 +715,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Nro Móvil
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.nro_movil}
                   </div>
                 </div>
@@ -725,7 +725,7 @@ export default function ClientesComidasPage() {
                 <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                   Dirección
                 </label>
-                <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                   {viewingCliente.direccion || '-'}
                 </div>
               </div>
@@ -735,7 +735,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Ciudad/Población
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.ciudad || '-'}
                   </div>
                 </div>
@@ -743,7 +743,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     Población
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.poblacion || '-'}
                   </div>
                 </div>
@@ -751,7 +751,7 @@ export default function ClientesComidasPage() {
                   <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                     País
                   </label>
-                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                  <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                     {viewingCliente.pais || '-'}
                   </div>
                 </div>
@@ -761,7 +761,7 @@ export default function ClientesComidasPage() {
                 <label style={{ display: 'block', marginBottom: '5px', fontSize: '14px', color: '#aaa' }}>
                   Situación
                 </label>
-                <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#fff' }}>
+                <div style={{ padding: '10px', background: '#222', borderRadius: '6px', color: '#1e293b' }}>
                   {viewingCliente.situacion}
                 </div>
               </div>
@@ -773,7 +773,7 @@ export default function ClientesComidasPage() {
                     width: '100%',
                     padding: '12px',
                     background: '#10b981',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',

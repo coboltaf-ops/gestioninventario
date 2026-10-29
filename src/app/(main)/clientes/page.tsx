@@ -42,18 +42,18 @@ export default function ClientesPage() {
   const [error, setError] = useState('')
 
   // ─── Estilos compartidos (mismo patrón que CRM SPIN) ──────────────────────
-  const inputStyle: React.CSSProperties = { width: '100%', padding: '8px 12px', borderRadius: 8, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', color: '#ffffff', fontSize: 13, outline: 'none', boxSizing: 'border-box', height: 38 }
+  const inputStyle: React.CSSProperties = { width: '100%', padding: '8px 12px', borderRadius: 8, background: 'rgba(15,23,42,0.08)', border: '1px solid rgba(15,23,42,0.2)', color: '#1e293b', fontSize: 13, outline: 'none', boxSizing: 'border-box', height: 38 }
   const btnStyle: React.CSSProperties = { padding: '8px 16px', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600 }
-  const labelStyle: React.CSSProperties = { color: '#ffffff', fontSize: 14, fontWeight: 800, display: 'block', marginBottom: 6 }
-  const th: React.CSSProperties = { padding: '12px 14px', background: '#0F8888', color: '#fff', fontSize: 12, textAlign: 'left' }
-  const td: React.CSSProperties = { padding: '10px 14px', borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.75)', fontSize: 13 }
+  const labelStyle: React.CSSProperties = { color: '#1e293b', fontSize: 14, fontWeight: 800, display: 'block', marginBottom: 6 }
+  const th: React.CSSProperties = { padding: '12px 14px', background: '#0F8888', color: '#1e293b', fontSize: 12, textAlign: 'left' }
+  const td: React.CSSProperties = { padding: '10px 14px', borderBottom: '1px solid rgba(15,23,42,0.1)', color: 'rgba(15,23,42,0.75)', fontSize: 13 }
 
   const statusStyle = (s: string): React.CSSProperties => {
     const map: Record<string, React.CSSProperties> = {
-      'Activo': { background: '#4169E1', color: '#ffffff', border: '1px solid #3b82f6' },
+      'Activo': { background: '#4169E1', color: '#1e293b', border: '1px solid #3b82f6' },
       'Inactivo': { background: 'rgba(245,158,11,0.2)', color: '#fcd34d', border: '1px solid rgba(245,158,11,0.3)' },
       'Bloqueado': { background: 'rgba(239,68,68,0.2)', color: '#fca5a5', border: '1px solid rgba(239,68,68,0.3)' },
-      'Prospecto': { background: '#14B4B4', color: '#ffffff', border: '1px solid #3b82f6' },
+      'Prospecto': { background: '#14B4B4', color: '#1e293b', border: '1px solid #3b82f6' },
     }
     return map[s] || {}
   }
@@ -89,7 +89,7 @@ export default function ClientesPage() {
   }
 
   if (!permisos.leer) {
-    return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}><p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 18 }}>No tienes permisos para acceder a esta sección.</p></div>
+    return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}><p style={{ color: 'rgba(15,23,42,0.6)', fontSize: 18 }}>No tienes permisos para acceder a esta sección.</p></div>
   }
 
   // ═══════════════ VISTA DETALLE (Ver) ═══════════════
@@ -140,21 +140,21 @@ export default function ClientesPage() {
     ]
     return (
       <div>
-        <button onClick={() => setViewDetail(null)} style={{ ...btnStyle, background: '#000000', color: '#ffffff', border: '1px solid #333333', marginBottom: 16 }}>← Volver</button>
-        <div style={{ background: '#0A5A5A', borderRadius: 16, padding: 24, border: '1px solid rgba(255,255,255,0.15)' }}>
-          <h2 style={{ color: '#ffffff', fontSize: 18, fontWeight: 700, marginBottom: 12 }}>{viewDetail.razon_social}</h2>
+        <button onClick={() => setViewDetail(null)} style={{ ...btnStyle, background: '#f1f5f9', color: '#1e293b', border: '1px solid #333333', marginBottom: 16 }}>← Volver</button>
+        <div style={{ background: '#f1f5f9', borderRadius: 16, padding: 24, border: '1px solid rgba(15,23,42,0.15)' }}>
+          <h2 style={{ color: '#1e293b', fontSize: 18, fontWeight: 700, marginBottom: 12 }}>{viewDetail.razon_social}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginTop: 16 }}>
             {fields.map(f => (
               <div key={f.label}>
-                <label style={{ color: 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5 }}>{f.label}</label>
-                <div style={{ color: '#ffffff', fontSize: 14, fontWeight: 600, marginTop: 4 }}>{f.value || '—'}</div>
+                <label style={{ color: 'rgba(15,23,42,0.6)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5 }}>{f.label}</label>
+                <div style={{ color: '#1e293b', fontSize: 14, fontWeight: 600, marginTop: 4 }}>{f.value || '—'}</div>
               </div>
             ))}
           </div>
           {viewDetail.observaciones && (
-            <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-              <label style={{ color: 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5 }}>Observaciones</label>
-              <div style={{ color: '#ffffff', fontSize: 14, fontWeight: 600, marginTop: 4, whiteSpace: 'pre-wrap' }}>{viewDetail.observaciones}</div>
+            <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid rgba(15,23,42,0.1)' }}>
+              <label style={{ color: 'rgba(15,23,42,0.6)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 0.5 }}>Observaciones</label>
+              <div style={{ color: '#1e293b', fontSize: 14, fontWeight: 600, marginTop: 4, whiteSpace: 'pre-wrap' }}>{viewDetail.observaciones}</div>
             </div>
           )}
         </div>
@@ -166,9 +166,9 @@ export default function ClientesPage() {
   if (isForm && selected) {
     return (
       <div>
-        <button onClick={() => { setIsForm(false); setSelected(null); setError('') }} style={{ ...btnStyle, background: '#000000', color: '#ffffff', border: '1px solid #333333', marginBottom: 16 }}>← Volver</button>
-        <form onSubmit={handleSave} style={{ background: '#0A5A5A', borderRadius: 16, padding: 24, border: '1px solid rgba(255,255,255,0.15)' }}>
-          <h2 style={{ color: '#ffffff', fontSize: 20, fontWeight: 800, marginBottom: 20 }}>{selected.id ? 'Editar' : 'Nuevo'} Cliente</h2>
+        <button onClick={() => { setIsForm(false); setSelected(null); setError('') }} style={{ ...btnStyle, background: '#f1f5f9', color: '#1e293b', border: '1px solid #333333', marginBottom: 16 }}>← Volver</button>
+        <form onSubmit={handleSave} style={{ background: '#f1f5f9', borderRadius: 16, padding: 24, border: '1px solid rgba(15,23,42,0.15)' }}>
+          <h2 style={{ color: '#1e293b', fontSize: 20, fontWeight: 800, marginBottom: 20 }}>{selected.id ? 'Editar' : 'Nuevo'} Cliente</h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
             <div><label style={labelStyle}>Código</label><input value={selected.codigo} readOnly style={{ ...inputStyle, opacity: 0.5 }} /></div>
@@ -346,8 +346,8 @@ export default function ClientesPage() {
           {error && <div style={{ marginTop: 16, padding: '10px 14px', background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.4)', borderRadius: 8, color: '#fca5a5', fontSize: 13, fontWeight: 700 }}>{error}</div>}
 
           <div style={{ display: 'flex', gap: 10, marginTop: 24, justifyContent: 'flex-end' }}>
-            <button type="button" onClick={() => { setIsForm(false); setSelected(null); setError('') }} style={{ ...btnStyle, background: 'rgba(255,255,255,0.1)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)' }}>Cancelar</button>
-            <button type="submit" style={{ ...btnStyle, background: '#0A5A5A', color: '#ffffff', border: '1px solid #14B4B4' }}>{selected.id ? 'Guardar Cambios' : 'Crear Cliente'}</button>
+            <button type="button" onClick={() => { setIsForm(false); setSelected(null); setError('') }} style={{ ...btnStyle, background: 'rgba(15,23,42,0.1)', color: '#1e293b', border: '1px solid rgba(15,23,42,0.2)' }}>Cancelar</button>
+            <button type="submit" style={{ ...btnStyle, background: '#f1f5f9', color: '#1e293b', border: '1px solid #14B4B4' }}>{selected.id ? 'Guardar Cambios' : 'Crear Cliente'}</button>
           </div>
         </form>
       </div>
@@ -359,21 +359,21 @@ export default function ClientesPage() {
     <div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <h1 style={{ color: '#ffffff', fontSize: 24, fontWeight: 800 }}>Clientes</h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, marginTop: 4 }}>Maestro de clientes — datos comerciales y tributarios</p>
+          <h1 style={{ color: '#1e293b', fontSize: 24, fontWeight: 800 }}>Clientes</h1>
+          <p style={{ color: 'rgba(15,23,42,0.6)', fontSize: 13, marginTop: 4 }}>Maestro de clientes — datos comerciales y tributarios</p>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           {permisos.editar && (
-            <button onClick={() => { setSelected(emptyCliente(`CLI-${String(clientes.length + 1).padStart(5, '0')}`)); setIsForm(true) }} style={{ ...btnStyle, background: '#0A5A5A', color: '#ffffff', border: '1px solid #14B4B4' }}>+ Nuevo Cliente</button>
+            <button onClick={() => { setSelected(emptyCliente(`CLI-${String(clientes.length + 1).padStart(5, '0')}`)); setIsForm(true) }} style={{ ...btnStyle, background: '#f1f5f9', color: '#1e293b', border: '1px solid #14B4B4' }}>+ Nuevo Cliente</button>
           )}
         </div>
       </div>
 
       <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por razón social, código, documento, ciudad o correo..." style={{ ...inputStyle, maxWidth: 500, marginBottom: 16 }} />
 
-      <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, marginBottom: 12 }}>{filtered.length} cliente(s)</p>
+      <p style={{ color: 'rgba(15,23,42,0.6)', fontSize: 13, marginBottom: 12 }}>{filtered.length} cliente(s)</p>
 
-      <div style={{ borderRadius: 12, border: '1px solid rgba(255,255,255,0.15)', overflow: 'hidden' }}>
+      <div style={{ borderRadius: 12, border: '1px solid rgba(15,23,42,0.15)', overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
@@ -384,22 +384,22 @@ export default function ClientesPage() {
           </thead>
           <tbody>
             {filtered.map((c, i) => (
-              <tr key={c.id} style={{ background: i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent' }}>
-                <td style={{ ...td, color: '#ffffff', fontWeight: 600 }}>{c.razon_social}</td>
+              <tr key={c.id} style={{ background: i % 2 === 0 ? 'rgba(15,23,42,0.03)' : 'transparent' }}>
+                <td style={{ ...td, color: '#1e293b', fontWeight: 600 }}>{c.razon_social}</td>
                 <td style={td}>{c.ciudad || '—'}</td>
                 <td style={{ ...td, fontFamily: 'monospace' }}>{c.telefono || c.nro_movil || '—'}</td>
                 <td style={td}>{c.email || '—'}</td>
                 <td style={td}><span style={{ padding: '3px 10px', borderRadius: 20, fontSize: 11, fontWeight: 600, ...statusStyle(c.situacion) }}>{c.situacion}</span></td>
                 <td style={td}>
                   <div style={{ display: 'flex', gap: 6 }}>
-                    <button onClick={() => setViewDetail(c)} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#ea580c', color: '#ffffff', border: '1px solid #f97316' }}>Ver</button>
-                    {permisos.editar && <button onClick={() => { setSelected(c); setIsForm(true) }} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#14B4B4', color: '#ffffff', border: '1px solid #3b82f6' }}>Editar</button>}
-                    {permisos.eliminar && <button onClick={() => { if (confirm(`¿Eliminar cliente "${c.razon_social}"?`)) deleteCliente(c.id) }} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#dc2626', color: '#ffffff', border: '1px solid #ef4444' }}>Eliminar</button>}
+                    <button onClick={() => setViewDetail(c)} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#ea580c', color: '#1e293b', border: '1px solid #f97316' }}>Ver</button>
+                    {permisos.editar && <button onClick={() => { setSelected(c); setIsForm(true) }} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#14B4B4', color: '#1e293b', border: '1px solid #3b82f6' }}>Editar</button>}
+                    {permisos.eliminar && <button onClick={() => { if (confirm(`¿Eliminar cliente "${c.razon_social}"?`)) deleteCliente(c.id) }} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#dc2626', color: '#1e293b', border: '1px solid #ef4444' }}>Eliminar</button>}
                   </div>
                 </td>
               </tr>
             ))}
-            {filtered.length === 0 && <tr><td colSpan={6} style={{ padding: 32, textAlign: 'center', color: 'rgba(255,255,255,0.5)', fontSize: 14 }}>No hay clientes registrados</td></tr>}
+            {filtered.length === 0 && <tr><td colSpan={6} style={{ padding: 32, textAlign: 'center', color: 'rgba(15,23,42,0.5)', fontSize: 14 }}>No hay clientes registrados</td></tr>}
           </tbody>
         </table>
       </div>

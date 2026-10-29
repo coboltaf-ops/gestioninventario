@@ -50,13 +50,13 @@ const initForm = (records: Producto[], tipoInicial = ''): Producto => {
 }
 
 const sitStyle = (s: string): React.CSSProperties => {
-  if (s === 'Activo') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'Descontinuado') return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
-  return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
+  if (s === 'Activo') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Descontinuado') return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
+  return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
 }
 
-const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-const tabInactive: React.CSSProperties = { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }
+const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+const tabInactive: React.CSSProperties = { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }
 
 export default function ProductosPage() {
   const t = useTranslations('pages')
@@ -82,7 +82,7 @@ export default function ProductosPage() {
 
   const [form, setForm] = useState<Producto>(initForm(records))
 
-  const selStyle: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)' }
+  const selStyle: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)' }
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [search, setSearch] = useState('')
   const [clienteFiltro, setClienteFiltro] = useState<string>('') // '' = Todos los Clientes
@@ -390,7 +390,7 @@ export default function ProductosPage() {
             var ctx = canvas.getContext('2d')
             ctx.fillStyle = '#ffffff'
             ctx.fillRect(0, 0, total, total)
-            ctx.fillStyle = '#000000'
+            ctx.fillStyle = '#f1f5f9'
             for (var r = 0; r < count; r++) {
               for (var c = 0; c < count; c++) {
                 if (qr.isDark(r, c)) ctx.fillRect((c + margin) * cellSize, (r + margin) * cellSize, cellSize, cellSize)
@@ -409,12 +409,12 @@ export default function ProductosPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('productos')}</h1>
-          <p className="text-white/50 mt-1">
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('productos')}</h1>
+          <p className="text-slate-500 mt-1">
             {tSub('productos')}
-            <span className="ml-3 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+            <span className="ml-3 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
               {tipoInvFiltro || 'Todos los Productos'}
-              <button onClick={() => setTipoActivoSesion(null)} className="text-white/70 hover:text-white" title="Cambiar filtro">✕</button>
+              <button onClick={() => setTipoActivoSesion(null)} className="text-slate-600 hover:text-slate-800" title="Cambiar filtro">✕</button>
             </span>
           </p>
         </div>
@@ -422,24 +422,24 @@ export default function ProductosPage() {
           <div className="flex gap-3 flex-wrap items-center">
             {/* Botón principal — siempre primero y bien visible */}
             <button onClick={() => { setForm(initForm(records, tipoInvFiltro || '')); setIsFormOpen(true) }}
-              className="px-6 py-3 rounded-xl font-extrabold text-white text-base transition-all hover:scale-105 shadow-lg"
+              className="px-6 py-3 rounded-xl font-extrabold text-slate-800 text-base transition-all hover:scale-105 shadow-lg"
               style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)', border: '2px solid rgba(96,165,250,0.6)', boxShadow: '0 4px 16px rgba(59,130,246,0.45)' }}>
               ➕ NUEVO PRODUCTO
             </button>
             <input ref={fileInputRef} type="file" accept=".xlsx,.xls,.csv" onChange={handleImportExcel} style={{ display: 'none' }} />
-            <button onClick={() => fileInputRef.current?.click()} className="px-5 py-2.5 rounded-xl font-medium text-white" style={{ background: 'rgba(34,197,94,0.4)', border: '1px solid rgba(21,128,61,1)' }} title="Importar productos desde un archivo Excel">
+            <button onClick={() => fileInputRef.current?.click()} className="px-5 py-2.5 rounded-xl font-medium text-slate-800" style={{ background: 'rgba(34,197,94,0.4)', border: '1px solid rgba(21,128,61,1)' }} title="Importar productos desde un archivo Excel">
               📥 Subir Productos (Excel)
             </button>
-            <button onClick={() => { setEtqProducto(''); setEtqCategoria(''); setEtqGrupo(''); setEtqSubGrupo(''); setShowEtiquetasFiltro(true) }} className="px-5 py-2.5 rounded-xl font-medium text-white" style={{ background: 'rgba(139,92,246,0.4)', border: '1px solid rgba(139,92,246,0.5)' }}>
+            <button onClick={() => { setEtqProducto(''); setEtqCategoria(''); setEtqGrupo(''); setEtqSubGrupo(''); setShowEtiquetasFiltro(true) }} className="px-5 py-2.5 rounded-xl font-medium text-slate-800" style={{ background: 'rgba(139,92,246,0.4)', border: '1px solid rgba(139,92,246,0.5)' }}>
               🔲 Etiquetas
             </button>
-            <button onClick={handleDeleteAll} className="px-5 py-2.5 rounded-xl font-medium text-white" style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }} title="Eliminar TODOS los productos de la base de datos">
+            <button onClick={handleDeleteAll} className="px-5 py-2.5 rounded-xl font-medium text-slate-800" style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }} title="Eliminar TODOS los productos de la base de datos">
               🗑 Eliminar Todo
             </button>
-            <button onClick={() => { if (confirm(tCf('resetExistencias'))) resetExistencias() }} className="px-5 py-2.5 rounded-xl font-medium text-white" style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(239,68,68,0.4)' }}>
+            <button onClick={() => { if (confirm(tCf('resetExistencias'))) resetExistencias() }} className="px-5 py-2.5 rounded-xl font-medium text-slate-800" style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(239,68,68,0.4)' }}>
               Resetear Existencias
             </button>
-            <button onClick={() => { if (confirm(tCf('resetUltCosto'))) resetUltCosto() }} className="px-5 py-2.5 rounded-xl font-medium text-white" style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(239,68,68,0.4)' }}>
+            <button onClick={() => { if (confirm(tCf('resetUltCosto'))) resetUltCosto() }} className="px-5 py-2.5 rounded-xl font-medium text-slate-800" style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(239,68,68,0.4)' }}>
               Resetear Ult. Costo
             </button>
           </div>
@@ -454,12 +454,12 @@ export default function ProductosPage() {
             color: importMsg.startsWith('✅') ? '#86efac' : importMsg.startsWith('🗑') ? '#fcd34d' : '#fca5a5',
           }}>
           <span>{importMsg}</span>
-          <button onClick={() => setImportMsg(null)} className="text-white/60 hover:text-white text-xs">✕</button>
+          <button onClick={() => setImportMsg(null)} className="text-slate-500 hover:text-slate-800 text-xs">✕</button>
         </div>
       )}
 
       {/* Tab selector */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <button onClick={() => setTab('registros')} className="px-4 py-1.5 rounded-lg text-sm font-medium transition-all" style={tab === 'registros' ? tabActive : tabInactive}>
           {tTab('registrosEmoji')}
         </button>
@@ -481,25 +481,25 @@ export default function ProductosPage() {
               { label: 'Stock Bajo', value: records.filter(r => r.existencia <= r.minimo).length, color: '#ef4444' },
               { label: 'Existencia Total', value: records.reduce((s, r) => s + r.existencia, 0), color: '#f59e0b' },
             ].map(({ label, value, color }) => (
-              <div key={label} className="rounded-2xl p-4" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <p className="text-xs text-white/50 uppercase tracking-wider">{label}</p>
+              <div key={label} className="rounded-2xl p-4" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
+                <p className="text-xs text-slate-500 uppercase tracking-wider">{label}</p>
                 <p className="text-3xl font-bold mt-1" style={{ color }}>{value}</p>
               </div>
             ))}
           </div>
 
           {isFormOpen && (
-            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-              <h2 className="text-lg font-semibold text-white mb-4">{form.id ? 'Editar' : 'Nuevo'} Producto</h2>
+            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+              <h2 className="text-lg font-semibold text-slate-800 mb-4">{form.id ? 'Editar' : 'Nuevo'} Producto</h2>
               {formError && (
-                <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                   {formError}
                 </div>
               )}
               <form onSubmit={handleSave} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {/* Tipo Inventario — PRIMER campo (define qué se muestra) */}
                 <div className="lg:col-span-3">
-                  <label className="block text-xl font-extrabold text-white mb-1">Tipo Inventario *</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo Inventario *</label>
                   <select required value={form.tipo_inventario} onChange={e => {
                     const newTipo = e.target.value
                     setForm(prev => {
@@ -515,50 +515,50 @@ export default function ProductosPage() {
                       }
                     })
                   }}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                     <option value="">{tOp('seleccione')}</option>
                     {refData.tipo_inventario.map(t => <option key={t.id} value={t.descripcion}>{t.descripcion}</option>)}
                   </select>
                 </div>
                 {/* Nro Producto — correlativo automático */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Nro Producto</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro Producto</label>
                   <input readOnly value={form.codigo}
                     className="w-full rounded-xl px-4 py-2.5 outline-none font-mono font-bold"
-                    style={{ background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.4)', color: '#fff', cursor: 'not-allowed' }} />
+                    style={{ background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.4)', color: '#1e293b', cursor: 'not-allowed' }} />
                 </div>
                 {/* Código — texto libre */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Código</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Código</label>
                   <input value={form.codigo_alterno || ''}
                     onChange={e => setForm({ ...form, codigo_alterno: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono"
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono"
+                    style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                     placeholder="Código alterno (opcional)" />
                 </div>
                 {/* Descripción */}
                 <div className="lg:col-span-2">
-                  <label className="block text-xl font-extrabold text-white mb-1">Descripción *</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Descripción *</label>
                   <input required value={form.descripcion} onChange={e => setForm({ ...form, descripcion: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none"
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none"
+                    style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                     placeholder="Nombre del producto" />
                 </div>
                 {/* ═══ Campos exclusivos para Producto Terminado ═══ */}
                 {form.tipo_inventario === 'Producto Terminado' && (
                   <>
-                    <div className="lg:col-span-3 mt-2 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="lg:col-span-3 mt-2 pt-3" style={{ borderTop: '1px solid rgba(15,23,42,0.1)' }}>
                       <h3 className="text-sm font-bold tracking-wide uppercase" style={{ color: '#fbbf24' }}>📦 Datos para Producto Terminado</h3>
                     </div>
                     <div className="lg:col-span-3">
-                      <label className="block text-xl font-extrabold text-white mb-1">Código SPIN</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Código SPIN</label>
                       <input value={form.codigo_spin || ''} onChange={e => setForm({ ...form, codigo_spin: e.target.value })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                         placeholder="Ej. SPN-12345" />
                     </div>
                     <div className="lg:col-span-2">
-                      <label className="block text-xl font-extrabold text-white mb-1">Cliente *</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Cliente *</label>
                       <select
                         required
                         value={form.cliente_id || ''}
@@ -572,7 +572,7 @@ export default function ProductosPage() {
                             clase_cliente: c?.clase_cliente || form.clase_cliente || '',
                           })
                         }}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {clientes.map(c => (
                           <option key={c.id} value={c.id}>{c.razon_social}</option>
@@ -583,9 +583,9 @@ export default function ProductosPage() {
                       )}
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Clase de Cliente</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Clase de Cliente</label>
                       <select value={form.clase_cliente || ''} onChange={e => setForm({ ...form, clase_cliente: e.target.value })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {(refData.clase_cliente ?? []).filter(c => c.situacion).map(c => (
                           <option key={c.id} value={c.descripcion}>{c.descripcion}</option>
@@ -593,9 +593,9 @@ export default function ProductosPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Tipo de Fórmula</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Fórmula</label>
                       <select value={form.tipo_formula || ''} onChange={e => setForm({ ...form, tipo_formula: e.target.value })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {(refData.tipo_formula ?? []).filter(t => t.situacion).map(t => (
                           <option key={t.id} value={t.descripcion}>{t.descripcion}</option>
@@ -603,44 +603,44 @@ export default function ProductosPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Margen Ganancia (%)</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Margen Ganancia (%)</label>
                       <input type="number" step="0.01" min="0" value={form.margen_ganancia ?? 0} onChange={e => setForm({ ...form, margen_ganancia: parseFloat(e.target.value) || 0 })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono text-right"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono text-right"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                         placeholder="0.00" />
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Margen Contribución (%)</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Margen Contribución (%)</label>
                       <input type="number" step="0.01" min="0" value={form.margen_contribucion ?? 0} onChange={e => setForm({ ...form, margen_contribucion: parseFloat(e.target.value) || 0 })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono text-right"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono text-right"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                         placeholder="0.00" />
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">TRM del Día (COP/USD)</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">TRM del Día (COP/USD)</label>
                       <input type="number" step="0.01" min="0" value={form.trm_dia ?? 0} onChange={e => setForm({ ...form, trm_dia: parseFloat(e.target.value) || 0 })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono text-right"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono text-right"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                         placeholder="0.00" />
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Conversión COP</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Conversión COP</label>
                       <input type="number" step="0.01" min="0" value={form.conversion_cop ?? 0} onChange={e => setForm({ ...form, conversion_cop: parseFloat(e.target.value) || 0 })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono text-right"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono text-right"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                         placeholder="0.00" />
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Valor US $</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Valor US $</label>
                       <input type="number" step="0.01" min="0" value={form.valor_usd ?? 0} onChange={e => setForm({ ...form, valor_usd: parseFloat(e.target.value) || 0 })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono text-right"
-                        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono text-right"
+                        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                         placeholder="0.00" />
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Tipo de Empaque</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Empaque</label>
                       <select value={form.tipo_empaque || ''} onChange={e => setForm({ ...form, tipo_empaque: e.target.value })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                         <option value="">Seleccione…</option>
                         <option value="Caja">Caja</option>
                         <option value="Bolsa">Bolsa</option>
@@ -653,15 +653,15 @@ export default function ProductosPage() {
                         <option value="Otro">Otro</option>
                       </select>
                     </div>
-                    <div className="lg:col-span-3 pb-2" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}></div>
+                    <div className="lg:col-span-3 pb-2" style={{ borderBottom: '1px solid rgba(15,23,42,0.1)' }}></div>
                   </>
                 )}
                 {/* Usa Seriales — oculto para Producto Terminado y Materia Prima */}
                 {form.tipo_inventario !== 'Producto Terminado' && form.tipo_inventario !== 'Materia Prima' && (
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Usa Seriales</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Usa Seriales</label>
                     <select value={form.usa_seriales ? 'Si' : 'No'} onChange={e => setForm({ ...form, usa_seriales: e.target.value === 'Si' })}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                       <option value="No">No</option>
                       <option value="Si">Sí</option>
                     </select>
@@ -669,9 +669,9 @@ export default function ProductosPage() {
                 )}
                 {/* Categoría — tabla referencia */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Categoría</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Categoría</label>
                   <select value={form.categoria} onChange={e => setForm({ ...form, categoria: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                     <option value="">{tOp('seleccione')}</option>
                     {refData.categoria.map(c => <option key={c.id} value={c.descripcion}>{c.descripcion}</option>)}
                   </select>
@@ -680,17 +680,17 @@ export default function ProductosPage() {
                 {!tipoSinGrupo(form.tipo_inventario) && (
                   <>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Grupo</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Grupo</label>
                       <select value={form.grupo} onChange={e => setForm({ ...form, grupo: e.target.value })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {refData.grupo.map(g => <option key={g.id} value={g.descripcion}>{g.descripcion}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xl font-extrabold text-white mb-1">Sub-Grupo</label>
+                      <label className="block text-xl font-extrabold text-slate-800 mb-1">Sub-Grupo</label>
                       <select value={form.sub_grupo} onChange={e => setForm({ ...form, sub_grupo: e.target.value })}
-                        className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                        className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {refData.subgrupo.map(sg => <option key={sg.id} value={sg.descripcion}>{sg.descripcion}</option>)}
                       </select>
@@ -699,9 +699,9 @@ export default function ProductosPage() {
                 )}
                 {/* Unidad de Medida — tabla referencia */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Unidad de Medida</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Unidad de Medida</label>
                   <select value={form.unidad_medida} onChange={e => setForm({ ...form, unidad_medida: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                     <option value="">{tOp('seleccione')}</option>
                     {refData.unidad_medida.map(u => <option key={u.id} value={u.descripcion}>{u.descripcion}</option>)}
                   </select>
@@ -709,19 +709,19 @@ export default function ProductosPage() {
                 {/* Código de Barra — oculto para Materia Prima */}
                 {form.tipo_inventario !== 'Materia Prima' && (
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Código de Barra</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Código de Barra</label>
                     <input value={form.codigo_barra || ''} onChange={e => setForm({ ...form, codigo_barra: e.target.value })}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none font-mono"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none font-mono"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                       placeholder="Ej: 7501234567890" />
                   </div>
                 )}
                 {/* Último Proveedor — oculto para Producto Terminado */}
                 {form.tipo_inventario !== 'Producto Terminado' && (
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Ult. Proveedor</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Ult. Proveedor</label>
                     <select value={form.ult_proveedor} onChange={e => setForm({ ...form, ult_proveedor: e.target.value })}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                       <option value="">{tOp('seleccione')}</option>
                       {proveedores.map(p => <option key={p.id} value={p.nombre}>{p.nombre}</option>)}
                     </select>
@@ -735,25 +735,25 @@ export default function ProductosPage() {
                   })
                   .map(key => (
                   <div key={key}>
-                    <label className="block text-xl font-extrabold text-white mb-1">{key === 'ult_costo' ? tH('ultCosto') : key === 'costo_promedio' ? 'Costo Promedio' : key === 'precio_unitario' ? 'Precio Unitario' : key === 'maximo' ? 'Máximo' : key === 'minimo' ? 'Mínimo' : 'Existencia'}</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">{key === 'ult_costo' ? tH('ultCosto') : key === 'costo_promedio' ? 'Costo Promedio' : key === 'precio_unitario' ? 'Precio Unitario' : key === 'maximo' ? 'Máximo' : key === 'minimo' ? 'Mínimo' : 'Existencia'}</label>
                     <input type="number" min="0" step="0.01" value={(form as Record<string, unknown>)[key] as number ?? 0} onChange={e => setForm({ ...form, [key]: e.target.value === '' ? 0 : parseFloat(e.target.value) })}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }} />
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }} />
                   </div>
                 ))}
                 {/* Situación — tabla referencia */}
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
                   <select value={form.situacion} onChange={e => setForm({ ...form, situacion: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none" style={selStyle}>
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none" style={selStyle}>
                     {refData.situacion_producto.map(s => <option key={s.id} value={s.descripcion}>{s.descripcion}</option>)}
                   </select>
                 </div>
                 {/* Foto del Producto */}
                 <div className="lg:col-span-3">
-                  <label className="block text-xl font-extrabold text-white mb-1">Foto del Producto</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Foto del Producto</label>
                   <div className="flex items-center gap-4">
-                    <label className="block text-xl font-extrabold text-white mb-1" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                       📷 Cargar Imagen
                       <input type="file" accept="image/*" className="hidden" onChange={e => {
                         const file = e.target.files?.[0]
@@ -766,30 +766,30 @@ export default function ProductosPage() {
                     </label>
                     {form.imagen && (
                       <div className="relative">
-                        <img src={form.imagen} alt="Foto producto" className="h-20 w-20 object-cover rounded-xl" style={{ border: '1px solid rgba(255,255,255,0.2)' }} />
+                        <img src={form.imagen} alt="Foto producto" className="h-20 w-20 object-cover rounded-xl" style={{ border: '1px solid rgba(15,23,42,0.2)' }} />
                         <button type="button" onClick={() => setForm({ ...form, imagen: '' })}
-                          className="absolute -top-2 -right-2 w-5 h-5 rounded-full flex items-center justify-center text-xs text-white"
+                          className="absolute -top-2 -right-2 w-5 h-5 rounded-full flex items-center justify-center text-xs text-slate-800"
                           style={{ background: 'rgba(239,68,68,0.8)' }}>✕</button>
                       </div>
                     )}
-                    {!form.imagen && <span className="text-white/30 text-sm">Sin imagen (máx 2 MB)</span>}
+                    {!form.imagen && <span className="text-slate-400 text-sm">Sin imagen (máx 2 MB)</span>}
                   </div>
                 </div>
                 <div className="lg:col-span-3 flex gap-3 pt-2">
-                  <button type="submit" className="px-6 py-2 rounded-xl text-white font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('save')}</button>
-                  <button type="button" onClick={() => { setIsFormOpen(false); setTipoActivoSesion(null) }} className="px-6 py-2 rounded-xl text-white font-medium" style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>⤴ Volver a Seleccionar</button>
-                  <button type="button" onClick={() => setIsFormOpen(false)} className="px-6 py-2 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>{tBtn('cancel')}</button>
+                  <button type="submit" className="px-6 py-2 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('save')}</button>
+                  <button type="button" onClick={() => { setIsFormOpen(false); setTipoActivoSesion(null) }} className="px-6 py-2 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>⤴ Volver a Seleccionar</button>
+                  <button type="button" onClick={() => setIsFormOpen(false)} className="px-6 py-2 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>{tBtn('cancel')}</button>
                 </div>
               </form>
             </div>
           )}
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="p-4 border-b flex items-end gap-3 flex-wrap" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+            <div className="p-4 border-b flex items-end gap-3 flex-wrap" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
               <div className="flex items-center gap-2 max-w-xs">
                 <input value={search} onChange={e => setSearch(e.target.value)}
-                  className="w-full rounded-xl px-4 py-2 text-white outline-none text-base text-white font-bold"
-                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}
+                  className="w-full rounded-xl px-4 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                  style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}
                   placeholder={tPh('buscarCodigoDesc')} />
                 <VoiceSearchButton onResult={setSearch} />
               </div>
@@ -799,17 +799,17 @@ export default function ProductosPage() {
                   <button
                     type="button"
                     onClick={() => setClienteFiltro('')}
-                    className="px-4 py-2 rounded-xl text-sm font-bold text-white transition-all"
+                    className="px-4 py-2 rounded-xl text-sm font-bold text-slate-800 transition-all"
                     style={clienteFiltro === ''
                       ? { background: 'rgba(34,197,94,0.95)', border: '1px solid #16a34a', boxShadow: '0 0 8px rgba(34,197,94,0.5)' }
-                      : { background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)' }}>
+                      : { background: 'rgba(15,23,42,0.08)', border: '1px solid rgba(15,23,42,0.2)' }}>
                     👥 Todos los Clientes ({clientesEnProductos.length})
                   </button>
                   <select
                     value={clienteFiltro}
                     onChange={e => setClienteFiltro(e.target.value)}
-                    className="rounded-xl px-3 py-2 text-base text-white font-bold outline-none min-w-[260px]"
-                    style={{ background: '#083d3d', border: '2px solid rgba(255,255,255,0.3)' }}>
+                    className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none min-w-[260px]"
+                    style={{ background: '#083d3d', border: '2px solid rgba(15,23,42,0.3)' }}>
                     <option value="">— Filtrar por un Cliente —</option>
                     {clientesEnProductos
                       .slice()
@@ -819,7 +819,7 @@ export default function ProductosPage() {
                       ))}
                   </select>
                   {clienteFiltro && (
-                    <span className="text-xs text-white/70 font-bold">
+                    <span className="text-xs text-slate-600 font-bold">
                       {filtered.length} producto(s) del cliente
                     </span>
                   )}
@@ -827,12 +827,12 @@ export default function ProductosPage() {
               )}
             </div>
             <table className="w-full text-xs text-left table-fixed">
-              <thead style={{ background: 'rgba(255,255,255,0.08)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.08)' }}>
                 <tr>
                   {tipoInvFiltro === 'Producto Terminado' ? (
                     // Vista especial para Producto Terminado
                     ['Código SPIN', 'Descripción', 'Tipo Inventario', 'Cliente', 'Clase Cliente', 'Unid. Medida', 'Tipo Empaque', 'Precio', 'Acciones'].map(h => (
-                      <th key={h} className={`px-2 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap ${h === 'Precio' ? 'text-right' : ''}`} style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                      <th key={h} className={`px-2 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap ${h === 'Precio' ? 'text-right' : ''}`} style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                     ))
                   ) : tipoInvFiltro === 'Materia Prima' ? (
                     // Vista especial para Materia Prima — títulos amarillos grandes
@@ -853,7 +853,7 @@ export default function ProductosPage() {
                       tF('situacion'),
                       tTbl('actions'),
                     ].map(h => (
-                      <th key={h} className={`px-2 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap ${h === tH('valor') || h === tH('costoProm') ? 'text-right' : h === tH('existShort') ? 'text-right' : ''}`} style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                      <th key={h} className={`px-2 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap ${h === tH('valor') || h === tH('costoProm') ? 'text-right' : h === tH('existShort') ? 'text-right' : ''}`} style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                     ))
                   )}
                 </tr>
@@ -862,20 +862,20 @@ export default function ProductosPage() {
                 {tipoInvFiltro === 'Producto Terminado' ? (
                   // Vista de filas para Producto Terminado
                   filtered.map(r => (
-                    <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                    <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
                       <td className="px-2 py-3 font-mono font-bold text-blue-300 whitespace-nowrap">{r.codigo_spin || '—'}</td>
-                      <td className="px-2 py-3 text-white font-bold">{r.descripcion}</td>
-                      <td className="px-2 py-3 text-white font-bold">{r.tipo_inventario}</td>
-                      <td className="px-2 py-3 text-white font-bold">{r.cliente || '—'}</td>
-                      <td className="px-2 py-3 text-white font-bold">{r.clase_cliente || '—'}</td>
-                      <td className="px-2 py-3 text-white font-bold">{r.unidad_medida}</td>
-                      <td className="px-2 py-3 text-white font-bold">{r.tipo_empaque || '—'}</td>
+                      <td className="px-2 py-3 text-slate-800 font-bold">{r.descripcion}</td>
+                      <td className="px-2 py-3 text-slate-800 font-bold">{r.tipo_inventario}</td>
+                      <td className="px-2 py-3 text-slate-800 font-bold">{r.cliente || '—'}</td>
+                      <td className="px-2 py-3 text-slate-800 font-bold">{r.clase_cliente || '—'}</td>
+                      <td className="px-2 py-3 text-slate-800 font-bold">{r.unidad_medida}</td>
+                      <td className="px-2 py-3 text-slate-800 font-bold">{r.tipo_empaque || '—'}</td>
                       <td className="px-2 py-3 text-emerald-300 font-bold text-right whitespace-nowrap">Pesos {fmtNum(r.precio_unitario || 0)}</td>
                       <td className="px-2 py-3">
                         <div className="flex gap-1 flex-wrap">
-                          <button onClick={() => setViewRecordId(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Ver</button>
-                          {permisos.editar && <button onClick={() => { setForm({ ...r }); setIsFormOpen(true) }} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(96,165,250,0.95)', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
-                          {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(239,68,68,0.95)', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
+                          <button onClick={() => setViewRecordId(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Ver</button>
+                          {permisos.editar && <button onClick={() => { setForm({ ...r }); setIsFormOpen(true) }} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(96,165,250,0.95)', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
+                          {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(239,68,68,0.95)', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
                         </div>
                       </td>
                     </tr>
@@ -883,20 +883,20 @@ export default function ProductosPage() {
                 ) : tipoInvFiltro === 'Materia Prima' ? (
                   // Vista de filas para Materia Prima — datos en blanco intenso grande
                   filtered.map(r => (
-                    <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td className="px-3 py-3 font-mono font-extrabold text-white text-base whitespace-nowrap">{r.codigo_alterno || '—'}</td>
-                      <td className="px-3 py-3 font-extrabold text-white text-base">{r.descripcion}</td>
-                      <td className="px-3 py-3 font-extrabold text-white text-base">{r.unidad_medida || '—'}</td>
-                      <td className="px-3 py-3 font-extrabold text-white text-base text-right font-mono">{fmtInt(r.existencia)}</td>
+                    <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                      <td className="px-3 py-3 font-mono font-extrabold text-slate-800 text-base whitespace-nowrap">{r.codigo_alterno || '—'}</td>
+                      <td className="px-3 py-3 font-extrabold text-slate-800 text-base">{r.descripcion}</td>
+                      <td className="px-3 py-3 font-extrabold text-slate-800 text-base">{r.unidad_medida || '—'}</td>
+                      <td className="px-3 py-3 font-extrabold text-slate-800 text-base text-right font-mono">{fmtInt(r.existencia)}</td>
                       <td className="px-3 py-3">
                         <span className="px-3 py-1 rounded-full text-sm font-extrabold" style={sitStyle(r.situacion)}>{r.situacion}</span>
                       </td>
                       <td className="px-3 py-3">
                         <div className="flex gap-1.5 flex-wrap">
-                          <button onClick={() => setViewRecordId(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)', boxShadow: '0 2px 6px rgba(59,130,246,0.35)' }}>Ver</button>
-                          <a href={`/kardex?producto=${r.id}`} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105" style={{ background: 'rgba(168,85,247,1)', border: '1px solid rgba(126,34,206,1)', boxShadow: '0 2px 6px rgba(168,85,247,0.35)' }} title={tTip('verKardex')}>📒 Kardex</a>
-                          {permisos.editar && <button onClick={() => { setForm({ ...r }); setIsFormOpen(true) }} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105" style={{ background: 'rgba(245,158,11,1)', border: '1px solid rgba(217,119,6,1)', boxShadow: '0 2px 6px rgba(245,158,11,0.35)' }}>{tBtn('edit')}</button>}
-                          {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:scale-105" style={{ background: 'rgba(220,38,38,1)', border: '1px solid rgba(185,28,28,1)', boxShadow: '0 2px 6px rgba(220,38,38,0.35)' }}>{tBtn('delete')}</button>}
+                          <button onClick={() => setViewRecordId(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)', boxShadow: '0 2px 6px rgba(59,130,246,0.35)' }}>Ver</button>
+                          <a href={`/kardex?producto=${r.id}`} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105" style={{ background: 'rgba(168,85,247,1)', border: '1px solid rgba(126,34,206,1)', boxShadow: '0 2px 6px rgba(168,85,247,0.35)' }} title={tTip('verKardex')}>📒 Kardex</a>
+                          {permisos.editar && <button onClick={() => { setForm({ ...r }); setIsFormOpen(true) }} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105" style={{ background: 'rgba(245,158,11,1)', border: '1px solid rgba(217,119,6,1)', boxShadow: '0 2px 6px rgba(245,158,11,0.35)' }}>{tBtn('edit')}</button>}
+                          {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:scale-105" style={{ background: 'rgba(220,38,38,1)', border: '1px solid rgba(185,28,28,1)', boxShadow: '0 2px 6px rgba(220,38,38,0.35)' }}>{tBtn('delete')}</button>}
                         </div>
                       </td>
                     </tr>
@@ -905,26 +905,26 @@ export default function ProductosPage() {
                   filtered.map(r => {
                     const hideGrupos = tipoSinGrupo(tipoInvFiltro || '')
                     return (
-                      <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td className="px-2 py-3 font-mono font-medium text-white whitespace-nowrap">{r.codigo}</td>
-                        <td className="px-2 py-3 text-white/80 truncate max-w-[180px]">{r.descripcion}</td>
-                        <td className="px-2 py-3 text-white/60 truncate max-w-[120px]">{r.tipo_inventario}</td>
-                        <td className="px-2 py-3 text-white/60 truncate max-w-[100px]">{r.categoria}</td>
-                        {!hideGrupos && <td className="px-2 py-3 text-white/60 truncate">{r.grupo}</td>}
-                        {!hideGrupos && <td className="px-2 py-3 text-white/60 truncate">{r.sub_grupo}</td>}
-                        <td className="px-2 py-3 text-white/60">{r.unidad_medida}</td>
-                        <td className="px-2 py-3 text-white/70 text-right">Pesos {fmtNum(r.costo_promedio || (r.existencia > 0 ? r.ult_costo : 0))}</td>
-                        <td className="px-2 py-3 text-white font-bold text-right">{fmtInt(r.existencia)}</td>
-                        <td className="px-2 py-3 text-white/70 text-right">Pesos {fmtNum(r.ult_costo * r.existencia)}</td>
+                      <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                        <td className="px-2 py-3 font-mono font-medium text-slate-800 whitespace-nowrap">{r.codigo}</td>
+                        <td className="px-2 py-3 text-slate-600 truncate max-w-[180px]">{r.descripcion}</td>
+                        <td className="px-2 py-3 text-slate-500 truncate max-w-[120px]">{r.tipo_inventario}</td>
+                        <td className="px-2 py-3 text-slate-500 truncate max-w-[100px]">{r.categoria}</td>
+                        {!hideGrupos && <td className="px-2 py-3 text-slate-500 truncate">{r.grupo}</td>}
+                        {!hideGrupos && <td className="px-2 py-3 text-slate-500 truncate">{r.sub_grupo}</td>}
+                        <td className="px-2 py-3 text-slate-500">{r.unidad_medida}</td>
+                        <td className="px-2 py-3 text-slate-600 text-right">Pesos {fmtNum(r.costo_promedio || (r.existencia > 0 ? r.ult_costo : 0))}</td>
+                        <td className="px-2 py-3 text-slate-800 font-bold text-right">{fmtInt(r.existencia)}</td>
+                        <td className="px-2 py-3 text-slate-600 text-right">Pesos {fmtNum(r.ult_costo * r.existencia)}</td>
                         <td className="px-2 py-3">
                           <span className="px-2 py-1 rounded-full text-xs font-medium" style={sitStyle(r.situacion)}>{r.situacion}</span>
                         </td>
                         <td className="px-2 py-3">
                           <div className="flex gap-1">
-                            <button onClick={() => setViewRecordId(r.id)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(255,255,255,0.08)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.15)' }}>Ver</button>
+                            <button onClick={() => setViewRecordId(r.id)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(15,23,42,0.08)', color: '#e2e8f0', border: '1px solid rgba(15,23,42,0.15)' }}>Ver</button>
                             <a href={`/kardex?producto=${r.id}`} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(168,85,247,0.2)', color: '#c4b5fd', border: '1px solid rgba(168,85,247,0.3)' }} title={tTip('verKardex')}>📒 Kardex</a>
-                            {permisos.editar && <button onClick={() => { setForm({ ...r }); setIsFormOpen(true) }} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>{tBtn('edit')}</button>}
-                            {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
+                            {permisos.editar && <button onClick={() => { setForm({ ...r }); setIsFormOpen(true) }} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>{tBtn('edit')}</button>}
+                            {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
                           </div>
                         </td>
                       </tr>
@@ -932,7 +932,7 @@ export default function ProductosPage() {
                   })
                 )}
                 {filtered.length === 0 && (
-                  <tr><td colSpan={tipoInvFiltro === 'Producto Terminado' ? 9 : 11} className="px-6 py-12 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tE('noProductos')}</td></tr>
+                  <tr><td colSpan={tipoInvFiltro === 'Producto Terminado' ? 9 : 11} className="px-6 py-12 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tE('noProductos')}</td></tr>
                 )}
               </tbody>
             </table>
@@ -982,8 +982,8 @@ export default function ProductosPage() {
 
       {tab === 'especificos' && (
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-4">{tTab('especificos')}</h2>
-          <p className="text-white/50 text-sm mb-6">{tSub('seleccioneReporte')}</p>
+          <h2 className="text-xl font-bold text-slate-800 mb-4">{tTab('especificos')}</h2>
+          <p className="text-slate-500 text-sm mb-6">{tSub('seleccioneReporte')}</p>
 
           {/* Selector de reportes */}
           {!reporteActivo && (
@@ -993,16 +993,16 @@ export default function ProductosPage() {
                 className="rounded-xl p-5 text-left transition-all hover:scale-[1.02]"
                 style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)' }}
               >
-                <h3 className="text-white font-semibold mb-1">Inventario Valorizado</h3>
-                <p className="text-white/50 text-xs">{tSub('inventarioValorizado')}</p>
+                <h3 className="text-slate-800 font-semibold mb-1">Inventario Valorizado</h3>
+                <p className="text-slate-500 text-xs">{tSub('inventarioValorizado')}</p>
               </button>
               <button
                 onClick={() => setReporteActivo('inventario-categoria')}
                 className="rounded-xl p-5 text-left transition-all hover:scale-[1.02]"
                 style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)' }}
               >
-                <h3 className="text-white font-semibold mb-1">{tRpt('inventariosCategoria')}</h3>
-                <p className="text-white/50 text-xs">{tSub('montosCategoria')}</p>
+                <h3 className="text-slate-800 font-semibold mb-1">{tRpt('inventariosCategoria')}</h3>
+                <p className="text-slate-500 text-xs">{tSub('montosCategoria')}</p>
               </button>
             </div>
           )}
@@ -1027,18 +1027,18 @@ export default function ProductosPage() {
             return (
               <div>
                 <div className="flex items-center gap-4 mb-6">
-                  <button onClick={() => setReporteActivo(null)} className="text-white/50 hover:text-white transition-colors text-sm">← Volver</button>
-                  <h3 className="text-lg font-bold text-white">{tRpt('inventariosCategoria')}{tipoInvFiltro ? ` · ${tipoInvFiltro}` : ''}</h3>
+                  <button onClick={() => setReporteActivo(null)} className="text-slate-500 hover:text-slate-800 transition-colors text-sm">← Volver</button>
+                  <h3 className="text-lg font-bold text-slate-800">{tRpt('inventariosCategoria')}{tipoInvFiltro ? ` · ${tipoInvFiltro}` : ''}</h3>
                 </div>
 
                 {/* Filtros */}
                 <div className="flex items-end gap-4 mb-6 flex-wrap">
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha del Reporte (DD/MM/AAAA)</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha del Reporte (DD/MM/AAAA)</label>
                     <input type="text" value={reporteFecha}
                       onChange={e => { let v = e.target.value.replace(/[^0-9/]/g, ''); if (v.length === 2 && !v.includes('/')) v += '/'; if (v.length === 5 && v.split('/').length === 2) v += '/'; if (v.length <= 10) setReporteFecha(v) }}
-                      placeholder="DD/MM/AAAA" className="rounded-xl px-4 py-2.5 text-white outline-none w-48"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }} />
+                      placeholder="DD/MM/AAAA" className="rounded-xl px-4 py-2.5 text-slate-800 outline-none w-48"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }} />
                   </div>
                   <button
                     onClick={async () => {
@@ -1098,7 +1098,7 @@ export default function ProductosPage() {
 
                       doc.save(`inventario-por-categoria${reporteFecha ? '-' + reporteFecha.replace(/\//g, '-') : ''}.pdf`)
                     }}
-                    className="px-5 py-2.5 rounded-xl font-medium text-white transition-all"
+                    className="px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-all"
                     style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}
                   >
                     📄 Generar PDF
@@ -1106,37 +1106,37 @@ export default function ProductosPage() {
                 </div>
 
                 {/* Tabla preview */}
-                <div className="overflow-x-auto rounded-2xl border border-white/10 bg-black/10">
+                <div className="overflow-x-auto rounded-2xl border border-black/10 bg-black/10">
                   <table className="w-full text-base text-left">
                     <thead style={{ background: '#1e3a8a' }}>
                       <tr>
-                        <th className="px-5 py-3 text-xs font-semibold uppercase text-white tracking-wide">Categoría</th>
-                        <th className="px-5 py-3 text-xs font-semibold uppercase text-white tracking-wide text-right">Monto</th>
+                        <th className="px-5 py-3 text-xs font-semibold uppercase text-slate-800 tracking-wide">Categoría</th>
+                        <th className="px-5 py-3 text-xs font-semibold uppercase text-slate-800 tracking-wide text-right">Monto</th>
                       </tr>
                     </thead>
                     <tbody>
                       {categoriasOrdenadas.map(([cat, monto]) => (
-                        <tr key={cat} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="hover:bg-white/5 transition-colors">
-                          <td className="px-5 py-3 text-white/90 font-medium">{cat}</td>
-                          <td className="px-5 py-3 text-right text-white font-bold">Pesos {fmtNum(monto)}</td>
+                        <tr key={cat} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="hover:bg-black/5 transition-colors">
+                          <td className="px-5 py-3 text-slate-700 font-medium">{cat}</td>
+                          <td className="px-5 py-3 text-right text-slate-800 font-bold">Pesos {fmtNum(monto)}</td>
                         </tr>
                       ))}
                       {categoriasOrdenadas.length === 0 && (
-                        <tr><td colSpan={2} className="px-5 py-8 text-center text-white/40">{tEs('sinProductosRegistrados')}</td></tr>
+                        <tr><td colSpan={2} className="px-5 py-8 text-center text-slate-400">{tEs('sinProductosRegistrados')}</td></tr>
                       )}
                     </tbody>
                     {categoriasOrdenadas.length > 0 && (
                       <tfoot>
                         <tr style={{ borderTop: '2px solid rgba(96,165,250,0.4)', background: 'rgba(96,165,250,0.1)' }}>
-                          <td className="px-5 py-4 text-white font-bold text-sm uppercase">Total General</td>
-                          <td className="px-5 py-4 text-right text-white font-bold text-base">Pesos {fmtNum(totalGenCat)}</td>
+                          <td className="px-5 py-4 text-slate-800 font-bold text-sm uppercase">Total General</td>
+                          <td className="px-5 py-4 text-right text-slate-800 font-bold text-base">Pesos {fmtNum(totalGenCat)}</td>
                         </tr>
                       </tfoot>
                     )}
                   </table>
                 </div>
                 <div className="mt-4">
-                  <span className="text-xs text-white/40">{reporteFecha ? `Fecha: ${reporteFecha}` : ''} — {categoriasOrdenadas.length} categorías{tipoInvFiltro ? ` · ${tipoInvFiltro}` : ''}</span>
+                  <span className="text-xs text-slate-400">{reporteFecha ? `Fecha: ${reporteFecha}` : ''} — {categoriasOrdenadas.length} categorías{tipoInvFiltro ? ` · ${tipoInvFiltro}` : ''}</span>
                 </div>
               </div>
             )
@@ -1152,16 +1152,16 @@ export default function ProductosPage() {
             return (
               <div>
                 <div className="flex items-center gap-4 mb-6">
-                  <button onClick={() => setReporteActivo(null)} className="text-white/50 hover:text-white transition-colors text-sm">
+                  <button onClick={() => setReporteActivo(null)} className="text-slate-500 hover:text-slate-800 transition-colors text-sm">
                     ← Volver
                   </button>
-                  <h3 className="text-lg font-bold text-white">Inventario Valorizado{tipoInvFiltro ? ` · ${tipoInvFiltro}` : ''}</h3>
+                  <h3 className="text-lg font-bold text-slate-800">Inventario Valorizado{tipoInvFiltro ? ` · ${tipoInvFiltro}` : ''}</h3>
                 </div>
 
                 {/* Fecha del reporte */}
                 <div className="flex items-end gap-4 mb-6">
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha del Reporte (DD/MM/AAAA)</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha del Reporte (DD/MM/AAAA)</label>
                     <input
                       type="text"
                       value={reporteFecha}
@@ -1172,8 +1172,8 @@ export default function ProductosPage() {
                         if (v.length <= 10) setReporteFecha(v)
                       }}
                       placeholder="DD/MM/AAAA"
-                      className="rounded-xl px-4 py-2.5 text-white outline-none w-48"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="rounded-xl px-4 py-2.5 text-slate-800 outline-none w-48"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                     />
                   </div>
                   <button
@@ -1260,7 +1260,7 @@ export default function ProductosPage() {
 
                       doc.save(`inventario-valorizado${reporteFecha ? '-' + reporteFecha.replace(/\//g, '-') : ''}.pdf`)
                     }}
-                    className="px-5 py-2.5 rounded-xl font-medium text-white transition-all"
+                    className="px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-all"
                     style={{ background: 'rgba(96,165,250,0.35)', border: '1px solid rgba(96,165,250,0.4)' }}
                   >
                     📄 Generar PDF
@@ -1268,44 +1268,44 @@ export default function ProductosPage() {
                 </div>
 
                 {/* Tabla del reporte */}
-                <div className="overflow-x-auto rounded-2xl border border-white/10 bg-black/10 print:bg-white print:border-gray-300">
+                <div className="overflow-x-auto rounded-2xl border border-black/10 bg-black/10 print:bg-white print:border-gray-300">
                   <table className="w-full text-base text-left">
-                    <thead style={{ background: 'rgba(255,255,255,0.05)' }} className="print:bg-gray-100">
+                    <thead style={{ background: 'rgba(15,23,42,0.05)' }} className="print:bg-gray-100">
                       <tr>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 print:text-black">Código</th>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 print:text-black">Descripción</th>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 print:text-black">Categoría</th>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 print:text-black">Grupo</th>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 print:text-black">Sub-Grupo</th>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 text-right print:text-black">Existencia</th>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 text-right print:text-black">Ult. Costo</th>
-                        <th className="px-4 py-3 text-xs font-semibold uppercase text-white/60 text-right print:text-black">Valor Inv.</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 print:text-black">Código</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 print:text-black">Descripción</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 print:text-black">Categoría</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 print:text-black">Grupo</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 print:text-black">Sub-Grupo</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 text-right print:text-black">Existencia</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 text-right print:text-black">Ult. Costo</th>
+                        <th className="px-4 py-3 text-xs font-semibold uppercase text-slate-500 text-right print:text-black">Valor Inv.</th>
                       </tr>
                     </thead>
                     <tbody>
                       {recordsValorizado.length === 0 && (
-                        <tr><td colSpan={8} className="px-4 py-8 text-center text-white/40">
+                        <tr><td colSpan={8} className="px-4 py-8 text-center text-slate-400">
                           {tipoInvFiltro
                             ? `No hay productos del tipo "${tipoInvFiltro}" para listar.`
                             : 'No hay productos para listar.'}
                         </td></tr>
                       )}
                       {recordsValorizado.map(r => (
-                        <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="print:border-gray-200">
-                          <td className="px-4 py-2.5 font-mono text-white print:text-black">{r.codigo}</td>
-                          <td className="px-4 py-2.5 text-white/80 print:text-black">{r.descripcion}</td>
-                          <td className="px-4 py-2.5 text-white/60 print:text-gray-600">{r.categoria}</td>
-                          <td className="px-4 py-2.5 text-white/60 print:text-gray-600">{r.grupo}</td>
-                          <td className="px-4 py-2.5 text-white/60 print:text-gray-600">{r.sub_grupo}</td>
-                          <td className="px-4 py-2.5 text-white text-right print:text-black">{fmtInt(r.existencia)}</td>
-                          <td className="px-4 py-2.5 text-white/70 text-right print:text-black">Pesos {fmtNum(r.ult_costo)}</td>
-                          <td className="px-4 py-2.5 text-white text-right print:text-black">Pesos {fmtNum(r.ult_costo * r.existencia)}</td>
+                        <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="print:border-gray-200">
+                          <td className="px-4 py-2.5 font-mono text-slate-800 print:text-black">{r.codigo}</td>
+                          <td className="px-4 py-2.5 text-slate-600 print:text-black">{r.descripcion}</td>
+                          <td className="px-4 py-2.5 text-slate-500 print:text-gray-600">{r.categoria}</td>
+                          <td className="px-4 py-2.5 text-slate-500 print:text-gray-600">{r.grupo}</td>
+                          <td className="px-4 py-2.5 text-slate-500 print:text-gray-600">{r.sub_grupo}</td>
+                          <td className="px-4 py-2.5 text-slate-800 text-right print:text-black">{fmtInt(r.existencia)}</td>
+                          <td className="px-4 py-2.5 text-slate-600 text-right print:text-black">Pesos {fmtNum(r.ult_costo)}</td>
+                          <td className="px-4 py-2.5 text-slate-800 text-right print:text-black">Pesos {fmtNum(r.ult_costo * r.existencia)}</td>
                         </tr>
                       ))}
                     </tbody>
                     <tfoot>
                       <tr style={{ borderTop: '2px solid rgba(96,165,250,0.4)' }} className="print:border-t-2 print:border-black">
-                        <td colSpan={7} className="px-4 py-4 text-right text-white font-bold text-base print:text-black">
+                        <td colSpan={7} className="px-4 py-4 text-right text-slate-800 font-bold text-base print:text-black">
                           TOTAL GENERAL INVENTARIO VALORIZADO:
                         </td>
                         <td className="px-4 py-4 text-right font-bold text-lg print:text-black"
@@ -1319,7 +1319,7 @@ export default function ProductosPage() {
 
                 {/* Pie con fecha y total resaltado */}
                 <div className="mt-4 flex justify-between items-center">
-                  <span className="text-xs text-white/40">
+                  <span className="text-xs text-slate-400">
                     {reporteFecha ? `Fecha: ${reporteFecha}` : ''} — {recordsValorizado.length} productos{tipoInvFiltro ? ` · ${tipoInvFiltro}` : ''}
                   </span>
                 </div>
@@ -1332,14 +1332,14 @@ export default function ProductosPage() {
       {/* Modal Ver Registro */}
       {viewRecord && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-2xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="w-full max-w-2xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">Producto: {viewRecord.codigo}</h2>
-              <button onClick={() => setViewRecordId(null)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">Producto: {viewRecord.codigo}</h2>
+              <button onClick={() => setViewRecordId(null)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
             {viewRecord.imagen && (
               <div className="flex justify-center mb-5">
-                <img src={viewRecord.imagen} alt={viewRecord.descripcion} className="max-h-48 rounded-xl object-contain" style={{ border: '1px solid rgba(255,255,255,0.15)' }} />
+                <img src={viewRecord.imagen} alt={viewRecord.descripcion} className="max-h-48 rounded-xl object-contain" style={{ border: '1px solid rgba(15,23,42,0.15)' }} />
               </div>
             )}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -1392,22 +1392,22 @@ export default function ProductosPage() {
               })().map(({ label, value }) => (
                 <div key={label}>
                   <p className="text-xs uppercase tracking-wider mb-1" style={{ color: '#f97316' }}>{label}</p>
-                  <p className="text-white font-medium text-sm">{value || '—'}</p>
+                  <p className="text-slate-800 font-medium text-sm">{value || '—'}</p>
                 </div>
               ))}
             </div>
-            <div className="flex justify-end gap-3 mt-6 pt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+            <div className="flex justify-end gap-3 mt-6 pt-4 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
               <button
                 onClick={() => { setViewRecordId(null); setTipoActivoSesion(null) }}
-                className="px-5 py-2.5 rounded-xl font-semibold text-white text-sm"
+                className="px-5 py-2.5 rounded-xl font-semibold text-slate-800 text-sm"
                 style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}
               >
                 ⤴ Volver a Seleccionar
               </button>
               <button
                 onClick={() => setViewRecordId(null)}
-                className="px-5 py-2.5 rounded-xl font-medium text-white text-sm"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                className="px-5 py-2.5 rounded-xl font-medium text-slate-800 text-sm"
+                style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
               >
                 Cerrar
               </button>
@@ -1418,17 +1418,17 @@ export default function ProductosPage() {
       {/* Modal Filtros Etiquetas */}
       {showEtiquetasFiltro && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
-          <div className="w-full max-w-lg rounded-2xl p-6 space-y-5" style={{ background: 'rgba(15,23,42,0.98)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="w-full max-w-lg rounded-2xl p-6 space-y-5" style={{ background: 'rgba(15,23,42,0.98)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white">🔲 Filtrar Etiquetas</h3>
-              <button onClick={() => setShowEtiquetasFiltro(false)} className="text-white/40 hover:text-white text-xl">✕</button>
+              <h3 className="text-lg font-bold text-slate-800">🔲 Filtrar Etiquetas</h3>
+              <button onClick={() => setShowEtiquetasFiltro(false)} className="text-slate-400 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             <div className="space-y-4">
               {/* Producto */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Producto</label>
-                <select value={etqProducto} onChange={e => setEtqProducto(e.target.value)} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Producto</label>
+                <select value={etqProducto} onChange={e => setEtqProducto(e.target.value)} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }}>
                   <option value="">{tOp('todosProductos')}{tipoInvFiltro ? ` (${tipoInvFiltro})` : ''}</option>
                   {records
                     .filter(r => r.situacion === 'Activo' && r.codigo_barra)
@@ -1441,8 +1441,8 @@ export default function ProductosPage() {
 
               {/* Categoría */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Categoría</label>
-                <select value={etqCategoria} onChange={e => { setEtqCategoria(e.target.value); setEtqGrupo(''); setEtqSubGrupo('') }} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Categoría</label>
+                <select value={etqCategoria} onChange={e => { setEtqCategoria(e.target.value); setEtqGrupo(''); setEtqSubGrupo('') }} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }}>
                   <option value="">{tOp('todas')}</option>
                   {[...new Set(records.filter(r => r.situacion === 'Activo').map(r => r.categoria).filter(Boolean))].sort().map(c => (
                     <option key={c} value={c}>{c}</option>
@@ -1452,8 +1452,8 @@ export default function ProductosPage() {
 
               {/* Grupo */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Grupo</label>
-                <select value={etqGrupo} onChange={e => { setEtqGrupo(e.target.value); setEtqSubGrupo('') }} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Grupo</label>
+                <select value={etqGrupo} onChange={e => { setEtqGrupo(e.target.value); setEtqSubGrupo('') }} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }}>
                   <option value="">{tOp('todos')}</option>
                   {[...new Set(records.filter(r => r.situacion === 'Activo' && (!etqCategoria || r.categoria === etqCategoria)).map(r => r.grupo).filter(Boolean))].sort().map(g => (
                     <option key={g} value={g}>{g}</option>
@@ -1463,8 +1463,8 @@ export default function ProductosPage() {
 
               {/* Sub-Grupo */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Sub-Grupo</label>
-                <select value={etqSubGrupo} onChange={e => setEtqSubGrupo(e.target.value)} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }}>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Sub-Grupo</label>
+                <select value={etqSubGrupo} onChange={e => setEtqSubGrupo(e.target.value)} className="w-full px-3 py-2 rounded-lg text-sm outline-none" style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }}>
                   <option value="">{tOp('todos')}</option>
                   {[...new Set(records.filter(r => r.situacion === 'Activo' && (!etqCategoria || r.categoria === etqCategoria) && (!etqGrupo || r.grupo === etqGrupo)).map(r => r.sub_grupo).filter(Boolean))].sort().map(s => (
                     <option key={s} value={s}>{s}</option>
@@ -1475,7 +1475,7 @@ export default function ProductosPage() {
 
             {/* Tipo de Código */}
             <div>
-              <label className="block text-xl font-extrabold text-white mb-2">Tipo de Código</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-2">Tipo de Código</label>
               <div className="flex gap-3">
                 {([
                   { value: 'barra', label: '|||  Código de Barras', icon: '📊' },
@@ -1489,7 +1489,7 @@ export default function ProductosPage() {
                     className="flex-1 px-3 py-2.5 rounded-lg text-xs font-bold transition-all"
                     style={etqTipoCodigo === opt.value
                       ? { background: 'rgba(124,58,237,0.4)', color: '#c4b5fd', border: '1px solid rgba(124,58,237,0.6)' }
-                      : { background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.1)' }
+                      : { background: 'rgba(15,23,42,0.05)', color: 'rgba(15,23,42,0.4)', border: '1px solid rgba(15,23,42,0.1)' }
                     }
                   >
                     {opt.icon} {opt.label}
@@ -1499,7 +1499,7 @@ export default function ProductosPage() {
             </div>
 
             {/* Preview cantidad */}
-            <div className="text-xs text-white/40">
+            <div className="text-xs text-slate-400">
               {(() => {
                 const norm = (s: string) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()
                 let base = records.filter(r => r.situacion === 'Activo' && r.codigo_barra)
@@ -1519,10 +1519,10 @@ export default function ProductosPage() {
 
             {/* Botones */}
             <div className="flex gap-3 pt-2">
-              <button onClick={printBarcodes} className="px-6 py-2.5 rounded-xl text-sm font-bold text-white" style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)' }}>
+              <button onClick={printBarcodes} className="px-6 py-2.5 rounded-xl text-sm font-bold text-slate-800" style={{ background: 'linear-gradient(135deg, #7c3aed, #a855f7)' }}>
                 🖨 Generar Etiquetas
               </button>
-              <button onClick={() => setShowEtiquetasFiltro(false)} className="px-6 py-2.5 rounded-xl text-sm font-bold text-white/60 hover:text-white bg-white/5 hover:bg-white/10 transition-all">
+              <button onClick={() => setShowEtiquetasFiltro(false)} className="px-6 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-800 bg-black/5 hover:bg-black/10 transition-all">
                 {tBtn('cancel')}
               </button>
             </div>

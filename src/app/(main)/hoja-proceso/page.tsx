@@ -12,9 +12,9 @@ import { todayColombia, fDate } from '@/shared/lib/format-date'
 
 const TIPO = 'Materia Prima'
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.25)', color: '#fff' }
-const selSt: React.CSSProperties = { background: '#083d3d', border: '1px solid rgba(255,255,255,0.25)', color: '#fff' }
-const readSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.25)', color: '#1e293b' }
+const selSt: React.CSSProperties = { background: '#083d3d', border: '1px solid rgba(15,23,42,0.25)', color: '#1e293b' }
+const readSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
 export default function HojaProcesoPage() {
   const permisos = usePermisos('hoja-proceso')
@@ -213,13 +213,13 @@ export default function HojaProcesoPage() {
     <div>
       <div className="flex items-start justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">📋 Hoja de Proceso en Celdas</h1>
-          <p className="text-white/50 mt-1">Registro de Entradas y Salidas de Materia Prima en Celdas</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">📋 Hoja de Proceso en Celdas</h1>
+          <p className="text-slate-500 mt-1">Registro de Entradas y Salidas de Materia Prima en Celdas</p>
         </div>
         <div className="flex flex-col items-end gap-2">
           {permisos.editar && (
             <button onClick={abrirNuevo}
-              className="px-6 py-3 rounded-xl text-base font-extrabold text-white transition-all hover:scale-105"
+              className="px-6 py-3 rounded-xl text-base font-extrabold text-slate-800 transition-all hover:scale-105"
               style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)', boxShadow: '0 4px 12px rgba(59,130,246,0.35)' }}>
               ➕ Nueva Hoja Proceso
             </button>
@@ -227,7 +227,7 @@ export default function HojaProcesoPage() {
           <div className="rounded-xl px-4 py-2 text-right"
             style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.4), rgba(217,119,6,0.25))', border: '2px solid rgba(245,158,11,0.5)', boxShadow: '0 4px 12px rgba(245,158,11,0.25)' }}>
             <p className="text-[10px] uppercase tracking-wider text-amber-200 font-bold">Próximo Correlativo</p>
-            <p className="text-xl font-extrabold font-mono text-white">{consecutivoNuevo}</p>
+            <p className="text-xl font-extrabold font-mono text-slate-800">{consecutivoNuevo}</p>
           </div>
         </div>
       </div>
@@ -259,10 +259,10 @@ export default function HojaProcesoPage() {
             {saldosCeldas.map(({ celda, saldo }) => (
               <div key={celda} className="rounded-xl px-3 py-2 flex items-center gap-2"
                 style={{
-                  background: saldo < 0 ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.05)',
-                  border: `1px solid ${saldo < 0 ? 'rgba(239,68,68,0.4)' : 'rgba(255,255,255,0.12)'}`,
+                  background: saldo < 0 ? 'rgba(239,68,68,0.15)' : 'rgba(15,23,42,0.05)',
+                  border: `1px solid ${saldo < 0 ? 'rgba(239,68,68,0.4)' : 'rgba(15,23,42,0.12)'}`,
                 }}>
-                <span className="font-mono font-extrabold text-white text-sm">{celda}</span>
+                <span className="font-mono font-extrabold text-slate-800 text-sm">{celda}</span>
                 <span className={`font-mono font-extrabold text-sm ${saldo < 0 ? 'text-red-300' : 'text-cyan-200'}`}>
                   {saldo.toLocaleString('es-CO', { maximumFractionDigits: 2 })} kg
                 </span>
@@ -275,12 +275,12 @@ export default function HojaProcesoPage() {
       <div className="mb-4">
         <input value={search} onChange={e => setSearch(e.target.value)}
           placeholder="Buscar por consecutivo, código, nombre o lote…"
-          className="w-full max-w-md rounded-xl px-4 py-2.5 text-base text-white outline-none" style={inputSt} />
+          className="w-full max-w-md rounded-xl px-4 py-2.5 text-base text-slate-800 outline-none" style={inputSt} />
       </div>
 
-      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <table className="w-full text-base">
-          <thead style={{ background: 'rgba(255,255,255,0.08)' }}>
+          <thead style={{ background: 'rgba(15,23,42,0.08)' }}>
             <tr>
               {['Consecutivo','Op','Fecha','Código','Nombre','Lote','Celda','Movim.','Cantidad Kg','Estado','Acciones'].map(h => (
                 <th key={h} className={`px-3 py-3 text-base font-extrabold uppercase tracking-wider whitespace-nowrap ${h === 'Cantidad Kg' ? 'text-right' : ''}`}
@@ -290,54 +290,54 @@ export default function HojaProcesoPage() {
           </thead>
           <tbody>
             {filtered.length === 0 && (
-              <tr><td colSpan={11} className="px-6 py-12 text-center text-white/30">No hay hojas de proceso registradas. Crea la primera con <strong>+ Nueva Hoja Proceso</strong>.</td></tr>
+              <tr><td colSpan={11} className="px-6 py-12 text-center text-slate-400">No hay hojas de proceso registradas. Crea la primera con <strong>+ Nueva Hoja Proceso</strong>.</td></tr>
             )}
             {filtered.map(h => (
-              <tr key={h.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', opacity: h.estado === 'Anulado' ? 0.5 : 1 }}>
-                <td className="px-3 py-3 font-mono font-extrabold text-white whitespace-nowrap">{h.consecutivo}</td>
+              <tr key={h.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)', opacity: h.estado === 'Anulado' ? 0.5 : 1 }}>
+                <td className="px-3 py-3 font-mono font-extrabold text-slate-800 whitespace-nowrap">{h.consecutivo}</td>
                 <td className="px-3 py-3 font-mono font-extrabold text-center text-amber-300 whitespace-nowrap">{h.nro_operacion}</td>
-                <td className="px-3 py-3 font-extrabold text-white whitespace-nowrap">{fDate(h.fecha)}</td>
-                <td className="px-3 py-3 font-mono font-extrabold text-white whitespace-nowrap">{h.codigo_alterno || h.codigo_producto}</td>
-                <td className="px-3 py-3 font-extrabold text-white">{h.nombre_producto}</td>
-                <td className="px-3 py-3 font-mono font-bold text-white">{h.lote || '—'}</td>
-                <td className="px-3 py-3 font-mono font-bold text-white">{h.nro_celda || '—'}</td>
+                <td className="px-3 py-3 font-extrabold text-slate-800 whitespace-nowrap">{fDate(h.fecha)}</td>
+                <td className="px-3 py-3 font-mono font-extrabold text-slate-800 whitespace-nowrap">{h.codigo_alterno || h.codigo_producto}</td>
+                <td className="px-3 py-3 font-extrabold text-slate-800">{h.nombre_producto}</td>
+                <td className="px-3 py-3 font-mono font-bold text-slate-800">{h.lote || '—'}</td>
+                <td className="px-3 py-3 font-mono font-bold text-slate-800">{h.nro_celda || '—'}</td>
                 <td className="px-3 py-3">
                   <span className="px-3 py-1 rounded-full text-sm font-extrabold"
                     style={h.movimiento === 'Entra'
-                      ? { background: 'rgba(34,197,94,0.95)', color: '#fff' }
-                      : { background: 'rgba(239,68,68,0.95)', color: '#fff' }}>
+                      ? { background: 'rgba(34,197,94,0.95)', color: '#1e293b' }
+                      : { background: 'rgba(239,68,68,0.95)', color: '#1e293b' }}>
                     {h.movimiento === 'Entra' ? '⬇ Entra' : '⬆ Sale'}
                   </span>
                 </td>
-                <td className="px-3 py-3 text-right font-mono font-extrabold text-white">
+                <td className="px-3 py-3 text-right font-mono font-extrabold text-slate-800">
                   {h.cantidad_kg.toLocaleString('es-CO', { maximumFractionDigits: 2 })} kg
                 </td>
                 <td className="px-3 py-3">
                   <span className="px-3 py-1 rounded-full text-xs font-extrabold"
                     style={h.estado === 'Registrado'
-                      ? { background: 'rgba(96,165,250,0.95)', color: '#fff' }
-                      : { background: 'rgba(107,114,128,0.95)', color: '#fff' }}>
+                      ? { background: 'rgba(96,165,250,0.95)', color: '#1e293b' }
+                      : { background: 'rgba(107,114,128,0.95)', color: '#1e293b' }}>
                     {h.estado}
                   </span>
                 </td>
                 <td className="px-3 py-3">
                   <div className="flex gap-1.5 flex-wrap">
                     <button onClick={() => setViewItem(h)}
-                      className="px-3 py-1.5 rounded-lg text-xs font-bold text-white"
+                      className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800"
                       style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Ver</button>
                     {permisos.editar && h.estado === 'Registrado' && (
                       <button onClick={() => editar(h)}
-                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-white"
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800"
                         style={{ background: 'rgba(245,158,11,1)', border: '1px solid rgba(217,119,6,1)' }}>Editar</button>
                     )}
                     {permisos.editar && h.estado === 'Registrado' && (
                       <button onClick={() => anular(h)}
-                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-white"
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800"
                         style={{ background: 'rgba(251,191,36,0.95)', border: '1px solid rgba(217,119,6,0.6)' }}>Anular</button>
                     )}
                     {permisos.eliminar && (
                       <button onClick={() => eliminar(h)}
-                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-white"
+                        className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800"
                         style={{ background: 'rgba(220,38,38,1)', border: '1px solid rgba(185,28,28,1)' }}>Eliminar</button>
                     )}
                   </div>
@@ -351,10 +351,10 @@ export default function HojaProcesoPage() {
       {viewItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
           <div className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl p-6"
-            style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex justify-between items-center mb-5">
-              <h2 className="text-xl font-extrabold text-white">📋 Hoja Proceso · <span className="font-mono text-blue-300">{viewItem.consecutivo}</span> <span className="text-white/50 text-sm">· Op {viewItem.nro_operacion}</span></h2>
-              <button onClick={() => setViewItem(null)} className="text-white/40 hover:text-white text-3xl leading-none">&times;</button>
+              <h2 className="text-xl font-extrabold text-slate-800">📋 Hoja Proceso · <span className="font-mono text-blue-300">{viewItem.consecutivo}</span> <span className="text-slate-500 text-sm">· Op {viewItem.nro_operacion}</span></h2>
+              <button onClick={() => setViewItem(null)} className="text-slate-400 hover:text-slate-800 text-3xl leading-none">&times;</button>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {[
@@ -373,22 +373,22 @@ export default function HojaProcesoPage() {
                 { l: 'Estado', v: viewItem.estado, span: false },
               ].map((f, i) => (
                 <div key={i} className={`rounded-xl p-3 ${f.span ? 'col-span-2 md:col-span-3' : ''}`}
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
                   <p className="text-xs uppercase tracking-wider mb-1 font-bold text-orange-400">{f.l}</p>
-                  <p className="text-white font-bold">{f.v}</p>
+                  <p className="text-slate-800 font-bold">{f.v}</p>
                 </div>
               ))}
               {viewItem.observaciones && (
                 <div className="col-span-2 md:col-span-3 rounded-xl p-3"
                   style={{ background: 'rgba(245,158,11,0.08)', border: '1px dashed rgba(245,158,11,0.4)' }}>
                   <p className="text-xs uppercase tracking-wider mb-1 font-bold text-amber-300">Observaciones</p>
-                  <p className="text-white whitespace-pre-wrap">{viewItem.observaciones}</p>
+                  <p className="text-slate-800 whitespace-pre-wrap">{viewItem.observaciones}</p>
                 </div>
               )}
             </div>
             <div className="flex justify-end mt-5">
               <button onClick={() => setViewItem(null)}
-                className="px-5 py-2.5 rounded-xl text-sm font-bold text-white"
+                className="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-800"
                 style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Cerrar</button>
             </div>
           </div>
@@ -398,10 +398,10 @@ export default function HojaProcesoPage() {
       {open && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
           <div className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl p-6"
-            style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex justify-between items-center mb-5">
-              <h2 className="text-xl font-extrabold text-white">{editId ? 'Editar Hoja' : 'Nueva Hoja de Proceso'}</h2>
-              <button onClick={() => setOpen(false)} className="text-white/40 hover:text-white text-3xl leading-none">&times;</button>
+              <h2 className="text-xl font-extrabold text-slate-800">{editId ? 'Editar Hoja' : 'Nueva Hoja de Proceso'}</h2>
+              <button onClick={() => setOpen(false)} className="text-slate-400 hover:text-slate-800 text-3xl leading-none">&times;</button>
             </div>
 
             {error && (
@@ -413,24 +413,24 @@ export default function HojaProcesoPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Fecha de Registro *</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Fecha de Registro *</label>
                 <input type="date" value={fecha} onChange={e => setFecha(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white outline-none" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 outline-none" style={inputSt} />
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Nro Correlativo</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Nro Correlativo</label>
                 <input readOnly value={editId ? hojas.find(h => h.id === editId)?.consecutivo || '' : consecutivoNuevo}
                   className="w-full rounded-xl px-3 py-2 text-base font-mono font-bold outline-none cursor-not-allowed"
                   style={readSt} />
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Nro Operación</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Nro Operación</label>
                 <input readOnly value={editId ? String(hojas.find(h => h.id === editId)?.nro_operacion || '') : String(infoHoja.nro_operacion)}
                   className="w-full rounded-xl px-3 py-2 text-base font-mono font-bold outline-none cursor-not-allowed text-center"
                   style={readSt} />
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Movimiento *</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Movimiento *</label>
                 <select value={movimiento} onChange={e => setMovimiento(e.target.value as 'Entra' | 'Sale')}
                   className="w-full rounded-xl px-3 py-2 text-base font-bold outline-none" style={selSt}>
                   <option value="Entra">⬇ Entra</option>
@@ -439,9 +439,9 @@ export default function HojaProcesoPage() {
               </div>
 
               <div className="md:col-span-4">
-                <label className="block text-base font-extrabold text-white mb-1">Producto Materia Prima *</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Producto Materia Prima *</label>
                 <select value={productoId} onChange={e => handleProductoChange(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold outline-none" style={selSt}>
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none" style={selSt}>
                   <option value="">Seleccione una Materia Prima…</option>
                   {productosMP.map(p => (
                     <option key={p.id} value={p.id}>
@@ -452,32 +452,32 @@ export default function HojaProcesoPage() {
               </div>
 
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Código</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Código</label>
                 <input readOnly value={codigoAlterno || codigoProducto || '—'}
                   className="w-full rounded-xl px-3 py-2 text-base font-mono font-bold outline-none" style={readSt} />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-base font-extrabold text-white mb-1">Nombre Producto</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Nombre Producto</label>
                 <input readOnly value={nombreProducto || '—'}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold outline-none" style={readSt} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none" style={readSt} />
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Código Materia Prima</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Código Materia Prima</label>
                 <input value={codigoMP} onChange={e => setCodigoMP(e.target.value)}
                   placeholder="MP-001"
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold font-mono outline-none" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono outline-none" style={inputSt} />
               </div>
 
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Nro. Lote</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Nro. Lote</label>
                 <input value={lote} onChange={e => setLote(e.target.value)}
                   placeholder="LOTE-2026-0001"
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold font-mono outline-none" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono outline-none" style={inputSt} />
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Nro. Celda *</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Nro. Celda *</label>
                 <select value={nroCelda} onChange={e => setNroCelda(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold font-mono outline-none" style={selSt}>
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono outline-none" style={selSt}>
                   <option value="">Seleccione una celda…</option>
                   {celdasActivas.map(c => (
                     <option key={c.id} value={c.descripcion}>{c.descripcion}</option>
@@ -485,13 +485,13 @@ export default function HojaProcesoPage() {
                 </select>
                 {nroCelda.trim() && (
                   <div className="mt-1 flex items-center justify-between gap-2 text-xs font-bold">
-                    <span className="text-white/60">Saldo actual:</span>
+                    <span className="text-slate-500">Saldo actual:</span>
                     <span className="font-mono text-cyan-300">
                       {saldoActualCelda.toLocaleString('es-CO', { maximumFractionDigits: 2 })} kg
                     </span>
                     {cantidadKg > 0 && (
                       <>
-                        <span className="text-white/40">→</span>
+                        <span className="text-slate-400">→</span>
                         <span className={`font-mono ${saldoProyectado < 0 ? 'text-red-300' : 'text-green-300'}`}>
                           {saldoProyectado.toLocaleString('es-CO', { maximumFractionDigits: 2 })} kg
                         </span>
@@ -501,7 +501,7 @@ export default function HojaProcesoPage() {
                 )}
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Cantidad Kg *</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Cantidad Kg *</label>
                 <input type="text" inputMode="decimal"
                   value={cantidadKg ? cantidadKg.toLocaleString('es-CO', { maximumFractionDigits: 4 }) : ''}
                   onChange={e => {
@@ -510,10 +510,10 @@ export default function HojaProcesoPage() {
                     setCantidadKg(num)
                   }}
                   placeholder="0"
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold font-mono text-right outline-none" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono text-right outline-none" style={inputSt} />
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Unidad</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Unidad</label>
                 <input readOnly value={unidadMedida || 'kg'}
                   className="w-full rounded-xl px-3 py-2 text-base text-center font-bold outline-none" style={readSt} />
               </div>
@@ -521,9 +521,9 @@ export default function HojaProcesoPage() {
               {movimiento === 'Entra' && (
                 <>
                   <div className="md:col-span-2">
-                    <label className="block text-base font-extrabold text-white mb-1">Proveedor</label>
+                    <label className="block text-base font-extrabold text-slate-800 mb-1">Proveedor</label>
                     <select value={proveedorId} onChange={e => setProveedorId(e.target.value)}
-                      className="w-full rounded-xl px-3 py-2 text-base text-white font-bold outline-none" style={selSt}>
+                      className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none" style={selSt}>
                       <option value="">Seleccione un proveedor…</option>
                       {proveedoresActivos.map(p => (
                         <option key={p.id} value={p.id}>{p.nombre}</option>
@@ -531,35 +531,35 @@ export default function HojaProcesoPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-base font-extrabold text-white mb-1">Fecha Remisión</label>
+                    <label className="block text-base font-extrabold text-slate-800 mb-1">Fecha Remisión</label>
                     <input type="date" value={fechaRemision} onChange={e => setFechaRemision(e.target.value)}
-                      className="w-full rounded-xl px-3 py-2 text-base text-white outline-none" style={inputSt} />
+                      className="w-full rounded-xl px-3 py-2 text-base text-slate-800 outline-none" style={inputSt} />
                   </div>
                   <div>
-                    <label className="block text-base font-extrabold text-white mb-1">Nro. Remisión</label>
+                    <label className="block text-base font-extrabold text-slate-800 mb-1">Nro. Remisión</label>
                     <input value={nroRemision} onChange={e => setNroRemision(e.target.value)}
                       placeholder="REM-0001"
-                      className="w-full rounded-xl px-3 py-2 text-base text-white font-bold font-mono outline-none" style={inputSt} />
+                      className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono outline-none" style={inputSt} />
                   </div>
                 </>
               )}
 
               <div className="md:col-span-4">
-                <label className="block text-base font-extrabold text-white mb-1">Observaciones</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Observaciones</label>
                 <textarea rows={2} value={observaciones} onChange={e => setObservaciones(e.target.value)}
                   placeholder="Notas opcionales del movimiento…"
-                  className="w-full rounded-xl px-3 py-2 text-base text-white font-bold outline-none resize-none" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 text-base text-slate-800 font-bold outline-none resize-none" style={inputSt} />
               </div>
             </div>
 
             <div className="flex justify-end gap-3 mt-6">
               <button onClick={() => setOpen(false)}
-                className="px-6 py-2.5 rounded-xl text-base font-bold text-white/70 hover:text-white"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                className="px-6 py-2.5 rounded-xl text-base font-bold text-slate-600 hover:text-slate-800"
+                style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
                 Cancelar
               </button>
               <button onClick={guardar}
-                className="px-8 py-2.5 rounded-xl text-base font-extrabold text-white"
+                className="px-8 py-2.5 rounded-xl text-base font-extrabold text-slate-800"
                 style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)', boxShadow: '0 4px 12px rgba(59,130,246,0.35)' }}>
                 💾 {editId ? 'Actualizar' : 'Grabar Hoja'}
               </button>

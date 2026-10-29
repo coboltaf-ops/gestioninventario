@@ -1,6 +1,6 @@
 export default function InventarioComidasHome() {
   return (
-    <div style={{ minHeight: '100vh', padding: '40px', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', padding: '40px', color: '#1e293b' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div
           style={{

@@ -159,9 +159,9 @@ export default function PesajePage() {
   const [error, setError] = useState('')
   const [search, setSearch] = useState('')
 
-  const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.25)', color: '#fff' }
-  const selectSt: React.CSSProperties = { background: '#083d3d', border: '1px solid rgba(255,255,255,0.25)', color: '#fff' }
-  const readOnlySt: React.CSSProperties = { background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', cursor: 'not-allowed' }
+  const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.25)', color: '#1e293b' }
+  const selectSt: React.CSSProperties = { background: '#083d3d', border: '1px solid rgba(15,23,42,0.25)', color: '#1e293b' }
+  const readOnlySt: React.CSSProperties = { background: 'rgba(15,23,42,0.08)', border: '1px solid rgba(15,23,42,0.2)', color: '#1e293b', cursor: 'not-allowed' }
 
   // Peso neto en vivo
   const pesoNetoLive = useMemo(() => calcularPesoNeto(Number(primeraPesada), Number(segundaPesada)), [primeraPesada, segundaPesada])
@@ -304,7 +304,7 @@ export default function PesajePage() {
   if (!permisos.leer) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-white/60 text-lg">No tienes permisos para acceder a esta sección.</p>
+        <p className="text-slate-500 text-lg">No tienes permisos para acceder a esta sección.</p>
       </div>
     )
   }
@@ -313,11 +313,11 @@ export default function PesajePage() {
     <div>
       <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Recepción Materia Prima</h1>
-          <p className="text-white/50 mt-1">Control de pesaje de materia prima entrante</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">Recepción Materia Prima</h1>
+          <p className="text-slate-500 mt-1">Control de pesaje de materia prima entrante</p>
         </div>
         {permisos.editar && (
-          <button onClick={abrirNuevo} className="px-5 py-2.5 rounded-xl font-medium text-white"
+          <button onClick={abrirNuevo} className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             + Nuevo Pesaje
           </button>
@@ -328,35 +328,35 @@ export default function PesajePage() {
       <div className="mb-4">
         <input value={search} onChange={e => setSearch(e.target.value)}
           placeholder="Buscar por consecutivo, placa, proveedor, conductor..."
-          className="w-full max-w-md rounded-xl px-4 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+          className="w-full max-w-md rounded-xl px-4 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
       </div>
 
-      <p className="text-white/60 text-sm mb-3">{filtrados.length} pesaje(s) registrado(s)</p>
+      <p className="text-slate-500 text-sm mb-3">{filtrados.length} pesaje(s) registrado(s)</p>
 
       {/* Tabla */}
-      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <table className="w-full text-base text-left">
-          <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+          <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
             <tr>
               {['Consecutivo','Fecha Reg.','Nro Doc','Fecha Emisión','Proveedor','OC','Producto','Placas','Conductor','Estado','Acciones'].map(h => (
-                <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {filtrados.length === 0 ? (
-              <tr><td colSpan={11} className="px-6 py-12 text-center text-white/30">No hay pesajes registrados. Crea el primero con <strong>+ Nuevo Pesaje</strong>.</td></tr>
+              <tr><td colSpan={11} className="px-6 py-12 text-center text-slate-400">No hay pesajes registrados. Crea el primero con <strong>+ Nuevo Pesaje</strong>.</td></tr>
             ) : filtrados.map(p => (
-              <tr key={p.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="hover:bg-white/[0.02]">
+              <tr key={p.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="hover:bg-white/[0.02]">
                 <td className="px-3 py-3 font-mono font-bold text-blue-300 whitespace-nowrap">{p.consecutivo}</td>
-                <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(p.fecha_registro)}</td>
-                <td className="px-3 py-3 text-white font-bold">{p.nro_documento}</td>
-                <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(p.fecha_emision)}</td>
-                <td className="px-3 py-3 text-white font-bold">{p.proveedor}</td>
-                <td className="px-3 py-3 font-mono text-white font-bold">{p.orden_compra_consecutivo || '—'}</td>
-                <td className="px-3 py-3 text-white font-bold max-w-xs truncate" title={p.producto_materia_prima}>{p.producto_materia_prima}</td>
-                <td className="px-3 py-3 font-mono text-white font-bold whitespace-nowrap">{p.placas}</td>
-                <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{p.nombre_conductor}</td>
+                <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(p.fecha_registro)}</td>
+                <td className="px-3 py-3 text-slate-800 font-bold">{p.nro_documento}</td>
+                <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(p.fecha_emision)}</td>
+                <td className="px-3 py-3 text-slate-800 font-bold">{p.proveedor}</td>
+                <td className="px-3 py-3 font-mono text-slate-800 font-bold">{p.orden_compra_consecutivo || '—'}</td>
+                <td className="px-3 py-3 text-slate-800 font-bold max-w-xs truncate" title={p.producto_materia_prima}>{p.producto_materia_prima}</td>
+                <td className="px-3 py-3 font-mono text-slate-800 font-bold whitespace-nowrap">{p.placas}</td>
+                <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{p.nombre_conductor}</td>
                 <td className="px-3 py-3">
                   <span className="px-2 py-1 rounded-md text-xs font-bold" style={
                     p.estado === 'Registrado'
@@ -366,12 +366,12 @@ export default function PesajePage() {
                 </td>
                 <td className="px-3 py-3">
                   <div className="flex gap-1 flex-wrap">
-                    <button onClick={() => setViewItem(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Ver</button>
-                    <button onClick={() => generatePesajePDF(p, empData, emp?.logo || undefined, false)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(168,85,247,0.95)', border: '1px solid rgba(147,51,234,1)' }} title="Generar PDF">📄 PDF</button>
-                    <button onClick={() => generatePesajePDF(p, empData, emp?.logo || undefined, true)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(20,184,166,0.95)', border: '1px solid rgba(13,148,136,1)' }} title="Imprimir">🖨 Imprimir</button>
-                    {permisos.editar && p.estado === 'Registrado' && <button onClick={() => editar(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(96,165,250,0.95)', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
-                    {permisos.editar && p.estado === 'Registrado' && <button onClick={() => anular(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(251,191,36,0.95)', border: '1px solid rgba(251,191,36,0.3)' }}>Anular</button>}
-                    {permisos.eliminar && <button onClick={() => eliminar(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style={{ background: 'rgba(239,68,68,0.95)', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
+                    <button onClick={() => setViewItem(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Ver</button>
+                    <button onClick={() => generatePesajePDF(p, empData, emp?.logo || undefined, false)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(168,85,247,0.95)', border: '1px solid rgba(147,51,234,1)' }} title="Generar PDF">📄 PDF</button>
+                    <button onClick={() => generatePesajePDF(p, empData, emp?.logo || undefined, true)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(20,184,166,0.95)', border: '1px solid rgba(13,148,136,1)' }} title="Imprimir">🖨 Imprimir</button>
+                    {permisos.editar && p.estado === 'Registrado' && <button onClick={() => editar(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(96,165,250,0.95)', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
+                    {permisos.editar && p.estado === 'Registrado' && <button onClick={() => anular(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(251,191,36,0.95)', border: '1px solid rgba(251,191,36,0.3)' }}>Anular</button>}
+                    {permisos.eliminar && <button onClick={() => eliminar(p)} className="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-800" style={{ background: 'rgba(239,68,68,0.95)', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
                   </div>
                 </td>
               </tr>
@@ -383,99 +383,99 @@ export default function PesajePage() {
       {/* MODAL VER (read-only) */}
       {viewItem && (
         <div className="fixed top-0 right-0 bottom-0 z-50 flex items-center justify-center p-4" style={{ left: '16rem', background: 'rgba(0,0,0,0.55)' }}>
-          <div className="w-full max-w-3xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: '#0A5A5A', border: '2px solid rgba(255,255,255,0.25)' }}>
+          <div className="w-full max-w-3xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: '#f1f5f9', border: '2px solid rgba(15,23,42,0.25)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">⚖️ Detalle del Pesaje <span className="font-mono text-blue-300 text-sm">— {viewItem.consecutivo}</span></h2>
-              <button onClick={() => setViewItem(null)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">⚖️ Detalle del Pesaje <span className="font-mono text-blue-300 text-sm">— {viewItem.consecutivo}</span></h2>
+              <button onClick={() => setViewItem(null)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Consecutivo</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold font-mono" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.consecutivo}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Consecutivo</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.consecutivo}</div>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Fecha Registro</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{fDate(viewItem.fecha_registro)}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Fecha Registro</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{fDate(viewItem.fecha_registro)}</div>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">N° Documento</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.nro_documento}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">N° Documento</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.nro_documento}</div>
               </div>
 
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Fecha Emisión</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{fDate(viewItem.fecha_emision)}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Fecha Emisión</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{fDate(viewItem.fecha_emision)}</div>
               </div>
               <div className="md:col-span-2">
-                <label className="block text-base font-extrabold text-white mb-1">Proveedor</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.proveedor}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Proveedor</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.proveedor}</div>
               </div>
 
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Orden de Compra</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold font-mono" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.orden_compra_consecutivo || '—'}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Orden de Compra</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.orden_compra_consecutivo || '—'}</div>
               </div>
               <div className="md:col-span-2">
-                <label className="block text-base font-extrabold text-white mb-1">Producto Materia Prima</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.producto_materia_prima}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Producto Materia Prima</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.producto_materia_prima}</div>
               </div>
 
-              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.1)' }}>
                 <h3 className="text-sm font-bold tracking-wide text-amber-300 uppercase">🚛 Vehículo</h3>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Placas</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold font-mono uppercase" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.placas}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Placas</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono uppercase" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.placas}</div>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Modelo</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.modelo || '—'}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Modelo</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.modelo || '—'}</div>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Descripción</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.descripcion || '—'}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Descripción</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.descripcion || '—'}</div>
               </div>
 
-              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.1)' }}>
                 <h3 className="text-sm font-bold tracking-wide text-amber-300 uppercase">👤 Conductor</h3>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Cédula</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold font-mono" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.cedula_conductor}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Cédula</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.cedula_conductor}</div>
               </div>
               <div className="md:col-span-2">
-                <label className="block text-base font-extrabold text-white mb-1">Nombre</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.nombre_conductor}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Nombre</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.nombre_conductor}</div>
               </div>
 
-              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.1)' }}>
                 <h3 className="text-sm font-bold tracking-wide text-emerald-300 uppercase">⚖️ Pesaje (Kg)</h3>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Primera Pesada</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold font-mono text-right" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.primera_pesada.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Primera Pesada</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono text-right" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.primera_pesada.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Segunda Pesada</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold font-mono text-right" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.segunda_pesada.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Segunda Pesada</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono text-right" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.segunda_pesada.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Peso Neto</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Peso Neto</label>
                 <div className="rounded-xl px-3 py-2 text-base font-mono text-right font-extrabold" style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.4)', color: '#86efac' }}>{viewItem.peso_neto.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
               </div>
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Nro. Lote Proveedor</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold font-mono" style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.2)' }}>{viewItem.nro_lote || '—'}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Nro. Lote Proveedor</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold font-mono" style={{ background: 'rgba(15,23,42,0.10)', border: '1px solid rgba(15,23,42,0.2)' }}>{viewItem.nro_lote || '—'}</div>
               </div>
 
               <div className="md:col-span-3">
-                <label className="block text-base font-extrabold text-white mb-1">Observaciones</label>
-                <div className="rounded-xl px-3 py-2 text-base text-white font-bold whitespace-pre-wrap" style={{ background: 'rgba(255,255,255,0.06)', minHeight: '50px' }}>{viewItem.observaciones || '—'}</div>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Observaciones</label>
+                <div className="rounded-xl px-3 py-2 text-base text-slate-800 font-bold whitespace-pre-wrap" style={{ background: 'rgba(15,23,42,0.06)', minHeight: '50px' }}>{viewItem.observaciones || '—'}</div>
               </div>
 
               <div>
-                <label className="block text-base font-extrabold text-white mb-1">Estado</label>
+                <label className="block text-base font-extrabold text-slate-800 mb-1">Estado</label>
                 <span className="px-3 py-1 rounded-md text-sm font-bold" style={
                   viewItem.estado === 'Registrado'
                     ? { background: 'rgba(34,197,94,0.2)', color: '#86efac', border: '1px solid rgba(34,197,94,0.4)' }
@@ -484,10 +484,10 @@ export default function PesajePage() {
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-4 mt-4 border-t flex-wrap" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => generatePesajePDF(viewItem, empData, emp?.logo || undefined, false)} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(168,85,247,0.95)', border: '1px solid rgba(147,51,234,1)' }}>📄 Generar PDF</button>
-              <button onClick={() => generatePesajePDF(viewItem, empData, emp?.logo || undefined, true)} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(20,184,166,0.95)', border: '1px solid rgba(13,148,136,1)' }}>🖨 Imprimir PDF</button>
-              <button onClick={() => setViewItem(null)} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Cerrar</button>
+            <div className="flex justify-end gap-3 pt-4 mt-4 border-t flex-wrap" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => generatePesajePDF(viewItem, empData, emp?.logo || undefined, false)} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(168,85,247,0.95)', border: '1px solid rgba(147,51,234,1)' }}>📄 Generar PDF</button>
+              <button onClick={() => generatePesajePDF(viewItem, empData, emp?.logo || undefined, true)} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(20,184,166,0.95)', border: '1px solid rgba(13,148,136,1)' }}>🖨 Imprimir PDF</button>
+              <button onClick={() => setViewItem(null)} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Cerrar</button>
             </div>
           </div>
         </div>
@@ -496,125 +496,125 @@ export default function PesajePage() {
       {/* MODAL */}
       {open && (
         <div className="fixed top-0 right-0 bottom-0 z-50 flex items-center justify-center p-4" style={{ left: '16rem', background: 'rgba(0,0,0,0.55)' }}>
-          <div className="w-full max-w-4xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: '#0A5A5A', border: '2px solid rgba(255,255,255,0.25)' }}>
+          <div className="w-full max-w-4xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: '#f1f5f9', border: '2px solid rgba(15,23,42,0.25)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">⚖️ {editId ? 'Editar Pesaje' : 'Nuevo Pesaje'} {!editId && <span className="font-mono text-blue-300 text-sm">— {nextPesajeConsecutivo(todosPesajes)}</span>}</h2>
-              <button onClick={() => setOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">⚖️ {editId ? 'Editar Pesaje' : 'Nuevo Pesaje'} {!editId && <span className="font-mono text-blue-300 text-sm">— {nextPesajeConsecutivo(todosPesajes)}</span>}</h2>
+              <button onClick={() => setOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Encabezado del documento */}
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Consecutivo (auto)</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Consecutivo (auto)</label>
                 <input readOnly value={editId ? pesajes.find(p => p.id === editId)?.consecutivo || '' : nextPesajeConsecutivo(todosPesajes)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono" style={readOnlySt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono" style={readOnlySt} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Fecha Registro (auto)</label>
-                <input readOnly value={fDate(today)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={readOnlySt} />
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Registro (auto)</label>
+                <input readOnly value={fDate(today)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={readOnlySt} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">N° Documento *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">N° Documento *</label>
                 <input value={nroDoc} onChange={e => setNroDoc(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Remisión / Vale" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Remisión / Vale" />
               </div>
 
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Fecha Emisión *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Emisión *</label>
                 <input type="date" value={fechaEmision} onChange={e => setFechaEmision(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl font-extrabold text-white mb-1">Proveedor *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Proveedor *</label>
                 <select value={proveedor} onChange={e => { setProveedor(e.target.value); setOcId('') }}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {proveedores.map(p => <option key={p.id} value={p.nombre}>{p.nombre}</option>)}
                 </select>
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xl font-extrabold text-white mb-1">Orden de Compra</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Orden de Compra</label>
                 <select value={ocId} onChange={e => setOcId(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">— Ninguna —</option>
                   {ocsFiltradas.map(o => <option key={o.id} value={o.id}>{o.consecutivo} · {o.proveedor}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Producto Materia Prima *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Producto Materia Prima *</label>
                 <select value={productoId} onChange={e => setProductoId(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {productosFiltrados.map(p => <option key={p.id} value={p.id}>{p.codigo} · {p.descripcion}</option>)}
                 </select>
               </div>
 
               {/* Vehículo */}
-              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.1)' }}>
                 <h3 className="text-sm font-bold tracking-wide text-amber-300 uppercase">🚛 Vehículo</h3>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Placas *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Placas *</label>
                 <input value={placas} onChange={e => setPlacas(e.target.value.toUpperCase())}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono uppercase" style={inputSt} placeholder="ABC123" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono uppercase" style={inputSt} placeholder="ABC123" />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Modelo</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Modelo</label>
                 <input value={modelo} onChange={e => setModelo(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Ej. 2018" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Ej. 2018" />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Descripción</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Descripción</label>
                 <input value={descripcion} onChange={e => setDescripcion(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Tipo de vehículo / carga" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Tipo de vehículo / carga" />
               </div>
 
               {/* Conductor */}
-              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.1)' }}>
                 <h3 className="text-sm font-bold tracking-wide text-amber-300 uppercase">👤 Conductor</h3>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Cédula Conductor *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Cédula Conductor *</label>
                 <input value={cedulaCond} onChange={e => setCedulaCond(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono" style={inputSt} placeholder="1.234.567.890" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono" style={inputSt} placeholder="1.234.567.890" />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl font-extrabold text-white mb-1">Nombre Conductor *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Nombre Conductor *</label>
                 <input value={nombreCond} onChange={e => setNombreCond(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Nombre completo" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Nombre completo" />
               </div>
 
               {/* Pesaje */}
-              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+              <div className="md:col-span-3 mt-2 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.1)' }}>
                 <h3 className="text-sm font-bold tracking-wide text-emerald-300 uppercase">⚖️ Pesaje (Kg)</h3>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Primera Pesada (Kg) *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Primera Pesada (Kg) *</label>
                 <input type="number" step="0.01" min="0" value={primeraPesada} onChange={e => setPrimeraPesada(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Segunda Pesada (Kg) *</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Segunda Pesada (Kg) *</label>
                 <input type="number" step="0.01" min="0" value={segundaPesada} onChange={e => setSegundaPesada(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Peso Neto (Kg) — auto</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Peso Neto (Kg) — auto</label>
                 <input readOnly value={pesoNetoLive.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   className="w-full rounded-xl px-3 py-2 outline-none text-base font-mono text-right font-extrabold" style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.4)', color: '#86efac' }} />
               </div>
 
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Nro. Lote Proveedor</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro. Lote Proveedor</label>
                 <input value={nroLote} onChange={e => setNroLote(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono" style={inputSt} placeholder="LOTE-2026-0001" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono" style={inputSt} placeholder="LOTE-2026-0001" />
               </div>
 
               <div className="md:col-span-3">
-                <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                 <textarea value={observaciones} onChange={e => setObservaciones(e.target.value)} rows={2}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Notas del pesaje..." />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Notas del pesaje..." />
               </div>
             </div>
 
@@ -622,9 +622,9 @@ export default function PesajePage() {
               <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-3 py-2 mt-3">{error}</p>
             )}
 
-            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => setOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
-              <button onClick={guardar} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{editId ? 'Guardar Cambios' : 'Registrar Pesaje'}</button>
+            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => setOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
+              <button onClick={guardar} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{editId ? 'Guardar Cambios' : 'Registrar Pesaje'}</button>
             </div>
           </div>
         </div>

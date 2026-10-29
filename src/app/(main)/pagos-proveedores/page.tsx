@@ -329,12 +329,12 @@ export default function PagosProveedoresPage() {
     setTimeout(() => setEliminarOpen(false), 2500)
   }
 
-  const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-  const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-  const readOnlySt: React.CSSProperties = { background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }
+  const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+  const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+  const readOnlySt: React.CSSProperties = { background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }
 
   if (!permisos.leer) {
-    return <div className="flex items-center justify-center h-full"><p className="text-white/60 text-lg">No tienes permisos para acceder a esta sección.</p></div>
+    return <div className="flex items-center justify-center h-full"><p className="text-slate-500 text-lg">No tienes permisos para acceder a esta sección.</p></div>
   }
 
   const handleNueva = () => {
@@ -528,13 +528,13 @@ export default function PagosProveedoresPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Pagos Proveedores y Servicios</h1>
-          <p className="text-white/50 mt-1">Registro de Facturas, Pagos, Notas Débito y Notas Crédito</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">Pagos Proveedores y Servicios</h1>
+          <p className="text-slate-500 mt-1">Registro de Facturas, Pagos, Notas Débito y Notas Crédito</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {[
           { id: 'facturas' as const, label: '📄 Registro Facturas' },
           { id: 'pagos' as const, label: '💰 Registro Pagos' },
@@ -547,8 +547,8 @@ export default function PagosProveedoresPage() {
             onClick={() => setTab(t.id)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t.id
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}
           >
             {t.label}
           </button>
@@ -561,17 +561,17 @@ export default function PagosProveedoresPage() {
           <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
             <input value={search} onChange={e => setSearch(e.target.value)}
               placeholder="Buscar por N° Factura, proveedor o consecutivo…"
-              className="w-full max-w-md rounded-xl px-4 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+              className="w-full max-w-md rounded-xl px-4 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
             <div className="flex gap-3 flex-wrap">
               {permisos.editar && (
-                <button onClick={() => { setTraerMsg(null); setTraerOpen(true) }} className="px-5 py-2.5 rounded-xl font-medium text-white"
+                <button onClick={() => { setTraerMsg(null); setTraerOpen(true) }} className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
                   style={{ background: 'rgba(34,197,94,0.4)', border: '1px solid rgba(21,128,61,1)' }}
                   title="Importar desde Recepción de Facturas">
                   📥 Traer Facturas Recibidas
                 </button>
               )}
               {permisos.editar && (
-                <button onClick={handleNueva} className="px-5 py-2.5 rounded-xl font-medium text-white"
+                <button onClick={handleNueva} className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
                   style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                   + Nueva Factura
                 </button>
@@ -579,7 +579,7 @@ export default function PagosProveedoresPage() {
               {permisos.editar && (
                 <button
                   onClick={() => { setEliminarMsg(null); setEliminarConfirmText(''); setEliminarOpen(true) }}
-                  className="px-5 py-2.5 rounded-xl font-extrabold text-white whitespace-nowrap"
+                  className="px-5 py-2.5 rounded-xl font-extrabold text-slate-800 whitespace-nowrap"
                   style={{ background: '#dc2626', border: '2px solid #b91c1c', boxShadow: '0 0 12px rgba(220,38,38,0.4)' }}
                   title="TESTING — Eliminar TODAS las facturas">
                   🗑 ELIMINAR TODAS (PRUEBAS)
@@ -588,41 +588,41 @@ export default function PagosProveedoresPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {['Consecutivo', 'F. Registro', 'N° Factura', 'F. Emisión', 'F. Vencimiento', 'Proveedor', 'Moneda', 'Total Neto', 'Saldo', 'Estado', 'Acciones'].map(h => (
-                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {filtradas.length === 0 ? (
-                  <tr><td colSpan={11} className="px-6 py-12 text-center text-white/30">No hay facturas registradas. Crea una con <strong>+ Nueva Factura</strong> o tráelas desde Recepción.</td></tr>
+                  <tr><td colSpan={11} className="px-6 py-12 text-center text-slate-400">No hay facturas registradas. Crea una con <strong>+ Nueva Factura</strong> o tráelas desde Recepción.</td></tr>
                 ) : filtradas.map(f => (
-                  <tr key={f.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="hover:bg-white/[0.02]">
+                  <tr key={f.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="hover:bg-white/[0.02]">
                     <td className="px-3 py-3 font-mono font-bold text-blue-300">{f.consecutivo}</td>
-                    <td className="px-3 py-3 text-white font-bold">{fDate(f.fecha_registro)}</td>
-                    <td className="px-3 py-3 font-mono text-white">{f.nro_factura}</td>
-                    <td className="px-3 py-3 text-white font-bold">{fDate(f.fecha_emision)}</td>
-                    <td className="px-3 py-3 text-white font-bold">{fDate(f.fecha_vencimiento)}</td>
-                    <td className="px-3 py-3 text-white">{f.proveedor}</td>
-                    <td className="px-3 py-3 text-white font-bold">{f.tipo_moneda}</td>
-                    <td className="px-3 py-3 text-right font-mono text-white">{fmtMoney(f.monto_total)}</td>
-                    <td className="px-3 py-3 text-right font-mono text-white/70">{fmtMoney(f.saldo_pendiente)}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{fDate(f.fecha_registro)}</td>
+                    <td className="px-3 py-3 font-mono text-slate-800">{f.nro_factura}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{fDate(f.fecha_emision)}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{fDate(f.fecha_vencimiento)}</td>
+                    <td className="px-3 py-3 text-slate-800">{f.proveedor}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{f.tipo_moneda}</td>
+                    <td className="px-3 py-3 text-right font-mono text-slate-800">{fmtMoney(f.monto_total)}</td>
+                    <td className="px-3 py-3 text-right font-mono text-slate-600">{fmtMoney(f.saldo_pendiente)}</td>
                     <td className="px-3 py-3">
                       <span className="px-2 py-1 rounded-md text-xs font-bold" style={
-                        f.estado === 'Pagada' ? { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.4)' } :
-                        f.estado === 'Pagada Parcial' ? { background: 'rgba(251,191,36,0.95)', color: '#fff', border: '1px solid rgba(251,191,36,0.4)' } :
-                        f.estado === 'Anulada' ? { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.4)' } :
-                        { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.4)' }
+                        f.estado === 'Pagada' ? { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.4)' } :
+                        f.estado === 'Pagada Parcial' ? { background: 'rgba(251,191,36,0.95)', color: '#1e293b', border: '1px solid rgba(251,191,36,0.4)' } :
+                        f.estado === 'Anulada' ? { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.4)' } :
+                        { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.4)' }
                       }>{f.estado}</span>
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex gap-1">
-                        {permisos.editar && <button onClick={() => handleEditar(f)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
-                        {permisos.eliminar && <button onClick={() => handleEliminar(f)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
+                        {permisos.editar && <button onClick={() => handleEditar(f)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Editar</button>}
+                        {permisos.eliminar && <button onClick={() => handleEliminar(f)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>}
                       </div>
                     </td>
                   </tr>
@@ -636,42 +636,42 @@ export default function PagosProveedoresPage() {
       {tab === 'pagos' && (
         <>
           <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-            <p className="text-white/60 text-sm">{pagos.length} pago(s) registrados</p>
+            <p className="text-slate-500 text-sm">{pagos.length} pago(s) registrados</p>
             {permisos.editar && (
-              <button onClick={abrirNuevoPago} className="px-5 py-2.5 rounded-xl font-medium text-white"
+              <button onClick={abrirNuevoPago} className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
                 style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                 + Nuevo Pago
               </button>
             )}
           </div>
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {['Consecutivo', 'F. Registro', 'Proveedor', 'Forma Pago', 'Banco', 'N° Referencia', 'Facturas', 'Total', 'Estado'].map(h => (
-                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {pagos.length === 0 ? (
-                  <tr><td colSpan={9} className="px-6 py-12 text-center text-white/30">No hay pagos registrados. Crea el primero con <strong>+ Nuevo Pago</strong>.</td></tr>
+                  <tr><td colSpan={9} className="px-6 py-12 text-center text-slate-400">No hay pagos registrados. Crea el primero con <strong>+ Nuevo Pago</strong>.</td></tr>
                 ) : pagos.map(p => (
-                  <tr key={p.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="hover:bg-white/[0.02]">
+                  <tr key={p.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="hover:bg-white/[0.02]">
                     <td className="px-3 py-3 font-mono font-bold text-blue-300">{p.consecutivo}</td>
-                    <td className="px-3 py-3 text-white font-bold">{fDate(p.fecha_registro)}</td>
-                    <td className="px-3 py-3 text-white">{p.proveedor}</td>
-                    <td className="px-3 py-3 text-white font-bold">{p.forma_pago}</td>
-                    <td className="px-3 py-3 text-white font-bold">{p.banco || '—'}</td>
-                    <td className="px-3 py-3 text-white font-bold font-mono">{p.nro_referencia || '—'}</td>
-                    <td className="px-3 py-3 text-white font-bold">{p.facturas_aplicadas.length} fact.</td>
-                    <td className="px-3 py-3 text-right font-mono font-bold text-white">{fmtMoney(p.monto_total)}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{fDate(p.fecha_registro)}</td>
+                    <td className="px-3 py-3 text-slate-800">{p.proveedor}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{p.forma_pago}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{p.banco || '—'}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold font-mono">{p.nro_referencia || '—'}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{p.facturas_aplicadas.length} fact.</td>
+                    <td className="px-3 py-3 text-right font-mono font-bold text-slate-800">{fmtMoney(p.monto_total)}</td>
                     <td className="px-3 py-3">
                       <span className="px-2 py-1 rounded-md text-xs font-bold" style={
                         p.estado === 'Anulado'
-                          ? { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.4)' }
-                          : { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.4)' }
+                          ? { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.4)' }
+                          : { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.4)' }
                       }>{p.estado}</span>
                     </td>
                   </tr>
@@ -684,54 +684,54 @@ export default function PagosProveedoresPage() {
       {tab === 'anticipos' && (
         <>
           <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-            <p className="text-white/60 text-sm">{anticipos.length} anticipo(s) registrados · Disponibles: {anticipos.filter(a => a.estado !== 'Anulado' && (a.saldo_disponible || 0) > 0.001).length}</p>
+            <p className="text-slate-500 text-sm">{anticipos.length} anticipo(s) registrados · Disponibles: {anticipos.filter(a => a.estado !== 'Anulado' && (a.saldo_disponible || 0) > 0.001).length}</p>
             {permisos.editar && (
-              <button onClick={abrirNuevoAnticipo} className="px-5 py-2.5 rounded-xl font-medium text-white"
+              <button onClick={abrirNuevoAnticipo} className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
                 style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                 + Nuevo Anticipo
               </button>
             )}
           </div>
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {['Consecutivo', 'F. Registro', 'Proveedor', 'Forma Pago', 'Banco', 'Referencia', 'Aprobado por', 'Concepto', 'Monto', 'Saldo Disponible', 'Estado', 'Acciones'].map(h => (
-                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {anticipos.length === 0 ? (
-                  <tr><td colSpan={12} className="px-6 py-12 text-center text-white/30">No hay anticipos registrados. Crea el primero con <strong>+ Nuevo Anticipo</strong>.</td></tr>
+                  <tr><td colSpan={12} className="px-6 py-12 text-center text-slate-400">No hay anticipos registrados. Crea el primero con <strong>+ Nuevo Anticipo</strong>.</td></tr>
                 ) : anticipos.map(a => (
-                  <tr key={a.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }} className="hover:bg-white/[0.02]">
+                  <tr key={a.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }} className="hover:bg-white/[0.02]">
                     <td className="px-3 py-3 font-mono font-bold text-blue-300">{a.consecutivo}</td>
-                    <td className="px-3 py-3 text-white font-bold">{fDate(a.fecha_registro)}</td>
-                    <td className="px-3 py-3 text-white">{a.proveedor}</td>
-                    <td className="px-3 py-3 text-white font-bold">{a.forma_pago}</td>
-                    <td className="px-3 py-3 text-white font-bold">{a.banco || '—'}</td>
-                    <td className="px-3 py-3 text-white font-bold font-mono">{a.nro_referencia || '—'}</td>
-                    <td className="px-3 py-3 text-white font-bold">{a.persona_aprueba || '—'}</td>
-                    <td className="px-3 py-3 text-white font-bold max-w-[160px] truncate" title={a.concepto}>{a.concepto || '—'}</td>
-                    <td className="px-3 py-3 text-right font-mono font-bold text-white">{fmtMoney(a.monto)}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{fDate(a.fecha_registro)}</td>
+                    <td className="px-3 py-3 text-slate-800">{a.proveedor}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{a.forma_pago}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{a.banco || '—'}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold font-mono">{a.nro_referencia || '—'}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold">{a.persona_aprueba || '—'}</td>
+                    <td className="px-3 py-3 text-slate-800 font-bold max-w-[160px] truncate" title={a.concepto}>{a.concepto || '—'}</td>
+                    <td className="px-3 py-3 text-right font-mono font-bold text-slate-800">{fmtMoney(a.monto)}</td>
                     <td className="px-3 py-3 text-right font-mono text-yellow-300">{fmtMoney(a.saldo_disponible || 0)}</td>
                     <td className="px-3 py-3">
                       <span className="px-2 py-1 rounded-md text-xs font-bold" style={
-                        a.estado === 'Aplicado Total' ? { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.4)' } :
-                        a.estado === 'Aplicado Parcial' ? { background: 'rgba(251,191,36,0.95)', color: '#fff', border: '1px solid rgba(251,191,36,0.4)' } :
-                        a.estado === 'Anulado' ? { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.4)' } :
-                        { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.4)' }
+                        a.estado === 'Aplicado Total' ? { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.4)' } :
+                        a.estado === 'Aplicado Parcial' ? { background: 'rgba(251,191,36,0.95)', color: '#1e293b', border: '1px solid rgba(251,191,36,0.4)' } :
+                        a.estado === 'Anulado' ? { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.4)' } :
+                        { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.4)' }
                       }>{a.estado}</span>
                     </td>
                     <td className="px-3 py-3">
                       <div className="flex gap-1">
                         {permisos.editar && a.estado !== 'Anulado' && a.saldo_disponible === a.monto && (
-                          <button onClick={() => handleAnularAnticipo(a)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(251,191,36,0.95)', color: '#fff', border: '1px solid rgba(251,191,36,0.3)' }} title="Anular">⚠ Anular</button>
+                          <button onClick={() => handleAnularAnticipo(a)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(251,191,36,0.95)', color: '#1e293b', border: '1px solid rgba(251,191,36,0.3)' }} title="Anular">⚠ Anular</button>
                         )}
                         {permisos.eliminar && a.saldo_disponible === a.monto && (
-                          <button onClick={() => handleEliminarAnticipo(a)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>
+                          <button onClick={() => handleEliminarAnticipo(a)} className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>Eliminar</button>
                         )}
                       </div>
                     </td>
@@ -746,39 +746,39 @@ export default function PagosProveedoresPage() {
       {/* MODAL NUEVO ANTICIPO */}
       {antOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-2xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="w-full max-w-2xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">💵 {antEditId ? 'Editar Anticipo' : 'Nuevo Anticipo'} — <span className="font-mono text-blue-300">{nextAnticipoConsecutivo(todosAnticipos)}</span></h2>
-              <button onClick={() => setAntOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">💵 {antEditId ? 'Editar Anticipo' : 'Nuevo Anticipo'} — <span className="font-mono text-blue-300">{nextAnticipoConsecutivo(todosAnticipos)}</span></h2>
+              <button onClick={() => setAntOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Consecutivo (auto)</label>
-                <input readOnly value={nextAnticipoConsecutivo(todosAnticipos)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono font-bold" style={readOnlySt} />
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Consecutivo (auto)</label>
+                <input readOnly value={nextAnticipoConsecutivo(todosAnticipos)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono font-bold" style={readOnlySt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Registro (auto)</label>
-                <input readOnly value={fDate(today)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={readOnlySt} />
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Registro (auto)</label>
+                <input readOnly value={fDate(today)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={readOnlySt} />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Proveedor *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Proveedor *</label>
                 <select value={antProveedor} onChange={e => setAntProveedor(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">— Selecciona proveedor —</option>
                   {proveedores.map(p => <option key={p.id} value={p.nombre}>{p.nombre}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Monto del Anticipo *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Monto del Anticipo *</label>
                 <input type="number" step="0.01" min="0" value={antMonto || ''}
                   onChange={e => setAntMonto(parseFloat(e.target.value) || 0)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Forma de Pago *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Forma de Pago *</label>
                 <select value={antFormaPago} onChange={e => setAntFormaPago(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   <option value="Efectivo">Efectivo</option>
                   <option value="Transferencia">Transferencia</option>
@@ -788,9 +788,9 @@ export default function PagosProveedoresPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Banco</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Banco</label>
                 <select value={antBanco} onChange={e => setAntBanco(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {bancosActivos.map(b => (
                     <option key={b.id} value={`${b.nombre_banco} · ${b.tipo_cuenta} · ${b.nro_cuenta}`}>
@@ -803,24 +803,24 @@ export default function PagosProveedoresPage() {
                 )}
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">N° Referencia</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">N° Referencia</label>
                 <input value={antReferencia} onChange={e => setAntReferencia(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono" style={inputSt} placeholder="N° de transferencia o cheque" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono" style={inputSt} placeholder="N° de transferencia o cheque" />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Persona que Aprueba el Anticipo *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Persona que Aprueba el Anticipo *</label>
                 <input value={antPersonaAprueba} onChange={e => setAntPersonaAprueba(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Nombre del autorizante" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Nombre del autorizante" />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Concepto</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Concepto</label>
                 <input value={antConcepto} onChange={e => setAntConcepto(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Motivo del anticipo (ej: reserva de pedido, separación de mercancía…)" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Motivo del anticipo (ej: reserva de pedido, separación de mercancía…)" />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xl text-white font-extrabold mb-1">Observaciones</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Observaciones</label>
                 <textarea rows={2} value={antObservaciones} onChange={e => setAntObservaciones(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Notas adicionales…" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Notas adicionales…" />
               </div>
             </div>
 
@@ -828,47 +828,47 @@ export default function PagosProveedoresPage() {
               <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-3 py-2 mt-3">{antError}</p>
             )}
 
-            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => setAntOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
-              <button onClick={guardarAnticipo} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Registrar Anticipo</button>
+            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => setAntOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
+              <button onClick={guardarAnticipo} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Registrar Anticipo</button>
             </div>
           </div>
         </div>
       )}
 
       {tab === 'notas-db' && (
-        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <p className="text-white/40">➕ Notas Débito — próximamente</p>
+        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+          <p className="text-slate-400">➕ Notas Débito — próximamente</p>
         </div>
       )}
       {tab === 'notas-cr' && (
-        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <p className="text-white/40">➖ Notas Crédito — próximamente</p>
+        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+          <p className="text-slate-400">➖ Notas Crédito — próximamente</p>
         </div>
       )}
 
       {/* MODAL NUEVO PAGO */}
       {pagoOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-6xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="w-full max-w-6xl rounded-2xl p-6 max-h-[92vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">💰 Nuevo Pago — <span className="font-mono text-blue-300">{nextPagoConsecutivo(todosPagos)}</span></h2>
-              <button onClick={() => setPagoOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">💰 Nuevo Pago — <span className="font-mono text-blue-300">{nextPagoConsecutivo(todosPagos)}</span></h2>
+              <button onClick={() => setPagoOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             {/* Encabezado */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Consecutivo (auto)</label>
-                <input readOnly value={nextPagoConsecutivo(todosPagos)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono font-bold" style={readOnlySt} />
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Consecutivo (auto)</label>
+                <input readOnly value={nextPagoConsecutivo(todosPagos)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono font-bold" style={readOnlySt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Registro (auto)</label>
-                <input readOnly value={fDate(today)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={readOnlySt} />
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Registro (auto)</label>
+                <input readOnly value={fDate(today)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={readOnlySt} />
               </div>
               {/* Proveedor — solo los que tienen facturas pendientes */}
               <div className="md:col-span-3">
-                <label className="block text-xl text-white font-extrabold mb-1">Proveedor *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Proveedor *</label>
                 {(() => {
                   const facturasPendientes = facturas.filter(f => f.estado !== 'Pagada' && f.estado !== 'Anulada' && (f.saldo_pendiente || 0) > 0)
                   const proveedoresConPendientes = Array.from(new Set(facturasPendientes.map(f => f.proveedor)))
@@ -881,7 +881,7 @@ export default function PagosProveedoresPage() {
 
                   if (proveedoresConPendientes.length === 0) {
                     return (
-                      <div className="rounded-xl px-3 py-3 text-sm" style={{ background: 'rgba(251,191,36,0.15)', color: '#fff', border: '1px solid rgba(251,191,36,0.3)' }}>
+                      <div className="rounded-xl px-3 py-3 text-sm" style={{ background: 'rgba(251,191,36,0.15)', color: '#1e293b', border: '1px solid rgba(251,191,36,0.3)' }}>
                         ⚠ No hay facturas registradas pendientes de pago. Primero registra facturas o tráelas desde Recepción de Facturas.
                       </div>
                     )
@@ -890,7 +890,7 @@ export default function PagosProveedoresPage() {
                     <>
                       <select value={pagoProveedor}
                         onChange={e => { setPagoProveedor(e.target.value); setPagoFacturasSel([]); setPagoMontos({}); setPagoError('') }}
-                        className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                        className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                         <option value="">— Selecciona proveedor —</option>
                         {proveedoresConPendientes.map(p => (
                           <option key={p.nombre} value={p.nombre}>
@@ -898,7 +898,7 @@ export default function PagosProveedoresPage() {
                           </option>
                         ))}
                       </select>
-                      <p className="text-xs text-white/40 mt-1">{proveedoresConPendientes.length} proveedor{proveedoresConPendientes.length !== 1 ? 'es' : ''} con facturas pendientes de pago.</p>
+                      <p className="text-xs text-slate-400 mt-1">{proveedoresConPendientes.length} proveedor{proveedoresConPendientes.length !== 1 ? 'es' : ''} con facturas pendientes de pago.</p>
                     </>
                   )
                 })()}
@@ -909,37 +909,37 @@ export default function PagosProveedoresPage() {
             {pagoProveedor && (
               <div className="rounded-xl mb-4 overflow-x-auto" style={{ background: 'rgba(96,165,250,0.05)', border: '1px solid rgba(96,165,250,0.2)' }}>
                 <div className="px-4 py-3 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(96,165,250,0.2)' }}>
-                  <h3 className="text-sm font-bold text-white">Facturas pendientes de {pagoProveedor}</h3>
-                  <span className="text-xs text-white/60">Facturas marcadas para pagar: <strong className="text-blue-300">{pagoFacturasSel.length} de 5 máx</strong></span>
+                  <h3 className="text-sm font-bold text-slate-800">Facturas pendientes de {pagoProveedor}</h3>
+                  <span className="text-xs text-slate-500">Facturas marcadas para pagar: <strong className="text-blue-300">{pagoFacturasSel.length} de 5 máx</strong></span>
                 </div>
                 <table className="w-full text-base text-left">
                   <thead style={{ background: 'rgba(96,165,250,0.1)' }}>
                     <tr>
                       {['', 'N° Factura', 'F. Vencim.', 'Concepto', 'Monto Antes Imp.', 'Monto Imp.', 'Ret. Fuente', 'Ret. IVA', 'Anticipo', 'Neto a Pagar', 'Saldo', 'Monto a Pagar'].map(h => (
-                        <th key={h} className="px-2 py-2 text-xs font-semibold uppercase tracking-wider text-white/60 whitespace-nowrap">{h}</th>
+                        <th key={h} className="px-2 py-2 text-xs font-semibold uppercase tracking-wider text-slate-500 whitespace-nowrap">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {facturasPendientesDelProveedor.length === 0 ? (
-                      <tr><td colSpan={12} className="px-4 py-6 text-center text-white/40">Este proveedor no tiene facturas pendientes.</td></tr>
+                      <tr><td colSpan={12} className="px-4 py-6 text-center text-slate-400">Este proveedor no tiene facturas pendientes.</td></tr>
                     ) : facturasPendientesDelProveedor.map(f => {
                       const sel = pagoFacturasSel.includes(f.id)
                       const anticipoActual = pagoAnticipos[f.id] ?? (f.anticipo || 0)
                       const neto = (f.monto_total || 0) - anticipoActual
                       return (
-                        <tr key={f.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: sel ? 'rgba(96,165,250,0.08)' : 'transparent' }}>
+                        <tr key={f.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)', background: sel ? 'rgba(96,165,250,0.08)' : 'transparent' }}>
                           <td className="px-2 py-2 text-center">
                             <input type="checkbox" checked={sel} onChange={() => togglePagoFactura(f.id)}
                               style={{ accentColor: '#60a5fa', width: 16, height: 16, cursor: 'pointer' }} />
                           </td>
-                          <td className="px-2 py-2 font-mono text-white whitespace-nowrap">{f.nro_factura}</td>
-                          <td className="px-2 py-2 text-white/70 whitespace-nowrap">{fDate(f.fecha_vencimiento)}</td>
-                          <td className="px-2 py-2 text-white/60 max-w-[140px] truncate" title={f.concepto}>{f.concepto || '—'}</td>
-                          <td className="px-2 py-2 text-right font-mono text-white/80">{fmtMoney(f.monto_sin_impuesto || 0)}</td>
-                          <td className="px-2 py-2 text-right font-mono text-white/80">{fmtMoney(f.monto_iva || 0)}</td>
-                          <td className="px-2 py-2 text-right font-mono text-white/80">{fmtMoney(f.retencion_fuente || 0)}</td>
-                          <td className="px-2 py-2 text-right font-mono text-white/80">{fmtMoney(f.retencion_iva || 0)}</td>
+                          <td className="px-2 py-2 font-mono text-slate-800 whitespace-nowrap">{f.nro_factura}</td>
+                          <td className="px-2 py-2 text-slate-600 whitespace-nowrap">{fDate(f.fecha_vencimiento)}</td>
+                          <td className="px-2 py-2 text-slate-500 max-w-[140px] truncate" title={f.concepto}>{f.concepto || '—'}</td>
+                          <td className="px-2 py-2 text-right font-mono text-slate-600">{fmtMoney(f.monto_sin_impuesto || 0)}</td>
+                          <td className="px-2 py-2 text-right font-mono text-slate-600">{fmtMoney(f.monto_iva || 0)}</td>
+                          <td className="px-2 py-2 text-right font-mono text-slate-600">{fmtMoney(f.retencion_fuente || 0)}</td>
+                          <td className="px-2 py-2 text-right font-mono text-slate-600">{fmtMoney(f.retencion_iva || 0)}</td>
                           <td className="px-2 py-2">
                             <input
                               type="number" step="0.01" min="0"
@@ -951,17 +951,17 @@ export default function PagosProveedoresPage() {
                                 updateFactura(f.id, { anticipo: val })
                               }}
                               className="w-24 rounded-lg px-2 py-1 outline-none text-xs font-mono text-right"
-                              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff' }}
+                              style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b' }}
                               title="Editable. Se guarda en la factura al instante." />
                           </td>
-                          <td className="px-2 py-2 text-right font-mono font-bold text-white">{fmtMoney(neto)}</td>
+                          <td className="px-2 py-2 text-right font-mono font-bold text-slate-800">{fmtMoney(neto)}</td>
                           <td className="px-2 py-2 text-right font-mono text-yellow-300">{fmtMoney(f.saldo_pendiente || 0)}</td>
                           <td className="px-2 py-2">
                             <input type="number" step="0.01" min="0" disabled={!sel}
                               value={sel ? (pagoMontos[f.id] ?? '') : ''}
                               onChange={e => setPagoMontos({ ...pagoMontos, [f.id]: parseFloat(e.target.value) || 0 })}
                               className="w-32 rounded-lg px-2 py-1 outline-none text-xs font-mono text-right disabled:opacity-30"
-                              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }} />
+                              style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }} />
                           </td>
                         </tr>
                       )
@@ -975,14 +975,14 @@ export default function PagosProveedoresPage() {
             {pagoProveedor && anticiposDisponibles.length > 0 && (
               <div className="rounded-xl mb-4 overflow-x-auto" style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.25)' }}>
                 <div className="px-4 py-3 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(34,197,94,0.25)' }}>
-                  <h3 className="text-sm font-bold text-white">💵 Anticipos disponibles de {pagoProveedor}</h3>
-                  <span className="text-xs text-white/60">Aplicados en este pago: <strong className="text-green-300">{fmtMoney(totalAnticiposAplicados)}</strong></span>
+                  <h3 className="text-sm font-bold text-slate-800">💵 Anticipos disponibles de {pagoProveedor}</h3>
+                  <span className="text-xs text-slate-500">Aplicados en este pago: <strong className="text-green-300">{fmtMoney(totalAnticiposAplicados)}</strong></span>
                 </div>
                 <table className="w-full text-base text-left">
                   <thead style={{ background: 'rgba(34,197,94,0.1)' }}>
                     <tr>
                       {['', 'Consecutivo', 'F. Registro', 'Concepto', 'Saldo Disponible', 'Monto a Aplicar'].map(h => (
-                        <th key={h} className="px-2 py-2 text-xs font-semibold uppercase tracking-wider text-white/60 whitespace-nowrap">{h}</th>
+                        <th key={h} className="px-2 py-2 text-xs font-semibold uppercase tracking-wider text-slate-500 whitespace-nowrap">{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -990,21 +990,21 @@ export default function PagosProveedoresPage() {
                     {anticiposDisponibles.map(a => {
                       const sel = pagoAnticiposSel[a.id] !== undefined
                       return (
-                        <tr key={a.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: sel ? 'rgba(34,197,94,0.08)' : 'transparent' }}>
+                        <tr key={a.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)', background: sel ? 'rgba(34,197,94,0.08)' : 'transparent' }}>
                           <td className="px-2 py-2 text-center">
                             <input type="checkbox" checked={sel} onChange={() => togglePagoAnticipo(a.id)}
                               style={{ accentColor: '#22c55e', width: 16, height: 16, cursor: 'pointer' }} />
                           </td>
                           <td className="px-2 py-2 font-mono font-bold text-blue-300 whitespace-nowrap">{a.consecutivo}</td>
-                          <td className="px-2 py-2 text-white/70 whitespace-nowrap">{fDate(a.fecha_registro)}</td>
-                          <td className="px-2 py-2 text-white/70 max-w-[200px] truncate" title={a.concepto}>{a.concepto || '—'}</td>
+                          <td className="px-2 py-2 text-slate-600 whitespace-nowrap">{fDate(a.fecha_registro)}</td>
+                          <td className="px-2 py-2 text-slate-600 max-w-[200px] truncate" title={a.concepto}>{a.concepto || '—'}</td>
                           <td className="px-2 py-2 text-right font-mono text-green-300">{fmtMoney(a.saldo_disponible || 0)}</td>
                           <td className="px-2 py-2">
                             <input type="number" step="0.01" min="0" max={a.saldo_disponible} disabled={!sel}
                               value={sel ? (pagoAnticiposSel[a.id] ?? '') : ''}
                               onChange={e => setPagoAnticiposSel({ ...pagoAnticiposSel, [a.id]: parseFloat(e.target.value) || 0 })}
                               className="w-32 rounded-lg px-2 py-1 outline-none text-xs font-mono text-right disabled:opacity-30"
-                              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(34,197,94,0.4)', color: '#fff' }} />
+                              style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(34,197,94,0.4)', color: '#1e293b' }} />
                           </td>
                         </tr>
                       )
@@ -1017,9 +1017,9 @@ export default function PagosProveedoresPage() {
             {/* Datos del pago */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Forma de Pago *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Forma de Pago *</label>
                 <select value={pagoFormaPago} onChange={e => setPagoFormaPago(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   <option value="Efectivo">Efectivo</option>
                   <option value="Transferencia">Transferencia</option>
@@ -1029,9 +1029,9 @@ export default function PagosProveedoresPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Banco</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Banco</label>
                 <select value={pagoBanco} onChange={e => setPagoBanco(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {bancosActivos.map(b => (
                     <option key={b.id} value={`${b.nombre_banco} · ${b.tipo_cuenta} · ${b.nro_cuenta}`}>
@@ -1044,20 +1044,20 @@ export default function PagosProveedoresPage() {
                 )}
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">N° Referencia</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">N° Referencia</label>
                 <input value={pagoReferencia} onChange={e => setPagoReferencia(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono" style={inputSt} placeholder="N° de transferencia o cheque" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono" style={inputSt} placeholder="N° de transferencia o cheque" />
               </div>
               <div className="md:col-span-3">
-                <label className="block text-xl text-white font-extrabold mb-1">Observaciones</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Observaciones</label>
                 <textarea rows={2} value={pagoObservaciones} onChange={e => setPagoObservaciones(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Notas del pago…" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Notas del pago…" />
               </div>
             </div>
 
             {/* Total */}
             <div className="flex items-center justify-end gap-4 mb-3 px-4 py-3 rounded-xl" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)' }}>
-              <span className="text-white/70 text-sm font-bold">TOTAL A PAGAR:</span>
+              <span className="text-slate-600 text-sm font-bold">TOTAL A PAGAR:</span>
               <span className="text-2xl font-mono font-extrabold text-blue-300">{fmtMoney(totalPagoCalc)}</span>
             </div>
 
@@ -1065,9 +1065,9 @@ export default function PagosProveedoresPage() {
               <p className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-3 py-2 mb-3">{pagoError}</p>
             )}
 
-            <div className="flex justify-end gap-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => setPagoOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
-              <button onClick={guardarPago} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Registrar Pago</button>
+            <div className="flex justify-end gap-3 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => setPagoOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
+              <button onClick={guardarPago} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>Registrar Pago</button>
             </div>
           </div>
         </div>
@@ -1078,27 +1078,27 @@ export default function PagosProveedoresPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)' }}>
           <div className="w-full max-w-md rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.97)', border: '2px solid #dc2626', boxShadow: '0 0 30px rgba(220,38,38,0.4)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-extrabold" style={{ color: '#fff' }}>🗑 ELIMINAR TODAS LAS FACTURAS</h2>
-              <button onClick={() => setEliminarOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-extrabold" style={{ color: '#1e293b' }}>🗑 ELIMINAR TODAS LAS FACTURAS</h2>
+              <button onClick={() => setEliminarOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
             <div className="px-4 py-3 rounded-xl mb-4" style={{ background: 'rgba(220,38,38,0.15)', border: '1px solid rgba(220,38,38,0.4)' }}>
-              <p className="text-sm font-bold" style={{ color: '#fff' }}>
+              <p className="text-sm font-bold" style={{ color: '#1e293b' }}>
                 ⚠ ACCIÓN IRREVERSIBLE — Esta acción borrará TODAS las facturas registradas ({todasFacturas.length}) y liberará las recepciones para volver a traerlas.
               </p>
-              <p className="text-xs mt-2" style={{ color: '#fff' }}>
+              <p className="text-xs mt-2" style={{ color: '#1e293b' }}>
                 Solo para uso de PRUEBAS. Cuando el sistema esté en producción este botón debe quitarse.
               </p>
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1" style={{ color: '#fff' }}>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1" style={{ color: '#1e293b' }}>
                 Para confirmar, escribe exactamente: <span className="font-mono" style={{ color: '#dc2626', textShadow: '0 0 8px rgba(220,38,38,0.6)' }}>ELIMINAR TODAS</span>
               </label>
               <input
                 value={eliminarConfirmText}
                 onChange={e => setEliminarConfirmText(e.target.value)}
                 placeholder="ELIMINAR TODAS"
-                className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono font-bold"
-                style={{ background: 'rgba(0,0,0,0.4)', border: '2px solid #dc2626', color: '#fff' }}
+                className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono font-bold"
+                style={{ background: 'rgba(0,0,0,0.4)', border: '2px solid #dc2626', color: '#1e293b' }}
                 autoFocus
               />
             </div>
@@ -1109,12 +1109,12 @@ export default function PagosProveedoresPage() {
                 border: `1px solid ${eliminarMsg.startsWith('🗑') ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)'}`,
               }}>{eliminarMsg}</div>
             )}
-            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => setEliminarOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
+            <div className="flex justify-end gap-3 pt-4 mt-4 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => setEliminarOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
               <button
                 onClick={handleEliminarTodas}
                 disabled={eliminarConfirmText.trim().toUpperCase() !== 'ELIMINAR TODAS'}
-                className="px-5 py-2 rounded-xl text-white text-sm font-extrabold disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-5 py-2 rounded-xl text-slate-800 text-sm font-extrabold disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{ background: '#dc2626', border: '2px solid #b91c1c', boxShadow: '0 0 12px rgba(220,38,38,0.5)' }}>
                 🗑 Confirmar Eliminación
               </button>
@@ -1126,22 +1126,22 @@ export default function PagosProveedoresPage() {
       {/* MODAL TRAER FACTURAS RECIBIDAS */}
       {traerOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-md rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="w-full max-w-md rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">📥 Traer Facturas Recibidas</h2>
-              <button onClick={() => setTraerOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">📥 Traer Facturas Recibidas</h2>
+              <button onClick={() => setTraerOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
-            <p className="text-white/60 text-sm mb-5">Selecciona el rango de fechas para importar las recepciones que aún no han sido pasadas a Pagos.</p>
+            <p className="text-slate-500 text-sm mb-5">Selecciona el rango de fechas para importar las recepciones que aún no han sido pasadas a Pagos.</p>
             <div className="grid grid-cols-2 gap-4 mb-5">
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Inicial</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Inicial</label>
                 <input type="date" value={traerDesde} onChange={e => setTraerDesde(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Final</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Final</label>
                 <input type="date" value={traerHasta} onChange={e => setTraerHasta(e.target.value)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
               </div>
             </div>
             {traerMsg && (
@@ -1151,9 +1151,9 @@ export default function PagosProveedoresPage() {
                 border: `1px solid ${traerMsg.startsWith('✅') ? 'rgba(34,197,94,0.3)' : traerMsg.startsWith('ℹ') ? 'rgba(96,165,250,0.3)' : 'rgba(239,68,68,0.3)'}`,
               }}>{traerMsg}</div>
             )}
-            <div className="flex justify-end gap-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <button onClick={() => setTraerOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
-              <button onClick={handleTraerFacturas} className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(22,163,74,1)', border: '1px solid rgba(21,128,61,1)' }}>Importar</button>
+            <div className="flex justify-end gap-3 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <button onClick={() => setTraerOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
+              <button onClick={handleTraerFacturas} className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(22,163,74,1)', border: '1px solid rgba(21,128,61,1)' }}>Importar</button>
             </div>
           </div>
         </div>
@@ -1162,25 +1162,25 @@ export default function PagosProveedoresPage() {
       {/* MODAL FORMULARIO FACTURA */}
       {isFormOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
-          <div className="w-full max-w-5xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="w-full max-w-5xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto" style={{ background: 'rgba(15,23,42,0.97)', border: '1px solid rgba(15,23,42,0.15)' }}>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">{form.id ? 'Editar Factura' : 'Nueva Factura'} — <span className="font-mono text-blue-300">{form.consecutivo}</span></h2>
-              <button onClick={() => setIsFormOpen(false)} className="text-white/50 hover:text-white text-xl">✕</button>
+              <h2 className="text-lg font-bold text-slate-800">{form.id ? 'Editar Factura' : 'Nueva Factura'} — <span className="font-mono text-blue-300">{form.consecutivo}</span></h2>
+              <button onClick={() => setIsFormOpen(false)} className="text-slate-500 hover:text-slate-800 text-xl">✕</button>
             </div>
 
             <form onSubmit={handleGuardar} className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Consecutivo (auto)</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Consecutivo (auto)</label>
                 <input readOnly value={form.consecutivo}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono font-bold"
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono font-bold"
                   style={readOnlySt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Registro (auto)</label>
-                <input readOnly value={fDate(form.fecha_registro)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={readOnlySt} />
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Registro (auto)</label>
+                <input readOnly value={fDate(form.fecha_registro)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={readOnlySt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">N° Factura *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">N° Factura *</label>
                 <input
                   value={form.nro_factura}
                   onChange={e => setForm({ ...form, nro_factura: e.target.value })}
@@ -1193,13 +1193,13 @@ export default function PagosProveedoresPage() {
                       return
                     }
                   }}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="FC-12345" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="FC-12345" />
                 {(() => {
                   // Prioridad 1: ya procesada por recepción (Factura + OC ya recibida)
                   const recep = recepcionExistente(form.nro_factura, form.orden_compra_consecutivo)
                   if (recep) {
                     return (
-                      <p className="text-xs mt-1 px-3 py-2 rounded font-extrabold" style={{ background: '#dc2626', color: '#fff', border: '1px solid #b91c1c' }}>
+                      <p className="text-xs mt-1 px-3 py-2 rounded font-extrabold" style={{ background: '#dc2626', color: '#1e293b', border: '1px solid #b91c1c' }}>
                         🚫 FACTURA YA PROCESADA POR RECEPCIÓN ({recep.consecutivo} · OC {recep.orden_compra_consecutivo})
                       </p>
                     )
@@ -1209,13 +1209,13 @@ export default function PagosProveedoresPage() {
                   if (!dup) return null
                   if (dup.origen_recepcion_id) {
                     return (
-                      <p className="text-xs mt-1 px-3 py-2 rounded font-extrabold" style={{ background: '#dc2626', color: '#fff', border: '1px solid #b91c1c' }}>
+                      <p className="text-xs mt-1 px-3 py-2 rounded font-extrabold" style={{ background: '#dc2626', color: '#1e293b', border: '1px solid #b91c1c' }}>
                         🚫 ESTA FACTURA FUE RECIBIDA EN RECEPCIÓN AUTOMÁTICA — NO PUEDE PROCESARSE MANUAL ({dup.consecutivo})
                       </p>
                     )
                   }
                   return (
-                    <p className="text-xs mt-1 px-2 py-1 rounded font-semibold" style={{ background: 'rgba(239,68,68,0.15)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>
+                    <p className="text-xs mt-1 px-2 py-1 rounded font-semibold" style={{ background: 'rgba(239,68,68,0.15)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>
                       ⚠ Ya existe esta factura para {form.proveedor} ({dup.consecutivo})
                     </p>
                   )
@@ -1224,7 +1224,7 @@ export default function PagosProveedoresPage() {
 
               {/* Selector de Orden de Compra (autollena Proveedor, Moneda, Cond. Pago, Comprador) */}
               <div className="md:col-span-3">
-                <label className="block text-xl text-white font-extrabold mb-1">Orden de Compra (opcional — autollenado)</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Orden de Compra (opcional — autollenado)</label>
                 <select value={form.orden_compra_consecutivo}
                   onChange={e => {
                     const consec = e.target.value
@@ -1243,7 +1243,7 @@ export default function PagosProveedoresPage() {
                       fecha_vencimiento: oc.fecha_vencimiento || form.fecha_vencimiento,
                     })
                   }}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">— Sin OC asociada —</option>
                   {ordenes
                     .filter(o => !tipoActivo || o.tipo_inventario === tipoActivo)
@@ -1254,52 +1254,52 @@ export default function PagosProveedoresPage() {
                       </option>
                     ))}
                 </select>
-                <p className="text-xs text-white/40 mt-1">Al seleccionar una OC se completan automáticamente: Proveedor, Tipo Moneda, Condición de Pago, Comprador, Bodega de Llegada y Fecha de Vencimiento.</p>
+                <p className="text-xs text-slate-400 mt-1">Al seleccionar una OC se completan automáticamente: Proveedor, Tipo Moneda, Condición de Pago, Comprador, Bodega de Llegada y Fecha de Vencimiento.</p>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Emisión Factura *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Emisión Factura *</label>
                 <input type="date" value={form.fecha_emision} onChange={e => setForm({ ...form, fecha_emision: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Fecha Vencimiento Factura *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Fecha Vencimiento Factura *</label>
                 <input type="date" value={form.fecha_vencimiento} onChange={e => setForm({ ...form, fecha_vencimiento: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Proveedor *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Proveedor *</label>
                 <select value={form.proveedor} onChange={e => setForm({ ...form, proveedor: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {proveedores.map(p => <option key={p.id} value={p.nombre}>{p.nombre}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Tipo Moneda</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Tipo Moneda</label>
                 <select value={form.tipo_moneda} onChange={e => setForm({ ...form, tipo_moneda: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {(refData.tipo_moneda ?? []).filter(m => m.situacion).map(m => <option key={m.id} value={m.descripcion}>{m.descripcion}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Bodega de Llegada *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Bodega de Llegada *</label>
                 <select value={form.bodega_llegada} onChange={e => setForm({ ...form, bodega_llegada: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {bodegas.map(b => <option key={b.id} value={b.nombre}>{b.nombre}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Comprador</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Comprador</label>
                 <input value={form.comprador} onChange={e => setForm({ ...form, comprador: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Comprador (heredado de la OC)" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Comprador (heredado de la OC)" />
               </div>
 
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Centro de Costo</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Centro de Costo</label>
                 <select value={form.centro_costo} onChange={e => setForm({ ...form, centro_costo: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">— Sin centro de costo —</option>
                   {centrosCosto.map(c => (
                     <option key={c.id} value={c.descripcion}>{c.codigo} — {c.descripcion}</option>
@@ -1308,70 +1308,70 @@ export default function PagosProveedoresPage() {
               </div>
 
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Condición de Pago</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Condición de Pago</label>
                 <select value={form.condicion_pago} onChange={e => setForm({ ...form, condicion_pago: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Seleccione…</option>
                   {(refData.condiciones_pago ?? []).filter(c => c.situacion).map(c => <option key={c.id} value={c.descripcion}>{c.descripcion}</option>)}
                 </select>
               </div>
 
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Persona que Autorizó *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Persona que Autorizó *</label>
                 <input value={form.autorizado} onChange={e => setForm({ ...form, autorizado: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Nombre del autorizante" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Nombre del autorizante" />
               </div>
 
               {/* Sección de Montos */}
               <div className="md:col-span-3 mt-2 mb-1">
-                <h3 className="text-xs font-bold text-white/80 uppercase tracking-wider">Montos y Retenciones</h3>
+                <h3 className="text-xs font-bold text-slate-600 uppercase tracking-wider">Montos y Retenciones</h3>
               </div>
 
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Monto Antes de Impuesto *</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Monto Antes de Impuesto *</label>
                 <input type="number" step="0.01" min="0" value={form.monto_sin_impuesto || ''}
                   onChange={e => setForm({ ...form, monto_sin_impuesto: parseFloat(e.target.value) || 0 })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">% IVA</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">% IVA</label>
                 <input type="number" step="0.01" min="0" max="100" value={form.pct_iva || ''}
                   onChange={e => {
                     const pct = parseFloat(e.target.value) || 0
                     const iva = (form.monto_sin_impuesto || 0) * pct / 100
                     setForm({ ...form, pct_iva: pct, monto_iva: iva })
                   }}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={inputSt} placeholder="0.00" />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Monto IVA (auto)</label>
-                <input readOnly value={fmtMoney(ivaCalc || form.monto_iva)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right" style={readOnlySt} />
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Monto IVA (auto)</label>
+                <input readOnly value={fmtMoney(ivaCalc || form.monto_iva)} className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right" style={readOnlySt} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Total Neto a Pagar (auto)</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Total Neto a Pagar (auto)</label>
                 <input readOnly value={fmtMoney(montoTotalCalc)}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold font-mono text-right font-bold" style={readOnlySt} />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold font-mono text-right font-bold" style={readOnlySt} />
               </div>
 
               <div className="md:col-span-3">
-                <label className="block text-xl text-white font-extrabold mb-1">Concepto</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Concepto</label>
                 <textarea rows={2} value={form.concepto} onChange={e => setForm({ ...form, concepto: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Concepto de la factura (servicio, producto, motivo del cargo…)" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Concepto de la factura (servicio, producto, motivo del cargo…)" />
               </div>
 
               <div className="md:col-span-3">
-                <label className="block text-xl text-white font-extrabold mb-1">Observaciones</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Observaciones</label>
                 <textarea rows={2} value={form.observaciones} onChange={e => setForm({ ...form, observaciones: e.target.value })}
-                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-white font-bold" style={inputSt} placeholder="Notas adicionales…" />
+                  className="w-full rounded-xl px-3 py-2 outline-none text-base text-slate-800 font-bold" style={inputSt} placeholder="Notas adicionales…" />
               </div>
 
               {error && (
                 <p className="md:col-span-3 text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-xl px-3 py-2">{error}</p>
               )}
 
-              <div className="md:col-span-3 flex justify-end gap-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-                <button type="button" onClick={() => setIsFormOpen(false)} className="px-5 py-2 rounded-xl text-white/70 text-sm" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>Cancelar</button>
-                <button type="submit" className="px-5 py-2 rounded-xl text-white text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{form.id ? 'Guardar Cambios' : 'Registrar Factura'}</button>
+              <div className="md:col-span-3 flex justify-end gap-3 pt-3 border-t" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+                <button type="button" onClick={() => setIsFormOpen(false)} className="px-5 py-2 rounded-xl text-slate-600 text-sm" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>Cancelar</button>
+                <button type="submit" className="px-5 py-2 rounded-xl text-slate-800 text-sm font-bold" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{form.id ? 'Guardar Cambios' : 'Registrar Factura'}</button>
               </div>
             </form>
           </div>

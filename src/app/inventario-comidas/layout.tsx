@@ -72,7 +72,7 @@ function InventarioComidasLayoutContent({ children }: { children: React.ReactNod
   }, [pathname])
 
   return (
-    <div style={{ minHeight: '100vh', background: '#000', color: '#fff', fontFamily: 'system-ui, sans-serif', display: 'flex' }}>
+    <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', fontFamily: 'system-ui, sans-serif', display: 'flex' }}>
       <InventarioComidasDataLoader />
       {sidebarVisible && <InventarioSidebar onClose={() => setSidebarVisible(false)} />}
       <main style={{ flex: 1, marginLeft: sidebarVisible ? '256px' : '0', overflowY: 'auto', transition: 'margin-left 0.3s' }}>
@@ -84,7 +84,7 @@ function InventarioComidasLayoutContent({ children }: { children: React.ReactNod
               style={{
                 padding: '10px 16px',
                 background: '#ea580c',
-                color: '#fff',
+                color: '#1e293b',
                 border: 'none',
                 borderRadius: '6px',
                 cursor: 'pointer',

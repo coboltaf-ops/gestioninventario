@@ -275,7 +275,7 @@ export default function TomaInventarioFisicoPage() {
             var ctx = canvas.getContext('2d')
             ctx.fillStyle = '#ffffff'
             ctx.fillRect(0, 0, total, total)
-            ctx.fillStyle = '#000000'
+            ctx.fillStyle = '#f1f5f9'
             for (var row = 0; row < count; row++) {
               for (var col = 0; col < count; col++) {
                 if (qr.isDark(row, col)) {
@@ -580,23 +580,23 @@ export default function TomaInventarioFisicoPage() {
 
   // ─── UI ───────────────────────────────────────────────────────────────────
 
-  const labelStyle = { color: '#fff', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.05em', fontWeight: 700, marginBottom: 4 }
-  const inputStyle = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(148,163,184,0.2)', borderRadius: 8, padding: '10px 14px', color: '#fff', width: '100%', fontSize: 14 }
-  const btnPrimary = { background: '#3b82f6', color: '#fff', border: 'none', borderRadius: 8, padding: '12px 28px', fontWeight: 700, cursor: 'pointer', fontSize: 14 }
-  const btnSecondary = { background: 'rgba(96,165,250,0.15)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)', borderRadius: 8, padding: '12px 22px', fontWeight: 600, cursor: 'pointer', fontSize: 13 }
+  const labelStyle = { color: '#1e293b', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.05em', fontWeight: 700, marginBottom: 4 }
+  const inputStyle = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(148,163,184,0.2)', borderRadius: 8, padding: '10px 14px', color: '#1e293b', width: '100%', fontSize: 14 }
+  const btnPrimary = { background: '#3b82f6', color: '#1e293b', border: 'none', borderRadius: 8, padding: '12px 28px', fontWeight: 700, cursor: 'pointer', fontSize: 14 }
+  const btnSecondary = { background: 'rgba(96,165,250,0.15)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)', borderRadius: 8, padding: '12px 22px', fontWeight: 600, cursor: 'pointer', fontSize: 13 }
 
   return (
     <div style={{ padding: 28 }}>
       {/* Encabezado */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
         <div>
-          <h1 style={{ color: '#fff', fontSize: 26, fontWeight: 800, margin: 0 }}>📋 {t('tomaInventarioFisico')}</h1>
+          <h1 style={{ color: '#1e293b', fontSize: 26, fontWeight: 800, margin: 0 }}>📋 {t('tomaInventarioFisico')}</h1>
           <p style={{ color: '#94a3b8', fontSize: 13, marginTop: 4 }}>Generar plantilla, cargar conteos y procesar ajustes automáticamente</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 24, background: 'rgba(255,255,255,0.04)', borderRadius: 10, padding: 4 }}>
+      <div style={{ display: 'flex', gap: 4, marginBottom: 24, background: 'rgba(15,23,42,0.04)', borderRadius: 10, padding: 4 }}>
         {[
           { id: 'generar' as const, label: '1. Generar Plantilla', icon: '📥' },
           { id: 'cargar' as const, label: '2. Cargar y Procesar', icon: '📤' },
@@ -615,27 +615,27 @@ export default function TomaInventarioFisicoPage() {
 
       {/* Mensajes */}
       {errorMsg && (
-        <div style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 10, padding: '12px 18px', marginBottom: 16, color: '#fff', fontSize: 13, fontWeight: 600 }}>
+        <div style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 10, padding: '12px 18px', marginBottom: 16, color: '#1e293b', fontSize: 13, fontWeight: 600 }}>
           {errorMsg}
         </div>
       )}
       {successMsg && (
-        <div style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 10, padding: '12px 18px', marginBottom: 16, color: '#fff', fontSize: 13, fontWeight: 600 }}>
+        <div style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 10, padding: '12px 18px', marginBottom: 16, color: '#1e293b', fontSize: 13, fontWeight: 600 }}>
           {successMsg}
         </div>
       )}
 
       {/* ═══ TAB 1: GENERAR PLANTILLA ═══ */}
       {tab === 'generar' && (
-        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 14, padding: 28 }}>
-          <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 700, marginBottom: 4 }}>{t('tomaGenerarPlantilla')}</h2>
+        <div style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 14, padding: 28 }}>
+          <h2 style={{ color: '#1e293b', fontSize: 18, fontWeight: 700, marginBottom: 4 }}>{t('tomaGenerarPlantilla')}</h2>
           <p style={{ color: '#94a3b8', fontSize: 13, marginBottom: 16 }}>
             Se genera un archivo Excel con los productos para conteo físico. La columna &quot;Conteo Físico&quot; queda vacía para que el personal la llene.
           </p>
 
           {tipoActivo && (
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.4)', color: '#fff', fontSize: 12, fontWeight: 700, marginBottom: 20 }}>
-              📦 Tipo de Inventario activo: <span style={{ color: '#fff' }}>{tipoActivo}</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.4)', color: '#1e293b', fontSize: 12, fontWeight: 700, marginBottom: 20 }}>
+              📦 Tipo de Inventario activo: <span style={{ color: '#1e293b' }}>{tipoActivo}</span>
             </div>
           )}
 
@@ -685,7 +685,7 @@ export default function TomaInventarioFisicoPage() {
                   onClick={() => setOpcionCodigo(op.value)}
                   style={{
                     flex: 1, padding: '12px 16px', borderRadius: 10, cursor: 'pointer', textAlign: 'left',
-                    background: opcionCodigo === op.value ? 'rgba(59,130,246,0.2)' : 'rgba(255,255,255,0.04)',
+                    background: opcionCodigo === op.value ? 'rgba(59,130,246,0.2)' : 'rgba(15,23,42,0.04)',
                     border: opcionCodigo === op.value ? '2px solid #3b82f6' : '1px solid rgba(148,163,184,0.15)',
                   }}
                 >
@@ -709,13 +709,13 @@ export default function TomaInventarioFisicoPage() {
 
           {/* Instrucciones */}
           <div style={{ background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', borderRadius: 10, padding: 20 }}>
-            <div style={{ color: '#fff', fontSize: 13, fontWeight: 700, marginBottom: 10 }}>Instrucciones:</div>
+            <div style={{ color: '#1e293b', fontSize: 13, fontWeight: 700, marginBottom: 10 }}>Instrucciones:</div>
             <ol style={{ color: '#94a3b8', fontSize: 13, paddingLeft: 20, lineHeight: 2 }}>
               <li>{tHelp('seleccioneBodegaTemplate')}</li>
               <li>{tHelp('imprimaExcel')}</li>
               <li>{tHelp('personalCuenta')}</li>
-              <li>Escribe la cantidad contada en la columna <strong style={{ color: '#fff' }}>&quot;Conteo Físico&quot;</strong> (última columna)</li>
-              <li>Guarde el archivo y pase a la pestaña <strong style={{ color: '#fff' }}>&quot;2. Cargar y Procesar&quot;</strong></li>
+              <li>Escribe la cantidad contada en la columna <strong style={{ color: '#1e293b' }}>&quot;Conteo Físico&quot;</strong> (última columna)</li>
+              <li>Guarde el archivo y pase a la pestaña <strong style={{ color: '#1e293b' }}>&quot;2. Cargar y Procesar&quot;</strong></li>
             </ol>
           </div>
         </div>
@@ -723,8 +723,8 @@ export default function TomaInventarioFisicoPage() {
 
       {/* ═══ TAB 2: CARGAR Y PROCESAR ═══ */}
       {tab === 'cargar' && (
-        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 14, padding: 28 }}>
-          <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 700, marginBottom: 4 }}>{t('tomaCargarExcel')}</h2>
+        <div style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 14, padding: 28 }}>
+          <h2 style={{ color: '#1e293b', fontSize: 18, fontWeight: 700, marginBottom: 4 }}>{t('tomaCargarExcel')}</h2>
           <p style={{ color: '#94a3b8', fontSize: 13, marginBottom: 24 }}>
             Suba el Excel con los conteos físicos. El sistema compara automáticamente y muestra las diferencias.
           </p>
@@ -755,7 +755,7 @@ export default function TomaInventarioFisicoPage() {
           </div>
 
           {cargando && (
-            <div style={{ textAlign: 'center', padding: 40, color: '#fff', fontSize: 15, fontWeight: 600 }}>
+            <div style={{ textAlign: 'center', padding: 40, color: '#1e293b', fontSize: 15, fontWeight: 600 }}>
               Leyendo archivo...
             </div>
           )}
@@ -766,27 +766,27 @@ export default function TomaInventarioFisicoPage() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14, marginBottom: 24 }}>
                 <div style={{ background: 'rgba(148,163,184,0.1)', borderRadius: 10, padding: 16, textAlign: 'center' }}>
                   <div style={{ color: '#94a3b8', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Total Productos</div>
-                  <div style={{ color: '#fff', fontSize: 28, fontWeight: 900, marginTop: 4 }}>{lineas.length}</div>
+                  <div style={{ color: '#1e293b', fontSize: 28, fontWeight: 900, marginTop: 4 }}>{lineas.length}</div>
                 </div>
                 <div style={{ background: 'rgba(34,197,94,0.12)', borderRadius: 10, padding: 16, textAlign: 'center', border: '1px solid rgba(34,197,94,0.3)' }}>
-                  <div style={{ color: '#fff', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Sobrantes</div>
+                  <div style={{ color: '#1e293b', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Sobrantes</div>
                   <div style={{ color: '#22c55e', fontSize: 28, fontWeight: 900, marginTop: 4 }}>{sobrantes.length}</div>
-                  <div style={{ color: '#fff', fontSize: 12, marginTop: 2 }}>{fmt(valorSobrantes)}</div>
+                  <div style={{ color: '#1e293b', fontSize: 12, marginTop: 2 }}>{fmt(valorSobrantes)}</div>
                 </div>
                 <div style={{ background: 'rgba(239,68,68,0.12)', borderRadius: 10, padding: 16, textAlign: 'center', border: '1px solid rgba(239,68,68,0.3)' }}>
-                  <div style={{ color: '#fff', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Faltantes</div>
+                  <div style={{ color: '#1e293b', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Faltantes</div>
                   <div style={{ color: '#ef4444', fontSize: 28, fontWeight: 900, marginTop: 4 }}>{faltantes.length}</div>
-                  <div style={{ color: '#fff', fontSize: 12, marginTop: 2 }}>{fmt(valorFaltantes)}</div>
+                  <div style={{ color: '#1e293b', fontSize: 12, marginTop: 2 }}>{fmt(valorFaltantes)}</div>
                 </div>
                 <div style={{ background: 'rgba(148,163,184,0.1)', borderRadius: 10, padding: 16, textAlign: 'center' }}>
                   <div style={{ color: '#94a3b8', fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>Sin Diferencia</div>
-                  <div style={{ color: '#fff', fontSize: 28, fontWeight: 900, marginTop: 4 }}>{sinDif.length}</div>
+                  <div style={{ color: '#1e293b', fontSize: 28, fontWeight: 900, marginTop: 4 }}>{sinDif.length}</div>
                 </div>
               </div>
 
               {/* Valor neto */}
               <div style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', borderRadius: 10, padding: 16, marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#fff', fontSize: 14, fontWeight: 700 }}>Valor Neto del Ajuste:</span>
+                <span style={{ color: '#1e293b', fontSize: 14, fontWeight: 700 }}>Valor Neto del Ajuste:</span>
                 <span style={{ color: valorNeto >= 0 ? '#22c55e' : '#ef4444', fontSize: 22, fontWeight: 900 }}>
                   {valorNeto >= 0 ? '+' : ''}{fmt(valorNeto)}
                 </span>
@@ -798,21 +798,21 @@ export default function TomaInventarioFisicoPage() {
                   <thead>
                     <tr style={{ background: 'rgba(30,58,138,0.6)' }}>
                       {[tF('codigo'), tF('descripcion'), tF('unidad'), tH('sistema'), tH('conteo'), tH('diferencia'), tF('tipo'), tH('valorDif')].map(h => (
-                        <th key={h} style={{ padding: '10px 12px', textAlign: 'left', color: '#fff', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, borderBottom: '1px solid rgba(148,163,184,0.2)' }}>{h}</th>
+                        <th key={h} style={{ padding: '10px 12px', textAlign: 'left', color: '#1e293b', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, borderBottom: '1px solid rgba(148,163,184,0.2)' }}>{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {lineas.map((l, i) => (
                       <tr key={l.codigo} style={{
-                        background: l.diferencia > 0 ? 'rgba(34,197,94,0.06)' : l.diferencia < 0 ? 'rgba(239,68,68,0.06)' : i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                        background: l.diferencia > 0 ? 'rgba(34,197,94,0.06)' : l.diferencia < 0 ? 'rgba(239,68,68,0.06)' : i % 2 === 0 ? 'rgba(15,23,42,0.02)' : 'transparent',
                         borderBottom: '1px solid rgba(148,163,184,0.08)',
                       }}>
-                        <td style={{ padding: '10px 12px', color: '#fff', fontWeight: 600, fontFamily: 'monospace' }}>{l.codigo}</td>
+                        <td style={{ padding: '10px 12px', color: '#1e293b', fontWeight: 600, fontFamily: 'monospace' }}>{l.codigo}</td>
                         <td style={{ padding: '10px 12px', color: '#e2e8f0', maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{l.descripcion}</td>
                         <td style={{ padding: '10px 12px', color: '#94a3b8' }}>{l.unidad_medida}</td>
-                        <td style={{ padding: '10px 12px', color: '#fff', textAlign: 'right', fontWeight: 600 }}>{l.existencia_sistema}</td>
-                        <td style={{ padding: '10px 12px', color: '#fff', textAlign: 'right', fontWeight: 700 }}>{l.conteo_fisico}</td>
+                        <td style={{ padding: '10px 12px', color: '#1e293b', textAlign: 'right', fontWeight: 600 }}>{l.existencia_sistema}</td>
+                        <td style={{ padding: '10px 12px', color: '#1e293b', textAlign: 'right', fontWeight: 700 }}>{l.conteo_fisico}</td>
                         <td style={{ padding: '10px 12px', textAlign: 'right', fontWeight: 900, color: l.diferencia > 0 ? '#22c55e' : l.diferencia < 0 ? '#ef4444' : '#94a3b8' }}>
                           {l.diferencia > 0 ? '+' : ''}{l.diferencia}
                         </td>
@@ -847,7 +847,7 @@ export default function TomaInventarioFisicoPage() {
                   </button>
                 )}
                 {procesado && (
-                  <div style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 10, padding: '14px 24px', color: '#fff', fontSize: 14, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <div style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 10, padding: '14px 24px', color: '#1e293b', fontSize: 14, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8 }}>
                     ✓ Ajustes procesados exitosamente — Productos, Bodegas y Kardex actualizados
                   </div>
                 )}
@@ -859,8 +859,8 @@ export default function TomaInventarioFisicoPage() {
 
       {/* ═══ TAB 3: HISTORIAL ═══ */}
       {tab === 'historial' && (
-        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 14, padding: 28 }}>
-          <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 700, marginBottom: 16 }}>{t('tomaHistorial')}</h2>
+        <div style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 14, padding: 28 }}>
+          <h2 style={{ color: '#1e293b', fontSize: 18, fontWeight: 700, marginBottom: 16 }}>{t('tomaHistorial')}</h2>
 
           {historial.length === 0 ? (
             <div style={{ textAlign: 'center', padding: 60, color: '#64748b' }}>
@@ -871,10 +871,10 @@ export default function TomaInventarioFisicoPage() {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {historial.map(t => (
-                <div key={t.id} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 10, padding: 20, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr auto', gap: 16, alignItems: 'center' }}>
+                <div key={t.id} style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(148,163,184,0.15)', borderRadius: 10, padding: 20, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr auto', gap: 16, alignItems: 'center' }}>
                   <div>
                     <div style={{ color: '#94a3b8', fontSize: 10, textTransform: 'uppercase', fontWeight: 700 }}>Nro. Toma</div>
-                    <div style={{ color: '#fff', fontSize: 15, fontWeight: 800, fontFamily: 'monospace' }}>{t.nro_toma}</div>
+                    <div style={{ color: '#1e293b', fontSize: 15, fontWeight: 800, fontFamily: 'monospace' }}>{t.nro_toma}</div>
                   </div>
                   <div>
                     <div style={{ color: '#94a3b8', fontSize: 10, textTransform: 'uppercase', fontWeight: 700 }}>Fecha</div>
@@ -894,7 +894,7 @@ export default function TomaInventarioFisicoPage() {
                     <div style={{ color: '#94a3b8', fontSize: 10, textTransform: 'uppercase', fontWeight: 700 }}>Valor Neto</div>
                     <div style={{ color: t.valor_neto >= 0 ? '#22c55e' : '#ef4444', fontSize: 15, fontWeight: 900 }}>{fmt(t.valor_neto)}</div>
                   </div>
-                  <span style={{ padding: '4px 14px', borderRadius: 20, fontSize: 11, fontWeight: 700, background: 'rgba(34,197,94,0.95)', color: '#fff' }}>
+                  <span style={{ padding: '4px 14px', borderRadius: 20, fontSize: 11, fontWeight: 700, background: 'rgba(34,197,94,0.95)', color: '#1e293b' }}>
                     {t.estado}
                   </span>
                 </div>

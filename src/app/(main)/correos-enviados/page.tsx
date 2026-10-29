@@ -9,8 +9,8 @@ import ReportPanel from '@/shared/components/report-panel'
 import VoiceSearchButton from '@/shared/components/voice-search-button'
 
 const statusStyle = (s: string): React.CSSProperties => {
-  if (s === 'Enviado') return { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' }
-  return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Enviado') return { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' }
+  return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
 }
 
 export default function CorreosEnviadosPage() {
@@ -65,15 +65,15 @@ export default function CorreosEnviadosPage() {
     return (
       <div>
         <div className="flex items-center justify-between mb-6">
-          <button onClick={() => setViewDetail(null)} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
+          <button onClick={() => setViewDetail(null)} className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors">
             ← Volver a Correos
           </button>
         </div>
-        <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-white">Detalle del Correo</h1>
-              <p className="text-white/50 mt-1">Enviado el {viewDetail.fecha} a las {viewDetail.hora}</p>
+              <h1 className="text-3xl font-bold text-slate-800">Detalle del Correo</h1>
+              <p className="text-slate-500 mt-1">Enviado el {viewDetail.fecha} a las {viewDetail.hora}</p>
             </div>
             <span className="px-4 py-2 rounded-full font-medium text-sm" style={statusStyle(viewDetail.estado)}>{viewDetail.estado}</span>
           </div>
@@ -87,19 +87,19 @@ export default function CorreosEnviadosPage() {
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-xs uppercase tracking-wider" style={{ color: '#f97316' }}>{label}</p>
-                <p className="text-white font-medium mt-1">{value || '-'}</p>
+                <p className="text-slate-800 font-medium mt-1">{value || '-'}</p>
               </div>
             ))}
           </div>
 
           <div className="mb-6">
             <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#f97316' }}>Asunto</p>
-            <p className="text-white font-medium">{viewDetail.asunto}</p>
+            <p className="text-slate-800 font-medium">{viewDetail.asunto}</p>
           </div>
 
-          <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-xl p-4" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
             <p className="text-xs uppercase tracking-wider mb-3" style={{ color: '#f97316' }}>Mensaje</p>
-            <p className="text-white/70 whitespace-pre-line">{viewDetail.mensaje}</p>
+            <p className="text-slate-600 whitespace-pre-line">{viewDetail.mensaje}</p>
           </div>
         </div>
       </div>
@@ -110,26 +110,26 @@ export default function CorreosEnviadosPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('correosEnviados')}</h1>
-          <p className="text-white/50 mt-1">{tSub('correosEnviados')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('correosEnviados')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('correosEnviados')}</p>
         </div>
         {tab === 'registros' && correos.length > 0 && (
           <button onClick={() => { if (confirm(tCf('clearHistorialCorreos'))) clearAll() }}
             className="px-4 py-2 rounded-xl text-xs font-medium"
-            style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>
+            style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>
             🗑 Limpiar Historial
           </button>
         )}
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {(['registros', 'reportes'] as const).map(t => (
           <button key={t} onClick={() => setTab(t)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}>
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}>
             {t === 'registros' ? tTab('registrosEmoji') : tTab('reportesEmoji')}
           </button>
         ))}
@@ -142,42 +142,42 @@ export default function CorreosEnviadosPage() {
             <div className="flex items-center gap-2 max-w-md">
               <input value={search} onChange={e => setSearch(e.target.value)}
                 placeholder="Buscar por proveedor, email, orden o asunto..."
-                className="w-full rounded-xl px-4 py-2.5 text-white outline-none text-base text-white font-bold"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }} />
+                className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }} />
               <VoiceSearchButton onResult={setSearch} />
             </div>
           </div>
 
           {filtered.length === 0 ? (
-            <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(15,23,42,0.08)' }}>
               <p className="text-4xl mb-4">📭</p>
-              <p className="text-white/60 text-lg">{tE('noCorreos')}</p>
-              <p className="text-white/30 text-sm mt-2">Los correos aparecerán aquí cuando envíes órdenes de compra por email</p>
+              <p className="text-slate-500 text-lg">{tE('noCorreos')}</p>
+              <p className="text-slate-400 text-sm mt-2">Los correos aparecerán aquí cuando envíes órdenes de compra por email</p>
             </div>
           ) : (
-            <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
               <table className="w-full text-base text-left">
-                <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+                <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                   <tr>
                     {[tF('fecha'), tH('hora'), tF('destinatario'), tF('proveedor'), tF('orden'), tF('asunto'), tF('estado'), tTbl('actions')].map(h => (
-                      <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                      <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {filtered.map(c => (
-                    <tr key={c.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td className="px-5 py-4 text-white/60">{fDate(c.fecha)}</td>
-                      <td className="px-5 py-4 text-white/50 text-xs font-mono">{c.hora}</td>
-                      <td className="px-5 py-4 text-white font-bold">{c.destinatario}</td>
-                      <td className="px-5 py-4 text-white font-medium">{c.proveedor}</td>
-                      <td className="px-5 py-4 font-mono font-bold" style={{ color: '#fff' }}>{c.consecutivo}</td>
-                      <td className="px-5 py-4 text-white/60 max-w-[200px] truncate">{c.asunto}</td>
+                    <tr key={c.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                      <td className="px-5 py-4 text-slate-500">{fDate(c.fecha)}</td>
+                      <td className="px-5 py-4 text-slate-500 text-xs font-mono">{c.hora}</td>
+                      <td className="px-5 py-4 text-slate-800 font-bold">{c.destinatario}</td>
+                      <td className="px-5 py-4 text-slate-800 font-medium">{c.proveedor}</td>
+                      <td className="px-5 py-4 font-mono font-bold" style={{ color: '#1e293b' }}>{c.consecutivo}</td>
+                      <td className="px-5 py-4 text-slate-500 max-w-[200px] truncate">{c.asunto}</td>
                       <td className="px-5 py-4"><span className="px-3 py-1 rounded-full text-xs font-medium" style={statusStyle(c.estado)}>{c.estado}</span></td>
                       <td className="px-5 py-4">
                         <div className="flex gap-2">
-                          <button onClick={() => setViewDetail(c)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
-                          <button onClick={() => { if (confirm(tCf('delRegistro'))) deleteCorreo(c.id) }} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>
+                          <button onClick={() => setViewDetail(c)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
+                          <button onClick={() => { if (confirm(tCf('delRegistro'))) deleteCorreo(c.id) }} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>
                         </div>
                       </td>
                     </tr>

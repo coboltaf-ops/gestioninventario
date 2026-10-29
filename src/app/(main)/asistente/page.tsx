@@ -335,19 +335,19 @@ export default function AsistentePage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-3">
             <span className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
               style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)' }}>
               🤖
             </span>
             {t('asistente')}
           </h1>
-          <p className="text-white/50 text-sm mt-1">{tAsi('subtitle')}</p>
+          <p className="text-slate-500 text-sm mt-1">{tAsi('subtitle')}</p>
         </div>
         {hablando && (
           <button
             onClick={detenerVoz}
-            className="px-4 py-2 rounded-xl text-sm font-bold text-white animate-pulse"
+            className="px-4 py-2 rounded-xl text-sm font-bold text-slate-800 animate-pulse"
             style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(185,28,28,1)' }}
           >
             🔊 {tAsi('detenerVoz')}
@@ -360,7 +360,7 @@ export default function AsistentePage() {
         className="rounded-2xl border overflow-hidden flex flex-col"
         style={{
           background: 'rgba(0,0,0,0.2)',
-          borderColor: 'rgba(255,255,255,0.08)',
+          borderColor: 'rgba(15,23,42,0.08)',
           height: 'calc(100vh - 280px)',
           minHeight: '400px',
         }}
@@ -373,8 +373,8 @@ export default function AsistentePage() {
                 style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>
                 <span className="text-4xl">🤖</span>
               </div>
-              <p className="text-white/40 text-sm font-medium">{tAsi('empty1')}</p>
-              <p className="text-white/20 text-xs mt-2">{tAsi('empty2')}</p>
+              <p className="text-slate-400 text-sm font-medium">{tAsi('empty1')}</p>
+              <p className="text-slate-300 text-xs mt-2">{tAsi('empty2')}</p>
             </div>
           )}
           {mensajes.map(msg => (
@@ -385,15 +385,15 @@ export default function AsistentePage() {
                   background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)',
                   borderBottomRightRadius: '4px',
                 } : {
-                  background: 'rgba(255,255,255,0.08)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(15,23,42,0.08)',
+                  border: '1px solid rgba(15,23,42,0.1)',
                   borderBottomLeftRadius: '4px',
                 }}
               >
                 {msg.tipo === 'respuesta' && (
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-xs">🤖</span>
-                    <span className="text-[10px] text-white/40 font-semibold uppercase">{tAsi('badge')}</span>
+                    <span className="text-[10px] text-slate-400 font-semibold uppercase">{tAsi('badge')}</span>
                     <button
                       onClick={() => hablar(msg.texto)}
                       className="text-[10px] text-blue-300/60 hover:text-blue-300 ml-auto transition-colors"
@@ -403,8 +403,8 @@ export default function AsistentePage() {
                     </button>
                   </div>
                 )}
-                <p className="text-sm text-white/90 leading-relaxed">{msg.texto}</p>
-                <p className="text-[10px] text-white/20 mt-1 text-right">{msg.timestamp}</p>
+                <p className="text-sm text-slate-700 leading-relaxed">{msg.texto}</p>
+                <p className="text-[10px] text-slate-300 mt-1 text-right">{msg.timestamp}</p>
               </div>
             </div>
           ))}
@@ -421,13 +421,13 @@ export default function AsistentePage() {
         </div>
 
         {/* Botones de Consulta Rápida + Input */}
-        <div className="p-4 border-t space-y-3" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="p-4 border-t space-y-3" style={{ borderColor: 'rgba(15,23,42,0.06)' }}>
           <div className="flex gap-2 flex-wrap">
             {preguntas.map(p => (
               <button
                 key={p.key}
                 onClick={() => hacerPregunta(p.key, p.label)}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white/80 hover:text-white transition-all hover:scale-[1.03]"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-800 transition-all hover:scale-[1.03]"
                 style={{ background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.25)' }}
               >
                 <span>{p.icon}</span>
@@ -441,8 +441,8 @@ export default function AsistentePage() {
               value={preguntaCustom}
               onChange={e => setPreguntaCustom(e.target.value)}
               placeholder={tAsi('placeholder')}
-              className="flex-1 px-4 py-2.5 rounded-xl text-sm text-white placeholder-white/30 outline-none"
-              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+              className="flex-1 px-4 py-2.5 rounded-xl text-sm text-slate-800 placeholder-white/30 outline-none"
+              style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}
             />
             <button
               type="button"
@@ -458,7 +458,7 @@ export default function AsistentePage() {
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:scale-105"
+              className="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-800 transition-all hover:scale-105"
               style={{ background: 'linear-gradient(135deg, #1e3a8a, #3b82f6)' }}
             >
               {tBtn('send')}

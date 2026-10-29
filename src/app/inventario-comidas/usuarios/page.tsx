@@ -99,7 +99,7 @@ export default function UsuariosComidasPage() {
             style={{
               padding: '12px 24px',
               background: '#ea580c',
-              color: '#fff',
+              color: '#1e293b',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',
@@ -157,7 +157,7 @@ export default function UsuariosComidasPage() {
                         style={{
                           padding: '4px 8px',
                           background: '#ea580c',
-                          color: '#fff',
+                          color: '#1e293b',
                           border: 'none',
                           borderRadius: '4px',
                           cursor: 'pointer',
@@ -172,7 +172,7 @@ export default function UsuariosComidasPage() {
                         style={{
                           padding: '4px 8px',
                           background: '#ef4444',
-                          color: '#fff',
+                          color: '#1e293b',
                           border: 'none',
                           borderRadius: '4px',
                           cursor: 'pointer',
@@ -234,7 +234,7 @@ export default function UsuariosComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -255,7 +255,7 @@ export default function UsuariosComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -273,7 +273,7 @@ export default function UsuariosComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -298,7 +298,7 @@ export default function UsuariosComidasPage() {
                     background: '#222',
                     border: '1px solid #333',
                     borderRadius: '6px',
-                    color: '#fff',
+                    color: '#1e293b',
                     fontSize: '14px',
                     boxSizing: 'border-box',
                   }}
@@ -315,7 +315,7 @@ export default function UsuariosComidasPage() {
                     flex: 1,
                     padding: '12px',
                     background: '#10b981',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',
@@ -334,7 +334,7 @@ export default function UsuariosComidasPage() {
                     flex: 1,
                     padding: '12px',
                     background: '#666',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',

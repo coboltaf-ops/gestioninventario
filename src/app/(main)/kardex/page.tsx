@@ -24,8 +24,8 @@ type RenglonKardex = MovimientoConBodega & {
 
 const tipoColor: Record<string, { bg: string; color: string; border: string }> = {
   'Carga Inicial de Saldos':    { bg: 'rgba(168,85,247,0.2)',  color: '#c4b5fd', border: 'rgba(168,85,247,0.4)' },
-  'Recepción Factura':          { bg: 'rgba(34,197,94,0.2)',   color: '#fff', border: 'rgba(34,197,94,0.4)' },
-  'Transferencia entre Bodegas':{ bg: 'rgba(59,130,246,0.2)',  color: '#fff', border: 'rgba(59,130,246,0.4)' },
+  'Recepción Factura':          { bg: 'rgba(34,197,94,0.2)',   color: '#1e293b', border: 'rgba(34,197,94,0.4)' },
+  'Transferencia entre Bodegas':{ bg: 'rgba(59,130,246,0.2)',  color: '#1e293b', border: 'rgba(59,130,246,0.4)' },
   'Salida de Almacén':          { bg: 'rgba(236,72,153,0.2)',  color: '#f9a8d4', border: 'rgba(236,72,153,0.4)' },
   'Ajuste de Inventario':       { bg: 'rgba(251,146,60,0.2)',  color: '#fdba74', border: 'rgba(251,146,60,0.4)' },
 }
@@ -196,7 +196,7 @@ function KardexContent() {
   if (!permisos.leer) {
     return (
       <div className="flex items-center justify-center h-full">
-        <p className="text-white/60 text-lg">No tienes permisos para acceder a esta seccion.</p>
+        <p className="text-slate-500 text-lg">No tienes permisos para acceder a esta seccion.</p>
       </div>
     )
   }
@@ -205,20 +205,20 @@ function KardexContent() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white tracking-tight">{t('kardex')}</h1>
-        <p className="text-white/50 mt-1">{tHelp('kardexSubtitle')}</p>
+        <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('kardex')}</h1>
+        <p className="text-slate-500 mt-1">{tHelp('kardexSubtitle')}</p>
       </div>
 
       {/* Selector de producto */}
-      <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <label className="block text-lg font-extrabold text-blue-600 mb-3">Seleccionar Producto</label>
         <input
           type="text"
           value={searchProd}
           onChange={e => setSearchProd(e.target.value)}
           placeholder={tPh('buscarCodigoDesc')}
-          className="w-full rounded-xl px-4 py-2.5 text-white outline-none mb-3"
-          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+          className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none mb-3"
+          style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-h-64 overflow-y-auto">
           {productosFiltrados.map(p => (
@@ -228,11 +228,11 @@ function KardexContent() {
               className="text-left px-3 py-2 rounded-lg transition-all"
               style={productoId === p.id
                 ? { background: 'rgba(96,165,250,0.25)', border: '1px solid rgba(37,99,235,1)' }
-                : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }
+                : { background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }
               }
             >
               <p className="text-xs font-mono font-bold text-blue-300">{p.codigo}</p>
-              <p className="text-xs text-white truncate">{p.descripcion}</p>
+              <p className="text-xs text-slate-800 truncate">{p.descripcion}</p>
             </button>
           ))}
         </div>
@@ -245,74 +245,74 @@ function KardexContent() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="rounded-2xl p-5" style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)' }}>
               <p className="text-xs text-green-300 uppercase tracking-wider mb-1">Total Entradas</p>
-              <p className="text-2xl font-black text-white">{totalEntradas.toLocaleString('es-CO')}</p>
+              <p className="text-2xl font-black text-slate-800">{totalEntradas.toLocaleString('es-CO')}</p>
               <p className="text-xs text-green-300/70 mt-1">{producto.unidad_medida}</p>
             </div>
             <div className="rounded-2xl p-5" style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)' }}>
               <p className="text-xs text-red-300 uppercase tracking-wider mb-1">Total Salidas</p>
-              <p className="text-2xl font-black text-white">{totalSalidas.toLocaleString('es-CO')}</p>
+              <p className="text-2xl font-black text-slate-800">{totalSalidas.toLocaleString('es-CO')}</p>
               <p className="text-xs text-red-300/70 mt-1">{producto.unidad_medida}</p>
             </div>
             <div className="rounded-2xl p-5" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)' }}>
               <p className="text-xs text-blue-300 uppercase tracking-wider mb-1">Saldo Final</p>
-              <p className="text-2xl font-black text-white">{saldoFinal.toLocaleString('es-CO')}</p>
+              <p className="text-2xl font-black text-slate-800">{saldoFinal.toLocaleString('es-CO')}</p>
               <p className="text-xs text-blue-300/70 mt-1">{producto.unidad_medida}</p>
             </div>
             <div className="rounded-2xl p-5" style={{ background: 'rgba(251,191,36,0.1)', border: '1px solid rgba(251,191,36,0.3)' }}>
               <p className="text-xs text-amber-300 uppercase tracking-wider mb-1">Valor Final</p>
-              <p className="text-2xl font-black text-white">${fmtMoney(valorFinal)}</p>
+              <p className="text-2xl font-black text-slate-800">${fmtMoney(valorFinal)}</p>
               <p className="text-xs text-amber-300/70 mt-1">CP: ${fmtMoney(producto.costo_promedio || 0)}</p>
             </div>
           </div>
 
           {/* Filtros */}
-          <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <p className="text-xs uppercase tracking-wider text-white/60 mb-3 font-semibold">Filtros</p>
+          <div className="rounded-2xl p-5" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+            <p className="text-xs uppercase tracking-wider text-slate-500 mb-3 font-semibold">Filtros</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Bodega</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Bodega</label>
                 <select value={bodegaFilter} onChange={e => setBodegaFilter(e.target.value)}
-                  className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
-                  style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                  className="w-full rounded-lg px-3 py-2 text-slate-800 text-sm outline-none"
+                  style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)' }}>
                   <option value="">Todas</option>
                   {bodegasConMovs.map(b => <option key={b.id} value={b.id}>{b.nombre}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Tipo</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Tipo</label>
                 <select value={tipoFilter} onChange={e => setTipoFilter(e.target.value)}
-                  className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
-                  style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                  className="w-full rounded-lg px-3 py-2 text-slate-800 text-sm outline-none"
+                  style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)' }}>
                   <option value="">Todos</option>
                   {tiposDisponibles.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Desde</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Desde</label>
                 <input type="date" value={desde} onChange={e => setDesde(e.target.value)}
-                  className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
-                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }} />
+                  className="w-full rounded-lg px-3 py-2 text-slate-800 text-sm outline-none"
+                  style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }} />
               </div>
               <div>
-                <label className="block text-xl text-white font-extrabold mb-1">Hasta</label>
+                <label className="block text-xl text-slate-800 font-extrabold mb-1">Hasta</label>
                 <input type="date" value={hasta} onChange={e => setHasta(e.target.value)}
-                  className="w-full rounded-lg px-3 py-2 text-white text-sm outline-none"
-                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }} />
+                  className="w-full rounded-lg px-3 py-2 text-slate-800 text-sm outline-none"
+                  style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }} />
               </div>
             </div>
             <div className="flex justify-end gap-3 mt-4">
               <button onClick={() => doExport('pdf')} disabled={isExporting || renglones.length === 0}
-                className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(239,68,68,0.4)' }}>
                 📄 PDF
               </button>
               <button onClick={() => doExport('excel')} disabled={isExporting || renglones.length === 0}
-                className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                 📊 Excel
               </button>
               <button onClick={() => doExport('print')} disabled={isExporting || renglones.length === 0}
-                className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                 🖨️ Imprimir
               </button>
@@ -320,36 +320,36 @@ function KardexContent() {
           </div>
 
           {/* Tabla Kardex */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="px-5 py-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-              <p className="text-sm font-bold text-white">{producto.codigo} — {producto.descripcion}</p>
-              <p className="text-xs text-white/40 mt-1">{renglones.length} movimientos | Unidad: {producto.unidad_medida}</p>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.1)' }}>
+            <div className="px-5 py-4 border-b" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
+              <p className="text-sm font-bold text-slate-800">{producto.codigo} — {producto.descripcion}</p>
+              <p className="text-xs text-slate-400 mt-1">{renglones.length} movimientos | Unidad: {producto.unidad_medida}</p>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-base text-left" style={{ minWidth: '1100px' }}>
-                <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+                <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                   <tr>
                     {['#', tF('fecha'), tF('tipo'), tF('bodega'), tH('documento'), tH('entradas'), tH('salidas'), tH('saldo'), tH('cpMov'), tH('saldoValor'), tF('observaciones')].map(h => (
                       <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap"
-                        style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                        style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {renglones.map((r, i) => {
                     const categoria = categoriaKardex(r.tipo)
-                    const cfg = tipoColor[categoria] || { bg: 'rgba(255,255,255,0.08)', color: '#fff', border: 'rgba(255,255,255,0.2)' }
+                    const cfg = tipoColor[categoria] || { bg: 'rgba(15,23,42,0.08)', color: '#1e293b', border: 'rgba(15,23,42,0.2)' }
                     return (
-                      <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td className="px-3 py-2.5 text-xs text-white/40 font-mono">{i + 1}</td>
-                        <td className="px-3 py-2.5 text-white/70 text-xs whitespace-nowrap">{fDate(r.fecha)}</td>
+                      <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                        <td className="px-3 py-2.5 text-xs text-slate-400 font-mono">{i + 1}</td>
+                        <td className="px-3 py-2.5 text-slate-600 text-xs whitespace-nowrap">{fDate(r.fecha)}</td>
                         <td className="px-3 py-2.5">
                           <span className="px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap"
                             style={{ background: cfg.bg, color: cfg.color, border: `1px solid ${cfg.border}` }}>
                             {categoria}
                           </span>
                         </td>
-                        <td className="px-3 py-2.5 text-white/70 text-xs">{r.bodega_nombre}</td>
+                        <td className="px-3 py-2.5 text-slate-600 text-xs">{r.bodega_nombre}</td>
                         <td className="px-3 py-2.5 text-blue-300 text-xs font-mono font-bold">{r.documento_origen}</td>
                         <td className="px-3 py-2.5 text-right text-green-300 font-bold whitespace-nowrap">
                           {r.cantidad > 0 ? r.cantidad.toLocaleString('es-CO') : ''}
@@ -357,18 +357,18 @@ function KardexContent() {
                         <td className="px-3 py-2.5 text-right text-red-300 font-bold whitespace-nowrap">
                           {r.cantidad < 0 ? Math.abs(r.cantidad).toLocaleString('es-CO') : ''}
                         </td>
-                        <td className="px-3 py-2.5 text-right text-white font-black whitespace-nowrap">
+                        <td className="px-3 py-2.5 text-right text-slate-800 font-black whitespace-nowrap">
                           {r.saldo_acumulado.toLocaleString('es-CO')}
                         </td>
-                        <td className="px-3 py-2.5 text-right text-white/70 whitespace-nowrap">${fmtMoney(r.costo_promedio)}</td>
+                        <td className="px-3 py-2.5 text-right text-slate-600 whitespace-nowrap">${fmtMoney(r.costo_promedio)}</td>
                         <td className="px-3 py-2.5 text-right text-amber-300 font-semibold whitespace-nowrap">${fmtMoney(r.saldo_valor)}</td>
-                        <td className="px-3 py-2.5 text-white font-medium text-xs">{r.observaciones || '—'}</td>
+                        <td className="px-3 py-2.5 text-slate-800 font-medium text-xs">{r.observaciones || '—'}</td>
                       </tr>
                     )
                   })}
                   {renglones.length === 0 && (
                     <tr>
-                      <td colSpan={11} className="px-6 py-12 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                      <td colSpan={11} className="px-6 py-12 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>
                         No hay movimientos para este producto con los filtros seleccionados
                       </td>
                     </tr>
@@ -381,9 +381,9 @@ function KardexContent() {
       )}
 
       {!producto && (
-        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="rounded-2xl p-12 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
           <div className="text-5xl mb-3">📒</div>
-          <p className="text-white/50 text-base">{tSub('kardex')}</p>
+          <p className="text-slate-500 text-base">{tSub('kardex')}</p>
         </div>
       )}
     </div>
@@ -392,7 +392,7 @@ function KardexContent() {
 
 export default function KardexPage() {
   return (
-    <Suspense fallback={<div className="text-white/50">Cargando...</div>}>
+    <Suspense fallback={<div className="text-slate-500">Cargando...</div>}>
       <KardexContent />
     </Suspense>
   )

@@ -65,21 +65,21 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <ServerSyncProvider>
-      <div className="flex min-h-screen" style={{ background: '#000' }}>
+      <div className="flex min-h-screen" style={{ background: '#f1f5f9' }}>
         <EcosystemSidebar />
 
-        <main className="flex-1 flex flex-col min-h-screen transition-all duration-300" style={{ background: '#000' }}>
-          <header className="px-8 py-3 shrink-0 flex items-center justify-between gap-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <main className="flex-1 flex flex-col min-h-screen transition-all duration-300" style={{ background: '#f1f5f9' }}>
+          <header className="px-8 py-3 shrink-0 flex items-center justify-between gap-4" style={{ borderBottom: '1px solid rgba(15,23,42,0.06)' }}>
             <div className="flex items-center gap-4">
               {empresaActiva?.nombre && (
-                <div className="text-white font-semibold text-sm tracking-wide max-w-xs truncate" title={empresaActiva.nombre}>
+                <div className="text-slate-800 font-semibold text-sm tracking-wide max-w-xs truncate" title={empresaActiva.nombre}>
                   {empresaActiva.nombre}
                 </div>
               )}
               {fromContable && returnUrl && (
                 <button
                   onClick={volverAContable}
-                  className="px-4 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:opacity-90 flex items-center gap-2"
+                  className="px-4 py-1.5 rounded-lg text-xs font-bold text-slate-800 transition-all hover:opacity-90 flex items-center gap-2"
                   style={{ background: 'rgba(59,130,246,0.25)', border: '1px solid rgba(59,130,246,0.5)' }}
                   title={tCommon('backToAccounting')}
                 >
@@ -91,13 +91,13 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <TipoInventarioBadge />
               <LanguageSwitcher />
               <div className="text-right">
-                <p className="text-sm font-medium text-white">
+                <p className="text-sm font-medium text-slate-800">
                   {user.nombre} {user.apellido}
                 </p>
-                <p className="text-xs text-white font-bold">{user.rol}</p>
+                <p className="text-xs text-slate-800 font-bold">{user.rol}</p>
               </div>
               <div
-                className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-slate-800"
                 style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}
               >
                 {user.nombre.charAt(0)}

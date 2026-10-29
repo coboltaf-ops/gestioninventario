@@ -38,7 +38,7 @@ function PasswordGate({ onSuccess }: { onSuccess: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center h-full min-h-[320px] px-8">
       <div className="text-5xl mb-4">🔒</div>
-      <h2 className="text-xl font-bold text-white mb-1">Acceso Protegido</h2>
+      <h2 className="text-xl font-bold text-slate-800 mb-1">Acceso Protegido</h2>
       <p className="text-slate-400 text-sm mb-6 text-center">
         Ingresa la contraseña para acceder a la Biblioteca de Documentación
       </p>
@@ -50,7 +50,7 @@ function PasswordGate({ onSuccess }: { onSuccess: () => void }) {
           onChange={(e) => { setValue(e.target.value); setError(false) }}
           placeholder="Contraseña"
           autoComplete="off"
-          className={`w-full px-4 py-3 rounded-xl bg-slate-700 text-white placeholder-slate-400 border-2 outline-none transition-all
+          className={`w-full px-4 py-3 rounded-xl bg-slate-700 text-slate-800 placeholder-slate-400 border-2 outline-none transition-all
             ${error ? 'border-red-500' : 'border-slate-600 focus:border-blue-500'}
             ${shaking ? 'animate-[shake_0.4s_ease-in-out]' : ''}`}
         />
@@ -61,7 +61,7 @@ function PasswordGate({ onSuccess }: { onSuccess: () => void }) {
         )}
         <button
           type="submit"
-          className="w-full py-3 rounded-xl font-bold text-white transition-all
+          className="w-full py-3 rounded-xl font-bold text-slate-800 transition-all
             bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500
             active:scale-95 shadow-lg shadow-blue-900/40"
         >
@@ -113,7 +113,7 @@ function LibraryModal({ onClose }: { onClose: () => void }) {
           <div className="flex items-center gap-2">
             <span className="text-2xl">📚</span>
             <div>
-              <h2 className="text-white font-bold text-base leading-tight">
+              <h2 className="text-slate-800 font-bold text-base leading-tight">
                 Biblioteca de Documentación
               </h2>
               <p className="text-blue-100 text-xs">Centro de documentación centralizado</p>
@@ -121,8 +121,8 @@ function LibraryModal({ onClose }: { onClose: () => void }) {
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-white/70
-              hover:text-white hover:bg-white/15 transition-all focus:outline-none
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-600
+              hover:text-slate-800 hover:bg-black/15 transition-all focus:outline-none
               focus:ring-2 focus:ring-white/50"
             aria-label="Cerrar biblioteca"
           >
@@ -174,18 +174,18 @@ export function FloatingDocButton() {
       <div className="fixed bottom-6 right-6 z-[9990] flex flex-col items-end gap-2">
         {/* Tooltip */}
         {tooltip && !isOpen && (
-          <div className="mb-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-white whitespace-nowrap
+          <div className="mb-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-800 whitespace-nowrap
             pointer-events-none select-none
             shadow-lg animate-fade-in"
             style={{
               background: 'rgba(15,23,42,0.95)',
-              border: '1px solid rgba(255,255,255,0.15)',
+              border: '1px solid rgba(15,23,42,0.15)',
             }}
           >
             Biblioteca de Documentación
             {/* Arrow */}
             <span className="absolute -bottom-1.5 right-5 w-3 h-3 rotate-45"
-              style={{ background: 'rgba(15,23,42,0.95)', borderRight: '1px solid rgba(255,255,255,0.15)', borderBottom: '1px solid rgba(255,255,255,0.15)' }}
+              style={{ background: 'rgba(15,23,42,0.95)', borderRight: '1px solid rgba(15,23,42,0.15)', borderBottom: '1px solid rgba(15,23,42,0.15)' }}
             />
           </div>
         )}
@@ -196,7 +196,7 @@ export function FloatingDocButton() {
           onMouseLeave={() => setTooltip(false)}
           aria-label={isOpen ? 'Cerrar biblioteca' : 'Abrir biblioteca de documentación'}
           className="relative w-14 h-14 rounded-full flex items-center justify-center
-            text-2xl font-bold text-white shadow-2xl
+            text-2xl font-bold text-slate-800 shadow-2xl
             transition-all duration-300
             hover:scale-110 active:scale-95
             focus:outline-none focus:ring-4 focus:ring-blue-400/50"
@@ -246,11 +246,11 @@ export function FloatingDocButton() {
               <div className="flex items-center justify-between px-5 py-3"
                 style={{ background: 'linear-gradient(135deg, #2563eb, #7c3aed, #db2777)' }}
               >
-                <span className="text-white font-bold text-sm">Biblioteca de Documentación</span>
+                <span className="text-slate-800 font-bold text-sm">Biblioteca de Documentación</span>
                 <button
                   onClick={handleClose}
-                  className="w-7 h-7 flex items-center justify-center rounded-lg text-white/70
-                    hover:text-white hover:bg-white/15 transition-all"
+                  className="w-7 h-7 flex items-center justify-center rounded-lg text-slate-600
+                    hover:text-slate-800 hover:bg-black/15 transition-all"
                   aria-label="Cerrar"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"

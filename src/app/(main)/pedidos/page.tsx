@@ -85,40 +85,40 @@ function EmailModal({ pedido, proveedorEmail, onClose, onEmailSent, onSuccess }:
     }
   }, [to, asunto, mensaje, pedido, onEmailSent, onClose, onSuccess])
 
-  const inputStyle: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }
+  const inputStyle: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
-      <div className="w-full max-w-lg rounded-2xl p-6" style={{ background: 'rgba(12,26,61,0.98)', border: '1px solid rgba(255,255,255,0.15)' }}>
+      <div className="w-full max-w-lg rounded-2xl p-6" style={{ background: 'rgba(12,26,61,0.98)', border: '1px solid rgba(15,23,42,0.15)' }}>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">📧 Enviar Orden de Pedido por Email</h2>
-          <button onClick={onClose} className="text-white/40 hover:text-white text-xl leading-none">&times;</button>
+          <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">📧 Enviar Orden de Pedido por Email</h2>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-800 text-xl leading-none">&times;</button>
         </div>
 
         <div className="space-y-4">
           <div className="rounded-xl p-3" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>
-            <p className="text-xs text-white/50">Orden de Pedido</p>
-            <p className="text-white font-mono font-bold">{pedido.consecutivo}</p>
-            <p className="text-white/60 text-sm mt-1">{pedido.proveedor}</p>
+            <p className="text-xs text-slate-500">Orden de Pedido</p>
+            <p className="text-slate-800 font-mono font-bold">{pedido.consecutivo}</p>
+            <p className="text-slate-500 text-sm mt-1">{pedido.proveedor}</p>
           </div>
 
           <div>
-            <label className="block text-xl text-white font-extrabold mb-1">Email del Proveedor *</label>
+            <label className="block text-xl text-slate-800 font-extrabold mb-1">Email del Proveedor *</label>
             <input type="email" value={to} onChange={e => setTo(e.target.value)} required
-              className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={inputStyle}
+              className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={inputStyle}
               placeholder="email@proveedor.com" />
           </div>
 
           <div>
-            <label className="block text-xl text-white font-extrabold mb-1">Asunto</label>
+            <label className="block text-xl text-slate-800 font-extrabold mb-1">Asunto</label>
             <input value={asunto} onChange={e => setAsunto(e.target.value)}
-              className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={inputStyle} />
+              className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={inputStyle} />
           </div>
 
           <div>
-            <label className="block text-xl text-white font-extrabold mb-1">Mensaje (opcional)</label>
+            <label className="block text-xl text-slate-800 font-extrabold mb-1">Mensaje (opcional)</label>
             <textarea rows={4} value={mensaje} onChange={e => setMensaje(e.target.value)}
-              className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold resize-none" style={inputStyle} />
+              className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold resize-none" style={inputStyle} />
           </div>
 
           {result && (
@@ -133,12 +133,12 @@ function EmailModal({ pedido, proveedorEmail, onClose, onEmailSent, onSuccess }:
 
           <div className="flex gap-3 pt-2">
             <button onClick={handleSend} disabled={sending || !to}
-              className="flex-1 px-5 py-2.5 rounded-xl font-medium text-white transition-colors disabled:opacity-40"
+              className="flex-1 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors disabled:opacity-40"
               style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
               {sending ? '⏳ Enviando...' : '📧 Enviar Email'}
             </button>
             <button onClick={onClose}
-              className="px-5 py-2.5 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+              className="px-5 py-2.5 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
               {tBtn('close')}
             </button>
           </div>
@@ -317,7 +317,7 @@ export default function PedidosPage() {
   }, [emailPedido, addCorreo])
 
   const [tab, setTab] = useState<'registros' | 'reportes' | 'especificos'>('registros')
-  const selectStyle: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+  const selectStyle: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
   const reportColumns = [
     { header: 'Nro. Orden Pedido', key: 'consecutivo', width: 14 },
@@ -398,10 +398,10 @@ export default function PedidosPage() {
 
   const statusStyle = (s: string) => {
     const map: Record<string, React.CSSProperties> = {
-      'Pendiente': { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' },
-      'Aprobada': { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' },
-      'Anulada': { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' },
-      'Recibida': { background: 'rgba(59,130,246,0.2)', color: '#fff', border: '1px solid rgba(59,130,246,0.3)' },
+      'Pendiente': { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' },
+      'Aprobada': { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' },
+      'Anulada': { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' },
+      'Recibida': { background: 'rgba(59,130,246,0.2)', color: '#1e293b', border: '1px solid rgba(59,130,246,0.3)' },
     }
     return map[s] || {}
   }
@@ -412,12 +412,12 @@ export default function PedidosPage() {
     return (
       <div>
         <div className="flex items-center justify-between mb-6">
-          <button onClick={() => setViewDetail(null)} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
+          <button onClick={() => setViewDetail(null)} className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors">
             ← Volver a Ordenes de Pedido
           </button>
           <div className="flex gap-3">
             <button onClick={() => setEmailPedido(viewDetail)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
               style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
               📧 Enviar por Email
             </button>
@@ -430,17 +430,17 @@ export default function PedidosPage() {
               const empData = emp ? { nombre: emp.nombre, tipo_identificacion: emp.tipo_identificacion, nro_documento: emp.nro_documento, direccion: emp.direccion, ciudad: emp.ciudad } : undefined
               generatePedidoPDF({ ...viewDetail, centro_costo: ccFixed }, provData, empData, emp?.logo || LOGO_BASE64)
             }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
               style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
               🖨 Generar PDF
             </button>
           </div>
         </div>
-        <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-white">Orden de Pedido</h1>
-              <p className="text-2xl font-mono mt-1" style={{ color: '#fff' }}>{viewDetail.consecutivo}</p>
+              <h1 className="text-3xl font-bold text-slate-800">Orden de Pedido</h1>
+              <p className="text-2xl font-mono mt-1" style={{ color: '#1e293b' }}>{viewDetail.consecutivo}</p>
             </div>
             <span className="px-4 py-2 rounded-full font-medium text-sm" style={statusStyle(viewDetail.situacion)}>{viewDetail.situacion}</span>
           </div>
@@ -460,27 +460,27 @@ export default function PedidosPage() {
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-xs uppercase tracking-wider" style={{ color: '#f97316' }}>{label}</p>
-                <p className="text-white font-medium mt-1">{value || '-'}</p>
+                <p className="text-slate-800 font-medium mt-1">{value || '-'}</p>
               </div>
             ))}
           </div>
 
-          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.08)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.08)' }}>
                 <tr>
                   {[tH('codigoNoAccent'), tH('descripcionNoAccent'), tH('cantShort'), tF('unidad')].map(h => (
-                    <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {viewDetail.detalles.map(d => (
-                  <tr key={d.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-4 py-3 font-mono text-xs text-white">{d.codigo_producto}</td>
-                    <td className="px-4 py-3 text-white/80">{d.descripcion}</td>
-                    <td className="px-4 py-3 text-white/70 text-right">{d.cantidad}</td>
-                    <td className="px-4 py-3 text-white/50 text-xs">{d.unidad_medida}</td>
+                  <tr key={d.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-4 py-3 font-mono text-xs text-slate-800">{d.codigo_producto}</td>
+                    <td className="px-4 py-3 text-slate-600">{d.descripcion}</td>
+                    <td className="px-4 py-3 text-slate-600 text-right">{d.cantidad}</td>
+                    <td className="px-4 py-3 text-slate-500 text-xs">{d.unidad_medida}</td>
                   </tr>
                 ))}
               </tbody>
@@ -488,16 +488,16 @@ export default function PedidosPage() {
           </div>
 
           <div className="flex flex-col items-end gap-2 mb-6">
-            <div className="flex gap-8 justify-between w-64 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
-              <span className="font-bold text-white">TOTAL ITEMS</span>
-              <span className="font-bold text-lg" style={{ color: '#fff' }}>{totalItems}</span>
+            <div className="flex gap-8 justify-between w-64 pt-2" style={{ borderTop: '1px solid rgba(15,23,42,0.15)' }}>
+              <span className="font-bold text-slate-800">TOTAL ITEMS</span>
+              <span className="font-bold text-lg" style={{ color: '#1e293b' }}>{totalItems}</span>
             </div>
           </div>
 
           {viewDetail.observaciones && (
-            <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="rounded-xl p-4" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
               <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#f97316' }}>Observaciones</p>
-              <p className="text-white/70">{viewDetail.observaciones}</p>
+              <p className="text-slate-600">{viewDetail.observaciones}</p>
             </div>
           )}
         </div>
@@ -520,24 +520,24 @@ export default function PedidosPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('pedidos')}</h1>
-          <p className="text-white/50 mt-1">{tSub('pedidos')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('pedidos')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('pedidos')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
-          <button onClick={createNew} className="px-5 py-2.5 rounded-xl font-medium text-white mr-24" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
+          <button onClick={createNew} className="px-5 py-2.5 rounded-xl font-medium text-slate-800 mr-24" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newSalesOrder')}
           </button>
         )}
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {(['registros', 'reportes', 'especificos'] as const).map(t => (
           <button key={t} onClick={() => setTab(t)}
             className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}>
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}>
             {t === 'registros' ? tTab('registrosEmoji') : t === 'reportes' ? tTab('reportesEmoji') : tTab('especificosEmoji')}
           </button>
         ))}
@@ -549,14 +549,14 @@ export default function PedidosPage() {
           {isFormOpen && selectedPedido && (() => {
             const totalItems = selectedPedido.detalles.reduce((s, d) => s + d.cantidad, 0)
             return (
-              <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                <h2 className="text-lg font-semibold text-white mb-4">Nueva Orden de Pedido — {selectedPedido.consecutivo}</h2>
+              <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+                <h2 className="text-lg font-semibold text-slate-800 mb-4">Nueva Orden de Pedido — {selectedPedido.consecutivo}</h2>
                 <form onSubmit={handleSave}>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Correlativo</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Correlativo</label>
                       <input readOnly value={selectedPedido.consecutivo}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold font-mono"
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold font-mono"
                         style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', cursor: 'not-allowed' }} />
                     </div>
                     {[
@@ -567,51 +567,51 @@ export default function PedidosPage() {
                       { label: tF('fechaAprobacionNoAccent'), key: 'fecha_aprobacion', type: 'date' },
                     ].map(({ label, key, type = 'text', placeholder }) => (
                       <div key={key}>
-                        <label className="block text-xl text-white font-extrabold mb-1">{label}</label>
+                        <label className="block text-xl text-slate-800 font-extrabold mb-1">{label}</label>
                         <input type={type} required={label.includes('*')}
                           value={String((selectedPedido as Record<string, unknown>)[key])}
                           onChange={e => setSelectedPedido({ ...selectedPedido, [key]: e.target.value })}
-                          className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold"
-                          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                          className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                          style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                           placeholder={placeholder} />
                       </div>
                     ))}
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Proveedor *</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Proveedor *</label>
                       <select required value={selectedPedido.proveedor} onChange={e => setSelectedPedido({ ...selectedPedido, proveedor: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {proveedores.map(p => <option key={p.id} value={p.nombre}>{p.nombre}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Condición de Pago</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Condición de Pago</label>
                       <select value={selectedPedido.condicion_pago} onChange={e => setSelectedPedido({ ...selectedPedido, condicion_pago: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {refData.condiciones_pago.map(c => <option key={c.id} value={c.descripcion}>{c.descripcion}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Bodega Llegada</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Bodega Llegada</label>
                       <select value={selectedPedido.bodega_llegada} onChange={e => setSelectedPedido({ ...selectedPedido, bodega_llegada: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {bodegas.map(b => <option key={b.id} value={b.nombre}>{b.nombre}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Centro de Costo</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Centro de Costo</label>
                       <select value={selectedPedido.centro_costo} onChange={e => setSelectedPedido({ ...selectedPedido, centro_costo: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         <option value="">{tOp('seleccione')}</option>
                         {centrosCosto.map(c => <option key={c.id} value={`${c.codigo} - ${c.descripcion}`}>{c.codigo} - {c.descripcion}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xl text-white font-extrabold mb-1">Situacion</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-1">Situacion</label>
                       <select value={selectedPedido.situacion} onChange={e => setSelectedPedido({ ...selectedPedido, situacion: e.target.value })}
-                        className="w-full rounded-xl px-3 py-2 text-white outline-none text-base text-white font-bold" style={selectStyle}>
+                        className="w-full rounded-xl px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold" style={selectStyle}>
                         {(refData.situacion_orden_compra ?? []).map(s => <option key={s.id} value={s.descripcion}>{s.descripcion}</option>)}
                       </select>
                     </div>
@@ -620,18 +620,18 @@ export default function PedidosPage() {
                   {/* Detalles */}
                   <div className="mb-4">
                     <div className="flex justify-between items-center mb-3">
-                      <h3 className="text-white font-medium">Renglones / Detalle</h3>
-                      <button type="button" onClick={addDetalle} className="px-3 py-1.5 rounded-lg text-xs text-white font-medium" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
+                      <h3 className="text-slate-800 font-medium">Renglones / Detalle</h3>
+                      <button type="button" onClick={addDetalle} className="px-3 py-1.5 rounded-lg text-xs text-slate-800 font-medium" style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                         {tBtn('addLine')}
                       </button>
                     </div>
                     {/* Buscador de producto */}
                     <div className="mb-4 p-4 rounded-xl" style={{ background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)' }}>
-                      <label className="block text-xl text-white font-extrabold mb-2">Buscar producto para agregar al detalle</label>
+                      <label className="block text-xl text-slate-800 font-extrabold mb-2">Buscar producto para agregar al detalle</label>
                       <div style={{ position: 'relative' }}>
                         <input value={searchText} onChange={e => setSearchText(e.target.value)}
-                          className="w-full rounded-lg px-3 py-2 text-white outline-none text-base text-white font-bold"
-                          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                          className="w-full rounded-lg px-3 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                          style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                           placeholder="Escriba el nombre del producto..." autoComplete="off" />
                         {searchText.length >= 2 && (
                           <div style={{ position: 'absolute', zIndex: 9999, left: 0, right: 0, top: '100%', marginTop: 4, background: 'rgb(15,23,42)', border: '1px solid rgba(96,165,250,0.4)', borderRadius: 12, maxHeight: 220, overflowY: 'auto', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
@@ -656,40 +656,40 @@ export default function PedidosPage() {
                                   setSelectedPedido({ ...selectedPedido, detalles })
                                   setSearchText('')
                                 }}
-                                style={{ padding: '10px 14px', cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                                style={{ padding: '10px 14px', cursor: 'pointer', borderBottom: '1px solid rgba(15,23,42,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                                 className="hover:bg-blue-400/20">
-                                <span style={{ color: '#fff', fontSize: 13 }}>{p.descripcion}</span>
-                                <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'monospace', marginLeft: 12 }}>{p.codigo} · {p.unidad_medida}</span>
+                                <span style={{ color: '#1e293b', fontSize: 13 }}>{p.descripcion}</span>
+                                <span style={{ color: 'rgba(15,23,42,0.4)', fontSize: 11, fontFamily: 'monospace', marginLeft: 12 }}>{p.codigo} · {p.unidad_medida}</span>
                               </div>
                             ))}
                             {productos.filter(p => p.situacion === 'Activo' && !!p.descripcion && !!p.codigo && p.descripcion.toLowerCase().includes(searchText.toLowerCase())).length === 0 && (
-                              <div style={{ padding: '10px 14px', color: 'rgba(255,255,255,0.3)', fontSize: 12, textAlign: 'center' }}>No se encontraron productos</div>
+                              <div style={{ padding: '10px 14px', color: 'rgba(15,23,42,0.3)', fontSize: 12, textAlign: 'center' }}>No se encontraron productos</div>
                             )}
                           </div>
                         )}
                       </div>
                     </div>
 
-                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                       <table className="w-full text-base text-left">
-                        <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+                        <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
                           <tr>
                             {[tH('codigoNoAccent'), tH('descripcionNoAccent'), tF('cantidad'), tF('unidad'), ''].map(h => (
-                              <th key={h} className="px-3 py-2 font-semibold" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                              <th key={h} className="px-3 py-2 font-semibold" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
                           {selectedPedido.detalles.map((d, idx) => (
-                            <tr key={d.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                            <tr key={d.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
                               <td className="px-2 py-2">
-                                <input value={d.codigo_producto} readOnly className="w-28 rounded-lg px-2 py-1.5 text-white outline-none cursor-not-allowed font-mono text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }} />
+                                <input value={d.codigo_producto} readOnly className="w-28 rounded-lg px-2 py-1.5 text-slate-800 outline-none cursor-not-allowed font-mono text-xs" style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(15,23,42,0.08)' }} />
                               </td>
                               <td className="px-2 py-2">
-                                <input value={d.descripcion} readOnly className="w-full rounded-lg px-2 py-1.5 text-white outline-none cursor-not-allowed text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }} />
+                                <input value={d.descripcion} readOnly className="w-full rounded-lg px-2 py-1.5 text-slate-800 outline-none cursor-not-allowed text-xs" style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(15,23,42,0.08)' }} />
                               </td>
-                              <td className="px-2 py-2"><input type="number" min="0" value={d.cantidad} onChange={e => updateDetalle(idx, 'cantidad', parseFloat(e.target.value) || 0)} className="w-20 rounded-lg px-2 py-1.5 text-white outline-none" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }} /></td>
-                              <td className="px-2 py-2"><input value={d.unidad_medida} readOnly className="w-28 rounded-lg px-2 py-1.5 text-white outline-none text-xs cursor-not-allowed" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }} /></td>
+                              <td className="px-2 py-2"><input type="number" min="0" value={d.cantidad} onChange={e => updateDetalle(idx, 'cantidad', parseFloat(e.target.value) || 0)} className="w-20 rounded-lg px-2 py-1.5 text-slate-800 outline-none" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }} /></td>
+                              <td className="px-2 py-2"><input value={d.unidad_medida} readOnly className="w-28 rounded-lg px-2 py-1.5 text-slate-800 outline-none text-xs cursor-not-allowed" style={{ background: 'rgba(15,23,42,0.03)', border: '1px solid rgba(15,23,42,0.08)' }} /></td>
                               <td className="px-2 py-2"><button type="button" onClick={() => removeDetalle(idx)} className="text-red-400 hover:text-red-300 px-2 py-1">✕</button></td>
                             </tr>
                           ))}
@@ -700,32 +700,32 @@ export default function PedidosPage() {
 
                   {/* Total items */}
                   <div className="flex flex-col items-end gap-1.5 mb-6 text-sm">
-                    <div className="flex gap-8 w-72 justify-between pt-2 font-bold" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}><span className="text-white">TOTAL ITEMS</span><span style={{ color: '#fff' }}>{totalItems}</span></div>
+                    <div className="flex gap-8 w-72 justify-between pt-2 font-bold" style={{ borderTop: '1px solid rgba(15,23,42,0.15)' }}><span className="text-slate-800">TOTAL ITEMS</span><span style={{ color: '#1e293b' }}>{totalItems}</span></div>
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                     <textarea rows={2} value={selectedPedido.observaciones} onChange={e => setSelectedPedido({ ...selectedPedido, observaciones: e.target.value })}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none resize-none"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none resize-none"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                       placeholder="Notas u observaciones..." />
                   </div>
 
                   <div className="flex gap-3">
-                    <button type="submit" className="px-6 py-2 rounded-xl text-white font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('saveSalesOrder')}</button>
-                    <button type="button" onClick={() => { setIsFormOpen(false); setSelectedPedido(null) }} className="px-6 py-2 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>{tBtn('cancel')}</button>
+                    <button type="submit" className="px-6 py-2 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('saveSalesOrder')}</button>
+                    <button type="button" onClick={() => { setIsFormOpen(false); setSelectedPedido(null) }} className="px-6 py-2 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>{tBtn('cancel')}</button>
                   </div>
                 </form>
               </div>
             )
           })()}
 
-          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-x-auto" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left" style={{ minWidth: '800px' }}>
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {[tH('nro'), tF('proveedor'), tH('emisionNoAccent'), tH('vence'), tF('comprador'), tH('items'), tF('estado'), tTbl('actions')].map(h => (
-                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-3 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -733,17 +733,17 @@ export default function PedidosPage() {
                 {pedidos.map(p => {
                   const totalItems = p.detalles.reduce((s, d) => s + d.cantidad, 0)
                   return (
-                    <tr key={p.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td className="px-3 py-3 font-mono font-bold whitespace-nowrap" style={{ color: '#fff' }}>{p.consecutivo}</td>
-                      <td className="px-3 py-3 text-white font-bold max-w-[180px] truncate">{p.proveedor}</td>
-                      <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(p.fecha_emision)}</td>
-                      <td className="px-3 py-3 text-white font-bold whitespace-nowrap">{fDate(p.fecha_vencimiento)}</td>
-                      <td className="px-3 py-3 text-white font-bold max-w-[120px] truncate">{p.comprador}</td>
-                      <td className="px-3 py-3 text-white font-medium whitespace-nowrap">{totalItems}</td>
+                    <tr key={p.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                      <td className="px-3 py-3 font-mono font-bold whitespace-nowrap" style={{ color: '#1e293b' }}>{p.consecutivo}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold max-w-[180px] truncate">{p.proveedor}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(p.fecha_emision)}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold whitespace-nowrap">{fDate(p.fecha_vencimiento)}</td>
+                      <td className="px-3 py-3 text-slate-800 font-bold max-w-[120px] truncate">{p.comprador}</td>
+                      <td className="px-3 py-3 text-slate-800 font-medium whitespace-nowrap">{totalItems}</td>
                       <td className="px-3 py-3"><span className="px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap" style={statusStyle(p.situacion)}>{p.situacion}</span></td>
                       <td className="px-3 py-3">
                         <div className="flex gap-1.5 whitespace-nowrap">
-                          <button onClick={() => setViewDetail(p)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
+                          <button onClick={() => setViewDetail(p)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
                           {permisos.editar && !['Aprobada', 'Recibida', 'Anulada'].includes(p.situacion) && <button onClick={() => {
                             const cc = p.centro_costo || ''
                             const ccFixed = cc.includes(' - ') ? cc : (() => {
@@ -751,8 +751,8 @@ export default function PedidosPage() {
                               return found ? `${found.codigo} - ${found.descripcion}` : cc
                             })()
                             setSelectedPedido({ ...p, centro_costo: ccFixed }); setIsFormOpen(true); setViewDetail(null)
-                          }} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)' }}>{tBtn('edit')}</button>}
-                          {permisos.esAdmin && <button onClick={() => handleDelete(p)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
+                          }} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(15,23,42,0.08)', color: 'rgba(15,23,42,0.6)', border: '1px solid rgba(15,23,42,0.15)' }}>{tBtn('edit')}</button>}
+                          {permisos.esAdmin && <button onClick={() => handleDelete(p)} className="px-2.5 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
                         </div>
                       </td>
                     </tr>
@@ -779,11 +779,11 @@ export default function PedidosPage() {
       {/* Tab: Reportes Específicos */}
       {tab === 'especificos' && (
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-4">{tTab('especificos')}</h2>
-          <p className="text-white/50 text-sm mb-6">{tSub('seleccioneReporte')}</p>
+          <h2 className="text-xl font-bold text-slate-800 mb-4">{tTab('especificos')}</h2>
+          <p className="text-slate-500 text-sm mb-6">{tSub('seleccioneReporte')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="text-white/40 text-sm">Los reportes especificos se iran agregando segun sus necesidades</p>
+            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="text-slate-400 text-sm">Los reportes especificos se iran agregando segun sus necesidades</p>
             </div>
           </div>
         </div>

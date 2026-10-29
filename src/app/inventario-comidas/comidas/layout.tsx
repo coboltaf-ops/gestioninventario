@@ -21,7 +21,7 @@ export default function ComidasLayout({ children }: { children: React.ReactNode 
 
   if (isStandalone) {
     return (
-      <div style={{ minHeight: '100vh', background: '#000', color: '#fff', fontFamily: 'system-ui, sans-serif' }}>
+      <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', fontFamily: 'system-ui, sans-serif' }}>
         <ComidasDataLoader />
         {children}
       </div>
@@ -29,7 +29,7 @@ export default function ComidasLayout({ children }: { children: React.ReactNode 
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#000', color: '#fff', fontFamily: 'system-ui, sans-serif', display: 'flex' }}>
+    <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', fontFamily: 'system-ui, sans-serif', display: 'flex' }}>
       <ComidasDataLoader />
       <InventarioSidebar />
       <main style={{ flex: 1, marginLeft: '256px', overflowY: 'auto' }}>

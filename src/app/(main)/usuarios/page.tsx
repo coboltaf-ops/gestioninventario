@@ -19,11 +19,11 @@ import { useReferenceStore } from '@/features/referencias/store/reference-store'
 
 const tabActive: React.CSSProperties = {
   background: 'rgba(59,130,246,1)',
-  color: '#fff',
+  color: '#1e293b',
   border: '1px solid rgba(37,99,235,1)',
 }
 const tabInactive: React.CSSProperties = {
-  color: 'rgba(255,255,255,0.5)',
+  color: 'rgba(15,23,42,0.5)',
   border: '1px solid transparent',
 }
 
@@ -112,15 +112,15 @@ export default function UsuariosPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('usuarios')}</h1>
-          <p className="text-white/50 mt-1">{tSub('usuarios')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('usuarios')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('usuarios')}</p>
         </div>
       </div>
 
       {/* Tabs: Registros | Permisos | Reportes */}
       <div
         className="flex gap-1 mb-6 p-1 rounded-xl w-fit"
-        style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+        style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}
       >
         {[
           { id: 'registros' as const, label: tTab('registros'), icon: '📋' },

@@ -108,7 +108,7 @@ export default function CajaPage() {
 
   if (!openCaja) {
     return (
-      <div style={{ minHeight: '100vh', background: '#000', color: '#fff', padding: '40px 20px' }}>
+      <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', padding: '40px 20px' }}>
         <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '32px', marginBottom: '20px', fontWeight: 'bold' }}>🔐 CUADRE DE CAJA</h1>
           <p style={{ fontSize: '16px', color: '#aaa', marginBottom: '40px' }}>
@@ -118,7 +118,7 @@ export default function CajaPage() {
             width: '100%',
             padding: '20px',
             background: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
-            color: '#fff',
+            color: '#1e293b',
             border: 'none',
             borderRadius: '12px',
             cursor: 'pointer',
@@ -162,7 +162,7 @@ export default function CajaPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#000', color: '#fff', padding: '20px' }}>
+    <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', padding: '20px' }}>
       <style>{`
         @media print {
           body { background: white; color: black; }
@@ -241,7 +241,7 @@ export default function CajaPage() {
               <p style={{ margin: 0, fontSize: '18px', fontWeight: 'bold' }}>${montoTransferencia.toLocaleString()}</p>
             </div>
 
-            <div style={{ padding: '15px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>
+            <div style={{ padding: '15px', background: 'rgba(15,23,42,0.05)', borderRadius: '6px' }}>
               <p style={{ margin: '0 0 5px 0', fontSize: '12px', color: '#888' }}>TOTAL VENTAS</p>
               <p style={{ margin: 0, fontSize: '24px', fontWeight: 'bold', color: '#ea580c' }}>
                 ${totalVentas.toLocaleString()}
@@ -262,19 +262,19 @@ export default function CajaPage() {
             <h2 style={{ fontSize: '20px', marginBottom: '20px', fontWeight: 'bold' }}>🔐 CIERRE DE CAJA</h2>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginBottom: '20px' }}>
-              <div style={{ padding: '15px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>
+              <div style={{ padding: '15px', background: 'rgba(15,23,42,0.05)', borderRadius: '6px' }}>
                 <p style={{ margin: '0 0 5px 0', fontSize: '12px', color: '#888' }}>Monto Inicial</p>
                 <p style={{ margin: 0, fontSize: '18px', fontWeight: 'bold' }}>
                   ${openCaja.monto_inicial.toLocaleString()}
                 </p>
               </div>
-              <div style={{ padding: '15px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>
+              <div style={{ padding: '15px', background: 'rgba(15,23,42,0.05)', borderRadius: '6px' }}>
                 <p style={{ margin: '0 0 5px 0', fontSize: '12px', color: '#888' }}>Ventas Efectivo</p>
                 <p style={{ margin: 0, fontSize: '18px', fontWeight: 'bold' }}>
                   ${montoEfectivo.toLocaleString()}
                 </p>
               </div>
-              <div style={{ padding: '15px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>
+              <div style={{ padding: '15px', background: 'rgba(15,23,42,0.05)', borderRadius: '6px' }}>
                 <p style={{ margin: '0 0 5px 0', fontSize: '12px', color: '#888' }}>Esperado</p>
                 <p style={{ margin: 0, fontSize: '18px', fontWeight: 'bold' }}>
                   ${montoEsperadoEfectivo.toLocaleString()}
@@ -295,7 +295,7 @@ export default function CajaPage() {
                   width: '100%',
                   padding: '12px',
                   background: '#111',
-                  color: '#fff',
+                  color: '#1e293b',
                   border: '1px solid #f59e0b',
                   borderRadius: '6px',
                   fontSize: '16px',
@@ -342,7 +342,7 @@ export default function CajaPage() {
                   width: '100%',
                   padding: '12px',
                   background: '#111',
-                  color: '#fff',
+                  color: '#1e293b',
                   border: '1px solid #666',
                   borderRadius: '6px',
                   fontSize: '14px',
@@ -374,7 +374,7 @@ export default function CajaPage() {
                 width: '100%',
                 padding: '15px',
                 background: procesando ? '#999' : 'linear-gradient(135deg, #f59e0b, #fbbf24)',
-                color: '#000',
+                color: '#f1f5f9',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: procesando ? 'not-allowed' : 'pointer',
@@ -460,7 +460,7 @@ export default function CajaPage() {
             <button onClick={imprimirCierre} style={{
               padding: '15px 30px',
               background: '#3b82f6',
-              color: '#fff',
+              color: '#1e293b',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',

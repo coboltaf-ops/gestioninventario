@@ -68,21 +68,21 @@ const nextNroAjuste = (ajustes: AjusteInventario[]) => {
 }
 
 const inputSt: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff',
+  background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b',
 }
 const selectSt: React.CSSProperties = {
-  background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff',
+  background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b',
 }
 const estadoStyle = (s: string): React.CSSProperties => {
-  if (s === 'Aprobada y Ejecutada') return { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' }
-  if (s === 'Aprobado') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'Anulado')  return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
-  return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
+  if (s === 'Aprobada y Ejecutada') return { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' }
+  if (s === 'Aprobado') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Anulado')  return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
+  return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
 }
 const signoStyle = (signo: string): React.CSSProperties => {
-  if (signo === '+') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (signo === '-') return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
-  return { background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.1)' }
+  if (signo === '+') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (signo === '-') return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
+  return { background: 'rgba(15,23,42,0.05)', color: 'rgba(15,23,42,0.4)', border: '1px solid rgba(15,23,42,0.1)' }
 }
 
 // ─── PDF individual ──────────────────────────────────────────────────────────
@@ -445,14 +445,14 @@ export default function AjustesInventarioPage() {
   // ─── Vista Detalle ────────────────────────────────────────────────────────────
   if (viewItem) return (
     <div>
-      <button onClick={() => setViewItem(null)} className="mb-6 flex items-center gap-2 transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}>
+      <button onClick={() => setViewItem(null)} className="mb-6 flex items-center gap-2 transition-colors" style={{ color: 'rgba(15,23,42,0.5)' }}>
         ← Volver a Ajustes de Inventario
       </button>
-      <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white">{t('ajusteInventarioDetail')}</h1>
-            <p className="text-2xl font-mono mt-1" style={{ color: '#fff' }}>{viewItem.nro_ajuste}</p>
+            <h1 className="text-3xl font-bold text-slate-800">{t('ajusteInventarioDetail')}</h1>
+            <p className="text-2xl font-mono mt-1" style={{ color: '#1e293b' }}>{viewItem.nro_ajuste}</p>
           </div>
           <div className="flex items-center gap-3">
             <button onClick={() => {
@@ -460,7 +460,7 @@ export default function AjustesInventarioPage() {
               const empData = emp ? { nombre: emp.nombre, tipo_identificacion: emp.tipo_identificacion, nro_documento: emp.nro_documento, direccion: emp.direccion, ciudad: emp.ciudad } : undefined
               generateAjustePDF(viewItem, empData, emp?.logo || LOGO_BASE64)
             }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
               style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
               🖨 Generar PDF
             </button>
@@ -481,24 +481,24 @@ export default function AjustesInventarioPage() {
           ].map(({ label, value }) => (
             <div key={label}>
               <p className="text-xs uppercase tracking-wider mb-1" style={{ color: '#f97316' }}>{label}</p>
-              <p className="text-white font-medium">{value}</p>
+              <p className="text-slate-800 font-medium">{value}</p>
             </div>
           ))}
         </div>
-        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
           <table className="w-full text-base text-left">
-            <thead style={{ background: 'rgba(255,255,255,0.07)' }}>
+            <thead style={{ background: 'rgba(15,23,42,0.07)' }}>
               <tr>{['#','Código','Descripción',tH('unidMedida'),'Cantidad'].map(h => (
-                <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
               ))}</tr>
             </thead>
             <tbody>
               {viewItem.renglones.map((r, idx) => (
-                <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  <td className="px-5 py-3 text-white/40 text-xs">{idx + 1}</td>
-                  <td className="px-5 py-3 font-mono text-xs text-white">{r.codigo_producto}</td>
-                  <td className="px-5 py-3 text-white/80">{r.descripcion}</td>
-                  <td className="px-5 py-3 text-white/50">{r.unidad_medida || '—'}</td>
+                <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                  <td className="px-5 py-3 text-slate-400 text-xs">{idx + 1}</td>
+                  <td className="px-5 py-3 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                  <td className="px-5 py-3 text-slate-600">{r.descripcion}</td>
+                  <td className="px-5 py-3 text-slate-500">{r.unidad_medida || '—'}</td>
                   <td className="px-5 py-3">
                     <span className="font-bold px-3 py-1 rounded-lg text-sm" style={signoStyle(viewItem.tipo_ajuste_signo)}>
                       {viewItem.tipo_ajuste_signo}{r.cantidad}
@@ -519,13 +519,13 @@ export default function AjustesInventarioPage() {
       {/* Título + botón */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('ajustesInventario')}</h1>
-          <p className="text-white/50 mt-1">{tSub('ajustesInventario')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('ajustesInventario')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('ajustesInventario')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
           <button
             onClick={() => { setForm(emptyForm(nextNroAjuste(todosAjustes), tipoActivo || '')); setIsFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newAdjustment')}
           </button>
@@ -533,13 +533,13 @@ export default function AjustesInventarioPage() {
       </div>
 
       {/* ── Pestañas ─────────────────────────────────────────────────────────── */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {(['registros', 'reportes', 'especificos'] as const).map(t => (
           <button key={t} onClick={() => setTab(t)}
             className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}>
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}>
             {t === 'registros' ? tTab('registrosEmoji') : t === 'reportes' ? tTab('reportesEmoji') : tTab('especificosEmoji')}
           </button>
         ))}
@@ -550,41 +550,41 @@ export default function AjustesInventarioPage() {
         <>
           {/* Formulario */}
           {isFormOpen && (
-            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
+            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
               <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-lg font-semibold text-white">{tSec('nuevoAjuste')}</h2>
+                <h2 className="text-lg font-semibold text-slate-800">{tSec('nuevoAjuste')}</h2>
                 <span className="font-mono text-sm px-3 py-1 rounded-lg"
-                  style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                  style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                   {form.nro_ajuste}
                 </span>
               </div>
               <form onSubmit={handleSave}>
                 {errorMsg && (
-                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                     {errorMsg}
                   </div>
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Nro. Ajuste</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro. Ajuste</label>
                     <input readOnly value={form.nro_ajuste} className="w-full rounded-xl px-4 py-2.5 outline-none font-mono"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }} />
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }} />
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Emisión *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Emisión *</label>
                     <input type="date" required value={form.fecha_emision}
                       onChange={e => setForm({ ...form, fecha_emision: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Tipo de Inventario</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Inventario</label>
                     <input readOnly value={form.tipo_inventario || '—'}
                       className="w-full rounded-xl px-4 py-2.5 outline-none font-semibold"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }}
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }}
                       title="Definido por el Tipo de Inventario activo de la sesión." />
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Bodega *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega *</label>
                     <select required value={form.bodega_id} onChange={e => handleBodega(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       <option value="">{tOp('seleccione')}</option>
@@ -592,19 +592,19 @@ export default function AjustesInventarioPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Persona que Autoriza *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Persona que Autoriza *</label>
                     <input required value={form.persona_autoriza}
                       onChange={e => setForm({ ...form, persona_autoriza: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} placeholder="Nombre completo" />
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Aprobación</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Aprobación</label>
                     <input type="date" value={form.fecha_aprobacion}
                       onChange={e => setForm({ ...form, fecha_aprobacion: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Tipo de Ajuste *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Ajuste *</label>
                     <select required value={form.tipo_ajuste_id} onChange={e => handleTipoAjuste(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       <option value="">{tOp('seleccione')}</option>
@@ -617,7 +617,7 @@ export default function AjustesInventarioPage() {
                     )}
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Estado</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Estado</label>
                     <select value={form.estado} onChange={e => setForm({ ...form, estado: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       {[tF('pendiente'),'Aprobado','Anulado'].map(s => <option key={s} value={s}>{s}</option>)}
@@ -627,14 +627,14 @@ export default function AjustesInventarioPage() {
 
                 {/* Buscar producto */}
                 <div className="mb-4">
-                  <label className="block text-xl text-white font-extrabold mb-2">Buscar producto para agregar al detalle</label>
+                  <label className="block text-xl text-slate-800 font-extrabold mb-2">Buscar producto para agregar al detalle</label>
                   <div className="flex items-center gap-2 max-w-md">
                     <input ref={searchProdRef} value={searchProd}
                       onFocus={() => { setSinExistMsg(''); setCantExistMsg('') }}
                       onChange={e => { setSearchProd(e.target.value); setSinExistMsg('') }}
                       onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); setSinExistMsg(''); setSearchProd('') } }}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none text-base text-white font-bold"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                       placeholder="Escriba nombre o código del producto..." />
                     <VoiceSearchButton onResult={setSearchProd} />
                   </div>
@@ -644,9 +644,9 @@ export default function AjustesInventarioPage() {
                       p.codigo.toLowerCase().includes(searchProd.toLowerCase()) ||
                       p.descripcion.toLowerCase().includes(searchProd.toLowerCase())
                     ).slice(0, 8)
-                    if (matches.length === 0) return <p className="text-white/30 text-xs mt-2">No se encontraron productos</p>
+                    if (matches.length === 0) return <p className="text-slate-400 text-xs mt-2">No se encontraron productos</p>
                     return (
-                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                         {matches.map(p => (
                           <button key={p.id} type="button"
                             onClick={() => {
@@ -670,19 +670,19 @@ export default function AjustesInventarioPage() {
                               setForm({ ...form, renglones })
                               setSearchProd('')
                             }}
-                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-white/5 transition-colors"
-                            style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                            <span className="font-mono text-xs" style={{ color: '#fff' }}>{p.codigo}</span>
-                            <span className="text-white/80 flex-1">{p.descripcion}</span>
-                            <span className="text-white/40 text-xs">{p.unidad_medida}</span>
-                            <span className="text-white/40 text-xs">Exist: {p.existencia}</span>
+                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-black/5 transition-colors"
+                            style={{ borderBottom: '1px solid rgba(15,23,42,0.05)' }}>
+                            <span className="font-mono text-xs" style={{ color: '#1e293b' }}>{p.codigo}</span>
+                            <span className="text-slate-600 flex-1">{p.descripcion}</span>
+                            <span className="text-slate-400 text-xs">{p.unidad_medida}</span>
+                            <span className="text-slate-400 text-xs">Exist: {p.existencia}</span>
                           </button>
                         ))}
                       </div>
                     )
                   })()}
                   {sinExistMsg && (
-                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                       ⚠ {sinExistMsg}
                     </div>
                   )}
@@ -691,22 +691,22 @@ export default function AjustesInventarioPage() {
                 {/* Renglones */}
                 {form.renglones.length > 0 && form.renglones[0].codigo_producto !== '' && (
                 <div className="mb-6">
-                  <h3 className="text-white font-medium mb-3">Renglones</h3>
-                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <h3 className="text-slate-800 font-medium mb-3">Renglones</h3>
+                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                     <table className="w-full text-base text-left">
-                      <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+                      <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
                         <tr>
                           {[tF('codigo'), tF('descripcion'), tH('unidMedida'), tF('cantidad'), ''].map(h => (
-                            <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                            <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {form.renglones.map((r, idx) => (
-                          <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                            <td className="px-3 py-2 font-mono text-xs text-white">{r.codigo_producto}</td>
-                            <td className="px-3 py-2 text-white font-bold">{r.descripcion}</td>
-                            <td className="px-3 py-2 text-white font-bold">{r.unidad_medida || '—'}</td>
+                          <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                            <td className="px-3 py-2 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                            <td className="px-3 py-2 text-slate-800 font-bold">{r.descripcion}</td>
+                            <td className="px-3 py-2 text-slate-800 font-bold">{r.unidad_medida || '—'}</td>
                             <td className="px-2 py-2">
                               <input type="number" min="0.01" step="0.01" value={r.cantidad || ''}
                                 onChange={e => {
@@ -731,7 +731,7 @@ export default function AjustesInventarioPage() {
                                     searchProdRef.current?.focus()
                                   }
                                 }}
-                                className="w-24 rounded-lg px-2 py-1.5 text-white outline-none text-center font-bold"
+                                className="w-24 rounded-lg px-2 py-1.5 text-slate-800 outline-none text-center font-bold"
                                 style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)' }} />
                             </td>
                             <td className="px-2 py-2">
@@ -744,7 +744,7 @@ export default function AjustesInventarioPage() {
                     </table>
                   </div>
                   {cantExistMsg && (
-                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                       ⚠ {cantExistMsg} — Presione Enter para buscar otro producto
                     </div>
                   )}
@@ -752,12 +752,12 @@ export default function AjustesInventarioPage() {
                 )}
 
                 <div className="flex gap-3">
-                  <button type="submit" className="px-6 py-2.5 rounded-xl text-white font-medium"
+                  <button type="submit" className="px-6 py-2.5 rounded-xl text-slate-800 font-medium"
                     style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                     {tBtn('saveAdjustment')}
                   </button>
-                  <button type="button" onClick={() => setIsFormOpen(false)} className="px-6 py-2.5 rounded-xl text-white/70"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <button type="button" onClick={() => setIsFormOpen(false)} className="px-6 py-2.5 rounded-xl text-slate-600"
+                    style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
                     {tBtn('cancel')}
                   </button>
                 </div>
@@ -766,27 +766,27 @@ export default function AjustesInventarioPage() {
           )}
 
           {/* Tabla de registros */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>{[tF('nroAjuste'),'Fecha Emisión','Bodega','Persona Autoriza','Tipo de Ajuste','Renglones','Estado',tTbl('actions')].map(h => (
-                  <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                  <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                 ))}</tr>
               </thead>
               <tbody>
                 {ajustes.map(a => (
-                  <tr key={a.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-5 py-4 font-mono font-bold" style={{ color: '#fff' }}>{a.nro_ajuste}</td>
-                    <td className="px-5 py-4 text-white/60">{fDate(a.fecha_emision)}</td>
-                    <td className="px-5 py-4 text-white font-bold">{a.bodega_nombre}</td>
-                    <td className="px-5 py-4 text-white/60">{a.persona_autoriza}</td>
+                  <tr key={a.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-5 py-4 font-mono font-bold" style={{ color: '#1e293b' }}>{a.nro_ajuste}</td>
+                    <td className="px-5 py-4 text-slate-500">{fDate(a.fecha_emision)}</td>
+                    <td className="px-5 py-4 text-slate-800 font-bold">{a.bodega_nombre}</td>
+                    <td className="px-5 py-4 text-slate-500">{a.persona_autoriza}</td>
                     <td className="px-5 py-4">
                       <span className="px-2 py-1 rounded-lg text-xs font-bold mr-1" style={signoStyle(a.tipo_ajuste_signo)}>{a.tipo_ajuste_signo}</span>
-                      <span className="text-white/70 text-xs">{a.tipo_ajuste_nombre}</span>
+                      <span className="text-slate-600 text-xs">{a.tipo_ajuste_nombre}</span>
                     </td>
                     <td className="px-5 py-4 text-center">
                       <span className="px-2 py-1 rounded-lg text-xs font-medium"
-                        style={{ background: 'rgba(96,165,250,0.15)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                        style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                         {a.renglones.length} ítem{a.renglones.length !== 1 ? 's' : ''}
                       </span>
                     </td>
@@ -796,15 +796,15 @@ export default function AjustesInventarioPage() {
                     <td className="px-5 py-4">
                       <div className="flex gap-2">
                         <button onClick={() => setViewItem(a)} className="px-3 py-1 rounded-lg text-xs font-medium"
-                          style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
+                          style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
                         {permisos.eliminar && a.estado !== 'Aprobada y Ejecutada' && <button onClick={() => handleDelete(a.id)} className="px-3 py-1 rounded-lg text-xs font-medium"
-                          style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
+                          style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
                       </div>
                     </td>
                   </tr>
                 ))}
                 {ajustes.length === 0 && (
-                  <tr><td colSpan={8} className="px-6 py-16 text-center" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                  <tr><td colSpan={8} className="px-6 py-16 text-center" style={{ color: 'rgba(15,23,42,0.25)' }}>
                     <div className="text-4xl mb-3">⚖️</div>
                     <p>No hay ajustes registrados. Crea el primero con <strong>{tBtn('newAdjustment')}</strong>.</p>
                   </td></tr>
@@ -820,12 +820,12 @@ export default function AjustesInventarioPage() {
         <div className="space-y-6">
 
           {/* Panel título + filtros */}
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-            <h2 className="text-lg font-semibold text-white mb-5">Configurar Reporte</h2>
+          <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+            <h2 className="text-lg font-semibold text-slate-800 mb-5">Configurar Reporte</h2>
 
             {/* Título personalizado */}
             <div className="mb-5">
-              <label className="block text-xl font-extrabold text-white mb-1">Título del Reporte</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Título del Reporte</label>
               <input value={rptTitle} onChange={e => setRptTitle(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none text-lg font-semibold" style={inputSt}
                 placeholder="Ej: Reporte Mensual de Ajustes — Marzo 2026" />
@@ -834,17 +834,17 @@ export default function AjustesInventarioPage() {
             {/* Filtros en grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Fecha Desde</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Desde</label>
                 <input type="date" value={rptDesde} onChange={e => setRptDesde(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Fecha Hasta</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Hasta</label>
                 <input type="date" value={rptHasta} onChange={e => setRptHasta(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Bodega</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega</label>
                 <select value={rptBodega} onChange={e => setRptBodega(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                   <option value="">Todas</option>
@@ -852,7 +852,7 @@ export default function AjustesInventarioPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Tipo de Ajuste</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Ajuste</label>
                 <select value={rptTipo} onChange={e => setRptTipo(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                   <option value="">Todos</option>
@@ -860,7 +860,7 @@ export default function AjustesInventarioPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Estado</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Estado</label>
                 <select value={rptEstado} onChange={e => setRptEstado(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                   <option value="">Todos</option>
@@ -870,22 +870,22 @@ export default function AjustesInventarioPage() {
             </div>
 
             {/* Botones de exportación */}
-            <div className="flex flex-wrap gap-3 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="w-full text-xs text-white/40 mb-1">
+            <div className="flex flex-wrap gap-3 pt-2" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="w-full text-xs text-slate-400 mb-1">
                 {filteredReport.length} registro{filteredReport.length !== 1 ? 's' : ''} encontrado{filteredReport.length !== 1 ? 's' : ''}
               </p>
               <button disabled={isExporting || filteredReport.length === 0} onClick={() => doExport('pdf')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-all disabled:opacity-40"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-all disabled:opacity-40"
                 style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
                 📄 Exportar PDF
               </button>
               <button disabled={isExporting || filteredReport.length === 0} onClick={() => doExport('excel')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-all disabled:opacity-40"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-all disabled:opacity-40"
                 style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
                 📊 Exportar Excel
               </button>
               <button disabled={isExporting || filteredReport.length === 0} onClick={() => doExport('print')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-all disabled:opacity-40"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-all disabled:opacity-40"
                 style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
                 🖨️ Imprimir
               </button>
@@ -893,38 +893,38 @@ export default function AjustesInventarioPage() {
           </div>
 
           {/* Vista previa */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="px-6 py-4" style={{ background: 'rgba(96,165,250,0.1)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="text-xs uppercase tracking-wider text-white/40 mb-0.5">Vista Previa</p>
-              <p className="text-white font-semibold">{rptTitle}</p>
-              {subtitle && <p className="text-xs text-white/40 mt-0.5">{subtitle}</p>}
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+            <div className="px-6 py-4" style={{ background: 'rgba(96,165,250,0.1)', borderBottom: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="text-xs uppercase tracking-wider text-slate-400 mb-0.5">Vista Previa</p>
+              <p className="text-slate-800 font-semibold">{rptTitle}</p>
+              {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
             </div>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>{reportColumns.map(c => (
                   <th key={c.key} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap"
-                    style={{ color: 'rgba(255,255,255,0.6)' }}>{c.header}</th>
+                    style={{ color: 'rgba(15,23,42,0.6)' }}>{c.header}</th>
                 ))}</tr>
               </thead>
               <tbody>
                 {filteredReport.map(a => (
-                  <tr key={a.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-5 py-3 font-mono font-bold" style={{ color: '#fff' }}>{a.nro_ajuste}</td>
-                    <td className="px-5 py-3 text-white/60">{fDate(a.fecha_emision)}</td>
-                    <td className="px-5 py-3 text-white/80">{a.bodega_nombre}</td>
-                    <td className="px-5 py-3 text-white/60">{a.persona_autoriza}</td>
+                  <tr key={a.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-5 py-3 font-mono font-bold" style={{ color: '#1e293b' }}>{a.nro_ajuste}</td>
+                    <td className="px-5 py-3 text-slate-500">{fDate(a.fecha_emision)}</td>
+                    <td className="px-5 py-3 text-slate-600">{a.bodega_nombre}</td>
+                    <td className="px-5 py-3 text-slate-500">{a.persona_autoriza}</td>
                     <td className="px-5 py-3">
                       <span className="px-2 py-0.5 rounded text-xs font-bold mr-1" style={signoStyle(a.tipo_ajuste_signo)}>{a.tipo_ajuste_signo}</span>
-                      <span className="text-white/70 text-xs">{a.tipo_ajuste_nombre}</span>
+                      <span className="text-slate-600 text-xs">{a.tipo_ajuste_nombre}</span>
                     </td>
-                    <td className="px-5 py-3 text-center text-white/60">{a.renglones.length}</td>
+                    <td className="px-5 py-3 text-center text-slate-500">{a.renglones.length}</td>
                     <td className="px-5 py-3">
                       <span className="px-2 py-0.5 rounded-full text-xs font-medium" style={estadoStyle(a.estado)}>{a.estado}</span>
                     </td>
                   </tr>
                 ))}
                 {filteredReport.length === 0 && (
-                  <tr><td colSpan={7} className="px-6 py-12 text-center" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                  <tr><td colSpan={7} className="px-6 py-12 text-center" style={{ color: 'rgba(15,23,42,0.25)' }}>
                     Sin resultados con los filtros actuales.
                   </td></tr>
                 )}
@@ -937,11 +937,11 @@ export default function AjustesInventarioPage() {
       {/* ══════════════════ TAB REPORTES ESPECÍFICOS ══════════════════ */}
       {tab === 'especificos' && (
         <div className="glass-card p-6 md:p-8">
-          <h2 className="text-xl font-bold text-white mb-4">{tTab('especificos')}</h2>
-          <p className="text-white/50 text-sm mb-6">{tSub('seleccioneReporte')}</p>
+          <h2 className="text-xl font-bold text-slate-800 mb-4">{tTab('especificos')}</h2>
+          <p className="text-slate-500 text-sm mb-6">{tSub('seleccioneReporte')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="text-white/40 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
+            <div className="rounded-xl p-5 text-center" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="text-slate-400 text-sm">Los reportes específicos se irán agregando según sus necesidades</p>
             </div>
           </div>
         </div>

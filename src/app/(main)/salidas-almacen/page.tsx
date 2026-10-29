@@ -122,14 +122,14 @@ const emptyForm = (nro: number, tipoInv = ''): SalidaAlmacen => ({
   observaciones: '', renglones: [emptyRenglon()], situacion: 'Pendiente',
 })
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
 const situacionStyle = (s: string): React.CSSProperties => {
-  if (s === 'Aprobada y Ejecutada') return { background: 'rgba(34,197,94,0.95)', color: '#fff', border: '1px solid rgba(34,197,94,0.3)' }
-  if (s === 'Aprobada') return { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-  if (s === 'Anulada')  return { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
-  return { background: 'rgba(245,158,11,0.2)', color: '#fff', border: '1px solid rgba(245,158,11,0.3)' }
+  if (s === 'Aprobada y Ejecutada') return { background: 'rgba(34,197,94,0.95)', color: '#1e293b', border: '1px solid rgba(34,197,94,0.3)' }
+  if (s === 'Aprobada') return { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+  if (s === 'Anulada')  return { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
+  return { background: 'rgba(245,158,11,0.2)', color: '#1e293b', border: '1px solid rgba(245,158,11,0.3)' }
 }
 
 // ─── Componente ───────────────────────────────────────────────────────────────
@@ -386,7 +386,7 @@ export default function SalidasAlmacenPage() {
     return (
       <div>
         <div className="flex items-center justify-between mb-6">
-          <button onClick={() => setViewItem(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          <button onClick={() => setViewItem(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(15,23,42,0.5)' }}>
             ← Volver a Salidas de Almacén
           </button>
           <button onClick={() => {
@@ -394,17 +394,17 @@ export default function SalidasAlmacenPage() {
             const empData = emp ? { nombre: emp.nombre, tipo_identificacion: emp.tipo_identificacion, nro_documento: emp.nro_documento, direccion: emp.direccion, ciudad: emp.ciudad } : undefined
             generateSalidaPDF(viewItem, empData, emp?.logo || LOGO_BASE64)
           }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-colors"
             style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
             🖨 Generar PDF
           </button>
         </div>
 
-        <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-white">{t('salidaAlmacenDetail')}</h1>
-              <p className="text-2xl font-mono mt-1" style={{ color: '#fff' }}>{viewItem.consecutivo}</p>
+              <h1 className="text-3xl font-bold text-slate-800">{t('salidaAlmacenDetail')}</h1>
+              <p className="text-2xl font-mono mt-1" style={{ color: '#1e293b' }}>{viewItem.consecutivo}</p>
             </div>
             <span className="px-4 py-2 rounded-full text-sm font-medium" style={situacionStyle(viewItem.situacion)}>{viewItem.situacion}</span>
           </div>
@@ -420,28 +420,28 @@ export default function SalidasAlmacenPage() {
             ].map(({ label, value }) => (
               <div key={label}>
                 <p className="text-xs uppercase tracking-wider mb-1" style={{ color: '#f97316' }}>{label}</p>
-                <p className="text-white font-medium">{value}</p>
+                <p className="text-slate-800 font-medium">{value}</p>
               </div>
             ))}
           </div>
 
           {/* Renglones */}
-          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-xl overflow-hidden mb-6" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.07)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.07)' }}>
                 <tr>
                   {[tF('codigo'), tF('descripcion'), tF('unidadMedida'), tF('cantidad')].map(h => (
-                    <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {viewItem.renglones.map(r => (
-                  <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-5 py-3 font-mono text-xs text-white">{r.codigo_producto}</td>
-                    <td className="px-5 py-3 text-white/80">{r.descripcion}</td>
-                    <td className="px-5 py-3 text-white/50 text-xs">{r.unidad_medida || '—'}</td>
-                    <td className="px-5 py-3 text-white font-bold text-center">{r.cantidad}</td>
+                  <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-5 py-3 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                    <td className="px-5 py-3 text-slate-600">{r.descripcion}</td>
+                    <td className="px-5 py-3 text-slate-500 text-xs">{r.unidad_medida || '—'}</td>
+                    <td className="px-5 py-3 text-slate-800 font-bold text-center">{r.cantidad}</td>
                   </tr>
                 ))}
               </tbody>
@@ -449,9 +449,9 @@ export default function SalidasAlmacenPage() {
           </div>
 
           {viewItem.observaciones && (
-            <div className="rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="rounded-xl p-4" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
               <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#f97316' }}>Observaciones</p>
-              <p style={{ color: 'rgba(255,255,255,0.7)' }}>{viewItem.observaciones}</p>
+              <p style={{ color: 'rgba(15,23,42,0.7)' }}>{viewItem.observaciones}</p>
             </div>
           )}
         </div>
@@ -464,13 +464,13 @@ export default function SalidasAlmacenPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('salidasAlmacen')}</h1>
-          <p className="text-white/50 mt-1">{tSub('salidasAlmacen')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('salidasAlmacen')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('salidasAlmacen')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
           <button
             onClick={() => { setForm(emptyForm(todasSalidas.length + 1, tipoActivo || '')); setIsFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newIssue')}
           </button>
@@ -478,7 +478,7 @@ export default function SalidasAlmacenPage() {
       </div>
 
       {/* Pestañas */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         {([
           { key: 'registros', label: tTab('registrosEmoji') },
           { key: 'reportes',  label: tTab('reportesEmoji') },
@@ -486,8 +486,8 @@ export default function SalidasAlmacenPage() {
           <button key={t.key} onClick={() => setTab(t.key)}
             className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
             style={tab === t.key
-              ? { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-              : { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }}>
+              ? { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+              : { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }}>
             {t.label}
           </button>
         ))}
@@ -498,10 +498,10 @@ export default function SalidasAlmacenPage() {
         <>
           {/* ── Formulario ────────────────────────────────────────────────────── */}
           {isFormOpen && (
-            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
+            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
               <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-lg font-semibold text-white">{editingId ? 'Editar' : 'Nueva'} Salida de Almacén —</h2>
-                <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                <h2 className="text-lg font-semibold text-slate-800">{editingId ? 'Editar' : 'Nueva'} Salida de Almacén —</h2>
+                <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                   {form.consecutivo}
                 </span>
               </div>
@@ -512,15 +512,15 @@ export default function SalidasAlmacenPage() {
 
                   {/* Nro Salida — solo lectura */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Nro. Salida</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro. Salida</label>
                     <input readOnly value={form.consecutivo}
                       className="w-full rounded-xl px-4 py-2.5 outline-none font-mono"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }} />
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }} />
                   </div>
 
                   {/* Fecha Emisión */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Emisión *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Emisión *</label>
                     <input type="date" required value={form.fecha_emision}
                       onChange={e => setForm({ ...form, fecha_emision: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
@@ -528,16 +528,16 @@ export default function SalidasAlmacenPage() {
 
                   {/* Tipo de Inventario (heredado de la sesión) */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Tipo de Inventario</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Tipo de Inventario</label>
                     <input readOnly value={form.tipo_inventario || '—'}
                       className="w-full rounded-xl px-4 py-2.5 outline-none font-semibold"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }}
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }}
                       title="Definido por el Tipo de Inventario activo de la sesión." />
                   </div>
 
                   {/* Bodega Salida */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Bodega Salida *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega Salida *</label>
                     <select required value={form.bodega_salida_id} onChange={e => handleBodegaSalida(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       <option value="">{tOp('seleccione')}</option>
@@ -547,7 +547,7 @@ export default function SalidasAlmacenPage() {
 
                   {/* Persona que Emite */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Persona que Emite *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Persona que Emite *</label>
                     <input required value={form.persona_emite}
                       onChange={e => setForm({ ...form, persona_emite: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
@@ -556,7 +556,7 @@ export default function SalidasAlmacenPage() {
 
                   {/* Centro de Costo */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Centro de Costo *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Centro de Costo *</label>
                     <select required value={form.centro_costo_id} onChange={e => handleCentroCosto(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       <option value="">{tOp('seleccione')}</option>
@@ -566,7 +566,7 @@ export default function SalidasAlmacenPage() {
 
                   {/* Fecha Aprobación */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha Aprobación</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha Aprobación</label>
                     <input type="date" value={form.fecha_aprobacion}
                       onChange={e => setForm({ ...form, fecha_aprobacion: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
@@ -574,7 +574,7 @@ export default function SalidasAlmacenPage() {
 
                   {/* Situación */}
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
                     <select value={form.situacion} onChange={e => setForm({ ...form, situacion: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       {[tF('pendiente'), 'Aprobada', 'Anulada'].map(s => <option key={s} value={s}>{s}</option>)}
@@ -584,14 +584,14 @@ export default function SalidasAlmacenPage() {
 
                 {/* ── Buscar Producto ──────────────────────────────────────────── */}
                 <div className="mb-4">
-                  <label className="block text-xl text-white font-extrabold mb-2">Buscar producto para agregar al detalle</label>
+                  <label className="block text-xl text-slate-800 font-extrabold mb-2">Buscar producto para agregar al detalle</label>
                   <div className="flex items-center gap-2 max-w-md">
                     <input ref={searchProdRef} value={searchProd}
                       onFocus={() => { setSinExistMsg(''); setCantExistMsg('') }}
                       onChange={e => { setSearchProd(e.target.value); setSinExistMsg('') }}
                       onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); setSinExistMsg(''); setSearchProd('') } }}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none text-base text-white font-bold"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                       placeholder="Escriba nombre o código del producto..." />
                     <VoiceSearchButton onResult={setSearchProd} />
                   </div>
@@ -600,9 +600,9 @@ export default function SalidasAlmacenPage() {
                       p.codigo.toLowerCase().includes(searchProd.toLowerCase()) ||
                       p.descripcion.toLowerCase().includes(searchProd.toLowerCase())
                     ).slice(0, 8)
-                    if (matches.length === 0) return <p className="text-white/30 text-xs mt-2">No se encontraron productos</p>
+                    if (matches.length === 0) return <p className="text-slate-400 text-xs mt-2">No se encontraron productos</p>
                     return (
-                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                         {matches.map(p => (
                           <button key={p.id} type="button"
                             onClick={() => {
@@ -626,19 +626,19 @@ export default function SalidasAlmacenPage() {
                               setForm({ ...form, renglones })
                               setSearchProd('')
                             }}
-                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-white/5 transition-colors"
-                            style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                            <span className="font-mono text-xs" style={{ color: '#fff' }}>{p.codigo}</span>
-                            <span className="text-white/80 flex-1">{p.descripcion}</span>
-                            <span className="text-white/40 text-xs">{p.unidad_medida}</span>
-                            <span className="text-white/40 text-xs">Exist: {p.existencia}</span>
+                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-black/5 transition-colors"
+                            style={{ borderBottom: '1px solid rgba(15,23,42,0.05)' }}>
+                            <span className="font-mono text-xs" style={{ color: '#1e293b' }}>{p.codigo}</span>
+                            <span className="text-slate-600 flex-1">{p.descripcion}</span>
+                            <span className="text-slate-400 text-xs">{p.unidad_medida}</span>
+                            <span className="text-slate-400 text-xs">Exist: {p.existencia}</span>
                           </button>
                         ))}
                       </div>
                     )
                   })()}
                   {sinExistMsg && (
-                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                    <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                       ⚠ {sinExistMsg}
                     </div>
                   )}
@@ -647,22 +647,22 @@ export default function SalidasAlmacenPage() {
                 {/* ── Renglones ──────────────────────────────────────────────────── */}
                 {form.renglones.length > 0 && form.renglones[0].codigo_producto !== '' && (
                 <div className="mb-6">
-                  <h3 className="text-white font-medium mb-3">Renglones</h3>
-                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <h3 className="text-slate-800 font-medium mb-3">Renglones</h3>
+                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                     <table className="w-full text-base text-left">
-                      <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+                      <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
                         <tr>
                           {[tF('codigo'), tF('descripcion'), tH('unidMedida'), tF('cantidad'), ''].map(h => (
-                            <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                            <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {form.renglones.map((r, idx) => (
-                          <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                            <td className="px-3 py-2 font-mono text-xs text-white">{r.codigo_producto}</td>
-                            <td className="px-3 py-2 text-white font-bold">{r.descripcion}</td>
-                            <td className="px-3 py-2 text-white font-bold">{r.unidad_medida || '—'}</td>
+                          <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                            <td className="px-3 py-2 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                            <td className="px-3 py-2 text-slate-800 font-bold">{r.descripcion}</td>
+                            <td className="px-3 py-2 text-slate-800 font-bold">{r.unidad_medida || '—'}</td>
                             <td className="px-2 py-2">
                               <input type="number" min="0.01" step="0.01" value={r.cantidad || ''}
                                 onChange={e => {
@@ -685,7 +685,7 @@ export default function SalidasAlmacenPage() {
                                     searchProdRef.current?.focus()
                                   }
                                 }}
-                                className="w-24 rounded-lg px-2 py-1.5 text-white outline-none text-center font-bold"
+                                className="w-24 rounded-lg px-2 py-1.5 text-slate-800 outline-none text-center font-bold"
                                 style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)' }} />
                             </td>
                             <td className="px-2 py-2">
@@ -698,7 +698,7 @@ export default function SalidasAlmacenPage() {
                     </table>
                   </div>
                 {cantExistMsg && (
-                  <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                  <div className="mt-2 px-4 py-2.5 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                     ⚠ {cantExistMsg} — Presione Enter para buscar otro producto
                   </div>
                 )}
@@ -707,27 +707,27 @@ export default function SalidasAlmacenPage() {
 
                 {/* Observaciones */}
                 <div className="mb-6">
-                  <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                   <textarea rows={3} value={form.observaciones}
                     onChange={e => setForm({ ...form, observaciones: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none resize-none"
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none resize-none"
                     style={inputSt} placeholder="Notas u observaciones sobre la salida..." />
                 </div>
 
                 {errorMsg && (
-                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                  <div className="mb-4 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                     ⚠ {errorMsg}
                   </div>
                 )}
 
                 <div className="flex gap-3">
-                  <button type="submit" className="px-6 py-2.5 rounded-xl text-white font-medium"
+                  <button type="submit" className="px-6 py-2.5 rounded-xl text-slate-800 font-medium"
                     style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                     {editingId ? 'Actualizar' : 'Guardar'} Salida
                   </button>
                   <button type="button" onClick={() => { setIsFormOpen(false); setEditingId(null); setErrorMsg('') }}
-                    className="px-6 py-2.5 rounded-xl text-white/70"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    className="px-6 py-2.5 rounded-xl text-slate-600"
+                    style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
                     {tBtn('cancel')}
                   </button>
                 </div>
@@ -736,42 +736,42 @@ export default function SalidasAlmacenPage() {
           )}
 
           {/* ── Tabla ──────────────────────────────────────────────────────────── */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {[tH('nroSalida'), tF('fechaEmision'), tF('bodegaSalida'), tF('centroCosto'), tF('personaEmiteShort'), tF('renglones'), tF('situacion'), tTbl('actions')].map(h => (
                     <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap"
-                      style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                      style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {salidas.length === 0 ? (
-                  <tr><td colSpan={8} className="px-5 py-12 text-center text-white/30">{tE('noSalidas')}</td></tr>
+                  <tr><td colSpan={8} className="px-5 py-12 text-center text-slate-400">{tE('noSalidas')}</td></tr>
                 ) : (
                   salidas.map(s => (
-                    <tr key={s.id} className="hover:bg-white/[0.03] transition-colors" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td className="px-5 py-3 font-mono text-xs" style={{ color: '#fff' }}>{s.consecutivo}</td>
-                      <td className="px-5 py-3 text-white/70">{fDate(s.fecha_emision)}</td>
-                      <td className="px-5 py-3 text-white/80">{s.bodega_salida_nombre}</td>
-                      <td className="px-5 py-3 text-white/70 text-xs">{s.centro_costo_nombre || '—'}</td>
-                      <td className="px-5 py-3 text-white/70">{s.persona_emite || '—'}</td>
-                      <td className="px-5 py-3 text-white text-center font-bold">{s.renglones.length}</td>
+                    <tr key={s.id} className="hover:bg-white/[0.03] transition-colors" style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                      <td className="px-5 py-3 font-mono text-xs" style={{ color: '#1e293b' }}>{s.consecutivo}</td>
+                      <td className="px-5 py-3 text-slate-600">{fDate(s.fecha_emision)}</td>
+                      <td className="px-5 py-3 text-slate-600">{s.bodega_salida_nombre}</td>
+                      <td className="px-5 py-3 text-slate-600 text-xs">{s.centro_costo_nombre || '—'}</td>
+                      <td className="px-5 py-3 text-slate-600">{s.persona_emite || '—'}</td>
+                      <td className="px-5 py-3 text-slate-800 text-center font-bold">{s.renglones.length}</td>
                       <td className="px-5 py-3">
                         <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={situacionStyle(s.situacion)}>{s.situacion}</span>
                       </td>
                       <td className="px-5 py-3">
                         <div className="flex items-center gap-2">
                           <button onClick={() => setViewItem(s)} className="text-xs px-2.5 py-1 rounded-lg transition-colors"
-                            style={{ color: '#fff', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>Ver</button>
+                            style={{ color: '#1e293b', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>Ver</button>
                           {permisos.editar && s.situacion !== 'Aprobada y Ejecutada' && (
                             <button onClick={() => handleEdit(s)} className="text-xs px-2.5 py-1 rounded-lg transition-colors"
-                              style={{ color: '#fff', background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.2)' }}>{tBtn('edit')}</button>
+                              style={{ color: '#1e293b', background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.2)' }}>{tBtn('edit')}</button>
                           )}
                           {permisos.eliminar && s.situacion !== 'Aprobada y Ejecutada' && (
                             <button onClick={() => handleDelete(s.id)} className="text-xs px-2.5 py-1 rounded-lg transition-colors"
-                              style={{ color: '#fff', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)' }}>{tBtn('delete')}</button>
+                              style={{ color: '#1e293b', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)' }}>{tBtn('delete')}</button>
                           )}
                         </div>
                       </td>
@@ -786,27 +786,27 @@ export default function SalidasAlmacenPage() {
 
       {/* ── Tab Reportes ───────────────────────────────────────────────────────── */}
       {tab === 'reportes' && (
-        <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-lg font-semibold text-white mb-6">{tBtn('generateIssuesReport')}</h2>
+        <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-6">{tBtn('generateIssuesReport')}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Título del Reporte</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Título del Reporte</label>
               <input value={rptTitle} onChange={e => setRptTitle(e.target.value)}
-                className="w-full rounded-xl px-4 py-2.5 outline-none text-white" style={inputSt} />
+                className="w-full rounded-xl px-4 py-2.5 outline-none text-slate-800" style={inputSt} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Desde</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Desde</label>
               <input type="date" value={rptDesde} onChange={e => setRptDesde(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Hasta</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Hasta</label>
               <input type="date" value={rptHasta} onChange={e => setRptHasta(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Bodega</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega</label>
               <select value={rptBodega} onChange={e => setRptBodega(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                 <option value="">Todas</option>
@@ -814,7 +814,7 @@ export default function SalidasAlmacenPage() {
               </select>
             </div>
             <div>
-              <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
               <select value={rptSituacion} onChange={e => setRptSituacion(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                 <option value="">Todas</option>
@@ -823,21 +823,21 @@ export default function SalidasAlmacenPage() {
             </div>
           </div>
 
-          <p className="text-white/50 text-sm mb-4">Registros encontrados: <strong className="text-white">{filteredReport.length}</strong></p>
+          <p className="text-slate-500 text-sm mb-4">Registros encontrados: <strong className="text-slate-800">{filteredReport.length}</strong></p>
 
           <div className="flex gap-3">
             <button onClick={() => doExport('pdf')} disabled={isExporting || !filteredReport.length}
-              className="px-5 py-2.5 rounded-xl font-medium text-white disabled:opacity-40"
+              className="px-5 py-2.5 rounded-xl font-medium text-slate-800 disabled:opacity-40"
               style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
               📄 Exportar PDF
             </button>
             <button onClick={() => doExport('excel')} disabled={isExporting || !filteredReport.length}
-              className="px-5 py-2.5 rounded-xl font-medium text-white disabled:opacity-40"
+              className="px-5 py-2.5 rounded-xl font-medium text-slate-800 disabled:opacity-40"
               style={{ background: 'rgba(16,185,129,0.4)', border: '1px solid rgba(16,185,129,0.5)' }}>
               📊 Exportar Excel
             </button>
             <button onClick={() => doExport('print')} disabled={isExporting || !filteredReport.length}
-              className="px-5 py-2.5 rounded-xl font-medium text-white disabled:opacity-40"
+              className="px-5 py-2.5 rounded-xl font-medium text-slate-800 disabled:opacity-40"
               style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
               🖨 Imprimir
             </button>

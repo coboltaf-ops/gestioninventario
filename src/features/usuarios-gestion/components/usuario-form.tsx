@@ -12,13 +12,13 @@ type Props = {
 const ROLES = ['Admin', 'Supervisor', 'Operador', 'Consulta']
 
 const inputStyle: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.04)',
-  border: '1px solid rgba(255,255,255,0.1)',
-  color: '#fff',
+  background: 'rgba(15,23,42,0.04)',
+  border: '1px solid rgba(15,23,42,0.1)',
+  color: '#1e293b',
 }
 
-const labelClass = 'block text-xs font-medium text-white/50 mb-1.5'
-const fieldClass = 'w-full px-3 py-2 rounded-lg text-sm outline-none focus:border-white/30 transition-colors'
+const labelClass = 'block text-xs font-medium text-slate-500 mb-1.5'
+const fieldClass = 'w-full px-3 py-2 rounded-lg text-sm outline-none focus:border-black/30 transition-colors'
 
 export function UsuarioForm({ usuario, onSubmit, onClose }: Props) {
   const esEdicion = !!usuario?.id
@@ -66,16 +66,16 @@ export function UsuarioForm({ usuario, onSubmit, onClose }: Props) {
     >
       <div
         className="w-full max-w-md rounded-2xl p-6 max-h-[90vh] overflow-y-auto"
-        style={{ background: 'rgba(23,23,23,0.98)', border: '1px solid rgba(255,255,255,0.1)' }}
+        style={{ background: 'rgba(23,23,23,0.98)', border: '1px solid rgba(15,23,42,0.1)' }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-xl font-bold text-white">
+          <h2 className="text-xl font-bold text-slate-800">
             {esEdicion ? 'Editar Usuario' : 'Nuevo Usuario'}
           </h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:bg-white/10 transition-colors"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:bg-black/10 transition-colors"
           >
             ✕
           </button>
@@ -172,14 +172,14 @@ export function UsuarioForm({ usuario, onSubmit, onClose }: Props) {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 rounded-lg text-sm font-medium text-white/70 transition-colors hover:bg-white/5"
-              style={{ border: '1px solid rgba(255,255,255,0.1)' }}
+              className="flex-1 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 transition-colors hover:bg-black/5"
+              style={{ border: '1px solid rgba(15,23,42,0.1)' }}
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 rounded-lg text-sm font-medium text-white transition-all hover:opacity-90"
+              className="flex-1 px-4 py-2 rounded-lg text-sm font-medium text-slate-800 transition-all hover:opacity-90"
               style={{ background: '#ea580c', border: '1px solid #ea580c' }}
             >
               {esEdicion ? 'Guardar Cambios' : 'Crear Usuario'}

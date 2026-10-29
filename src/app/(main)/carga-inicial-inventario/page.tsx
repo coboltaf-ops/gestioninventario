@@ -41,8 +41,8 @@ const emptyForm = (nro_carga: string, bodegas: { id: string; nombre: string }[])
   estado: 'Aplicada',
 })
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
 // ─── PDF ──────────────────────────────────────────────────────────────────────
 
@@ -456,7 +456,7 @@ export default function CargaInicialInventarioPage() {
   if (viewItem) return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <button onClick={() => setViewItem(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}>
+        <button onClick={() => setViewItem(null)} className="flex items-center gap-2 transition-colors" style={{ color: 'rgba(15,23,42,0.5)' }}>
           ← Volver a Carga Inicial
         </button>
         <button onClick={() => {
@@ -464,19 +464,19 @@ export default function CargaInicialInventarioPage() {
           const empData = emp ? { nombre: emp.nombre, tipo_identificacion: emp.tipo_identificacion, nro_documento: emp.nro_documento, direccion: emp.direccion, ciudad: emp.ciudad } : undefined
           generateCargaPDF(viewItem, empData, emp?.logo || LOGO_BASE64)
         }}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800"
           style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
           🖨 Generar PDF
         </button>
       </div>
 
-      <div className="rounded-2xl p-8" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="rounded-2xl p-8" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white">{t('cargaInicialInventario')}</h1>
-            <p className="text-2xl font-mono mt-1" style={{ color: '#fff' }}>{viewItem.nro_carga}</p>
+            <h1 className="text-3xl font-bold text-slate-800">{t('cargaInicialInventario')}</h1>
+            <p className="text-2xl font-mono mt-1" style={{ color: '#1e293b' }}>{viewItem.nro_carga}</p>
           </div>
-          <span className="px-4 py-2 rounded-full text-sm font-bold" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+          <span className="px-4 py-2 rounded-full text-sm font-bold" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
             {viewItem.estado}
           </span>
         </div>
@@ -492,40 +492,40 @@ export default function CargaInicialInventarioPage() {
           ].map(({ label, value }) => (
             <div key={label}>
               <p className="text-xs uppercase tracking-wider mb-1" style={{ color: '#f97316' }}>{label}</p>
-              <p className="text-white font-medium">{value}</p>
+              <p className="text-slate-800 font-medium">{value}</p>
             </div>
           ))}
         </div>
 
         {viewItem.observaciones && (
-          <div className="mb-6 rounded-xl p-4" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="mb-6 rounded-xl p-4" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
             <p className="text-xs uppercase tracking-wider mb-2" style={{ color: '#f97316' }}>Observaciones</p>
-            <p style={{ color: 'rgba(255,255,255,0.7)' }}>{viewItem.observaciones}</p>
+            <p style={{ color: 'rgba(15,23,42,0.7)' }}>{viewItem.observaciones}</p>
           </div>
         )}
 
-        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
           <table className="w-full text-base text-left">
-            <thead style={{ background: 'rgba(255,255,255,0.07)' }}>
+            <thead style={{ background: 'rgba(15,23,42,0.07)' }}>
               <tr>{['#', tF('codigo'), tF('descripcion'), tH('unidMedida'), tF('cantidad'), tH('costoUnit'), tH('total')].map(h => (
-                <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
               ))}</tr>
             </thead>
             <tbody>
               {viewItem.renglones.map((r, idx) => (
-                <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  <td className="px-4 py-3 text-white/40 text-xs">{idx + 1}</td>
-                  <td className="px-4 py-3 font-mono text-xs text-white">{r.codigo_producto}</td>
-                  <td className="px-4 py-3 text-white/80">{r.descripcion}</td>
-                  <td className="px-4 py-3 text-white/50 text-xs">{r.unidad_medida || '—'}</td>
-                  <td className="px-4 py-3 text-white font-bold text-right">{r.cantidad.toLocaleString('en-US')}</td>
-                  <td className="px-4 py-3 text-white/60 text-right">${fmtMoney(r.costo_unitario)}</td>
-                  <td className="px-4 py-3 text-white font-medium text-right">${fmtMoney(r.cantidad * r.costo_unitario)}</td>
+                <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                  <td className="px-4 py-3 text-slate-400 text-xs">{idx + 1}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                  <td className="px-4 py-3 text-slate-600">{r.descripcion}</td>
+                  <td className="px-4 py-3 text-slate-500 text-xs">{r.unidad_medida || '—'}</td>
+                  <td className="px-4 py-3 text-slate-800 font-bold text-right">{r.cantidad.toLocaleString('en-US')}</td>
+                  <td className="px-4 py-3 text-slate-500 text-right">${fmtMoney(r.costo_unitario)}</td>
+                  <td className="px-4 py-3 text-slate-800 font-medium text-right">${fmtMoney(r.cantidad * r.costo_unitario)}</td>
                 </tr>
               ))}
-              <tr style={{ borderTop: '2px solid rgba(255,255,255,0.1)', background: 'rgba(96,165,250,0.08)' }}>
-                <td colSpan={6} className="px-4 py-3 text-right font-bold text-white/70 text-sm">TOTAL CARGA INICIAL</td>
-                <td className="px-4 py-3 text-right font-bold text-lg" style={{ color: '#fff' }}>
+              <tr style={{ borderTop: '2px solid rgba(15,23,42,0.1)', background: 'rgba(96,165,250,0.08)' }}>
+                <td colSpan={6} className="px-4 py-3 text-right font-bold text-slate-600 text-sm">TOTAL CARGA INICIAL</td>
+                <td className="px-4 py-3 text-right font-bold text-lg" style={{ color: '#1e293b' }}>
                   ${fmtMoney(viewItem.renglones.reduce((s, r) => s + r.cantidad * r.costo_unitario, 0))}
                 </td>
               </tr>
@@ -537,21 +537,21 @@ export default function CargaInicialInventarioPage() {
   )
 
   // ── Vista Principal ────────────────────────────────────────────────────────────
-  const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-  const tabInactive: React.CSSProperties = { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }
+  const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+  const tabInactive: React.CSSProperties = { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }
 
   return (
     <div>
       {/* Título */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('cargaInicialInventario')}</h1>
-          <p className="text-white/50 mt-1">{tSub('cargaInicialInventario')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('cargaInicialInventario')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('cargaInicialInventario')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
           <button
             onClick={() => { setForm(emptyForm(nextNroCarga(cargas), bodegas)); setIsFormOpen(true) }}
-            className="px-5 py-2.5 rounded-xl font-medium text-white"
+            className="px-5 py-2.5 rounded-xl font-medium text-slate-800"
             style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newLoad')}
           </button>
@@ -559,7 +559,7 @@ export default function CargaInicialInventarioPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <button onClick={() => setTab('registros')} className="px-4 py-1.5 rounded-lg text-sm font-medium transition-all" style={tab === 'registros' ? tabActive : tabInactive}>{tTab('registrosEmoji')}</button>
         <button onClick={() => setTab('reportes')} className="px-4 py-1.5 rounded-lg text-sm font-medium transition-all" style={tab === 'reportes' ? tabActive : tabInactive}>{tTab('reportesEmoji')}</button>
         <button onClick={() => setTab('reporte-especifico')} className="px-4 py-1.5 rounded-lg text-sm font-medium transition-all" style={tab === 'reporte-especifico' ? tabActive : tabInactive}>📋 Reporte Específico</button>
@@ -570,14 +570,14 @@ export default function CargaInicialInventarioPage() {
         <>
           {/* Formulario */}
           {isFormOpen && (
-            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
+            <div className="mb-8 rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
               <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-lg font-semibold text-white">{tSec('nuevaCargaInicial')}</h2>
-                <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>{form.nro_carga}</span>
+                <h2 className="text-lg font-semibold text-slate-800">{tSec('nuevaCargaInicial')}</h2>
+                <span className="font-mono text-sm px-3 py-1 rounded-lg" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>{form.nro_carga}</span>
               </div>
 
               {errorMsg && (
-                <div className="mb-5 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fff' }}>
+                <div className="mb-5 px-4 py-3 rounded-xl text-sm font-medium" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#1e293b' }}>
                   ⚠ {errorMsg}
                 </div>
               )}
@@ -586,17 +586,17 @@ export default function CargaInicialInventarioPage() {
                 {/* Campos cabecera */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Nro. Carga</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Nro. Carga</label>
                     <input readOnly value={form.nro_carga} className="w-full rounded-xl px-4 py-2.5 outline-none font-mono"
-                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }} />
+                      style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }} />
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Fecha *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha *</label>
                     <input type="date" required value={form.fecha} onChange={e => setForm({ ...form, fecha: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
                   </div>
                   <div>
-                    <label className="block text-xl font-extrabold text-white mb-1">Bodega *</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega *</label>
                     <select required value={form.bodega_id} onChange={e => handleBodega(e.target.value)}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                       <option value="">{tOp('seleccione')}</option>
@@ -604,7 +604,7 @@ export default function CargaInicialInventarioPage() {
                     </select>
                   </div>
                   <div className="lg:col-span-3">
-                    <label className="block text-xl font-extrabold text-white mb-1">Observaciones</label>
+                    <label className="block text-xl font-extrabold text-slate-800 mb-1">Observaciones</label>
                     <input value={form.observaciones} onChange={e => setForm({ ...form, observaciones: e.target.value })}
                       className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt}
                       placeholder="Descripción de la carga inicial..." />
@@ -612,19 +612,19 @@ export default function CargaInicialInventarioPage() {
                 </div>
 
                 {/* Separador */}
-                <div className="mb-4 pb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                  <h3 className="text-white/70 text-sm font-semibold uppercase tracking-wider">Productos a cargar</h3>
+                <div className="mb-4 pb-3" style={{ borderBottom: '1px solid rgba(15,23,42,0.08)' }}>
+                  <h3 className="text-slate-600 text-sm font-semibold uppercase tracking-wider">Productos a cargar</h3>
                 </div>
 
                 {/* Búsqueda de productos */}
                 <div className="mb-4">
-                  <label className="block text-xl text-white font-extrabold mb-2">Buscar producto para agregar</label>
+                  <label className="block text-xl text-slate-800 font-extrabold mb-2">Buscar producto para agregar</label>
                   <div className="flex items-center gap-2 max-w-lg">
                     <input ref={searchProdRef} value={searchProd}
                       onChange={e => setSearchProd(e.target.value)}
                       onKeyDown={e => { if (e.key === 'Escape') setSearchProd('') }}
-                      className="w-full rounded-xl px-4 py-2.5 text-white outline-none text-base text-white font-bold"
-                      style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                      className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                      style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                       placeholder="Escriba nombre o código del producto..." />
                     <VoiceSearchButton onResult={setSearchProd} />
                   </div>
@@ -633,9 +633,9 @@ export default function CargaInicialInventarioPage() {
                       p.codigo.toLowerCase().includes(searchProd.toLowerCase()) ||
                       p.descripcion.toLowerCase().includes(searchProd.toLowerCase())
                     ).slice(0, 8)
-                    if (matches.length === 0) return <p className="text-white/30 text-xs mt-2">No se encontraron productos</p>
+                    if (matches.length === 0) return <p className="text-slate-400 text-xs mt-2">No se encontraron productos</p>
                     return (
-                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <div className="mt-2 rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                         {matches.map(p => (
                           <button key={p.id} type="button"
                             onClick={() => {
@@ -654,12 +654,12 @@ export default function CargaInicialInventarioPage() {
                               setForm({ ...form, renglones })
                               setSearchProd('')
                             }}
-                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-white/5 transition-colors"
-                            style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                            <span className="font-mono text-xs" style={{ color: '#fff' }}>{p.codigo}</span>
-                            <span className="text-white/80 flex-1">{p.descripcion}</span>
-                            <span className="text-white/40 text-xs">{p.unidad_medida || '—'}</span>
-                            <span className="text-white/30 text-xs">Exist. actual: {p.existencia}</span>
+                            className="w-full flex items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-black/5 transition-colors"
+                            style={{ borderBottom: '1px solid rgba(15,23,42,0.05)' }}>
+                            <span className="font-mono text-xs" style={{ color: '#1e293b' }}>{p.codigo}</span>
+                            <span className="text-slate-600 flex-1">{p.descripcion}</span>
+                            <span className="text-slate-400 text-xs">{p.unidad_medida || '—'}</span>
+                            <span className="text-slate-400 text-xs">Exist. actual: {p.existencia}</span>
                           </button>
                         ))}
                       </div>
@@ -670,36 +670,36 @@ export default function CargaInicialInventarioPage() {
                 {/* Tabla de renglones */}
                 {form.renglones.length > 0 && form.renglones[0].codigo_producto !== '' && (
                   <div className="mb-6">
-                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(15,23,42,0.1)' }}>
                       <table className="w-full text-base text-left">
-                        <thead style={{ background: 'rgba(255,255,255,0.06)' }}>
+                        <thead style={{ background: 'rgba(15,23,42,0.06)' }}>
                           <tr>
                             {[tF('codigo'), tF('descripcion'), tH('unidMedida'), tH('cantidadRequired'), tH('costoUnit'), tF('subtotal'), ''].map(h => (
-                              <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                              <th key={h} className="px-3 py-2.5 font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
                           {form.renglones.map((r, idx) => (
-                            <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                              <td className="px-3 py-2 font-mono text-xs text-white">{r.codigo_producto}</td>
-                              <td className="px-3 py-2 text-white font-bold">{r.descripcion}</td>
-                              <td className="px-3 py-2 text-white font-bold">{r.unidad_medida || '—'}</td>
+                            <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                              <td className="px-3 py-2 font-mono text-xs text-slate-800">{r.codigo_producto}</td>
+                              <td className="px-3 py-2 text-slate-800 font-bold">{r.descripcion}</td>
+                              <td className="px-3 py-2 text-slate-800 font-bold">{r.unidad_medida || '—'}</td>
                               <td className="px-2 py-2">
                                 <input type="number" min="0.01" step="0.01" value={r.cantidad || ''}
                                   onChange={e => updateRenglon(idx, 'cantidad', parseFloat(e.target.value) || 0)}
-                                  className="w-24 rounded-lg px-2 py-1.5 text-white outline-none text-center font-bold"
+                                  className="w-24 rounded-lg px-2 py-1.5 text-slate-800 outline-none text-center font-bold"
                                   style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)' }}
                                   placeholder="0" />
                               </td>
                               <td className="px-2 py-2">
                                 <input type="number" min="0" step="0.01" value={r.costo_unitario || ''}
                                   onChange={e => updateRenglon(idx, 'costo_unitario', parseFloat(e.target.value) || 0)}
-                                  className="w-28 rounded-lg px-2 py-1.5 text-white outline-none text-right"
-                                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
+                                  className="w-28 rounded-lg px-2 py-1.5 text-slate-800 outline-none text-right"
+                                  style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}
                                   placeholder="0.00" />
                               </td>
-                              <td className="px-3 py-2 text-white font-bold text-right font-medium">
+                              <td className="px-3 py-2 text-slate-800 font-bold text-right font-medium">
                                 ${fmtMoney(r.cantidad * r.costo_unitario)}
                               </td>
                               <td className="px-2 py-2">
@@ -708,9 +708,9 @@ export default function CargaInicialInventarioPage() {
                               </td>
                             </tr>
                           ))}
-                          <tr style={{ borderTop: '2px solid rgba(255,255,255,0.1)', background: 'rgba(96,165,250,0.05)' }}>
-                            <td colSpan={5} className="px-3 py-2.5 text-right text-white/60 text-xs font-semibold uppercase tracking-wider">Total Carga</td>
-                            <td className="px-3 py-2.5 text-right font-bold" style={{ color: '#fff' }}>
+                          <tr style={{ borderTop: '2px solid rgba(15,23,42,0.1)', background: 'rgba(96,165,250,0.05)' }}>
+                            <td colSpan={5} className="px-3 py-2.5 text-right text-slate-500 text-xs font-semibold uppercase tracking-wider">Total Carga</td>
+                            <td className="px-3 py-2.5 text-right font-bold" style={{ color: '#1e293b' }}>
                               ${fmtMoney(form.renglones.reduce((s, r) => s + r.cantidad * r.costo_unitario, 0))}
                             </td>
                             <td />
@@ -722,13 +722,13 @@ export default function CargaInicialInventarioPage() {
                 )}
 
                 <div className="flex gap-3">
-                  <button type="submit" className="px-6 py-2.5 rounded-xl text-white font-medium"
+                  <button type="submit" className="px-6 py-2.5 rounded-xl text-slate-800 font-medium"
                     style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
                     Aplicar Carga al Inventario
                   </button>
                   <button type="button" onClick={() => { setIsFormOpen(false); setSearchProd(''); setErrorMsg('') }}
-                    className="px-6 py-2.5 rounded-xl text-white/70"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    className="px-6 py-2.5 rounded-xl text-slate-600"
+                    style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
                     {tBtn('cancel')}
                   </button>
                 </div>
@@ -737,46 +737,46 @@ export default function CargaInicialInventarioPage() {
           )}
 
           {/* Tabla de registros */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>{[tH('nroCarga'), tF('fecha'), tF('bodega'), tH('productos'), tH('valorTotal'), tF('estado'), tTbl('actions')].map(h => (
-                  <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                  <th key={h} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                 ))}</tr>
               </thead>
               <tbody>
                 {cargas.map(c => (
-                  <tr key={c.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-5 py-4 font-mono font-bold" style={{ color: '#fff' }}>{c.nro_carga}</td>
-                    <td className="px-5 py-4 text-white/60">{fDate(c.fecha)}</td>
-                    <td className="px-5 py-4 text-white font-bold">{c.bodega_nombre}</td>
+                  <tr key={c.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-5 py-4 font-mono font-bold" style={{ color: '#1e293b' }}>{c.nro_carga}</td>
+                    <td className="px-5 py-4 text-slate-500">{fDate(c.fecha)}</td>
+                    <td className="px-5 py-4 text-slate-800 font-bold">{c.bodega_nombre}</td>
                     <td className="px-5 py-4 text-center">
-                      <span className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.15)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                      <span className="px-2 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.15)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                         {c.renglones.length} ítem{c.renglones.length !== 1 ? 's' : ''}
                       </span>
                     </td>
-                    <td className="px-5 py-4 text-white font-medium text-right">
+                    <td className="px-5 py-4 text-slate-800 font-medium text-right">
                       ${fmtMoney(c.renglones.reduce((s, r) => s + r.cantidad * r.costo_unitario, 0))}
                     </td>
                     <td className="px-5 py-4">
-                      <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>
+                      <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>
                         {c.estado}
                       </span>
                     </td>
                     <td className="px-5 py-4">
                       <div className="flex gap-2">
                         <button onClick={() => setViewItem(c)} className="px-3 py-1 rounded-lg text-xs font-medium"
-                          style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
+                          style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>Ver</button>
                         {permisos.eliminar && (
                           <button onClick={() => handleDelete(c.id)} className="px-3 py-1 rounded-lg text-xs font-medium"
-                            style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>
+                            style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>
                         )}
                       </div>
                     </td>
                   </tr>
                 ))}
                 {cargas.length === 0 && (
-                  <tr><td colSpan={7} className="px-6 py-16 text-center" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                  <tr><td colSpan={7} className="px-6 py-16 text-center" style={{ color: 'rgba(15,23,42,0.25)' }}>
                     <div className="text-4xl mb-3">📥</div>
                     <p>No hay cargas registradas. Crea la primera con <strong>{tBtn('newLoad')}</strong>.</p>
                   </td></tr>
@@ -791,25 +791,25 @@ export default function CargaInicialInventarioPage() {
       {tab === 'reporte-especifico' && (
         <div className="space-y-6">
           {/* Cabecera del reporte */}
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-            <h2 className="text-lg font-semibold text-white mb-5">Reporte Específico de Inventario</h2>
+          <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+            <h2 className="text-lg font-semibold text-slate-800 mb-5">Reporte Específico de Inventario</h2>
 
             {/* Info solicitud */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Fecha de Solicitud</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Fecha de Solicitud</label>
                 <input readOnly value={today} className="w-full rounded-xl px-4 py-2.5 outline-none font-mono text-sm"
-                  style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }} />
+                  style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Solicitado por</label>
-                <input readOnly value={`${user.nombre} ${user.apellido}`.trim()} className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-white font-bold"
-                  style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#fff', cursor: 'not-allowed' }} />
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Solicitado por</label>
+                <input readOnly value={`${user.nombre} ${user.apellido}`.trim()} className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-slate-800 font-bold"
+                  style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.3)', color: '#1e293b', cursor: 'not-allowed' }} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Descripción del Reporte</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Descripción del Reporte</label>
                 <input value={espDescripcion} onChange={e => setEspDescripcion(e.target.value)}
-                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-white font-bold" style={inputSt}
+                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-slate-800 font-bold" style={inputSt}
                   placeholder="Ej: Inventario EPP bodega principal..." />
               </div>
             </div>
@@ -817,61 +817,61 @@ export default function CargaInicialInventarioPage() {
             {/* Filtros */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-5">
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Bodega</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega</label>
                 <select value={espBodega} onChange={e => setEspBodega(e.target.value)}
-                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Todas</option>
                   {bodegas.map(b => <option key={b.id} value={b.id}>{b.nombre}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Familia</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Familia</label>
                 <select value={espFamilia} onChange={e => { setEspFamilia(e.target.value); setEspGrupo(''); setEspSubGrupo('') }}
-                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Todas</option>
                   {espFamilias.map(f => <option key={f} value={f}>{f}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Grupo</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Grupo</label>
                 <select value={espGrupo} onChange={e => { setEspGrupo(e.target.value); setEspSubGrupo('') }}
-                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Todos</option>
                   {espGrupos.map(g => <option key={g} value={g}>{g}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Sub Grupo</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Sub Grupo</label>
                 <select value={espSubGrupo} onChange={e => setEspSubGrupo(e.target.value)}
-                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-white font-bold" style={selectSt}>
+                  className="w-full rounded-xl px-4 py-2.5 outline-none text-base text-slate-800 font-bold" style={selectSt}>
                   <option value="">Todos</option>
                   {espSubGrupos.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
               <div className="flex items-end">
                 <button onClick={() => { setEspBodega(''); setEspFamilia(''); setEspGrupo(''); setEspSubGrupo('') }}
-                  className="w-full px-4 py-2.5 rounded-xl text-sm font-medium text-white/70"
-                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  className="w-full px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600"
+                  style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
                   Todos (Limpiar)
                 </button>
               </div>
             </div>
 
             <div className="flex items-center justify-between">
-              <p className="text-white/50 text-sm">{espRows.length} producto{espRows.length !== 1 ? 's' : ''} encontrado{espRows.length !== 1 ? 's' : ''}</p>
+              <p className="text-slate-500 text-sm">{espRows.length} producto{espRows.length !== 1 ? 's' : ''} encontrado{espRows.length !== 1 ? 's' : ''}</p>
               <div className="flex gap-2">
                 <button onClick={() => doExportEsp('excel')} disabled={isExportingEsp || espRows.length === 0}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
                   style={{ background: 'rgba(34,197,94,0.3)', border: '1px solid rgba(34,197,94,0.4)' }}>
                   Excel
                 </button>
                 <button onClick={() => doExportEsp('pdf')} disabled={isExportingEsp || espRows.length === 0}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
                   style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(239,68,68,0.4)' }}>
                   PDF
                 </button>
                 <button onClick={() => doExportEsp('print')} disabled={isExportingEsp || espRows.length === 0}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
                   style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                   {tBtn('print')}
                 </button>
@@ -880,27 +880,27 @@ export default function CargaInicialInventarioPage() {
           </div>
 
           {/* Tabla de productos */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>{[tF('codigo'), tF('descripcion'), tF('categoria'), tF('grupo'), tF('subGrupo'), tF('existencia'), tF('costo')].map(h => (
-                  <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                  <th key={h} className="px-4 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                 ))}</tr>
               </thead>
               <tbody>
                 {espRows.map((p, i) => (
-                  <tr key={p.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)' }}>
-                    <td className="px-4 py-3 font-mono text-xs" style={{ color: '#fff' }}>{p.codigo}</td>
-                    <td className="px-4 py-3 text-white font-medium">{p.descripcion}</td>
-                    <td className="px-4 py-3 text-white/60 text-sm">{p.categoria || '—'}</td>
-                    <td className="px-4 py-3 text-white/60 text-sm">{p.grupo || '—'}</td>
-                    <td className="px-4 py-3 text-white/60 text-sm">{p.sub_grupo || '—'}</td>
-                    <td className="px-4 py-3 text-white font-bold text-right">{p.existencia > 0 ? p.existencia.toLocaleString('en-US') : ''}</td>
-                    <td className="px-4 py-3 text-white/80 text-right">{p.ult_costo > 0 ? 'Pesos ' + fmtMoney(p.ult_costo) : ''}</td>
+                  <tr key={p.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)', background: i % 2 === 0 ? 'transparent' : 'rgba(15,23,42,0.02)' }}>
+                    <td className="px-4 py-3 font-mono text-xs" style={{ color: '#1e293b' }}>{p.codigo}</td>
+                    <td className="px-4 py-3 text-slate-800 font-medium">{p.descripcion}</td>
+                    <td className="px-4 py-3 text-slate-500 text-sm">{p.categoria || '—'}</td>
+                    <td className="px-4 py-3 text-slate-500 text-sm">{p.grupo || '—'}</td>
+                    <td className="px-4 py-3 text-slate-500 text-sm">{p.sub_grupo || '—'}</td>
+                    <td className="px-4 py-3 text-slate-800 font-bold text-right">{p.existencia > 0 ? p.existencia.toLocaleString('en-US') : ''}</td>
+                    <td className="px-4 py-3 text-slate-600 text-right">{p.ult_costo > 0 ? 'Pesos ' + fmtMoney(p.ult_costo) : ''}</td>
                   </tr>
                 ))}
                 {espRows.length === 0 && (
-                  <tr><td colSpan={7} className="px-6 py-10 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tEs('sinProductosFiltros')}</td></tr>
+                  <tr><td colSpan={7} className="px-6 py-10 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tEs('sinProductosFiltros')}</td></tr>
                 )}
               </tbody>
             </table>
@@ -911,21 +911,21 @@ export default function CargaInicialInventarioPage() {
       {/* ══ TAB REPORTES ══ */}
       {tab === 'reportes' && (
         <div className="space-y-6">
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-            <h2 className="text-lg font-semibold text-white mb-5">{tSec('filtrosReporte')}</h2>
+          <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+            <h2 className="text-lg font-semibold text-slate-800 mb-5">{tSec('filtrosReporte')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Desde</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Desde</label>
                 <input type="date" value={rptDesde} onChange={e => setRptDesde(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Hasta</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Hasta</label>
                 <input type="date" value={rptHasta} onChange={e => setRptHasta(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={inputSt} />
               </div>
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Bodega</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Bodega</label>
                 <select value={rptBodega} onChange={e => setRptBodega(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                   <option value="">Todas</option>
@@ -934,20 +934,20 @@ export default function CargaInicialInventarioPage() {
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-white/50 text-sm">{filteredReport.length} registro{filteredReport.length !== 1 ? 's' : ''} encontrado{filteredReport.length !== 1 ? 's' : ''}</p>
+              <p className="text-slate-500 text-sm">{filteredReport.length} registro{filteredReport.length !== 1 ? 's' : ''} encontrado{filteredReport.length !== 1 ? 's' : ''}</p>
               <div className="flex gap-2">
                 <button onClick={() => doExport('excel')} disabled={isExporting || filteredReport.length === 0}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
                   style={{ background: 'rgba(34,197,94,0.3)', border: '1px solid rgba(34,197,94,0.4)' }}>
                   Excel
                 </button>
                 <button onClick={() => doExport('pdf')} disabled={isExporting || filteredReport.length === 0}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
                   style={{ background: 'rgba(239,68,68,0.3)', border: '1px solid rgba(239,68,68,0.4)' }}>
                   PDF
                 </button>
                 <button onClick={() => doExport('print')} disabled={isExporting || filteredReport.length === 0}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-white disabled:opacity-40"
+                  className="px-4 py-2 rounded-xl text-sm font-medium text-slate-800 disabled:opacity-40"
                   style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}>
                   {tBtn('print')}
                 </button>
@@ -955,28 +955,28 @@ export default function CargaInicialInventarioPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>{rptCols.map(c => (
-                  <th key={c.key} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{c.header}</th>
+                  <th key={c.key} className="px-5 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{c.header}</th>
                 ))}</tr>
               </thead>
               <tbody>
                 {buildRptRows(filteredReport).map((row, i) => (
-                  <tr key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-5 py-3 font-mono font-bold" style={{ color: '#fff' }}>{row.nro_carga}</td>
-                    <td className="px-5 py-3 text-white/60">{fDate(row.fecha)}</td>
-                    <td className="px-5 py-3 text-white/80">{row.bodega_nombre}</td>
-                    <td className="px-5 py-3 text-center text-white/70">{row.items}</td>
-                    <td className="px-5 py-3 text-white font-medium text-right">{row.valor_total}</td>
+                  <tr key={i} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-5 py-3 font-mono font-bold" style={{ color: '#1e293b' }}>{row.nro_carga}</td>
+                    <td className="px-5 py-3 text-slate-500">{fDate(row.fecha)}</td>
+                    <td className="px-5 py-3 text-slate-600">{row.bodega_nombre}</td>
+                    <td className="px-5 py-3 text-center text-slate-600">{row.items}</td>
+                    <td className="px-5 py-3 text-slate-800 font-medium text-right">{row.valor_total}</td>
                     <td className="px-5 py-3">
-                      <span className="px-2 py-1 rounded-full text-xs font-bold" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>{row.estado}</span>
+                      <span className="px-2 py-1 rounded-full text-xs font-bold" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>{row.estado}</span>
                     </td>
                   </tr>
                 ))}
                 {filteredReport.length === 0 && (
-                  <tr><td colSpan={6} className="px-6 py-10 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tEs('sinRegistrosFiltros')}</td></tr>
+                  <tr><td colSpan={6} className="px-6 py-10 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tEs('sinRegistrosFiltros')}</td></tr>
                 )}
               </tbody>
             </table>

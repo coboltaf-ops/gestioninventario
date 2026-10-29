@@ -32,7 +32,7 @@ export function SidebarVtiger({ isOpen, items, logo }: SidebarVtigerProps) {
     }`}>
       {/* Logo Section */}
       <div className="px-6 py-6 border-b border-gray-100 flex items-center justify-center gap-3">
-        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg">
+        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-slate-800 font-bold text-lg">
           {logo.charAt(0)}
         </div>
         <div>

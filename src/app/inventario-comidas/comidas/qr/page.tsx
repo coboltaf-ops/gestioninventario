@@ -25,10 +25,10 @@ interface PersonaPago {
 }
 
 const ScreenWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div style={{ minHeight: '100vh', background: '#000', color: '#fff', display: 'flex', flexDirection: 'column' }}>
+  <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', display: 'flex', flexDirection: 'column' }}>
     <div style={{
       background: '#ea580c',
-      color: '#000',
+      color: '#f1f5f9',
       padding: '16px 20px',
       textAlign: 'center',
       fontSize: '20px',
@@ -246,7 +246,7 @@ export default function QRPage() {
                 style={{
                   padding: '30px',
                   background: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
-                  color: '#fff',
+                  color: '#1e293b',
                   border: 'none',
                   borderRadius: '12px',
                   cursor: 'pointer',
@@ -289,7 +289,7 @@ export default function QRPage() {
               <button onClick={() => setStep('mesa')} style={{
                 padding: '12px 24px',
                 background: '#666',
-                color: '#fff',
+                color: '#1e293b',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer',
@@ -300,7 +300,7 @@ export default function QRPage() {
               <button onClick={() => setStep('cuenta')} style={{
                 padding: '12px 24px',
                 background: 'linear-gradient(135deg, #10b981, #34d399)',
-                color: '#000',
+                color: '#f1f5f9',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer',
@@ -316,7 +316,7 @@ export default function QRPage() {
             <div style={{
               padding: '40px',
               textAlign: 'center',
-              background: 'rgba(255,255,255,0.05)',
+              background: 'rgba(15,23,42,0.05)',
               borderRadius: '12px',
             }}>
               <p style={{ fontSize: '18px', color: '#aaa' }}>
@@ -343,7 +343,7 @@ export default function QRPage() {
                     width: '100%',
                     padding: '12px',
                     background: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '8px',
                     cursor: 'pointer',
@@ -387,7 +387,7 @@ export default function QRPage() {
                   {personas.map((persona, idx) => (
                     <div key={persona.id} style={{
                       padding: '15px',
-                      background: 'rgba(255,255,255,0.05)',
+                      background: 'rgba(15,23,42,0.05)',
                       borderRadius: '8px',
                       marginBottom: '10px',
                     }}>
@@ -400,7 +400,7 @@ export default function QRPage() {
                             width: '100%',
                             padding: '8px',
                             background: '#111',
-                            color: '#fff',
+                            color: '#1e293b',
                             border: '1px solid #333',
                             borderRadius: '4px',
                             marginBottom: '8px',
@@ -418,7 +418,7 @@ export default function QRPage() {
                             flex: 1,
                             padding: '8px',
                             background: '#111',
-                            color: '#fff',
+                            color: '#1e293b',
                             border: '1px solid #333',
                             borderRadius: '4px',
                           }}
@@ -429,7 +429,7 @@ export default function QRPage() {
                           style={{
                             padding: '8px',
                             background: '#111',
-                            color: '#fff',
+                            color: '#1e293b',
                             border: '1px solid #333',
                             borderRadius: '4px',
                           }}
@@ -446,7 +446,7 @@ export default function QRPage() {
                           width: '100%',
                           padding: '8px',
                           background: persona.pagado ? '#10b981' : '#666',
-                          color: '#fff',
+                          color: '#1e293b',
                           border: 'none',
                           borderRadius: '4px',
                           cursor: 'pointer',
@@ -473,7 +473,7 @@ export default function QRPage() {
                 )}
 
                 <div style={{
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(15,23,42,0.05)',
                   padding: '15px',
                   borderRadius: '8px',
                   marginBottom: '20px',
@@ -493,7 +493,7 @@ export default function QRPage() {
                       flex: 1,
                       padding: '15px',
                       background: '#666',
-                      color: '#fff',
+                      color: '#1e293b',
                       border: 'none',
                       borderRadius: '8px',
                       cursor: 'pointer',
@@ -509,7 +509,7 @@ export default function QRPage() {
                       flex: 1,
                       padding: '15px',
                       background: (validarDivision() && personas.every((p) => p.pagado)) ? '#10b981' : '#999',
-                      color: '#000',
+                      color: '#f1f5f9',
                       border: 'none',
                       borderRadius: '8px',
                       cursor: (validarDivision() && personas.every((p) => p.pagado)) ? 'pointer' : 'not-allowed',
@@ -553,7 +553,7 @@ export default function QRPage() {
                 </div>
 
                 <div style={{
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(15,23,42,0.05)',
                   padding: '15px',
                   borderRadius: '8px',
                   marginBottom: '20px',
@@ -588,7 +588,7 @@ export default function QRPage() {
                         flex: 1,
                         padding: '15px',
                         background: '#f59e0b',
-                        color: '#000',
+                        color: '#f1f5f9',
                         border: 'none',
                         borderRadius: '8px',
                         cursor: 'pointer',
@@ -610,7 +610,7 @@ export default function QRPage() {
                         flex: 1,
                         padding: '15px',
                         background: loading ? '#999' : 'linear-gradient(135deg, #10b981, #34d399)',
-                        color: '#000',
+                        color: '#f1f5f9',
                         border: 'none',
                         borderRadius: '8px',
                         cursor: loading ? 'not-allowed' : 'pointer',
@@ -628,7 +628,7 @@ export default function QRPage() {
                     width: '100%',
                     padding: '15px',
                     background: '#666',
-                    color: '#fff',
+                    color: '#1e293b',
                     border: 'none',
                     borderRadius: '8px',
                     cursor: 'pointer',

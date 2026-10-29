@@ -27,9 +27,9 @@ export function LanguageSwitcher({ onlyLang }: LanguageSwitcherProps = {}) {
   const baseBtn =
     'px-3 py-1.5 rounded-md text-xs font-bold transition-all disabled:opacity-60 flex items-center gap-1.5'
   const active =
-    'text-white bg-white/20 border border-white/30 shadow-sm'
+    'text-slate-800 bg-black/20 border border-black/30 shadow-sm'
   const inactive =
-    'text-white/70 hover:text-white hover:bg-white/10 border border-transparent'
+    'text-slate-600 hover:text-slate-800 hover:bg-black/10 border border-transparent'
 
   const btnES = (
     <button
@@ -63,8 +63,8 @@ export function LanguageSwitcher({ onlyLang }: LanguageSwitcherProps = {}) {
     <div
       className="flex items-center gap-1 px-1.5 py-1 rounded-lg"
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        background: 'rgba(15,23,42,0.04)',
+        border: '1px solid rgba(15,23,42,0.08)',
       }}
       aria-label={t('language')}
     >

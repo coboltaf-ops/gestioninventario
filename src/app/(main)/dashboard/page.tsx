@@ -55,7 +55,7 @@ export default function DashboardHubPage() {
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <span className="text-3xl">📊</span>
-        <h1 className="text-2xl font-extrabold text-white">{t('title')}</h1>
+        <h1 className="text-2xl font-extrabold text-slate-800">{t('title')}</h1>
       </div>
 
       {/* Hubs hacia los 3 dashboards específicos */}
@@ -67,10 +67,10 @@ export default function DashboardHubPage() {
             style={{ background: h.bg, border: `2px solid ${h.border}`, boxShadow: `0 4px 16px ${h.bg}` }}>
             <div className="flex items-center gap-3 mb-3">
               <span className="text-4xl">{h.icon}</span>
-              <h2 className="text-lg font-extrabold text-white" style={{ textShadow: `0 0 8px ${h.color}66` }}>{h.title}</h2>
+              <h2 className="text-lg font-extrabold text-slate-800" style={{ textShadow: `0 0 8px ${h.color}66` }}>{h.title}</h2>
             </div>
-            <p className="text-sm text-white/80 mb-4">{h.desc}</p>
-            <div className="flex items-center justify-end text-white/70 group-hover:text-white text-sm font-bold transition-colors">
+            <p className="text-sm text-slate-600 mb-4">{h.desc}</p>
+            <div className="flex items-center justify-end text-slate-600 group-hover:text-slate-800 text-sm font-bold transition-colors">
               Abrir dashboard →
             </div>
           </Link>
@@ -84,22 +84,22 @@ export default function DashboardHubPage() {
           <div className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl"
             style={{ background: 'rgba(96,165,250,0.95)', border: '1px solid rgba(96,165,250,0.3)' }}>🤖</div>
           <div className="flex-1">
-            <h2 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">{t('agenteTitle')}</h2>
-            <p className="text-sm text-white/50">{t('agenteDescripcion')}</p>
+            <h2 className="text-lg font-bold text-slate-800 group-hover:text-blue-300 transition-colors">{t('agenteTitle')}</h2>
+            <p className="text-sm text-slate-500">{t('agenteDescripcion')}</p>
           </div>
-          <div className="text-white/30 group-hover:text-white/60 text-2xl transition-colors">→</div>
+          <div className="text-slate-400 group-hover:text-slate-500 text-2xl transition-colors">→</div>
         </div>
       </Link>
 
       {/* Tareas (transversal) */}
       {Object.keys(estadosTarea).length > 0 && (
         <Link href="/tareas" className="block rounded-2xl p-6 transition-all hover:scale-[1.005] hover:bg-white/[0.07] cursor-pointer group"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+          style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-lg font-semibold text-white">{t('graficoTareasTitle')}</h2>
-            <span className="text-white/30 group-hover:text-white/70 text-sm transition-colors">{tCommon('goToModule')} →</span>
+            <h2 className="text-lg font-semibold text-slate-800">{t('graficoTareasTitle')}</h2>
+            <span className="text-slate-400 group-hover:text-slate-600 text-sm transition-colors">{tCommon('goToModule')} →</span>
           </div>
-          <p className="text-xs text-white/40 mb-6">{t('graficoTareasDescripcion')} · {tCommon('clickForDetail')}</p>
+          <p className="text-xs text-slate-400 mb-6">{t('graficoTareasDescripcion')} · {tCommon('clickForDetail')}</p>
 
           {(() => {
             const COLORS: Record<string, string> = {
@@ -140,7 +140,7 @@ export default function DashboardHubPage() {
                   <svg width="220" height="220" viewBox="0 0 220 220">
                     {segmentos.map((seg, i) => (
                       <path key={i} d={seg.path} fill={seg.color}
-                        stroke="rgba(255,255,255,0.15)" strokeWidth="2"
+                        stroke="rgba(15,23,42,0.15)" strokeWidth="2"
                         style={{ filter: `drop-shadow(0 0 8px ${seg.color}66)` }} />
                     ))}
                     {segmentos.map((seg, i) => seg.porcentaje >= 0.05 && (
@@ -159,12 +159,12 @@ export default function DashboardHubPage() {
                       <div className="w-4 h-4 rounded shrink-0" style={{ background: seg.color, boxShadow: `0 0 8px ${seg.color}66` }} />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-medium text-white">{seg.estado}</span>
-                          <span className="text-xs font-bold text-white/80">
+                          <span className="text-sm font-medium text-slate-800">{seg.estado}</span>
+                          <span className="text-xs font-bold text-slate-600">
                             {seg.count} ({(seg.porcentaje * 100).toFixed(1)}%)
                           </span>
                         </div>
-                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(15,23,42,0.08)' }}>
                           <div className="h-full rounded-full transition-all duration-500"
                             style={{ width: `${seg.porcentaje * 100}%`, background: seg.color }} />
                         </div>

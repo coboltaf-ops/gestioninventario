@@ -104,10 +104,10 @@ export default function DashboardMateriaPrimaPage() {
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div className="flex items-center gap-3">
           <span className="text-3xl">🔶</span>
-          <h1 className="text-2xl font-extrabold text-white">Dashboard Materia Prima</h1>
+          <h1 className="text-2xl font-extrabold text-slate-800">Dashboard Materia Prima</h1>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold"
-          style={{ background: COLOR_BG, color: '#fff', border: `1px solid ${COLOR_BORDER}` }}>
+          style={{ background: COLOR_BG, color: '#1e293b', border: `1px solid ${COLOR_BORDER}` }}>
           <span>📦 Vista filtrada:</span><span>{TIPO}</span>
         </div>
       </div>
@@ -116,13 +116,13 @@ export default function DashboardMateriaPrimaPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {bigCards.map(c => (
           <div key={c.label} className="rounded-2xl p-6"
-            style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${COLOR_BORDER}` }}>
+            style={{ background: 'rgba(15,23,42,0.05)', border: `1px solid ${COLOR_BORDER}` }}>
             <div className="flex items-center justify-between mb-3">
               <span className="text-2xl">{c.icon}</span>
               <div className="w-2 h-2 rounded-full" style={{ background: COLOR }} />
             </div>
-            <p className="text-2xl font-bold text-white">{c.value}</p>
-            <p className="text-sm mt-1 text-white/50">{c.label}</p>
+            <p className="text-2xl font-bold text-slate-800">{c.value}</p>
+            <p className="text-sm mt-1 text-slate-500">{c.label}</p>
           </div>
         ))}
       </div>
@@ -131,20 +131,20 @@ export default function DashboardMateriaPrimaPage() {
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
         {smallCards.map(c => (
           <div key={c.label} className="rounded-xl p-4 text-center"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)' }}>
             <span className="text-xl">{c.icon}</span>
-            <p className="text-xl font-bold text-white mt-2">{c.value}</p>
-            <p className="text-xs mt-1 text-white/40">{c.label}</p>
+            <p className="text-xl font-bold text-slate-800 mt-2">{c.value}</p>
+            <p className="text-xs mt-1 text-slate-400">{c.label}</p>
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Top Proveedores por Kg */}
-        <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">🏆 Top 5 Proveedores por Kg Recibidos</h2>
+        <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">🏆 Top 5 Proveedores por Kg Recibidos</h2>
           {topProveedores.length === 0 ? (
-            <p className="text-white/40 text-sm">Aún no hay pesajes registrados</p>
+            <p className="text-slate-400 text-sm">Aún no hay pesajes registrados</p>
           ) : (
             <div className="space-y-3">
               {topProveedores.map(([prov, kg], i) => {
@@ -153,10 +153,10 @@ export default function DashboardMateriaPrimaPage() {
                 return (
                   <div key={prov}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-white text-sm font-medium">{i + 1}. {prov}</span>
+                      <span className="text-slate-800 text-sm font-medium">{i + 1}. {prov}</span>
                       <span className="text-orange-300 font-bold text-sm">{kg.toLocaleString('es-CO')} kg</span>
                     </div>
-                    <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                    <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(15,23,42,0.08)' }}>
                       <div className="h-full rounded-full" style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${COLOR}, #fdba74)` }} />
                     </div>
                   </div>
@@ -167,10 +167,10 @@ export default function DashboardMateriaPrimaPage() {
         </div>
 
         {/* Top Materias Primas por Kg */}
-        <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">📦 Top 5 Materias Primas Recibidas (Kg)</h2>
+        <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">📦 Top 5 Materias Primas Recibidas (Kg)</h2>
           {topProductos.length === 0 ? (
-            <p className="text-white/40 text-sm">Aún no hay pesajes registrados</p>
+            <p className="text-slate-400 text-sm">Aún no hay pesajes registrados</p>
           ) : (
             <div className="space-y-3">
               {topProductos.map(([prod, kg], i) => {
@@ -179,10 +179,10 @@ export default function DashboardMateriaPrimaPage() {
                 return (
                   <div key={prod}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-white text-sm font-medium truncate" title={prod}>{i + 1}. {prod}</span>
+                      <span className="text-slate-800 text-sm font-medium truncate" title={prod}>{i + 1}. {prod}</span>
                       <span className="text-orange-300 font-bold text-sm whitespace-nowrap">{kg.toLocaleString('es-CO')} kg</span>
                     </div>
-                    <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                    <div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(15,23,42,0.08)' }}>
                       <div className="h-full rounded-full" style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${COLOR}, #fdba74)` }} />
                     </div>
                   </div>
@@ -196,20 +196,20 @@ export default function DashboardMateriaPrimaPage() {
       {/* Bajo Mínimo */}
       {bajoMinimo.length > 0 && (
         <Link href="/productos" className="block rounded-2xl p-6 transition-all hover:scale-[1.005] hover:bg-white/[0.07]"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(239,68,68,0.3)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">⚠️ Materias Primas Bajo Mínimo</h2>
+          style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(239,68,68,0.3)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">⚠️ Materias Primas Bajo Mínimo</h2>
           <div className="space-y-2 max-h-[300px] overflow-y-auto">
             {bajoMinimo.map(p => (
               <div key={p.id} className="flex items-center justify-between rounded-xl px-4 py-3"
                 style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.15)' }}>
                 <div>
-                  <span className="font-mono text-xs text-white/50">{p.codigo}</span>
-                  <span className="text-white/80 text-sm ml-2">{p.descripcion}</span>
+                  <span className="font-mono text-xs text-slate-500">{p.codigo}</span>
+                  <span className="text-slate-600 text-sm ml-2">{p.descripcion}</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm">
                   <span className="text-red-400 font-bold">{p.existencia || 0}</span>
-                  <span className="text-white/30">/</span>
-                  <span className="text-white/50">{p.minimo} mín</span>
+                  <span className="text-slate-400">/</span>
+                  <span className="text-slate-500">{p.minimo} mín</span>
                 </div>
               </div>
             ))}
@@ -220,8 +220,8 @@ export default function DashboardMateriaPrimaPage() {
       {/* Órdenes por Estado */}
       {Object.keys(estadosOrden).length > 0 && (
         <Link href="/ordenes-compra" className="block rounded-2xl p-6 transition-all hover:scale-[1.005] hover:bg-white/[0.07]"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">📊 Órdenes de Compra por Estado</h2>
+          style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">📊 Órdenes de Compra por Estado</h2>
           {(() => {
             const COLORS: Record<string, string> = {
               'Pendiente': '#fbbf24', 'Pendiente Aprobacion': '#fbbf24',
@@ -241,7 +241,7 @@ export default function DashboardMateriaPrimaPage() {
                       <div className="flex items-end justify-center h-48 w-full">
                         <div className="flex flex-col items-center justify-end h-full" style={{ width: '40%' }}>
                           <span className="text-sm font-black mb-2 whitespace-nowrap" style={{ color: c }}>
-                            ${fmtMoney(monto)} <span className="text-white/70">({count})</span>
+                            ${fmtMoney(monto)} <span className="text-slate-600">({count})</span>
                           </span>
                           <div className="w-full rounded-t-lg" style={{
                             height: `${h}%`, background: `linear-gradient(180deg, ${c}, ${c}99)`,
@@ -264,12 +264,12 @@ export default function DashboardMateriaPrimaPage() {
       {/* Pesajes Recientes */}
       {pesajesRecientes.length > 0 && (
         <Link href="/pesaje" className="block rounded-2xl p-6 transition-all hover:scale-[1.005] hover:bg-white/[0.07]"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <h2 className="text-lg font-semibold text-white mb-4">🚛 Recepciones Recientes</h2>
+          style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">🚛 Recepciones Recientes</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-white/50 border-b border-white/10">
+                <tr className="text-left text-slate-500 border-b border-black/10">
                   <th className="py-2 px-2">Consec.</th>
                   <th className="py-2 px-2">Fecha</th>
                   <th className="py-2 px-2">Proveedor</th>
@@ -279,11 +279,11 @@ export default function DashboardMateriaPrimaPage() {
               </thead>
               <tbody>
                 {pesajesRecientes.map(p => (
-                  <tr key={p.id} className="border-b border-white/5">
-                    <td className="py-2 px-2 font-mono text-xs text-white/60">{p.consecutivo}</td>
-                    <td className="py-2 px-2 text-white/80">{p.fecha_emision}</td>
-                    <td className="py-2 px-2 text-white">{p.proveedor}</td>
-                    <td className="py-2 px-2 text-white/80">{p.producto_materia_prima}</td>
+                  <tr key={p.id} className="border-b border-black/5">
+                    <td className="py-2 px-2 font-mono text-xs text-slate-500">{p.consecutivo}</td>
+                    <td className="py-2 px-2 text-slate-600">{p.fecha_emision}</td>
+                    <td className="py-2 px-2 text-slate-800">{p.proveedor}</td>
+                    <td className="py-2 px-2 text-slate-600">{p.producto_materia_prima}</td>
                     <td className="py-2 px-2 text-right text-orange-300 font-bold">{(p.peso_neto || 0).toLocaleString('es-CO')}</td>
                   </tr>
                 ))}

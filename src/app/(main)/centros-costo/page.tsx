@@ -20,14 +20,14 @@ const initialData: CentroCosto[] = [
 
 const sitStyle = (s: string): React.CSSProperties =>
   s === 'Activo'
-    ? { background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }
-    : { background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }
+    ? { background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }
+    : { background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }
 
-const inputSt: React.CSSProperties = { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
-const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff' }
+const inputSt: React.CSSProperties = { background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
+const selectSt: React.CSSProperties = { background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)', color: '#1e293b' }
 
-const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#fff', border: '1px solid rgba(37,99,235,1)' }
-const tabInactive: React.CSSProperties = { color: 'rgba(255,255,255,0.5)', border: '1px solid transparent' }
+const tabActive: React.CSSProperties = { background: 'rgba(59,130,246,1)', color: '#1e293b', border: '1px solid rgba(37,99,235,1)' }
+const tabInactive: React.CSSProperties = { color: 'rgba(15,23,42,0.5)', border: '1px solid transparent' }
 
 export default function CentrosCostoPage() {
   const t = useTranslations('pages')
@@ -110,18 +110,18 @@ export default function CentrosCostoPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">{t('centrosCosto')}</h1>
-          <p className="text-white/50 mt-1">{tSub('centrosCosto')}</p>
+          <h1 className="text-3xl font-bold text-slate-800 tracking-tight">{t('centrosCosto')}</h1>
+          <p className="text-slate-500 mt-1">{tSub('centrosCosto')}</p>
         </div>
         {tab === 'registros' && permisos.editar && (
-          <button onClick={openNew} className="px-5 py-2.5 rounded-xl font-medium text-white transition-all" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
+          <button onClick={openNew} className="px-5 py-2.5 rounded-xl font-medium text-slate-800 transition-all" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>
             {tBtn('newCostCenter')}
           </button>
         )}
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.1)' }}>
         <button onClick={() => setTab('registros')}
           className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
           style={tab === 'registros' ? tabActive : tabInactive}>
@@ -138,76 +138,76 @@ export default function CentrosCostoPage() {
       {tab === 'registros' && (
         <>
           {isFormOpen && (
-            <div className="mb-8 rounded-2xl p-6 space-y-4" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-              <h2 className="text-lg font-semibold text-white">{form.id ? 'Editar' : 'Nuevo'} Centro de Costo</h2>
+            <div className="mb-8 rounded-2xl p-6 space-y-4" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+              <h2 className="text-lg font-semibold text-slate-800">{form.id ? 'Editar' : 'Nuevo'} Centro de Costo</h2>
               <form onSubmit={handleSave} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Código *</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Código *</label>
                   <input required value={form.codigo} onChange={e => setForm({ ...form, codigo: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none"
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none"
+                    style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                     placeholder="CC-001" />
                 </div>
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Descripción *</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Descripción *</label>
                   <input required value={form.descripcion} onChange={e => setForm({ ...form, descripcion: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none"
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none"
+                    style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.15)' }}
                     placeholder="Nombre del centro de costo" />
                 </div>
                 <div>
-                  <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+                  <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
                   <select value={form.situacion} onChange={e => setForm({ ...form, situacion: e.target.value })}
-                    className="w-full rounded-xl px-4 py-2.5 text-white outline-none"
-                    style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(255,255,255,0.15)' }}>
+                    className="w-full rounded-xl px-4 py-2.5 text-slate-800 outline-none"
+                    style={{ background: 'rgba(12,26,61,0.9)', border: '1px solid rgba(15,23,42,0.15)' }}>
                     {SITUACIONES.map(s => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
                 <div className="md:col-span-2 flex gap-3 pt-2">
-                  <button type="submit" className="px-6 py-2 rounded-xl text-white font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('save')}</button>
-                  <button type="button" onClick={() => setIsFormOpen(false)} className="px-6 py-2 rounded-xl text-white/70" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>{tBtn('cancel')}</button>
+                  <button type="submit" className="px-6 py-2 rounded-xl text-slate-800 font-medium" style={{ background: 'rgba(59,130,246,1)', border: '1px solid rgba(37,99,235,1)' }}>{tBtn('save')}</button>
+                  <button type="button" onClick={() => setIsFormOpen(false)} className="px-6 py-2 rounded-xl text-slate-600" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>{tBtn('cancel')}</button>
                 </div>
               </form>
             </div>
           )}
 
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="p-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+            <div className="p-4 border-b" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
               <div className="flex items-center gap-2 max-w-xs">
                 <input value={search} onChange={e => setSearch(e.target.value)}
-                  className="w-full rounded-xl px-4 py-2 text-white outline-none text-base text-white font-bold"
-                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}
+                  className="w-full rounded-xl px-4 py-2 text-slate-800 outline-none text-base text-slate-800 font-bold"
+                  style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}
                   placeholder={tPh('buscarCodigoDesc')} />
                 <VoiceSearchButton onResult={setSearch} />
               </div>
             </div>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {[tF('codigo'), tF('descripcion'), tF('situacion'), tTbl('actions')].map(h => (
-                    <th key={h} className="px-6 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>{h}</th>
+                    <th key={h} className="px-6 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {filtered.map(r => (
-                  <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-6 py-4 font-mono font-medium text-white">{r.codigo}</td>
-                    <td className="px-6 py-4 text-white/80">{r.descripcion}</td>
+                  <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-6 py-4 font-mono font-medium text-slate-800">{r.codigo}</td>
+                    <td className="px-6 py-4 text-slate-600">{r.descripcion}</td>
                     <td className="px-6 py-4">
                       <span className="px-3 py-1 rounded-full text-xs font-medium" style={sitStyle(r.situacion)}>{r.situacion}</span>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex gap-2">
-                        <button onClick={() => setViewRecord(r)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(255,255,255,0.08)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.15)' }}>Ver</button>
-                        {permisos.editar && <button onClick={() => openEdit(r)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#fff', border: '1px solid rgba(96,165,250,0.3)' }}>{tBtn('edit')}</button>}
-                        {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#fff', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
+                        <button onClick={() => setViewRecord(r)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(15,23,42,0.08)', color: '#e2e8f0', border: '1px solid rgba(15,23,42,0.15)' }}>Ver</button>
+                        {permisos.editar && <button onClick={() => openEdit(r)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(96,165,250,0.95)', color: '#1e293b', border: '1px solid rgba(96,165,250,0.3)' }}>{tBtn('edit')}</button>}
+                        {permisos.eliminar && <button onClick={() => handleDelete(r.id)} className="px-3 py-1 rounded-lg text-xs font-medium" style={{ background: 'rgba(239,68,68,0.95)', color: '#1e293b', border: '1px solid rgba(239,68,68,0.3)' }}>{tBtn('delete')}</button>}
                       </div>
                     </td>
                   </tr>
                 ))}
                 {filtered.length === 0 && (
-                  <tr><td colSpan={4} className="px-6 py-12 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tE('noRegistros')}</td></tr>
+                  <tr><td colSpan={4} className="px-6 py-12 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tE('noRegistros')}</td></tr>
                 )}
               </tbody>
             </table>
@@ -219,12 +219,12 @@ export default function CentrosCostoPage() {
       {tab === 'reportes' && (
         <div className="space-y-6">
           {/* Panel título + filtros */}
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
-            <h2 className="text-lg font-semibold text-white mb-5">Configurar Reporte</h2>
+          <div className="rounded-2xl p-6" style={{ background: 'rgba(15,23,42,0.06)', border: '1px solid rgba(15,23,42,0.12)' }}>
+            <h2 className="text-lg font-semibold text-slate-800 mb-5">Configurar Reporte</h2>
 
             {/* Campo título */}
             <div className="mb-5">
-              <label className="block text-xl font-extrabold text-white mb-1">Título del Reporte</label>
+              <label className="block text-xl font-extrabold text-slate-800 mb-1">Título del Reporte</label>
               <input value={rptTitle} onChange={e => setRptTitle(e.target.value)}
                 className="w-full rounded-xl px-4 py-2.5 outline-none text-lg font-semibold" style={inputSt} />
             </div>
@@ -232,7 +232,7 @@ export default function CentrosCostoPage() {
             {/* Filtros */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               <div>
-                <label className="block text-xl font-extrabold text-white mb-1">Situación</label>
+                <label className="block text-xl font-extrabold text-slate-800 mb-1">Situación</label>
                 <select value={rptSituacion} onChange={e => setRptSituacion(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 outline-none" style={selectSt}>
                   <option value="Todos">Todos</option>
@@ -242,20 +242,20 @@ export default function CentrosCostoPage() {
             </div>
 
             {/* Botones */}
-            <div className="flex flex-wrap gap-3 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="w-full text-xs text-white/40 mb-1">{filteredReport.length} registros encontrados</p>
+            <div className="flex flex-wrap gap-3 pt-2" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="w-full text-xs text-slate-400 mb-1">{filteredReport.length} registros encontrados</p>
               <button disabled={isExporting || filteredReport.length === 0} onClick={() => doExport('pdf')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white disabled:opacity-40"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 disabled:opacity-40"
                 style={{ background: 'rgba(239,68,68,0.4)', border: '1px solid rgba(185,28,28,1)' }}>
                 📄 Exportar PDF
               </button>
               <button disabled={isExporting || filteredReport.length === 0} onClick={() => doExport('excel')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white disabled:opacity-40"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 disabled:opacity-40"
                 style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
                 📊 Exportar Excel
               </button>
               <button disabled={isExporting || filteredReport.length === 0} onClick={() => doExport('print')}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white disabled:opacity-40"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-slate-800 disabled:opacity-40"
                 style={{ background: 'rgba(96,165,250,0.4)', border: '1px solid rgba(37,99,235,1)' }}>
                 🖨️ Imprimir
               </button>
@@ -263,16 +263,16 @@ export default function CentrosCostoPage() {
           </div>
 
           {/* Vista previa */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="px-6 py-4" style={{ background: 'rgba(96,165,250,0.1)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-              <p className="text-xs uppercase tracking-wider text-white/40 mb-0.5">Vista Previa</p>
-              <p className="text-white font-semibold">{rptTitle}</p>
+          <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(15,23,42,0.05)', border: '1px solid rgba(15,23,42,0.1)' }}>
+            <div className="px-6 py-4" style={{ background: 'rgba(96,165,250,0.1)', borderBottom: '1px solid rgba(15,23,42,0.08)' }}>
+              <p className="text-xs uppercase tracking-wider text-slate-400 mb-0.5">Vista Previa</p>
+              <p className="text-slate-800 font-semibold">{rptTitle}</p>
             </div>
             <table className="w-full text-base text-left">
-              <thead style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <thead style={{ background: 'rgba(15,23,42,0.05)' }}>
                 <tr>
                   {reportColumns.map(c => (
-                    <th key={c.key} className="px-6 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                    <th key={c.key} className="px-6 py-3 text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(15,23,42,0.6)' }}>
                       {c.header}
                     </th>
                   ))}
@@ -280,16 +280,16 @@ export default function CentrosCostoPage() {
               </thead>
               <tbody>
                 {filteredReport.map(r => (
-                  <tr key={r.id} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                    <td className="px-6 py-3 font-mono text-white/80">{r.codigo}</td>
-                    <td className="px-6 py-3 text-white/80">{r.descripcion}</td>
+                  <tr key={r.id} style={{ borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                    <td className="px-6 py-3 font-mono text-slate-600">{r.codigo}</td>
+                    <td className="px-6 py-3 text-slate-600">{r.descripcion}</td>
                     <td className="px-6 py-3">
                       <span className="px-3 py-1 rounded-full text-xs font-medium" style={sitStyle(r.situacion)}>{r.situacion}</span>
                     </td>
                   </tr>
                 ))}
                 {filteredReport.length === 0 && (
-                  <tr><td colSpan={3} className="px-6 py-10 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{tE('noRegistrosFiltros')}</td></tr>
+                  <tr><td colSpan={3} className="px-6 py-10 text-center" style={{ color: 'rgba(15,23,42,0.3)' }}>{tE('noRegistrosFiltros')}</td></tr>
                 )}
               </tbody>
             </table>
