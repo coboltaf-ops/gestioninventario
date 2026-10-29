@@ -93,6 +93,7 @@ const NAV: NavGroup[] = [
 ]
 
 const NARANJA = '#ea580c'
+const AZUL_OSCURO = '#0f2a4a'
 
 export function EcosystemSidebar() {
   const pathname = usePathname()
@@ -103,20 +104,20 @@ export function EcosystemSidebar() {
   return (
     <aside
       className="w-64 shrink-0 h-screen sticky top-0 flex flex-col overflow-hidden"
-      style={{ background: '#ffffff', borderRight: '1px solid rgba(15,23,42,0.08)' }}
+      style={{ background: AZUL_OSCURO, borderRight: '1px solid rgba(255,255,255,0.08)' }}
     >
       {/* Encabezado / marca */}
-      <div className="px-5 py-5 shrink-0" style={{ borderBottom: '1px solid rgba(15,23,42,0.08)' }}>
+      <div className="px-5 py-5 shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <div className="flex items-center gap-3">
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black text-slate-800 shrink-0"
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black text-white shrink-0"
             style={{ background: NARANJA }}
           >
             GI
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-bold text-slate-800 leading-tight truncate">Gestión de Inventario</p>
-            <p className="text-xs text-slate-400 truncate">Sistema SPIN</p>
+            <p className="text-sm font-bold text-white leading-tight truncate">Gestión de Inventario</p>
+            <p className="text-xs text-white/50 truncate">Sistema SPIN</p>
           </div>
         </div>
       </div>
@@ -125,7 +126,7 @@ export function EcosystemSidebar() {
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
         {NAV.map((grupo) => (
           <div key={grupo.titulo}>
-            <p className="px-2 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            <p className="px-2 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-white/40">
               {grupo.titulo}
             </p>
             <div className="space-y-0.5">
@@ -136,11 +137,11 @@ export function EcosystemSidebar() {
                   <Link
                     key={item.id}
                     href={href}
-                    className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-colors"
+                    className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-colors hover:bg-white/5"
                     style={
                       activo
-                        ? { background: 'rgba(234,88,12,0.15)', color: '#1e293b', boxShadow: `inset 3px 0 0 ${NARANJA}` }
-                        : { color: 'rgba(15,23,42,0.7)' }
+                        ? { background: 'rgba(234,88,12,0.2)', color: '#ffffff', fontWeight: 600, boxShadow: `inset 3px 0 0 ${NARANJA}` }
+                        : { color: 'rgba(255,255,255,0.8)' }
                     }
                   >
                     <span className="text-base shrink-0">{item.icon}</span>
@@ -154,18 +155,18 @@ export function EcosystemSidebar() {
       </nav>
 
       {/* Pie / usuario */}
-      <div className="px-4 py-3 shrink-0 flex items-center gap-3" style={{ borderTop: '1px solid rgba(15,23,42,0.08)' }}>
+      <div className="px-4 py-3 shrink-0 flex items-center gap-3" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
         <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-slate-800 shrink-0"
-          style={{ background: 'rgba(234,88,12,0.3)', border: `1px solid ${NARANJA}` }}
+          className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0"
+          style={{ background: 'rgba(234,88,12,0.4)', border: `1px solid ${NARANJA}` }}
         >
           {iniciales.toUpperCase()}
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-medium text-slate-800 truncate">
+          <p className="text-sm font-medium text-white truncate">
             {user?.nombre} {user?.apellido}
           </p>
-          <p className="text-xs text-slate-400 truncate">{user?.rol}</p>
+          <p className="text-xs text-white/50 truncate">{user?.rol}</p>
         </div>
       </div>
     </aside>
