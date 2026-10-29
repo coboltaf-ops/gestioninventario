@@ -1,18 +1,23 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-interface State {
-  data: any[]
+// La página de transferencias define su propio tipo Transferencia estricto,
+// por lo que el store mantiene el arreglo flexible (any[]) para seguir siendo
+// asignable a ese tipo local.
+export interface Transferencia {
+  id: string
   [key: string]: any
 }
 
-export const useTransferenciasStore = (storeName: string) =>
-  create<State>()(
-    persist(
-      (set) => ({
-        data: [],
-      }),
-      { name: `${storeName}-storage` }
-    )
+interface TransferenciasState {
+  transferencias: any[]
+}
+
+export const useTransferenciasStore = create<TransferenciasState>()(
+  persist(
+    () => ({
+      transferencias: [] as any[],
+    }),
+    { name: 'transferencias-storage' }
   )
-export const usetransferenciasStore = store_creator('transferencias-store')
+)
