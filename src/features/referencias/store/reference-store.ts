@@ -17,6 +17,12 @@ export interface ReferenceData {
 
 interface ReferenceState {
   data: ReferenceData
+  // Agrega un item a la tabla indicada (crea la tabla si no existe).
+  addItem: (tabla: string, item: ReferenceItem) => void
+  // Fusiona cambios en el item que coincida por id dentro de la tabla.
+  updateItem: (tabla: string, id: string, cambios: Partial<ReferenceItem>) => void
+  // Elimina por id el item de la tabla indicada.
+  deleteItem: (tabla: string, id: string) => void
 }
 
 // Valor inicial: todas las tablas de referencia conocidas vacías, para que
@@ -50,8 +56,47 @@ const initialData: ReferenceData = {
 
 export const useReferenceStore = create<ReferenceState>()(
   persist(
-    () => ({
+    (set) => ({
       data: initialData,
+
+      addItem: (tabla, item) =>
+        set((state) => {
+          const nuevo: ReferenceItem = {
+            ...item,
+            id: item.id ?? crypto.randomUUID(),
+          }
+          const actuales = state.data[tabla] ?? []
+          return {
+            data: {
+              ...state.data,
+              [tabla]: [...actuales, nuevo],
+            },
+          }
+        }),
+
+      updateItem: (tabla, id, cambios) =>
+        set((state) => {
+          const actuales = state.data[tabla] ?? []
+          return {
+            data: {
+              ...state.data,
+              [tabla]: actuales.map((it) =>
+                it.id === id ? { ...it, ...cambios } : it
+              ),
+            },
+          }
+        }),
+
+      deleteItem: (tabla, id) =>
+        set((state) => {
+          const actuales = state.data[tabla] ?? []
+          return {
+            data: {
+              ...state.data,
+              [tabla]: actuales.filter((it) => it.id !== id),
+            },
+          }
+        }),
     }),
     { name: 'reference-store-storage' }
   )
