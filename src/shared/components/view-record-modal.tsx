@@ -2,7 +2,7 @@
 
 type Field = {
   label: string
-  value: string | number | boolean
+  value: string | number | boolean | null | undefined
 }
 
 type Props = {

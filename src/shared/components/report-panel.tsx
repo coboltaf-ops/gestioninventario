@@ -6,7 +6,7 @@ import * as XLSX from 'xlsx'
 
 type Column = { header: string; key: string; width?: number }
 
-type FilterOption = string | { id: any; nombre: string }
+type FilterOption = string | number | { id: any; nombre: string } | null | undefined
 
 type Filter = { label: string; key: string; options: FilterOption[] }
 
