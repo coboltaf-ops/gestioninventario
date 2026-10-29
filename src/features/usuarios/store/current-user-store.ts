@@ -14,11 +14,12 @@ interface CurrentUserState {
   user: Usuario
   setUser: (u: Usuario) => void
   logout: () => void
+  esAdmin: () => boolean
 }
 
 export const useCurrentUserStore = create<CurrentUserState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       user: {
         id: '1',
         nombre: 'Usuario',
@@ -27,6 +28,11 @@ export const useCurrentUserStore = create<CurrentUserState>()(
         correo: 'admin@sistema.com',
       },
       setUser: (u) => set({ user: u }),
+      // Indica si el usuario actual tiene rol de administrador.
+      esAdmin: () => {
+        const rol = (get().user?.rol ?? '').toLowerCase()
+        return rol === 'admin' || rol === 'administrador'
+      },
       logout: () =>
         set({
           user: {
