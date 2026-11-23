@@ -124,6 +124,8 @@ function nuevoProducto(opts: {
   return {
     id: uid(),
     codigo,
+    codigo_spin: codigo,
+    codigo_alterno: codigo,
     descripcion: opts.nombre,
     tipo_inventario: opts.tipo,
     categoria: opts.tipo === 'Producto Terminado' ? 'Panadería' : 'Insumos',
