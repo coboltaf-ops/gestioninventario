@@ -9,7 +9,7 @@ export default function InventarioComidasHome() {
             gap: '20px',
             marginBottom: '40px',
             paddingBottom: '20px',
-            borderBottom: '3px solid #ea580c',
+            borderBottom: '3px solid #0b1d4a',
           }}
         >
           <div
@@ -27,7 +27,7 @@ export default function InventarioComidasHome() {
             🍽️
           </div>
           <div>
-            <h1 style={{ fontSize: '32px', fontWeight: 'bold', color: '#ea580c', marginBottom: '8px' }}>🍽️ INVENTARIO COMIDAS</h1>
+            <h1 style={{ fontSize: '32px', fontWeight: 'bold', color: '#0b1d4a', marginBottom: '8px' }}>🍽️ INVENTARIO COMIDAS</h1>
             <p style={{ fontSize: '16px', color: '#aaa' }}>Selecciona una opción del menú lateral para comenzar</p>
           </div>
         </div>

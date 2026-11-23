@@ -15,7 +15,7 @@ export default function ComidasHome() {
           padding: '40px 20px',
           fontSize: '16px',
           fontWeight: 'bold',
-          background: 'linear-gradient(135deg, #ea580c, #ff6b35)',
+          background: 'linear-gradient(135deg, #0b1d4a, #0b3f8f)',
           border: 'none',
           borderRadius: '12px',
           color: '#1e293b',

@@ -27,7 +27,7 @@ interface PersonaPago {
 const ScreenWrapper = ({ children }: { children: React.ReactNode }) => (
   <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b', display: 'flex', flexDirection: 'column' }}>
     <div style={{
-      background: '#ea580c',
+      background: '#0b1d4a',
       color: '#f1f5f9',
       padding: '16px 20px',
       textAlign: 'center',

@@ -219,8 +219,8 @@ export default function CajaPage() {
 
           {/* Resumen Ventas */}
           <div style={{
-            background: 'rgba(234,88,12,0.1)',
-            border: '2px solid #ea580c',
+            background: 'rgba(11, 29, 74,0.1)',
+            border: '2px solid #0b1d4a',
             borderRadius: '12px',
             padding: '20px',
           }}>
@@ -243,7 +243,7 @@ export default function CajaPage() {
 
             <div style={{ padding: '15px', background: 'rgba(15,23,42,0.05)', borderRadius: '6px' }}>
               <p style={{ margin: '0 0 5px 0', fontSize: '12px', color: '#888' }}>TOTAL VENTAS</p>
-              <p style={{ margin: 0, fontSize: '24px', fontWeight: 'bold', color: '#ea580c' }}>
+              <p style={{ margin: 0, fontSize: '24px', fontWeight: 'bold', color: '#0b1d4a' }}>
                 ${totalVentas.toLocaleString()}
               </p>
             </div>

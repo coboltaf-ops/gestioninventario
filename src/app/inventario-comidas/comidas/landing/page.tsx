@@ -171,7 +171,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: '500px', margin: '0 auto' }}>
           <div className="recibo-print" style={{
             padding: '30px',
-            border: '2px solid #ea580c',
+            border: '2px solid #0b1d4a',
             borderRadius: '12px',
             background: 'rgba(0,0,0,0.5)',
             textAlign: 'center',
@@ -179,13 +179,13 @@ export default function LandingPage() {
             <h1 style={{ fontSize: '32px', marginBottom: '10px', fontWeight: 'bold' }}>✅ ¡PEDIDO CONFIRMADO!</h1>
 
             <div style={{
-              background: 'rgba(234,88,12,0.2)',
+              background: 'rgba(11, 29, 74,0.2)',
               padding: '20px',
               borderRadius: '8px',
               marginBottom: '20px',
-              borderLeft: '4px solid #ea580c',
+              borderLeft: '4px solid #0b1d4a',
             }}>
-              <p style={{ fontSize: '24px', fontWeight: 'bold', color: '#ea580c', margin: '0 0 10px 0' }}>
+              <p style={{ fontSize: '24px', fontWeight: 'bold', color: '#0b1d4a', margin: '0 0 10px 0' }}>
                 {pedidoConfirmado.consecutivo}
               </p>
               <p style={{ margin: '5px 0', fontSize: '14px', color: '#aaa' }}>
@@ -204,7 +204,7 @@ export default function LandingPage() {
                   <div key={idx} style={{
                     margin: '8px 0',
                     padding: '10px',
-                    background: 'rgba(234,88,12,0.1)',
+                    background: 'rgba(11, 29, 74,0.1)',
                     borderRadius: '4px',
                   }}>
                     <p style={{ margin: '0 0 5px 0', fontWeight: 'bold' }}>
@@ -227,7 +227,7 @@ export default function LandingPage() {
                   <span>Subtotal:</span>
                   <span>${pedidoConfirmado.subtotal.toLocaleString()}</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 'bold', color: '#ea580c' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 'bold', color: '#0b1d4a' }}>
                   <span>TOTAL:</span>
                   <span>${pedidoConfirmado.total.toLocaleString()}</span>
                 </div>
@@ -261,8 +261,8 @@ export default function LandingPage() {
               }} style={{
                 flex: 1,
                 padding: '15px',
-                background: '#ea580c',
-                color: '#1e293b',
+                background: '#0b1d4a',
+                color: '#ffffff',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer',
@@ -281,7 +281,7 @@ export default function LandingPage() {
     <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#1e293b' }}>
       {/* Welcome Banner */}
       <div style={{
-        background: '#ea580c',
+        background: '#0b1d4a',
         color: '#f1f5f9',
         padding: '16px 20px',
         textAlign: 'center',
@@ -300,13 +300,13 @@ export default function LandingPage() {
           alignItems: 'center',
           marginBottom: '40px',
           paddingBottom: '20px',
-          borderBottom: '2px solid #ea580c',
+          borderBottom: '2px solid #0b1d4a',
         }}>
           <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 'bold' }}>🍽️ PORTAL DE COMIDAS</h1>
           <button onClick={() => setShowCarrito(!showCarrito)} style={{
             padding: '12px 24px',
-            background: 'linear-gradient(135deg, #ea580c, #ff6b35)',
-            color: '#1e293b',
+            background: 'linear-gradient(135deg, #0b1d4a, #0b3f8f)',
+            color: '#ffffff',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer',
@@ -338,8 +338,8 @@ export default function LandingPage() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' }}>
                   {platosComidasItems.map((plato) => (
                     <div key={plato.id} style={{
-                      background: 'rgba(234,88,12,0.05)',
-                      border: '1px solid rgba(234,88,12,0.3)',
+                      background: 'rgba(11, 29, 74,0.05)',
+                      border: '1px solid rgba(11, 29, 74,0.3)',
                       borderRadius: '12px',
                       overflow: 'hidden',
                       padding: '20px',
@@ -350,14 +350,14 @@ export default function LandingPage() {
                       <p style={{ fontSize: '12px', color: '#aaa', marginBottom: '10px', margin: '0 0 10px 0' }}>
                         {plato.categoria || 'Comida'}
                       </p>
-                      <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#ea580c', marginBottom: '15px' }}>
+                      <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#0b1d4a', marginBottom: '15px' }}>
                         ${plato.precio_unitario.toLocaleString()}
                       </p>
                       <button onClick={() => agregarCarrito(plato)} style={{
                         width: '100%',
                         padding: '12px',
-                        background: 'linear-gradient(135deg, #ea580c, #ff6b35)',
-                        color: '#1e293b',
+                        background: 'linear-gradient(135deg, #0b1d4a, #0b3f8f)',
+                        color: '#ffffff',
                         border: 'none',
                         borderRadius: '8px',
                         cursor: 'pointer',

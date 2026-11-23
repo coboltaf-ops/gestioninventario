@@ -188,8 +188,8 @@ export default function ClientesComidasPage() {
             onClick={handleOpenForm}
             style={{
               padding: '12px 24px',
-              background: '#ea580c',
-              color: '#1e293b',
+              background: '#0b1d4a',
+              color: '#ffffff',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',
@@ -224,7 +224,7 @@ export default function ClientesComidasPage() {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
               <thead>
-                <tr style={{ borderBottom: '2px solid #ea580c' }}>
+                <tr style={{ borderBottom: '2px solid #0b1d4a' }}>
                   <th style={{ textAlign: 'left', padding: '10px', color: '#aaa', whiteSpace: 'nowrap' }}>Nro</th>
                   <th style={{ textAlign: 'left', padding: '10px', color: '#aaa', whiteSpace: 'nowrap' }}>Tipo Cliente</th>
                   <th style={{ textAlign: 'left', padding: '10px', color: '#aaa', whiteSpace: 'nowrap' }}>Nombre</th>
@@ -240,7 +240,7 @@ export default function ClientesComidasPage() {
               <tbody>
                 {clientes.map((cliente) => (
                   <tr key={cliente.id} style={{ borderBottom: '1px solid #333' }}>
-                    <td style={{ padding: '10px', fontWeight: 'bold', color: '#ea580c' }}>{cliente.nro_correlativo || '-'}</td>
+                    <td style={{ padding: '10px', fontWeight: 'bold', color: '#0b1d4a' }}>{cliente.nro_correlativo || '-'}</td>
                     <td style={{ padding: '10px', fontSize: '12px', color: '#aaa' }}>{cliente.tipo_cliente}</td>
                     <td style={{ padding: '10px', fontWeight: 'bold' }}>{cliente.nombre}</td>
                     <td style={{ padding: '10px', fontSize: '12px', color: '#aaa' }}>{cliente.tipo_identificacion}</td>
@@ -340,7 +340,7 @@ export default function ClientesComidasPage() {
                 borderRadius: '12px',
                 maxWidth: '700px',
                 width: '90%',
-                border: '2px solid #ea580c',
+                border: '2px solid #0b1d4a',
                 maxHeight: '90vh',
                 overflowY: 'auto',
               }}

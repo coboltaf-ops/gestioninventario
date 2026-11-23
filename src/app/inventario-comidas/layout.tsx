@@ -83,14 +83,14 @@ function InventarioComidasLayoutContent({ children }: { children: React.ReactNod
               onClick={() => setSidebarVisible(true)}
               style={{
                 padding: '10px 16px',
-                background: '#ea580c',
-                color: '#1e293b',
+                background: '#0b1d4a',
+                color: '#ffffff',
                 border: 'none',
                 borderRadius: '6px',
                 cursor: 'pointer',
                 fontWeight: 'bold',
                 fontSize: '14px',
-                boxShadow: '0 4px 12px rgba(234, 88, 12, 0.3)',
+                boxShadow: '0 4px 12px rgba(11, 29, 74, 0.3)',
               }}
             >
               ☰ Menú

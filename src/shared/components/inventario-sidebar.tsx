@@ -24,7 +24,7 @@ const CollapseSection = ({
         padding: '12px 16px',
         background: 'transparent',
         border: 'none',
-        color: '#1e293b',
+        color: 'rgba(255,255,255,0.95)',
         fontSize: '14px',
         fontWeight: 'bold',
         textAlign: 'left',
@@ -34,7 +34,7 @@ const CollapseSection = ({
         justifyContent: 'space-between',
         transition: 'background-color 0.2s',
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(15,23,42,0.05)')}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)')}
       onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
     >
       <span style={{ color }}>{label}</span>
@@ -60,21 +60,21 @@ const MenuItemLink = ({ name, href, icon, external, onNavigate }: { name: string
         alignItems: 'center',
         padding: '10px 12px',
         fontSize: '13px',
-        color: isActive ? '#ea580c' : '#aaa',
+        color: isActive ? '#ffffff' : 'rgba(255,255,255,0.7)',
         textDecoration: 'none',
         cursor: 'pointer',
-        backgroundColor: isActive ? 'rgba(234, 88, 12, 0.1)' : 'transparent',
+        backgroundColor: isActive ? '#2d3f66' : 'transparent',
         borderRadius: '6px',
         marginBottom: '4px',
         transition: 'all 0.2s',
       }}
       onMouseEnter={(e) => {
         if (!isActive) (e.currentTarget.style.color = '#fff')
-        e.currentTarget.style.backgroundColor = 'rgba(15,23,42,0.05)'
+        e.currentTarget.style.backgroundColor = isActive ? '#2d3f66' : 'rgba(255,255,255,0.08)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.color = isActive ? '#ea580c' : '#aaa'
-        e.currentTarget.style.backgroundColor = isActive ? 'rgba(234, 88, 12, 0.1)' : 'transparent'
+        e.currentTarget.style.color = isActive ? '#ffffff' : 'rgba(255,255,255,0.7)'
+        e.currentTarget.style.backgroundColor = isActive ? '#2d3f66' : 'transparent'
       }}
     >
       {icon && <span style={{ marginRight: '8px', fontSize: '14px' }}>{icon}</span>}
@@ -104,42 +104,42 @@ export function InventarioSidebar({ onClose }: { onClose?: () => void } = {}) {
         top: 0,
         width: '256px',
         height: '100vh',
-        background: '#0f0f0f',
-        borderRight: '1px solid #222',
+        background: '#0b1d4a',
+        borderRight: '1px solid rgba(255,255,255,0.1)',
         padding: '20px 12px',
         overflowY: 'auto',
         zIndex: 100,
       }}
     >
       <div style={{ marginBottom: '20px', paddingLeft: '8px' }}>
-        <h1 style={{ fontSize: '18px', fontWeight: 'bold', color: '#ea580c', margin: 0 }}>
+        <h1 style={{ fontSize: '18px', fontWeight: 'bold', color: '#ffffff', margin: 0 }}>
           🍽️ Inventario Comidas
         </h1>
       </div>
 
-      <CollapseSection label="📦 INVENTARIO" color="#ea580c" open={comidasOpen} onToggle={() => setComidasOpen(!comidasOpen)}>
-        <div style={{ borderLeft: '3px solid #ea580c', paddingLeft: '12px', marginLeft: '-4px' }}>
+      <CollapseSection label="📦 INVENTARIO" color="#ffffff" open={comidasOpen} onToggle={() => setComidasOpen(!comidasOpen)}>
+        <div style={{ borderLeft: '3px solid #0b3f8f', paddingLeft: '12px', marginLeft: '-4px' }}>
           <MenuItemLink name="Clientes" href="/inventario-comidas/clientes" icon="👥" onNavigate={handleNavigate} />
           <MenuItemLink name="Proveedores" href="/inventario-comidas/proveedores" icon="🏢" onNavigate={handleNavigate} />
           <MenuItemLink name="Productos" href="/inventario-comidas/productos" icon="📦" onNavigate={handleNavigate} />
           <MenuItemLink name="Fórmulas" href="/inventario-comidas/formulas" icon="📖" onNavigate={handleNavigate} />
-          <div style={{ borderTop: '1px solid rgba(15,23,42,0.1)', margin: '12px 0' }} />
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '12px 0' }} />
           <MenuItemLink name="O. Compra" href="/inventario-comidas/ordenes-compra" icon="🛒" onNavigate={handleNavigate} />
           <MenuItemLink name="Recepción Facturas" href="/inventario-comidas/recepcion" icon="📋" onNavigate={handleNavigate} />
           <MenuItemLink name="Bodegas" href="/inventario-comidas/bodegas" icon="🏪" onNavigate={handleNavigate} />
           <MenuItemLink name="Salidas Bodega" href="/inventario-comidas/salidas" icon="📤" onNavigate={handleNavigate} />
           <MenuItemLink name="Ajustes Inv." href="/inventario-comidas/ajustes" icon="🔧" onNavigate={handleNavigate} />
           <MenuItemLink name="Inv. Físico" href="/inventario-comidas/inventario-fisico" icon="📊" onNavigate={handleNavigate} />
-          <div style={{ borderTop: '1px solid rgba(15,23,42,0.1)', margin: '12px 0' }} />
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '12px 0' }} />
           <MenuItemLink name="Datos Empresa" href="/inventario-comidas/datos-empresa" icon="🏛️" onNavigate={handleNavigate} />
           <MenuItemLink name="Usuarios" href="/inventario-comidas/usuarios" icon="👤" onNavigate={handleNavigate} />
         </div>
       </CollapseSection>
 
-      <div style={{ borderTop: '1px solid rgba(15,23,42,0.1)', margin: '16px 0' }} />
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', margin: '16px 0' }} />
 
-      <CollapseSection label="🍕 PORTAL COMIDAS" color="#ea580c" open={portalOpen} onToggle={() => setPortalOpen(!portalOpen)}>
-        <div style={{ borderLeft: '3px solid #ea580c', paddingLeft: '12px', marginLeft: '-4px' }}>
+      <CollapseSection label="🍕 PORTAL COMIDAS" color="#ffffff" open={portalOpen} onToggle={() => setPortalOpen(!portalOpen)}>
+        <div style={{ borderLeft: '3px solid #0b3f8f', paddingLeft: '12px', marginLeft: '-4px' }}>
           <MenuItemLink name="Landing" href="/inventario-comidas/comidas/landing" icon="🔗" external />
           <MenuItemLink name="QR Pedidos" href="/inventario-comidas/comidas/qr" icon="📱" external />
         </div>

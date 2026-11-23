@@ -192,8 +192,8 @@ export default function FormulasComidasPage() {
                         onClick={() => handleEditOpen(formula)}
                         style={{
                           padding: '4px 8px',
-                          background: '#ea580c',
-                          color: '#1e293b',
+                          background: '#0b1d4a',
+                          color: '#ffffff',
                           border: 'none',
                           borderRadius: '4px',
                           cursor: 'pointer',

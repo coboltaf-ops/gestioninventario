@@ -118,8 +118,8 @@ export default function DatosEmpresaComidasPage() {
               onClick={() => setEditing(true)}
               style={{
                 padding: '12px 24px',
-                background: '#ea580c',
-                color: '#1e293b',
+                background: '#0b1d4a',
+                color: '#ffffff',
                 border: 'none',
                 borderRadius: '8px',
                 cursor: 'pointer',
@@ -209,7 +209,7 @@ export default function DatosEmpresaComidasPage() {
                     width: '100%',
                     padding: '12px',
                     background: '#222',
-                    border: '1px dashed #ea580c',
+                    border: '1px dashed #0b1d4a',
                     borderRadius: '6px',
                     color: '#1e293b',
                     fontSize: '14px',

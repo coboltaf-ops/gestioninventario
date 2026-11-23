@@ -102,8 +102,8 @@ export default function OrdenesComidasPage() {
             onClick={handleOpenForm}
             style={{
               padding: '12px 24px',
-              background: '#ea580c',
-              color: '#1e293b',
+              background: '#0b1d4a',
+              color: '#ffffff',
               border: 'none',
               borderRadius: '8px',
               cursor: 'pointer',
@@ -122,7 +122,7 @@ export default function OrdenesComidasPage() {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ borderBottom: '2px solid #ea580c' }}>
+                <tr style={{ borderBottom: '2px solid #0b1d4a' }}>
                   <th style={{ textAlign: 'left', padding: '12px', color: '#aaa' }}>Número</th>
                   <th style={{ textAlign: 'left', padding: '12px', color: '#aaa' }}>Proveedor</th>
                   <th style={{ textAlign: 'left', padding: '12px', color: '#aaa' }}>Fecha</th>
@@ -170,8 +170,8 @@ export default function OrdenesComidasPage() {
                           onClick={() => handleEditOpen(orden)}
                           style={{
                             padding: '4px 8px',
-                            background: '#ea580c',
-                            color: '#1e293b',
+                            background: '#0b1d4a',
+                            color: '#ffffff',
                             border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer',
@@ -226,7 +226,7 @@ export default function OrdenesComidasPage() {
                 borderRadius: '12px',
                 maxWidth: '600px',
                 width: '90%',
-                border: '2px solid #ea580c',
+                border: '2px solid #0b1d4a',
                 maxHeight: '90vh',
                 overflowY: 'auto',
               }}
