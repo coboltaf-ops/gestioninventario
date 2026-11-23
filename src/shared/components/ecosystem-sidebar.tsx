@@ -88,6 +88,7 @@ const NAV: NavGroup[] = [
     items: [
       { id: 'asistente', label: 'Agente', icon: '🤖' },
       { id: 'documentacion', label: 'Documentación', icon: '📚' },
+      { id: 'debug-data', label: 'Datos de Prueba', icon: '🧪' },
     ],
   },
 ]
