@@ -13,6 +13,7 @@ import { useTipoInventarioSesion } from '@/features/contexto-sesion/store/tipo-i
 import { TipoInventarioBadge } from '@/features/contexto-sesion/components/tipo-inventario-badge'
 import { useEmpresaStore } from '@/features/datos-empresa/store/empresa-store'
 import { EcosystemSidebar } from '@/shared/components/ecosystem-sidebar'
+import { useAuthStore } from '@/features/auth/store/auth-store'
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
@@ -23,6 +24,15 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   const [fromContable, setFromContable] = useState(false)
   const initModulos = useModulosSistemaStore((s) => s.initModulos)
   const empresaActiva = useEmpresaStore((s) => s.empresas[0])
+
+  // ── Candado de sesión: redirige a /login si no hay sesión ──
+  const autenticado = useAuthStore((s) => s.autenticado)
+  const logout = useAuthStore((s) => s.logout)
+  const [montado, setMontado] = useState(false)
+  useEffect(() => setMontado(true), [])
+  useEffect(() => {
+    if (montado && !autenticado) router.replace('/login')
+  }, [montado, autenticado, router])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -63,6 +73,14 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     initModulos(MODULOS.map((m) => m.id as string))
   }, [initModulos])
 
+  const cerrarSesion = () => {
+    logout()
+    router.replace('/login')
+  }
+
+  // Evita parpadeo del app antes de confirmar la sesión.
+  if (!montado || !autenticado) return null
+
   return (
     <ServerSyncProvider>
       <div className="flex min-h-screen" style={{ background: '#f1f5f9' }}>
@@ -100,9 +118,17 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-slate-800"
                 style={{ background: 'rgba(96,165,250,0.3)', border: '1px solid rgba(96,165,250,0.4)' }}
               >
-                {user.nombre.charAt(0)}
-                {user.apellido.charAt(0)}
+                {user.nombre?.charAt(0)}
+                {user.apellido?.charAt(0)}
               </div>
+              <button
+                onClick={cerrarSesion}
+                className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:opacity-90"
+                style={{ background: '#ea580c' }}
+                title="Cerrar sesión"
+              >
+                Salir
+              </button>
             </div>
           </header>
           <div className="flex-1 px-4 py-6 md:px-6 overflow-x-hidden min-w-0">
