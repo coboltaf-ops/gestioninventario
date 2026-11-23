@@ -10,16 +10,17 @@ const AZUL_OSCURO = '#0f2a4a'
 export default function LoginPage() {
   const router = useRouter()
   const login = useAuthStore((s) => s.login)
-  const autenticado = useAuthStore((s) => s.autenticado)
+  const logout = useAuthStore((s) => s.logout)
 
   const [usuario, setUsuario] = useState('')
   const [clave, setClave] = useState('')
   const [error, setError] = useState('')
 
-  // Si ya está autenticado, saltar directo al dashboard.
+  // Al abrir la URL siempre limpiar la sesión anterior y mostrar el login
+  // centrado (mismo patrón que los demás sistemas).
   useEffect(() => {
-    if (autenticado) router.replace('/dashboard')
-  }, [autenticado, router])
+    logout()
+  }, [logout])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

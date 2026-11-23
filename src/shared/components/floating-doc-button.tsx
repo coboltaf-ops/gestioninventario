@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 
 const DOC_PASSWORD = 'Liberiapalomares151056*'
 const SESSION_KEY = 'doc-biblioteca-auth'
@@ -150,8 +151,12 @@ function LibraryModal({ onClose }: { onClose: () => void }) {
 // ─── Floating Doc Button (main export) ───────────────────────────────────────
 
 export function FloatingDocButton() {
+  const pathname = usePathname()
   const [modalState, setModalState] = useState<ModalState>('closed')
   const [tooltip, setTooltip] = useState(false)
+
+  // No mostrar el botón flotante en el login (ni en la raíz que redirige a login).
+  const ocultar = pathname === '/login' || pathname === '/'
 
   const handleOpen = useCallback(() => {
     const isAuthed = sessionStorage.getItem(SESSION_KEY) === '1'
@@ -167,6 +172,9 @@ export function FloatingDocButton() {
   }, [])
 
   const isOpen = modalState !== 'closed'
+
+  // En el login no se renderiza nada (ni el botón ni los modales).
+  if (ocultar) return null
 
   return (
     <>
