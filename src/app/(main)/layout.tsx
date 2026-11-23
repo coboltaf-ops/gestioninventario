@@ -83,7 +83,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <ServerSyncProvider>
-      <div className="flex min-h-screen" style={{ background: '#f1f5f9' }}>
+      <div className="flex min-h-screen w-full" style={{ background: '#f1f5f9' }}>
         <EcosystemSidebar />
 
         <main className="flex-1 flex flex-col min-h-screen transition-all duration-300" style={{ background: '#f1f5f9' }}>
