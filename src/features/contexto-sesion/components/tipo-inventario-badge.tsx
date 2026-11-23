@@ -13,7 +13,7 @@ export function TipoInventarioBadge() {
   return (
     <div
       className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-      style={{ background: 'rgba(234,88,12,0.15)', border: '1px solid rgba(234,88,12,0.5)', color: '#1e293b' }}
+      style={{ background: 'rgba(11,29,74,0.15)', border: '1px solid rgba(11,29,74,0.5)', color: '#1e293b' }}
     >
       <span>📦 {tipoActivo}</span>
       <button

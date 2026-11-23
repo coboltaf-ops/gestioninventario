@@ -135,7 +135,7 @@ export function PermisosMatriz({ usuarios, onUpdateUsuario }: Props) {
                         type="checkbox"
                         checked={getPermiso(m.id, a.key)}
                         onChange={() => toggle(m.id, a.key)}
-                        className="w-4 h-4 cursor-pointer accent-[#ea580c]"
+                        className="w-4 h-4 cursor-pointer accent-[#0b1d4a]"
                       />
                     </td>
                   ))}

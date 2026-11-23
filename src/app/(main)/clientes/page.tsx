@@ -392,7 +392,7 @@ export default function ClientesPage() {
                 <td style={td}><span style={{ padding: '3px 10px', borderRadius: 20, fontSize: 11, fontWeight: 600, ...statusStyle(c.situacion) }}>{c.situacion}</span></td>
                 <td style={td}>
                   <div style={{ display: 'flex', gap: 6 }}>
-                    <button onClick={() => setViewDetail(c)} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#ea580c', color: '#1e293b', border: '1px solid #f97316' }}>Ver</button>
+                    <button onClick={() => setViewDetail(c)} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#0b1d4a', color: '#ffffff', border: '1px solid #0b1d4a' }}>Ver</button>
                     {permisos.editar && <button onClick={() => { setSelected(c); setIsForm(true) }} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#14B4B4', color: '#1e293b', border: '1px solid #3b82f6' }}>Editar</button>}
                     {permisos.eliminar && <button onClick={() => { if (confirm(`¿Eliminar cliente "${c.razon_social}"?`)) deleteCliente(c.id) }} style={{ ...btnStyle, padding: '4px 12px', fontSize: 11, background: '#dc2626', color: '#1e293b', border: '1px solid #ef4444' }}>Eliminar</button>}
                   </div>

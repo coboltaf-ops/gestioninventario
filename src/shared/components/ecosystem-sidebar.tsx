@@ -93,8 +93,9 @@ const NAV: NavGroup[] = [
   },
 ]
 
-const NARANJA = '#ea580c'
-const AZUL_OSCURO = '#0f2a4a'
+const AZUL_OSCURO = '#0b1d4a' // SIMAS navy — fondo de la barra lateral
+const AZUL_SECUNDARIO = '#2d3f66' // navy secundario — fondo del ítem activo
+const AZUL_MEDIO = '#0b3f8f' // azul medio — barra indicadora del ítem activo
 
 export function EcosystemSidebar() {
   const pathname = usePathname()
@@ -111,8 +112,8 @@ export function EcosystemSidebar() {
       <div className="px-5 py-5 shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <div className="flex items-center gap-3">
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black text-white shrink-0"
-            style={{ background: NARANJA }}
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black shrink-0"
+            style={{ background: '#ffffff', color: AZUL_OSCURO }}
           >
             GI
           </div>
@@ -141,7 +142,7 @@ export function EcosystemSidebar() {
                     className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-colors hover:bg-white/5"
                     style={
                       activo
-                        ? { background: 'rgba(234,88,12,0.2)', color: '#ffffff', fontWeight: 600, boxShadow: `inset 3px 0 0 ${NARANJA}` }
+                        ? { background: AZUL_SECUNDARIO, color: '#ffffff', fontWeight: 600, boxShadow: `inset 3px 0 0 ${AZUL_MEDIO}` }
                         : { color: 'rgba(255,255,255,0.8)' }
                     }
                   >
@@ -159,7 +160,7 @@ export function EcosystemSidebar() {
       <div className="px-4 py-3 shrink-0 flex items-center gap-3" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0"
-          style={{ background: 'rgba(234,88,12,0.4)', border: `1px solid ${NARANJA}` }}
+          style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.3)' }}
         >
           {iniciales.toUpperCase()}
         </div>

@@ -217,8 +217,8 @@ export default function ReportPanel({
             onClick={exportPdf}
             className="rounded-lg px-4 py-2 text-sm font-semibold text-slate-800 transition-colors"
             style={{
-              background: 'rgba(234,88,12,0.18)',
-              border: '1px solid rgba(234,88,12,0.5)',
+              background: 'rgba(11,29,74,0.18)',
+              border: '1px solid rgba(11,29,74,0.5)',
             }}
           >
             📄 Exportar PDF
@@ -319,7 +319,7 @@ export default function ReportPanel({
           </tbody>
           {totals && filteredRows.length > 0 && (
             <tfoot>
-              <tr style={{ background: 'rgba(234,88,12,0.1)' }}>
+              <tr style={{ background: 'rgba(11,29,74,0.1)' }}>
                 {columns.map((col, i) => (
                   <td
                     key={col.key}

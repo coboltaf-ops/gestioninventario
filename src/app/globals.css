@@ -5,7 +5,7 @@
 @layer base {
   body {
     @apply text-slate-800;
-    background: #f1f5f9;
+    background: #ffffff;
   }
 
   /* Override autofill del navegador (Chrome / Safari / Edge) → fondo teal SPIN + texto blanco */

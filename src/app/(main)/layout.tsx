@@ -83,10 +83,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <ServerSyncProvider>
-      <div className="flex min-h-screen w-full" style={{ background: '#f1f5f9' }}>
+      <div className="flex min-h-screen w-full" style={{ background: '#ffffff' }}>
         <EcosystemSidebar />
 
-        <main className="flex-1 flex flex-col min-h-screen transition-all duration-300" style={{ background: '#f1f5f9' }}>
+        <main className="flex-1 flex flex-col min-h-screen transition-all duration-300" style={{ background: '#ffffff' }}>
           <header className="px-8 py-3 shrink-0 flex items-center justify-between gap-4" style={{ borderBottom: '1px solid rgba(15,23,42,0.06)' }}>
             <div className="flex items-center gap-4">
               {empresaActiva?.nombre && (
@@ -124,7 +124,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <button
                 onClick={cerrarSesion}
                 className="px-3 py-1.5 rounded-lg text-xs font-bold text-white transition-all hover:opacity-90"
-                style={{ background: '#ea580c' }}
+                style={{ background: '#0b1d4a' }}
                 title="Cerrar sesión"
               >
                 Salir

@@ -42,8 +42,8 @@ export function UsuariosTabla({ usuarios, esAdmin, onNew, onEdit, onDelete, onVi
         </div>
         <button
           onClick={onNew}
-          className="px-4 py-2 rounded-lg text-sm font-medium text-slate-800 transition-all hover:opacity-90"
-          style={{ background: '#ea580c', border: '1px solid #ea580c' }}
+          className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-all hover:opacity-90"
+          style={{ background: '#0b1d4a', border: '1px solid #0b1d4a' }}
         >
           ➕ Nuevo Usuario
         </button>

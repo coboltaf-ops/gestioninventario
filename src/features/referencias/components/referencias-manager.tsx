@@ -130,8 +130,8 @@ export function ReferenciasManager() {
           <button
             onClick={openAdd}
             disabled={!tablaActiva}
-            className="rounded-lg px-4 py-2 text-sm font-medium text-slate-800 transition-opacity hover:opacity-90 disabled:opacity-40"
-            style={{ background: '#ea580c' }}
+            className="rounded-lg px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-40"
+            style={{ background: '#0b1d4a' }}
           >
             ➕ Agregar
           </button>
@@ -186,8 +186,8 @@ export function ReferenciasManager() {
               <div className="flex gap-2">
                 <button
                   type="submit"
-                  className="rounded-lg px-4 py-2 text-sm font-medium text-slate-800 transition-opacity hover:opacity-90"
-                  style={{ background: '#ea580c' }}
+                  className="rounded-lg px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                  style={{ background: '#0b1d4a' }}
                 >
                   Guardar
                 </button>

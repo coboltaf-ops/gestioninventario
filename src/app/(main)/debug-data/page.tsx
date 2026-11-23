@@ -400,7 +400,7 @@ function genPesajes(proveedores: Dict[], ordenes: Dict[], productosMP: Dict[]): 
 const CARD = 'rgba(15,23,42,0.04)'
 const BORDER = 'rgba(15,23,42,0.1)'
 const BLUE = 'rgba(59,130,246,1)'
-const ORANGE = '#ea580c'
+const ORANGE = '#0b1d4a'
 
 export default function DebugDataPage() {
   // Suscripciones en vivo para el panel de conteos

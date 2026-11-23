@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/features/auth/store/auth-store'
 
-const NARANJA = '#ea580c'
-const AZUL_OSCURO = '#0f2a4a'
+const NAVY = '#0b1d4a' // SIMAS navy — marca, botón primario
+const AZUL_OSCURO = '#0b1d4a' // SIMAS navy — fondo pantalla completa
 
 export default function LoginPage() {
   const router = useRouter()
@@ -46,11 +46,11 @@ export default function LoginPage() {
         <div className="flex flex-col items-center mb-8">
           <div
             className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-black text-white mb-4"
-            style={{ background: NARANJA }}
+            style={{ background: NAVY }}
           >
             GI
           </div>
-          <h1 className="text-xl font-bold text-slate-800">Gestión de Inventario</h1>
+          <h1 className="text-xl font-bold" style={{ color: NAVY }}>Gestión de Inventario</h1>
           <p className="text-sm text-slate-400 mt-1">Inicia sesión para continuar</p>
         </div>
 
@@ -97,7 +97,7 @@ export default function LoginPage() {
           <button
             type="submit"
             className="w-full py-2.5 rounded-xl font-bold text-white transition-all hover:opacity-90 mt-2"
-            style={{ background: NARANJA }}
+            style={{ background: NAVY }}
           >
             Ingresar
           </button>

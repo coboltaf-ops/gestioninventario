@@ -25,9 +25,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="h-full antialiased">
-      <body className="h-full min-h-screen w-full relative overflow-x-hidden bg-slate-100">
+      <body className="h-full min-h-screen w-full relative overflow-x-hidden bg-white">
         {/* Fondo claro de pantalla completa */}
-        <div className="fixed inset-0 -z-10 bg-slate-100" />
+        <div className="fixed inset-0 -z-10 bg-white" />
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
           <FloatingDocButton />
