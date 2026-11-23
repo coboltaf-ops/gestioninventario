@@ -24,8 +24,8 @@ export default async function RootLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale}>
-      <body className="antialiased min-h-screen w-full relative overflow-x-hidden bg-slate-100">
+    <html lang={locale} className="h-full antialiased">
+      <body className="h-full min-h-screen w-full relative overflow-x-hidden bg-slate-100">
         {/* Fondo claro de pantalla completa */}
         <div className="fixed inset-0 -z-10 bg-slate-100" />
         <NextIntlClientProvider locale={locale} messages={messages}>
